@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Phase 1: High Performance Web Service for Data Retrieval </h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/56">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/56">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 5.20105036718%;"/>
+    </div>
+    
+    <span>13 days 6 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>KaarQPMXqAEqyJwbUWtcXdldVcBcKkOh</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Phase 1: High Performance Web Service for Data Retrieval </td>
+            <td>10/15/2015 00:01 -0400</td>
+            <td>10/28/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction and Motivation</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Overview of Tasks</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Phase 1 - Query 1</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Phase 1 - Query 2</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Success</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div>
+      <h1>Twitter Analytics on the Cloud</h1>
+      <div>
+  <div class="bs-callout bs-callout-learning">
+<h4>Learning Objectives</h4>
+    <p>This project will encompass the following learning objectives:</p>
+    <ol>
+      <li>Display working knowledge of the skills developed in this course.</li>
+      <li>Design, develop, deploy and optimize fully functional web-servers to handle high loads.</li>
+      <li>Implement Extract Transform and Load (ETL) on a large data set (~ 1 TB) and load into MySQL and HBase systems.</li>
+      <li>Design and optimize MySQL and HBase databases to deal with scale and improve throughput.</li>
+      <li>Explore and utilize various methods and tools to improve the performance of a complete web service.</li>
+      <ol>
+  </div>
+      </div>
+      <h3>Introduction</h3>
+      <p>After making a huge profit for the Massive Surveillance Bureau, you realize that your Cloud Computing skills are being undervalued. To maximize your own profit, you launch a cloud-based startup company with one or two colleagues from 15619. </p>
+      <p>A client has approached your company and several other companies to compete on a project to build a web service for analyzing Twitter data. The client has over a terabyte of raw tweets for your consumption. Your responsibility is to design, develop and deploy a web service that meets the throughput, budget and query requirements of the client.
+      <p>Your team needs to build (and optimize) two components:
+        <img src="https://s3.amazonaws.com/15619public/webcontent/619_Blocks.PNG" alt="Block Diagram" width="80%">
+        <h4><small>Figure 1: Block Diagram</small></h4>
+      <ol>
+        <li>
+          A Front End: This should be a web service able to receive and respond to queries. Specifically, the service should handle incoming HTTP GET requests and provide suitable responses (as defined in the Query Types section below). 
+          <ol type="i">
+            <li>Users access your service using an HTTP GET request through an endpoint URL. Different URLs are needed for each query type, which are shown in Query Types section. Query parameters are included within the URL string of the HTTP request.</li>
+            <li>An appropriate response should be formulated for each type of query. The response format should be followed exactly otherwise your web service will not provide acceptable responses when tested with our load generator and testing system.</li>
+            <li>The web service should run smoothly for the entire test period, which lasts for several hours.</li>
+            <li>The web service must not refuse queries and should tolerate a heavy load.</li>
+          </ol>
+        </li>
+        <li>
+          A Back End: This is used to store the data to be queried.
+          <ol type="i">
+            <li>You will evaluate SQL (MySQL) and NoSQL (HBase) databases in the first two phases of this project.</li>
+            <li>You should compare their performance for different query types for different dataset sizes. You can then decide on an appropriate storage back end for your final system to compete against other systems.</li>
+          </ol>
+        </li>
+        <li>Your web service should meet the requirements for throughput and cost/hour for queries at a provided workload.</li>
+        <li>The overall service (development and deployment test period) should cost under a specified budget. Less is generally better, otherwise your competitor will win the contract.</li>
+        <li>Your client has a limited budget. So, you can <strong>ONLY</strong> use instances in <strong>M family</strong> which are smaller than or equal to <strong>large</strong> for your web service (both your front-end and back-end systems). You should use spot instances for batch jobs and development.</li>
+      </ol>
+      <h3>Dataset</h3>
+      <p>The dataset is at <strong>s3://cmucc-datasets/twitter/f15/</strong></p>
+      <p>It is larger than 1 TB, though we have compressed it. There may be <strong>duplicate</strong> or <strong>malformed</strong> records that you need to account for.</p>
+          <p>The dataset is in <a href="http://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a> format. Each line is a JSON object representing a tweet. Twitter's documentation has a good description of the data format for tweets and related entities in this format. <a href="https://dev.twitter.com/docs/platform-objects/tweets" target="_blank">Twitter API</a><p>
+      <p>Please note that since the tweet texts in the JSON objects are encoded with unicode, different libraries might parse the text slightly differently. To ensure your correctness, we recommend that you use the following libraries to parse your data.</p>
+      <ul>
+        <li>If you are using Java, please use simple <b>json/gson</b></li>
+        <li>If you are using Python, use <b>json</b> module in standard library</li>
+      </ul>
+      <h3>Timeline & Deliverables</h3>
+      <p>This project has 3 phases. In each phase you are required to implement your web service to provide responses to some particular types of queries. The query types will be described in the writeup of each phase. </p>
+      <p>The time allotted for the phases is as follows:</p>
+      <p>At the end of each project phase, you need to submit some deliverables including:</p>
+      <ol>
+        <li>Performance data of your web service.</li>
+        <li>Cost analysis of the phase</li>
+        <li>All the code related to the phase</li>
+        <li>Answer to questions associated with the the phase.</li>
+        <li>A report for each phase. This report must include detailed reasoning for your design decisions and deliverables for each phase.</li>
+      </ol>
+      <h3>Load Generation and Web Service Testing</h3>
+      <h4>Scoreboard</h4>
+      <p>We provide a real-time scoreboard for you to compare your performance with other teams. Your best submission for each query will be displayed on the scoreboard.</p>
+      <h4>Submit your request</h4>
+      <p>You can submit the public DNS of your web service to start the test. The DNS you submit is the one we will send requests to, in order to do performance testing on your service. You can submit the DNS of an EC2 instance or of an Elastic Load Balancer. We provide tests of varying durations. Please think carefully about what you need to verify for each request and choose an appropriate duration. For example, if you want to just verify whether your service is reachable and is giving correct results, you probably don't need to run a long  test. On the other hand, if you want to test your service to see how it would perform under a heavy load for a long duration, you probably don't want to run a short (5-minute) test. </p>
+      <h4>How is my web service tested?</h4>
+      <p>When you submit a request, a testing instance (similar to load generators that you launched in Project 2) will be launched by us. This instance will run a performance test for the specified query against the web service address that you provided. We will be testing both, performance and correctness. At the end of the test, the results will be displayed in your submission history table.</p>
+      <h4>Wait List</h4>
+      <p>Since we have a limited amount of resources, if there are many teams submitting requests at the same time, your request may be waitlisted. You can check to see how long you need to wait before your request starts running. Our system will try to add or deduct resources automatically based on the current average waiting time, so don’t worry if you see a long waiting time.</p>
+      <h4>FAQs (we will update these to reflect common administrative questions)</h4>
+      <li>Why can't I submit a request?</li>
+      <ul>
+        <li>To save cost and prevent repeat submissions, every team can only have one request running or waiting. In other words, if anyone in your team submits a request, no one in your team can submit another request until the running job finishes.</li>
+      </ul>
+      <li>Can I cancel my request if I modify my service and want to re-submit?</li>
+      <ul>
+        <li>Yes, you can.</li>
+      </ul>
+      <li>Can I schedule future tests or multiple tests?</li>
+      <ul>
+        <li>No. We want to make sure our tests are used efficiently.</li>
+      </ul>
+      
+      <h4>Submission History</h4>
+      <p>When your request is running, you can check the submission history page to see the progress of the current request and how many seconds are remaining. After your request finishes, your results will be displayed. You can also view all your previous submissions. If you have doubts for a specific query, you can take down the submission ID and contact us for more details. </p>
+      <h4>Interpreting your result</h4>
+      <p>There are several parameters shown for each query submitted:
+      <p>
+      <ol>
+        <li>Throughput: average queries per seconds during the testing period</li>
+        <li>Latency: Average latency for each query issued during the testing period</li>
+        <li>Error: The error rate. Your message type in HTTP header of your response must be 2xx. Otherwise it will be recognized as an erroneous response and counted in the error rate.</li>
+        <li>Correctness: This column indicates whether your service responds with the correct result. Your response should exactly match our standard response so please read the format requirement of each query carefully.</li>
+      </ol>
+      <h4>Query Score Calculation</h4>
+      <p>The raw score for a query is based on the effective throughput for that query</p>
+      <p>Effective Throughput = Throughput * (100 - Error / 100) * (Correctness / 100)</p>
+      <p>Raw Score = Effective Throughput/Target Throughput</p>
+      <p>The Target Throughput will be provided by us for each query. As you can see, error and correctness can severely impact your effective throughput.</p>
+      <h4>Phase Score Calculation</h4>
+      <p>The score is a weighted sum of your <b>best</b> score for each query in that phase</p>
+      <h4>Live Tests</h4>
+      <p>Phases 2 and 3 culminate with a Live Test, where services developed by all competitors (teams) are tested at the same time. Your grade for these two phases is based on your performance in these tests.</p>
+      <h4>Bug Report</h4>
+      <p>If you encounter any bugs in this system or have any suggestions for improvement, feel free to post privately on Piazza.</p>
+
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <h1>Tasks</h1>
+      <h3>Front end</h3>
+      <p>This task requires you to build the front end system of the web service. The front end should accept RESTful requests and send back responses.</p>
+      <h4>Design constraints</h4>
+      <ul>
+        <li>Execution model: you can use any web framework you want <strong>except Undertow</strong></li>
+        <li>Spot instances are highly recommended during development period, otherwise it is very likely that you will exceed the overall budget for this phase and fail the project.</li>
+      </ul>
+      <h4>Recommendations</h4>
+      <p>You might want to consider using auto-scaling because there could be fluctuations in the load over the test period. To test your front end system, use the Heartbeat query (q1). It will be wise to ensure that your system comes close to satisfying the minimum throughput requirement of heartbeat requests before you move forward.  However, as you design the front end, make sure to account for the cost. Write an automatic script, or make a new AMI to configure the whole front end instance. It can help to rebuild the front end quickly, which may happen several times in the building process. Please terminate your instances when not needed.  Save time or your cost will increase higher than the budget and lead to failure.</p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Hints</h4>
+      <p>Although we do not have any constraints on the front end, performance of different web frameworks vary a lot. Choosing a slow web framework may have a negative impact on the throughput of every query. Therefore, we strongly recommend that you do some investigation about this topic before you start. <a href="https://www.techempower.com/benchmarks/" target="_blank">Techempower</a> provides a very complete benchmark for mainstream frameworks, you may find it helpful.</p>
+      <p>You can also compare the performance of different frameworks under our testing environment by testing q1 since it is just a heartbeat message and has no interactions with the back end. Please also think about whether the front end framework you choose has API support for MySQL and HBase.</p>
+      </div>
+      <h3>ETL</h3>
+      <p>This task requires you to load the Twitter dataset into the database using the <b>extract</b>, <b>transform</b> and <b>load</b> (ETL) process in data warehousing. In the extract step, you will extract data from an outside source. For this phase, the outside source is a JSON Twitter dataset of tweets stored on S3, containing about 200 million tweets. The transform step applies a series of functions on the extracted data to realize the data needed in the target database. The transform step relies on the schema design of the target database. The load phase loads the data into the target database.</p>
+      <p>You will have to carefully design the ETL process using AWS resources.  Considerations include the programming model used for the ETL job, the type and number of instances needed to execute the job. Given the above, you should be able to come up with an expected time to complete the job and hence an expected overall cost of the ETL job.</p>
+      <p>Once this step is completed, you should backup your database to save cost. If you use EMR, you can backup HBase on S3 using the command:</p>
+      <p><code>aws emr create-hbase-backup --cluster-id j-3AEXXXXXX16F2 --dir s3://mybucket/backups/j-<wbr>3AEXXXXXX16F2 --consistent</code></p>
+      <p>This backup command will run a Hadoop MapReduce job and you can monitor it from both Amazon EMR debug tool or by accessing the Jobtracker. To learn more about Hbase S3 backup, please refer to the following link:</p>
+      <p><a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-hbase-backup-restore.html" target="_blank">http://docs.aws.amazon.com/<wbr>ElasticMapReduce/latest/<wbr>DeveloperGuide/emr-hbase-<wbr>backup-restore.html</a></p>
+      <h4>Design constraints</h4>
+      <ul>
+      <li>Programming model: you can use any programming model you see fit for this job.</li>
+      <li>AWS resources: You should use SPOT instances for this step otherwise it is very likely that you will exceed the budget and fail the project.</li>
+      </ul>
+      <h4>Recommendations</h4>
+      <p>Always test the correctness of your system using a tiny dataset (example 200MB). If your ETL job fails or produces wrong results, you will be burning through your budget. After the database is populated with data, it will be wise to test the throughput of your back end system for different types of queries.  Ensure that your system produces correct query responses for all query types.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Hints</h4>
+      <p><b>Think</b> about your schema design before attempting ETL. How to do ETL correctly and efficiently will be a critical part for your success in this project. Notice that ETL on a large dataset could take 10 - 30 hours for just a single run, so it will be very painful to do it more than once, although this may be inevitable since you will be refining your schema throughout your development.</p>
+      <p>You may find your ETL job extremely time consuming because of the massive dataset and the poor design of your ETL process. Due to many reasons that lead to failure of your ETL step, please start thinking about your database schema and doing your ETL as <b>early</b> as possible.</p>
+      <p>Try to utilize parallelism as much as possible, loading the data with a single process/thread is a waste of time and computing resources, MapReduce may be your friend, though <b>other</b> methods work so long as they can accelerate your ETL process.</p>
+      </div>
+      <h3>Back end</h3>
+      <p>For your system to provide responses for q2-q6, you need to store the required data in a back-end database. Your front end system connects to the back end and queries it in order to get the response and send it to the requester.</p>
+      <p>You are going to use both <b>HBase</b> and <b>MySQL</b> in this phase. We will provide you with some references that will accelerate your learning process. You are expected to read and learn about these database systems on your own in order to finish this task.</p>
+      <p>This task requires you to build the back end system. It should be able to store whatever data you need to satisfy the query requests. You should use spot instances for the back end system development. You need to consider the design of the table structure for the database. The design of the table significantly affects the performance of a database.</p>
+      <p>In this task you should also test and make sure that your front end system connects to your back end database and can get responses for queries.</p>
+      <h4>Recommendations</h4>
+      <p>Test the <b>functionality</b> of the database with a few dummy entries before loading your entire dataset. The functionality test ensures that your database can correctly produce the response to the q2-q6 queries.</p>
+      <h4>References</h4>
+      <p>MySQL</p>
+      <ul>
+        <li><a href="http://dev.mysql.com/doc/" target="_blank">http://dev.mysql.com/doc/</a></li>
+        
+        <li>Project 3</li>
+      </ul>
+      <p>HBase</p>
+      <ul>
+        <li><a href="https://hbase.apache.org/" target="_blank">https://hbase.apache.org/</a></li>
+        
+        <li>Project 3</li>
+      </ul>
+
+<h3>Additional Resources and References</h3>
+      <h4>Resources</h4>
+      <ol>
+      <li><a href="https://www.techempower.com/benchmarks/" target="_blank">Benchmarks of web servers</a> </li>
+      <li><a href="http://www.percona.com/blog/2010/05/04/goal-driven-performance-optimization-white-paper-available/" target="_blank">Schwartz, B., and P. Zaitsev. "A brief introduction to goal-driven performance optimization." White paper, Percona (2010).</a></li>
+      <li><a href="http://www.percona.com/resources/mysql-webinars/practical-mysql-performance-optimization" target="_blank">Practical MySQL Performance Optimization</a></li>
+      <li><a href="http://refcardz.dzone.com/refcardz/hbase" target="_blank">HBase Cheat Sheet</a></li>
+      </ol>
+      <h4>Additional References</h4>
+      <p>These are interesting papers that deal with the theory and the core problems that you will be solving for the 15619 project.
+      You may choose to read them if you want to understand more about how Internet-scale companies (Google, Facebook, Twitter) achieve performance at scale.</p>
+      <p><b>Architecting web servers</b></p>
+      <ol>
+      <li><a href="http://vts.uni-ulm.de/docs/2012/8082/vts_8082_11772.pdf" target="_blank">Erb, Benjamin. "Concurrent programming for scalable web architectures." Informatiktage. 2012.</a></li>
+      <li><a href="https://www.ece.cmu.edu/~ece845/docs/pariag-2007.pdf" target="_blank">Pariag, David, et al. "Comparing the performance of web server architectures." ACM SIGOPS Operating Systems Review. Vol. 41. No. 3. ACM, 2007.</a></li>
+      <li><a href="http://mmcgrana.github.io/2010/07/threaded-vs-evented-servers.html" target="_blank">McGranaghan, Mark. "Threaded vs Evented Servers"</a></li>
+      <li><a href="https://www.dre.vanderbilt.edu/~schmidt/PDF/globalinternet.pdf" target="_blank">Hu, James C., Irfan Pyarali, and Douglas C. Schmidt. "Measuring the impact of event dispatching and concurrency models on web server performance over high-speed networks." Global Telecommunications Conference, 1997. GLOBECOM'97., IEEE. Vol. 3. IEEE, 1997.</a></li>
+      </ol>
+      <p><b>Clustering web servers</b></p>
+      <ol>
+      <li><a href="http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1083&context=csearticles" target="_blank">Schroeder, Trevor, Steve Goddard, and Byrov Ramamurthy. "Scalable web server clustering technologies." Network, IEEE 14.3 (2000): 38-45.</a></li>
+      <li><a href="http://www.ics.uci.edu/~cs230/reading/DLB.pdf" target="_blank">Cardellini, Valeria, Michele Colajanni, and S. Yu Philip. "Dynamic load balancing on web-server systems." IEEE Internet computing 3.3 (1999): 28-39.</a></li>
+      <li><a href="http://uu.diva-portal.org/smash/get/diva2:443102/FULLTEXT01.pdf" target="_blank">Paudyal, Umesh. "Scalable web application using node.js and couchdb." (2011).</a></li>
+      </ol>
+      <p><b>Optimizing a Multi-tier System</b></p>
+      <ol>
+      <li><a href="http://www.linuxjournal.com/article/7451" target="_blank">Fitzpatrick, Brad. "Distributed caching with memcached." Linux journal 2004.124 (2004): 5.</a></li>
+      <li><a href="http://www.linuxjournal.com/content/speed-your-web-site-varnish" target="_blank">Graziano, Pablo. "Speed up your web site with Varnish." Linux Journal 2013.227 (2013): 4.</a></li>
+      <li><a href="http://www.linuxjournal.com/magazine/nginx-high-performance-web-server-and-reverse-proxy" target="_blank">Reese, Will. "Nginx: the high-performance web server and reverse proxy." Linux Journal 2008.173 (2008): 2.</a></li>
+      </ol>
+      <p><b>Scalable and Performant Data Stores</b></p>
+      <ol>
+      <li><a href="http://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" target="_blank">DeCandia, Giuseppe, et al. "Dynamo: amazon's highly available key-value store." ACM SIGOPS Operating Systems Review. Vol. 41. No. 6. ACM, 2007.</a></li>
+      <li><a href="http://www.cattell.net/datastores/Datastores.pdf" target="_blank">Cattell, Rick. "Scalable SQL and NoSQL data stores." ACM SIGMOD Record 39.4 (2011): 12-27.</a></li>
+      </ol>
+      <p><b>Web Server Performance Measurement</b></p>
+      <ol>
+      <li><a href="http://www.oocities.org/webserverperformance/webmodel.pdf" target="_blank">Slothouber, Louis P. "A model of web server performance." Proceedings of the 5th International World wide web Conference. 1996.</a></li>
+      <li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.61.3268&rep=rep1&type=pdf" target="_blank">Banga, Gaurav, and Peter Druschel. "Measuring the Capacity of a Web Server." USENIX Symposium on Internet Technologies and Systems. 1997.</a></li>
+      <li><a href="https://www.mnot.net/blog/2011/05/18/http_benchmark_rules" target="_blank">Nottingham, Mark. "On HTTP Load Testing"</a></li>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <h1>Phase 1 - Query 1</h1>
+
+<div class="bs-callout bs-callout-warning">
+    <h4>Resource Tagging And Budgets</h4>
+<ol>
+<li>Tag all of your instances with <code>Key: 15619project</code> and <code>Value: phase1</code> for all resources</li>
+        <li>In addition to the tag above, all instances in your HBase cluster should be tagged with <code>Key: 15619backend</code> and <code>Value: hbase</code>, and all instances with MySQL installed should be tagged with <code>Key: 15619backend</code> and <code>Value: mysql</code>.</li>
+        <li>You can use any instances for ETL and debugging.</li>
+        <li>You can ONLY use instances in <strong>M family</strong> which are <strong>smaller than or equal to large</strong> for your web service (both your front-end and back-end systems).</li>
+        <li>You can use any free AMI as your base. You should be building your own AMIs for this project.</li>
+        <li>Each run (test submitted to the website) must have a maximum budget of <strong>$1.25 per hour</strong> (include on-demand EC2, storage and ELB costs. Ignore EMR and Network, Disk I/O costs). Even if you use spot pricing, the constraints that apply pertain to on-demand pricing.</li>
+        <li>You will have a budget <strong>$40/team</strong> for all the tasks in this phase.</li>
+</ol>
+  </div>
+
+<div class="bs-callout bs-callout-warning">
+    <h4>Grading</h4>
+      Phase 1 accounts for 10% of the total grade for this 15619Project. You need to finish all the tasks in order to move on to the next phase which will add new queries.  Your success on the next phases is highly dependent on how much you achieve in Phase 1. So, even though it only accounts for 10%, Phase 1 has a huge impact on the overall success of the project and should be taken very seriously.
+    <table class="text-left table">
+          <thead>
+            <tr>
+              <th>Value</th>
+              <th>Target</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Q1</td>
+            <td>25000</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Q2(MySQL)</td>
+            <td>6500</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Q2(HBase)</td>
+            <td>6500</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Report</td>
+            <td>-</td>
+            <td>25%</td>
+          </tr>
+        </table>
+  </div>
+<div id="#grading-penalties" class="bs-callout bs-callout-danger">
+    <h4 id="project-grading-penalties">Project Grading Penalties</h4>
+    <p>The following table outlines the violations of the project rules and their corresponding
+      grade penalties for this project.</p>
+    <table class="table">
+      <thead>
+        <tr class="danger">
+          <th>Violation</th>
+          <th>Penalty of the project grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+              <td>Using more than $40 to complete this phase</td>
+              <td>-10%</td>
+            </tr>
+ <tr>
+              <td>Using more than $1.25 per hour for submissions</td>
+              <td>-2*n%(where n is the percentage of exceeded budget. e.g. spending $1.35 per hour will result in 16% penalty)</td>
+            </tr>
+            <tr>
+              <td>Using more than $60 to complete this phase</td>
+              <td>-100%</td>
+            </tr>
+            <tr>
+              <td>Publishing your code to public(e.g. Public Repository on Github)</td>
+              <td>-200% at least</td>
+            </tr>
+            <tr>
+              <td>Copying code from Internet, other teams or solutions from previous semesters</td>
+              <td>-200% at least</td>
+            </tr>
+            <tr>
+              <td>Any kind of collaboration across teams</td>
+              <td>-200% at least</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+<div class="bs-callout bs-callout-warning">
+    <h4>Reference Server</h4>
+      We have also provided you a <a href="http://ec2-54-147-18-88.compute-1.amazonaws.com">reference server</a> for you to check correctness of your results. We highly recommend you to use this server for checking the correctness of your output files before loading to your database. You can also use this server to figure out possible encoding problems that you may encounter in Q2.
+ </div>
+      <h3>Introduction</h3>
+      <p>In the first phase of the 619 project, you will build two web services from scratch. Each web service has to respond to two types of queries, with data fetched from a storage system, which you must design and control. Each web service connects to a different storage system. A query is an input generated by a test system, which requires a fixed response. Grading depends on the accuracy and performance of your web service's response to these queries.</p>
+      <p>Your web service's front end will have to handle the following query types through HTTP GET requests on port 80 [you cannot use any other port].</p>
+      <p>This phase is designed to ensure that you have the required skills to cope with more complicated queries, so please allocate enough time to finish the requirements by the deadline.</p>
+      <p>Specifically, you will design and develop a front-end system (a highly parallel, concurrent web server) that can attach to either of two back-end systems (HBase and MySQL). In this phase you will be expected to learn about the advantages and disadvantages of each type of back-end database system.</p>
+      <p>A report must be written for this phase that conforms to a <a href="https://docs.google.com/document/d/1LEmo-vGbFQZo_ioiBmZk6N_1gAPLn0pcLO54A5k1kNE/edit?usp=sharing" target="_blank">template</a>.</p>
+      <h3>Query 1(Heartbeat and Authentication) <br> Target Throughput: 25000 rps <br> Due 11:59 PM EST, Wed October 21</h3>
+      <p>The query asks about the state of the web service. The front end server responds with the project team id, AWS account ids and the current timestamp. It is generally used as a heartbeat mechanism, but it could be abused here to test whether your front end system can handle varying loads. It also authenticates the server, as a client can send it messages, which are only accessible given the correct secret key.</p>
+      <p>Your team must use the secret key: </p>
+          <p><code>X = 827199720896087247873518181557<wbr>816672351992917789655884592225<wbr>059551192139504912692052802116<wbr>4569045773</code></p>
+          <p>For each request to q1, the load generator will generate a large message key <code>Y</code>, which is used to encrypt the message. To make sure that you can receive this key, the LG sends you the product <code>XY</code>. Your web service needs to find <code>Y = XY / X</code>.</p>
+      <p>Now that you have the key <code>Y</code> used to encrypt the message, you may wonder what protocol to use. AES? DES? No!!! Despite warnings from the SIGINT community, we realize that proprietary encryption is the only secure way to hide from the MSB (since they've cracked everything else!!!) Hence we use the mythical Phaistos Disc Cipher(PDC).</p>
+      <p>PDC is designed for uppercase English (A-Z) messages that have a perfect square length (4,9,16,25...). We will use a toy example to demonstrate how the encrpytion scheme works. Remember, you will must implement decryption-- given the key and the ciphertext, you must retrieve the message.</p>
+      <p>PDC has two steps: Caesarify and Diagonalize.<p>
+      <ol>
+      <li>In the Caesarify step, a minikey <code>Z = 1 + Y % 25 </code> (where % is the modulo operator) is derived from the message key <code>Y</code>. Using <code>Z</code>, the characters of the message <code>M</code> are linearly shifted (see Figure 2) to produce the intermediate text <code>I</code>.</li>
+      <li>In the Diagonalize step, the message is now written into a square array and read back. This reorders the characters of your message (see Figure 2). The final message produced is the ciphertext <code>C</code>.</li>
+      </ol>
+      <img src="https://s3.amazonaws.com/15619public/webcontent/unnamed.png" alt="Phaistos Disc Cipher" width="80%">
+      <h4><small>Figure 2: Phaistos Disc Cipher</small></h4>
+      <p>Remember, your web service must implement the reverse process: Given the ciphertext <code>C</code> and the key <code>Y</code>, you must derive the minikey <code>Z</code> and the message <code>M</code></p>
+      <p>Resquest Format</p>
+          <pre>GET /q1?key=<large_number XY>&message=<uppercase_<wbr>ciphertext_message_C></pre>
+          <p>Response Format</p><pre>TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+yyyy-MM-dd HH:mm:ss<font color="red">\n</font>
+<The decrypted message M><font color="red">\n</font></pre>
+          <p>The time in response should be the current time in Pittsburgh Time</p>
+      <p>Sample Request</p>
+          <pre>GET /q1?key=<wbr>306063896731552281713201727176<wbr>392168770237379582172677299123<wbr>272033941091616817696059536783<wbr>089054693601&message=URYYBBJEX</pre>
+          <p>Sample Response</p>
+<pre>TeamCoolCloud,1234-0000-0001<wbr>
+2004-08-15 16:23:42
+HELLOWORK
+</pre>
+          <p>You must satisfy the minimum effective throughput requirement of 25000 rps for full credit.</p>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <h3>Query 2(Text Cleaning and Analysis) <br> Target Throughput: 6500 rps <br> Due 11:59 PM EST, Wed October 28</h3>
+      <p>This query asks for the tweet(s) posted by a given user at a specific time. This query tests that your backend database is functioning properly.</p>
+      <p>We send you a user id and tweet time, and you need to send us three pieces of data about the relevant tweet(s).</p>
+      <ul>
+        <li>The tweet id</li>
+        <li>The sentiment score of that tweet</li>
+        <li>The censored text</li>
+      </ul>
+      <p>Each of these are explained in the following paragraphs.</p>
+      <ol>
+        <li>The tweet id can be fetched from the ‘id’ or the ‘id_str’ field.</li>
+        <li>The tweet text can be fetched with the ‘text’ field. There are two processes that must run on each tweet text. To do them, you need to split the string into separate “words” wherever a non-alphanumeric character is encountered.</li>
+      </ol>
+          <p><b>Time Filtering</b></p>
+          <p>Ignore all tweets that have a time stamp prior to Sun, 20 Apr 2014 00:00:00 GMT</p>
+      <p><b>Sentiment Score Calculation</b></p>
+      <p>We provide a list of lowercase English words that have a corresponding “sentiment” score. For each word in the text, convert it to lowercase and check if it has a sentiment score. If it exists, add the corresponding sentiment value to the score for that tweet. Scoring for all tweets starts with a zero.
+      <p>This list is from the AFINN dataset. <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010" target="_blank">AFINN</a> is a list of English words rated for valence with an integer between minus five (negative) and plus five (positive). The words have been manually labeled by Finn Årup Nielsen in 2009-2011. Download it <a href="https://cmucc-datasets.s3.amazonaws.com/15619/f15/afinn.txt" target="_blank">here</a>.</p>
+      <p><b>Text Censoring</b></p>
+      <p>Since we have innocent young students also doing this assignment, we did not want to expose them to some of the language that exists on Twitter. So we provide a mechanism to sanitize the text. We give you an <a href="http://en.wikipedia.org/wiki/ROT13" target="_blank">ROT13ed</a> version of all banned words that should not occur in your output text. ROT13 is a simple letter-based substitution cipher. For instance, the first line in the list of banned words is <code>15619ppgrfg</code>, which means that the first banned "word" is 15619cctest.</p>
+      <p>The censored list is filtered from last year’s students’ colorful posts on Piazza near the end of the 15619 (all these students started working on their project late). Download it <a href="https://cmucc-datasets.s3.amazonaws.com/15619/f15/banned.txt" target="_blank">here</a>.</p>
+      <p>Ensure that in both cases, you use our files (links above) and do not download the original, as we have done some cleanup to make it easy to use for your code.</p>
+      <p>You must do the steps in order, that is, first calculate the sentiment for a word and then (if required) censor it. A word is censored by replacing the inner characters by asterisks (*). </p>
+      <p>For example, assume that the word <code>cloud</code> is on our banned list. Consider: </p>
+      <pre>I love Cloud compz... cloud TAs are the best... Yinz shld tell yr frnz: TAKE CLOUD COMPUTING NEXT SEMESTER!!! Awesome. It’s cloudy tonight.</pre>
+      <p>When you reply, it should have the format:</p>
+      <pre>I love C***d compz... c***d TAs are the best... Yinz shld tell yr frnz: TAKE C***D COMPUTING NEXT SEMESTER!!! Awesome. It’s cloudy tonight.</pre>
+      <p>And it should have a score of +10 (Best = +3, Love = +3 and Awesome = +4)</p>
+      <p>Notice the case of all the uncensored letters is maintained. Also notice that <code>cloudy</code> is uncensored (since it is not on the list of banned words).</p>
+      <p>You can choose to do all these calculations in the ETL (remember that it will drive up the cost and duration of the MapReduce job) or at the end when the query is requested (if you can write fast code).</p>
+      <p>Request format: 
+      <p>
+      <pre>GET /q2?userid=uid&tweet_time=<wbr>timestamp</pre>
+      <p>Response format:</p>
+      <pre>
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+Tweet ID1:Score1:TWEETTEXT1<font color="red">\n</font>
+Tweet ID2:Score2:TWEETTEXT2<font color="red">\n</font>
+...</pre>
+      <p>Sort <b>numerically</b> by Tweet ID in ascending order. There should be a line break '<font color="red">\n</font>' at the end of each response.</p>
+      <p>Sample Request</p> 
+          <pre>GET /q2?userid=1000079736&tweet_<wbr>time=2014-04-26+19:33:58 </pre>
+          <p>Sample Response</p>
+      <pre>Team,1234-5678-1234<wbr>
+460139744198791168:3:good morning </pre>
+      <div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <p>Success!</p>
+
+<iframe src="https://docs.google.com/forms/d/1XLfDJJ9dyXt0ADRMASPbU-1mPP3WxAacRcwMXl1E1Vs/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="56">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

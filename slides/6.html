@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Linux Warm Up</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/6">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/6">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Linux Warm Up</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Scripting</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Installing Software</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>File Ownership and Permissions</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Disk Management in Linux</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Configuring Services and Startup</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-callout bs-callout-danger">
+        <h4 id="grading-penalties">Grading Penalties</h4>
+        <p>The following table outlines the violations of the project rules and their corresponding grade penalties for the first week of the course.</p>
+        <p>These rules apply for the week starting Aug 31 and ending on Sep 6.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Violation</th>
+              <th>Penalty of the project grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Using more than $5 of AWS resources</td>
+              <td>Warning email</td>
+            </tr>
+            <tr>
+              <td>Using more than $10</td>
+              <td>Possible penalty on future projects</td>
+            </tr>
+            <tr>
+		<td>Not tagging any of your resources</td>
+		<td>Warning email</td>
+            </tr>
+            <tr>
+	        <td>Using any "Project" tags apart from "Project":"0"</td>
+	        <td>Warning email</td>
+	    </tr>
+          </tbody>
+        </table>
+</div>
+<div class="bs-docs-section">
+<h1 id="intro" class="page-header">Essential Skills in Linux</h1>
+
+<p>In this course, you will be working with various cloud resources that will be provisioned on-demand, and accessed remotely through SSH or putty. While Amazon Web Services and Azure support both Linux and Windows instances, we will primarily be using linux-based instances, most of which run some version of Ubuntu (Cloud guest). Therefore, before getting into the projects, we have assembled a simple primer to get you started on some of the various fundamental concepts and skills which will help you tremendously in tackling the various projects in this course.</p>
+ 
+<h2>Scripting Languages and References</h2>
+<p>In this course, we will primarily be working within Amazon EC2 instances (also known as virtual machines). Typically we would interact with these instances through the command line interface (usually bash on linux instances). In order to perform and/or automate more complex tasks using the command line, a good knowledge of scripting languages and techniques (bash/perl/python etc.) is required. If you would like to learn scripting or refresh your knowledge, we would highly recommend the following tutorials:</p>
+
+<ol>
+	<li><a href="http://tldp.org/LDP/abs/html/">The Advanced Bash Scripting Guide</a></li>
+	<li><a href="https://github.com/jlevy/the-art-of-command-line">The Art of the Command Line</a></li>
+	<li>If you prefer Perl, there are many guides at the Perl <a href="http://www.perl.org">website</a></li>
+	<li>If you prefer Python, there are also many resources, you can get started with the resources at the Python <a href="http://www.python.org">website</a></li>
+</ol>
+
+<p>You will need to focus on the following topics:</p>
+
+<ol>
+	<li>Scripting syntax, local variables and environment variables.</li>
+	<li>Quoting and back-ticks in <tt>bash</tt>.</li>
+	<li>Input and output redirection using unix pipes.</li>
+	<li>Using tools such as <tt>grep</tt>, <tt>awk</tt>, <tt>sed</tt>, <tt>cut</tt>, etc. to perform simple 
+	text manipulation inline or within bash scripts. (if you are using Perl or 
+	Python, you should be able to do this within the Perl or Python script itself)</li>
+</ol>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">Installing Software</h1>
+
+<p>
+As you are working on the various projects in this course, we will supply you with a task-specific virtual machine image which contains most of the necessary software, tools and data for you to complete the specified task. In any case, you should also know the commands necessary to install software on these instances on your own. We will mainly be working with Ubuntu-based instances in this course, so you should familiarize yourself with the workings of the Advanced Packaging Tool (APT), using the command <code>apt-get</code>. <code>apt-get</code> lets you install software packages on Ubuntu and other Debian-based linux environments. </p>
+
+<p><code>apt-get</code> is invoked using the following command:</p>
+
+<pre syntax="bash" number="false">
+sudo apt-get install <package-name></pre>
+
+<p>For example, to install GNU <code>emacs</code> on an Ubuntu machine:</p>
+
+<pre syntax="bash" number="false">sudo apt-get install emacs</pre>
+<p>To install <code>vim</code>:</p>
+<pre syntax="bash" number="false">
+sudo apt-get install vim</pre>
+
+<div class="bs-callout bs-callout-info">
+<h4>Installing Software on Red-Hat based distros</h4>
+<p>The equivalent command to install software on Red-Hat based Linux distros (Fedora,CentOS etc.) is:</p>
+<pre syntax="bash" number="false">
+sudo yum install <package-name></pre>
+</div>
+
+<p>We use the <code>sudo</code> to execute <code>apt-get</code> commands because this requires root access to install packages in the system. 
+In addition, here are some useful <code>apt-get</code> commands:</p>
+
+<p><code>sudo apt-get update</code> will update the package index from their sources. This is typically used to
+refresh the package index  with the latest packages and their versions.</p>
+
+<p><code>sudo apt-get upgrade</code> will update all the existing packages on the system with their latest versions.</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">File Ownership and Permissions</h1>
+
+<p>Often, you will need to change file ownership and permission for various reasons. For example, SSH key-pair files must always have read-only access for the current user to keep credentials safe from tampering.</p>
+
+<p>Similarly, certain programs and services may require root ownership to execute correctly, or must be owned by a non-root user, and executed in non-root mode for security purposes.</p>
+
+<p>Linux file permissions are defined for three entities: <code>user</code>, <code>group</code> and <code>others</code>. In this context, the <code>user</code> permission corresponds to the owner of the file. Similarly, there are 3 types of permissions that can be defined for each of the entities: read (<code>r</code>), write (<code>w</code>) and execute (<code>x</code>). They can also be defined numerically as follows: </p>
+
+<table class="table table-striped table-bordered">
+<tbody><tr>
+<th>#</th>
+<th>Permission</th>
+<th>rwx</th>
+</tr>
+<tr>
+<td>7</td>
+<td>read, write and execute</td>
+<td>rwx</td>
+</tr>
+<tr>
+<td>6</td>
+<td>read and write</td>
+<td>rw-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>read and execute</td>
+<td>r-x</td>
+</tr>
+<tr>
+<td>4</td>
+<td>read only</td>
+<td>r--</td>
+</tr>
+<tr>
+<td>3</td>
+<td>write and execute</td>
+<td>-wx</td>
+</tr>
+<tr>
+<td>2</td>
+<td>write only</td>
+<td>-w-</td>
+</tr>
+<tr>
+<td>1</td>
+<td>execute only</td>
+<td>--x</td>
+</tr>
+<tr>
+<td>0</td>
+<td>none</td>
+<td>---</td>
+</tr>
+</tbody></table>
+
+<p>When file permissions are expressed as numbers, they are in 3 digits, each denoting <code>user</code>, <code>group</code> and <code>others</code> respectively.</p>
+
+<p>For example, to give permissions to anyone (user, group, and others) to read, write and execute a file, the permission can be expressed numerically as <code>777</code> (which means rwxrwxrwx permissions for user, group and others). If you would like to give the owner of the file permissions to read and write, while the group and others get only read, then the permission will be <code>644</code> (rw-r--r--), and so on.</p>
+
+<p><code>chmod</code> is the command used in Linux to change file permissions. </p>
+
+<p>It can be used numerically:</p>
+
+<pre>chmod 777 filename.txt</pre>
+
+<p>
+(provide read, write and execute permissions for anyone for filename.txt)</p>
+
+<p>Or it can be used to denote specific permissions:</p>
+
+<pre>chmod u+x filename.txt</pre>
+
+<p>(Add execute permission for the user for filename.txt)</p>
+
+<p>For more details, please refer to the <code>chmod</code> man page.</p>
+
+<p>Similarly, <code>chown</code> is used to change the ownership for a file. As an example, using</p>
+<pre>chown ubuntu:web filename.txt</pre>
+
+<p>Changes the ownership of <code>filename.txt</code> to the user <code>ubuntu</code> and group <code>web</code>.</p>
+
+<p>For more details, please refer to the <code>chown</code> man page.
+
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">Disk Operations in Linux</h1>
+
+<p>In this section, we will cover some of the important commands to perform various types of disk operations in linux. This will come in handy when dealing with the various types of virtual storage options available for Amazon EC2, such as Amazon’s Elastic Block Store (EBS).</p>
+
+<h2>Managing Partitions</h2>
+
+<p>A number of applications can be used to manage disk partitions in linux, 
+including <code>parted</code> and <code>fdisk</code>. <code>fdisk</code> is the traditional partition management 
+software but it has been largely replaced by <code>parted</code> as it has support for 
+GUID Partition Tables (GPT) and drives that are larger than 2 TB. 
+For the purposes of this tutorial, we will be using <code>parted</code>.</p>
+
+<p>To list all of the partitions on the system:</p>
+
+<pre syntax="bash" number="false">
+parted -l</pre>
+
+<p>Partitions will be listed in order as devices under <code>/dev</code>. On Amazon EC2 instances, the devices are <code>/dev/xvd**</code>. 
+<code>/dev/xvda1</code> is the OS partition, while <code>/dev/xvdb</code> is the instance store partitions.
+Please note that RAMDISKs will not show in the output of <code>parted</code>.
+<code>parted</code> can also be used to create partitions and set the partition type or 
+file system of each partition (Linux has a variety of file systems available, ext4 is commonly used nowadays):
+</p>
+
+<pre syntax="bash" number="false">
+parted /dev/xvdX mklabel gpt</pre>
+
+<pre syntax="bash" number="false">
+parted /dev/xvdX mkpart db ext4 0% 10G</pre>
+
+<p>Can be used to label a device as using the GUID Partition Table (GPT) and label a 10 GB partition on the device to use the ext4 file system. 
+This partition is now available to format with the file system specified.</p>
+
+<p>In addition, <code>parted</code> can be run on its own without any parameters to start it in interactive mode.</p>
+
+<p>Once a partition has been created using <code>parted</code>, you can format it using the <code>mkfs</code> command:</p>
+
+<pre syntax="bash" number="false">
+mkfs.ext4 /dev/xvdX1</pre>
+
+<h2>Mounting Volumes</h2>
+<p>In order to finally use a disk after partitioning and formatting, it must be mounted 
+to some mount-point on the Linux virtual file system. Typically mount points in Linux 
+are created under the directory <code>/mnt</code> or <code>/mount</code>. Removable media such as 
+USB/CDROM etc. are mounted under <code>/media</code>. You are free to mount these 
+partitions in any directory you like.</p>
+
+<pre syntax="bash" number="false">
+mkdir /storage/mountpoint
+mount /dev/yourdevice /storage/mountpoint
+</pre>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">Configuring Services and Startup</h1>
+
+<p>There are situations in which you must configure an application to run in the background as a service. Usually, this is the case with web and other types of server processes. For software that is packaged for your Linux distribution and has already been installed, please refer to the man page or software instructions for more details. In a nutshell, services must be installed in the <code>/etc/init.d</code> directory in your Linux instance. This allows these scripts to run on startup, and for you to use the service command to start or stop them. For example, if mysql scripts are present in the <code>/etc/init.d</code> directory, you can issue the following command:</p>
+
+<pre>service mysql start</pre>
+
+<p><code>service</code> can be used to start, stop and restart services.</p>
+
+<p>For more information on creating your own init.d startup scripts, please refer to the TLDP guide on <a href="http://www.tldp.org/HOWTO/HighQuality-Apps-HOWTO/boot.html">Starting your own software automatically on Boot</a>.</p>
+
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="6">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

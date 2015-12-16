@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Introduction to Scaling and Load Balancing</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/14">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/14">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Introduction to Scaling and Load Balancing</td>
+            <td>09/21/2015 00:01 -0400</td>
+            <td>09/27/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Vertical Scaling</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>MSB Recruitment Exam and Horizontal Scaling</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Elastic Load Balancer</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Success</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">Introduction</h1>
+<div class="bs-callout bs-callout-learning">
+<h4>Learning Objectives</h4>
+<p>This project will encompass the following learning objectives:</p>
+<ol>
+
+<li>Get familiar with AWS APIs for provisioning/de-provisioning instances</li>
+<li>Be able to define horizontal and vertical scaling and to distinguish between them.</li>
+<li>Identify when to scale horizontally (fluctuating load can be handled better because of cost effectiveness) versus vertically (predictive scaling during times when increased usage is expected for consistent duration).</li>
+<li>Demonstrate the ability to identify the patterns of some predictable load and horizontally scale accordingly.</li>
+<li>Get familiar with, and understand the need for, Amazon's Elastic Load Balancing</li>
+<li>Understand the limitations of Amazon's Elastic Load Balancing</li>
+
+<ol>
+</div>
+
+<p>In the previous project, you were introduced to playing with increasingly larger datasets. You saw how EMR made it easy for you to launch a cluster of resources and run a complicated parallel program on it using only a few lines of code. 
+Unfortunately, services like EMR are expensive and the internals are not transparent to you. Also, though EMR supports a comprehensive list of applications, this is still a very limited set of applications. Hence, it is important to learn to build a cluster of computing and storage resources that you can modify at will. This is the goal of Project 2.<br>
+
+The first module of Project 2 introduces you to writing code to interact with resources on a public cloud. Though this project primarily relies on stringing together API calls in the right order, it is important for your code to be reliable and fault-tolerant. 
+Making cloud API calls in a networked program is not as easy as sequential programming. Each call should pass several test conditions and must not be assumed to succeed. Defensive programming is crucial this week.<br>
+
+An important driver for the cloud is elasticity, the ability to provision and de-provision resources based on the current load so that you can maintain an acceptable Quality of Service (QoS). This is necessary because over-provisioning resources to handle the maximum possible load can be prohibitively expensive for many web services. In this module, we will understand how elastic applications can be built by exploring horizontal and vertical scaling. You will learn to trigger events based on your experience monitoring utilization of your cloud resources. For the next three weeks, you will progress through the career of an analyst at the Massive Surveillance Bureau (MSB). As you gain skills, you will be exposed to more challenging and rewarding infrastructure puzzles. 
+</p>
+<p>In this module of the project, we will learn how to programmatically manage AWS resources and explore a deployment scenario involving infrastructure provisioning and load-balancing. You will also get introduced to the concepts of vertical and horizontal scaling.</p>
+<div class="bs-callout bs-callout-warning">
+<h4>Resource Tagging</h4>
+<p>For this project, assign the tag with <code>Key: Project</code> and <code>Value: 2.1</code> for all resources</p>
+</div>
+
+<div id="#grading-penalties" class="bs-callout bs-callout-danger">
+<h4 id="project-grading-penalties">Project Grading Penalties</h4>
+<p>The following table outlines the violations of the project rules and their corresponding grade penalties for this project.</p>
+<table class="table">
+<thead>
+ <tr>
+   <th>Violation</th>
+   <th>Penalty of the project grade</th>    
+ </tr>
+ </thead>
+  <tr>
+   <td>Provisioning more than one instance within a 100 second period</td>
+   <td>-10%</td>    
+ </tr>  <tr>
+   <td>Spending more than $8 for  this project checkpoint</td>
+   <td>-10%</td>    
+ </tr>  <tr>
+   <td>Failing to tag all your instances for this project</td>
+   <td>-10%</td>    
+ </tr>  <tr>
+   <td>Submitting your AWS credentials in your code for grading</td>
+   <td>-20%</td>    
+ </tr><tr>
+   <td>Spending more than $16 for  this project checkpoint</td>
+   <td>-100%</td>    
+ </tr></table>
+</div>
+
+
+<h3 id="the-scenario">The Scenario</h3>
+<p>The Massive Surveillance Bureau (MSB) gathers data from millions of sources since it has backdoor access to a lot of software and devices. This data is used to provide intelligence to a group of authorized agents. You wish to join this challenging and lucrative organization as a system architect. A system architect at the MSB designs and deploys a distributed network of web servers.</p>
+<p>Timely information is extremely valuable to MSB agents, so performance guarantees must be met when considering system design. Thus, MSB systems must be able to handle a varying load and scale accordingly, while minimizing cost.</p>
+<p>Over the next several weeks, you will experience the career of a system architect at the MSB.</p>
+<p>This week you will attend a technical interview where the MSB hires system architects who meet their requirements. CMU has assigned the 15319/15619 course team to prepare you for this interview.</p>
+<p>All the best!!!</p>
+</div>
+<div class="bs-docs-section">
+<h1 id="building-blocks" class="page-header">Building Blocks</h1>
+<p>Let us start by introducing the building blocks of this project (aka Project 2).</p>
+
+<p>The Massive Surveillance Bureau receives passwords from millions of devices at hundreds of distributed web proxies because of their backdoor access to a lot of programs. In particular, they receive username and password combinations so they have access to accounts for services such as Headbook, Twatter and LinkedOut. These proxies then forward data to a large number of data centers for storage and processing. At the start, you get to control one of these clouds (shown below).</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_arch_f15.png"/>
+<p>Your cloud receives data and service requests at a proxy/load generator. Your job is to correctly handle these requests by passing them to a data center that comprises of multiple VM instances. These VMs either store the given data for further processing, or provide the information an agent is asking for. A new use case for this cloud will be explained every week.</p>
+</div>
+<div class="bs-docs-section">
+<h1 id="lg-and-dci" class="page-header">The Load Generator and Data Center Instances</h1>
+<p>For each student in this course, the MSB has provided access to a single load generator AMI (ID: <b>ami-4389fb26</b>). They also give you an image of the data center VM (<b>ami-abb8cace</b>). Both these images are closed, so when you launch them, you will not be able to SSH in. Instead, you will be interacting with the web interfaces on each.</p>
+<p>Please start an <b>m3.medium</b> instance of the <b>ami-4389fb26</b>(Load Generator) and an <b>t2.small</b> instance of <b>ami-abb8cace</b> (Data Center VM). Configure the security groups to allow incoming and outgoing requests on <b>all ports for all traffic for all protocols and all source</b>.</p>
+<p>The following image is a screenshot of the load generator interface:</p>
+
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_1.PNG"/>
+<p>The following image is a screenshot of the data center instance interface:</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_3.PNG"/>
+<p>The data center instances receive sensitive tracking information about people or devices. You can see some examples by clicking on <b>Lookup a random user</b> or <b>Lookup username</b> in the data center interface. Please refresh those pages a few times to see how the MSB gathers passwords for access to people's accounts.</p>
+<p>You should see something like this in the <b>Lookup a random user page</b>:</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_4.PNG"/>
+</div>
+<div class="bs-docs-section">
+<h4>Using the Load Generator</h4>
+<p>Before CMU sends you to take the recruitment test, we want you to understand the amount of load different types of instances can handle.</p>
+
+<p>Before anything, please go to the "Enter your submission password" link on the load generator instance and enter your submission password</p>
+
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_2.PNG"/>
+
+<p>To see the amount of load an instance experiences, click on your t2.small instance in the EC2 Web Console, and select the monitoring tab. Click on the tab that says <b>Enable Detailed Monitoring</b>. This gives you minute-by-minute updates of the resource utilization of your t2.small instance.</p>
+
+<p>Now you can activate the load generator. To do so please visit the following URL on your load generator <b>http://[your-load-generator-instance-dns-name]/test/vertical</b></p>
+
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_6.PNG"/>
+
+<p>Here you should submit your Data Center's t2.small Instance DNS. Click on submit.</p>
+
+<p>Once again, this HTML form can be submitted using code using: <b>http://[your-load-generator-instance-dns-name]/test/vertical?dns=[your-instance-dns-name]</b></p>
+
+<p>Once you submit, the following page will be displayed. Click on ’Visit log’ to see the logs.</p>
+
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_7.PNG"/>
+
+<p>When you submit the <b>/test/single</b> form, the load generator begins sending some traffic to the t2.small instance. To view this load graphically, go to the monitoring tab in the EC2 console. You should note down the CPUUtililzation during this testing period (as the test is probably not synchronized with CloudWatch, use the middle three minutes of the five minute test window). Please click on the small CPUUtilization graph to view the actual utilization at each minute of the test.</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/cloud_watch.png"/>
+<p>Each time you launch a test from this URL, it will generate a steady load for five minutes and then stop.</p>
+<p>The MSB measures system performance based on the requests handled by an instance every second (rps). To view the average rps for your test (generated at one-minute intervals), please visit: <b>http://[your-load-generator-instance-dns-name]/log?name=test.[test-number].log</b></p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/msb_8.PNG"/>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 id="vertical-scaling" class="page-header">Vertical Scaling</h1>
+<p>Vertical scaling involves changing the capacity of the resources in the system due to a change in your needs. This typically involves provisioning and switching to resources with more or less capacity such as CPU, cores, memory, etc. In this part of the project, we will give you hands on experience with vertical scaling.  Let's get started.</p>
+<div class="bs-callout bs-callout-task">
+<h4>Task to Complete:</h4>
+
+<p>Launch an <b>t2.medium</b> "data center" instance of type <b>ami-abb8cace</b>. Repeat the process you did for <b>t2.small</b> by performing the following steps:
+</p>
+<ol>
+<li>
+<p>Activate detailed monitoring for the instance using the EC2 Web Console.
+<br>
+</p>
+</li>
+<li>
+<p>Submit the new DNS (of the t2.medium data center instance) in the load generator's “test/vertical/” URL: <br><b>http://[your-load-generator-instance-dns-name]/test/vertical</b><br>or by using<br> <b>http://[your-load-generator-instance-dns-name]/test/vertical?dns=[your-instance-dns-name]</b>
+</p>
+</li>
+<li>
+<p>Note down the results at: <b>http://[your-load-generator-instance-dns-name]/log?name=test.[test-number].log</b>
+</p>
+</li>
+</ol>
+</div>
+<p>Repeat the process that you did for the <b>t2.small</b> data center instance with a <b>t2.medium</b> and then a <b>t2.large</b> data center instance of the same AMI: <b>ami-abb8cace</b>. <p>
+<p>Did you see any difference in RPS when you went from <b>t2.small</b>  to <b>t2.medium</b>  and then to <b>t2.large</b>? What is the difference in the AWS pricing of <b>t2.small</b>, <b>t2.medium</b>  and <b>t2.large</b> instances? Do you think that the increase in RPS when scaling up justifies the increase in costs (Hint: You could calculate and compare the rps/cent for each of these instance sizes).</p>
+
+<p>You should by now have a good understanding of MSB's system. You are almost ready attempt the recruitment exam. Next step, learning some useful APIs.</p>
+</div>
+<div class="bs-docs-section">
+<h1 id="aws-apis" class="page-header">Amazon Web Service APIs</h1>
+<h2 id="api-for-aws"> APIs and SDK access for AWS</h2>
+<p>The other thing to learn before joining the MSB is how to programmatically create and manage AWS resources.</p>
+<p>The Amazon Web Services SDK includes different kinds of API packages which developers can use to create and manage resources and applications running on AWS. This allows developers to programmatically automate management tasks on AWS. Almost all of the functionality in AWS is accessible via the AWS Command Line Interface (CLI), APIs or SDK. We will go through some of the most popular AWS tools now. The following video provides a brief introduction to AWS SDKs as well as an example of the Java SDK:</p>
+
+<!-- Follow this video embedding style EXACTLY -->
+<div class="row" style="align:center">
+	<div class="col-md-8">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+		  src="https://www.youtube.com/embed/6Ru_f9WVIno?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="col">
+					   <p><b>Video:</b>Introduction to AWS SDKs and Java SDK Example<p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="bs-docs-section">
+<h2 id="sdk-java">AWS SDK for Java</h2>
+<p>The AWS SDK is available for multiple languages, including, Java, .NET, node.js, Ruby etc. The <a href="http://aws.amazon.com/sdk-for-java/">AWS SDK for Java</a> has been developed by Amazon and is a fully featured SDK, which includes:</p>
+<ul>
+<li><b>The AWS Java Library:</b> Java packages, classes and methods (i.e. an API) that allow you to program AWS using Java. The API hides much of the complexity that is otherwise involved in using a REST/SOAP-based HTTP interface including authentication, request retries and error handling.</li>
+<li><b>Code Samples:</b> Code samples that demonstrate the use of an API to perform various tasks on AWS.</li>
+<li><b>Eclipse support:</b> Includes an Eclipse plugin that allows developers to create Java apps that work with AWS from within the Eclipse IDE.</li>
+</ul>
+</div>
+<div class="bs-docs-section">
+<h2 id="ec2-api">Amazon EC2 API</h2>
+<p>You are already quite familiar with Amazon EC2 through the AWS Management Console. The AWS SDK exposes the EC2 management functionality provided by the AWS Management Console and the command line tools via programming interfaces in Java. All of the EC2 related functionality is encapsulated in the <b>com.amazonaws.services.ec2</b> package. You can use the EC2 classes and methods to:</p>
+<ul>
+<li>Create EC2 Keypairs
+</li>
+<li>Create Security Groups for instances and open ports (also known as authorize security group ingress)
+</li>
+<li>Create, launch, stop, reboot and terminate instances on EC2.
+</li>
+</ul>
+<p>For example in the EC2 API, the following java code snippet will launch an instance:</p>
+<h3 id="walkthrough">Walkthrough</h3>
+<p>Launching an Instance using the AWS SDK for Java</p>
+<pre>
+//Load the Properties File with AWS Credentials
+Properties properties = new Properties();
+properties.load(RunInstance.class.getResourceAsStream("/AwsCredentials.properties"));
+BasicAWSCredentials bawsc = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
+//Create an Amazon EC2 Client
+AmazonEC2Client ec2 = new AmazonEC2Client(bawsc);
+//Create Instance Request
+RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
+//Configure Instance Request
+runInstancesRequest.withImageId("ami-3b44d352")
+.withInstanceType("t1.micro")
+.withMinCount(1)
+.withMaxCount(1)
+.withKeyName("project1_test")
+.withSecurityGroups("MySecurityGroup");
+
+//Launch Instance
+RunInstancesResult runInstancesResult = ec2.runInstances(runInstancesRequest);   
+//Return the Object Reference of the Instance just Launched
+Instance instance=runInstancesResult.getReservation().getInstances().get(0);
+</pre>
+<h3>Walkthrough</h3>
+<p>Listing all running instances using the AWS SDK for Java</p>
+<pre>
+//Load the Properties File with AWS Credentials
+Properties properties = new Properties();
+properties.load(EC2CWTest.class.getResourceAsStream("/AwsCredentials.properties"));
+bawsc = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
+       //Launch an EC2 Client 
+       amazonEC2Client = new AmazonEC2Client(bawsc);
+//Obtain a list of Reservations
+List<Reservation> reservations = amazonEC2Client.describeInstances().getReservations();
+int reservationCount = reservations.size();
+for(int i = 0; i < reservationCount; i++) {
+   List<Instance> instances = reservations.get(i).getInstances();
+   int instanceCount = instances.size();
+   //Print the instance IDs of every instance in the reservation.
+   for(int j = 0; j < instanceCount; j++) {
+       Instance instance = instances.get(j);
+       if(instance.getState().getName().equals("running")) {
+           System.out.println(instance.getInstanceId());
+       }
+   }
+}
+</pre>
+
+<p>The snippets above assume that you have an <b>AwsCredentials.properties</b> file with your AWS keys and have already created an EC2 keypair and security group.</p>
+<p>In addition, the Amazon EC2 API provides classes such as DescribeInstanceStatusRequest to make requests that check an instance's status:</p>
+<ul>
+<li>Running</li>
+<li>Pending</li>
+<li>Shutting Down, etc...</li>
+</ul>
+<p>For more information on the Amazon EC2 API, please refer to the <a href ="http://aws.amazon.com/documentation/sdk-for-java/">AWS SDK for Java Documentation</a> and the <a href="http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/index.html">AWS Java API Reference</a> </p>
+</div>
+
+</div>
+<div class="bs-docs-section">
+<h2 id="cli">Amazon Command-Line Interface API Tools</h2>
+<p>For those of you who prefer to use bash scripts to run cloud jobs, the Amazon CLI tools allow for command-line manipulation of various facets of AWS. The following CLI-tools are available from AWS:</p>
+<ul>
+<li><a href="http://aws.amazon.com/cli/">AWS CLI Tool</a></li>
+</ul>
+<p>Students who plan on using the CLI tools within bash/shell scripts should:</p>
+<ol>
+<li>Download and install the CLI tools into their instance</li>
+<li>Setup their AWS credentials using the <code>aws configure</code> command.</li>
+</ol>
+<p>The following video provides information and a few examples of the AWS CLI tool:</p>
+
+<div class="row" style="align:center">
+	<div class="col-md-8">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+		  src="https://www.youtube.com/embed/OSGjoMeHc2A?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="col">
+					   <p><b>Video:</b>The AWS CLI Tool<p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<div class="bs-docs-section">
+<h2 id="cw">Amazon CloudWatch</h2>
+<p>Amazon CloudWatch enables developers to monitor various facets of their AWS resources. Developers can use it to collect and track metrics from various AWS resources that are running on the AWS Cloud. Using APIs, CloudWatch also allows you to programmatically retrieve monitoring data, which can be used to track resources, spot trends and take automated action based on the state of your cloud resources on AWS. CloudWatch also allows you to set alarms, which constitute a set of instructions to be followed in case of an event that is tracked by CloudWatch is triggered.
+</p>
+<p>CloudWatch can be used to monitor various types of AWS resources including:
+</p>
+<ul>
+<li>EC2 instances</li>
+<li>EBS volumes</li>
+<li>EMR job flows etc</li>
+<li>ELB Loads</li>
+</ul>
+<p>For EC2 instances, CloudWatch allows you to monitor CPU, memory and disk utilization.
+</p>
+<p>For more information on CloudWatch please refer to the <a href="http://aws.amazon.com/documentation/cloudwatch/"> Amazon CloudWatch documentation.</a></p>
+</div>
+<div class="bs-docs-section">
+<h1 id="sdk-python" class="page-header">AWS SDK for Python (boto)</h1>
+<p>For python-inclined developers, AWS supports a third-party API called <a href="http://docs.pythonboto.org/en/latest/">boto</a>, which can be used to make API requests to AWS from within python. To install boto on the AMI, just follow the steps outlined in the <a href="http://docs.pythonboto.org/en/latest/getting_started.html">Getting Started Guide</a>. The following video provides more information about boto:</p>
+
+<div class="row" style="align:center">
+	<div class="col-md-8">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+		  src="https://www.youtube.com/embed/7IOsOHJKxvY?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="col">
+					   <p><b>Video:</b>AWS boto SDK for python<p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 id="horizontal-scaling" class="page-header">Horizontal Scaling</h1>
+<p>Horizontal scaling involves adding or removing nodes from/to the system. An example would be scaling out from a single m3.medium instance to three m3.medium instances. Or, scaling in from  three m3.medium instances to a single m3.medium instance. Now you can start with the MSB Recruitment Exam.</p>
+</div>
+<div class="bs-docs-section">
+<h1 id="The-MSB-Recruitment-Exam">The MSB Recruitment Exam</h1>
+<h2 id="getting-ready"> Getting Ready</h2>
+<p>The MSB recruitment exam requires you to write code to build a system that is capable of handling the large volume of data generated by the Load Generator.</p>
+<p>Note: For this checkpoint, assign the tag with Key: <b>Project</b> and Value: <b>2.1</b> for all resources.</p>
+<p>Using the Amazon EC2 API, please write code that does the following:</p>
+<ul>
+<li>Launches an <b>m3.medium</b> load generator <b>ami-4389fb26</b> with the correct tag</li>
+<li>Launches a <b>m3.medium</b> data center instance <b>ami-abb8cace</b> with the correct tag</li>
+<li>Submit your password to the load generator with <b>http://[your-load-generator-instance-dns-name]/password?passwd=[your submission password]</b></li>
+<li>Submit the data center instance's DNS name to the load generator to start the test: <b>http://[your-load-generator-instance-dns-name]/test/horizontal?dns=[your-instance-dns-name]</b></li>
+</ul>
+<p>Please note that the instance tagging for all those steps above must be done in your code, and not manually through the AWS web console.</p>
+<p>Make sure that you create a security group with all ports opened with code for your load generator and all your data centers.</p>
+<p>At this point, the load generator will start firing a massive amount of traffic to your instance. Unfortunately, a single instance is incapable of handling this traffic. </p>
+
+<p>You can see the current performance (average requests per second) score at the URL: <b>http://[your-load-generator-instance-dns-name]/log?name=test.[test-number].log</b></p>
+<p>To pass the final exam, your code should scale out horizontally the number of instances in the data center until the cumulative RPS of all connected instances in the data center reaches 4000. Once a test has been started, you can add more instances to the test by sending a request to the URL:</p>
+<p><b>http://[your-load-generator-instance-dns-name]/test/horizontal/add?dns=[your-instance-dns-name]</b></p>
+<p>The instance type and size for all data centers should be the same.</p>
+<p>During the test, you may find it interesting to monitor the instance graphs on the EC2 Console.</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/cw_monitoring.png"/>
+<p>To complete the test, you have a maximum of 30 minutes to reach your target RPS of 4000.
+</p>
+</div>
+<div class="bs-docs-section">
+<h2 id="testing-rules">Testing Rules</h2>
+<ol>
+<li>Please make sure you start with a blank slate. All your instances must be launched by your code. All data center instances (except for the first one) should be launched <b>after</b> the test starts. The autograder checks for this.</li>
+<li>All instances must be tagged.</li>
+<li>Make sure your code processes the current requests per second and then decides whether to launch another instance.</li>
+<ul>
+<li>Do not hardcode the number of instances into the code.</li>
+<li>Your code should not launch multiple data center instances simultaneously (the MSB instructors will check if any pair of data center instances have a launch time within 100 seconds of each other).</li>
+</ul>
+<li>There is no way to stop a running test (apart from rebooting your instances). Please proceed with caution. Only run the test once you are sure you understand all the different pieces involved.</li>
+<li>Your code should not terminate the instances at the end of the test, we will have one more task after this.</li>
+<li>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the penalties described earlier.</li>
+</ol>
+</div>
+<div class="bs-docs-section">
+<h2 id="suggestions">Suggestions:</h2>
+<ol>
+<li>Try a dry run without code (using only the browser), if you want to get a feel for the process.</li>
+<li>If you are unfamiliar with how to submit an HTML form using code, view the process on your browser.</li>
+<li>Launching all instances within the same subnet should yield a better performance than having them in different subnets.</li>
+<li>The test log files are in the ini format. You might want to consider using ConfigParser library in python and ini4j in Java to parse them.</li>
+</ol>
+<p></p>
+<p><b>Note:</b> Do not terminate your instances yet.</p>
+<p>At this point, you should look back and understand the limitations of this method:</p>
+<p>You have a load generator, and several data center instances trying to ingest data from it. Every time you add an instance, you need to inform the load generator, which must perform some computations to begin to distribute the traffic evenly amongst the Data Center VMs. Here, the load generator distributes the traffic equally amongst all target hosts. However, what would happen if you wanted to scale down? Or if an instance failed? How would you even monitor if an instance failed? If the load was not uniform, you would have some DC instances with high utilization and some with low. This is a serious issue that needs to be addressed somehow.</p>
+<p>To be able to address these shortcomings (and for many other benefits), Amazon has a service known as Elastic Load Balancing that automatically divides traffic to connected instances and also handles instance failures. As with any new technology, there are trade-offs, some of which we hope to introduce you to in the coming modules.</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+<h2 id="elb">Elastic Load Balancer</h2>
+<p>The Elastic Load Balancer acts as a network router that will forward incoming requests to multiple EC2 Instances sitting behind it in a round-robin fashion. Round-robin scheduling is not perfect, but it can do an adequate job given a large number of users, each with relatively simple requests. Can you think of any situations in which round-robin scheduling is not perfect? </p>
+<p>The Instances that ELB points to can be added manually through the web console, programmatically through an API, or dynamically with an Auto Scaling Group. ELB also does a Health Check to see if the instance is alive (if not, it will stop sending requests to it). Using an ELB costs $0.025 per hour + $0.008 per GB transferred through it.  Below is a figure that describes the basic functionality of an ELB and where it fits in the system. It basically acts as a front end of your web service or system. Also, there is a video that covers the Elastic Load Balancing (ELB).</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/elb.png"/>
+<p>The following video covers the basics of ELB:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Fw0aNoMZesg" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="bs-docs-section">
+
+<p>Please register all running data center instances (not the load generator) with the Elastic Load Balancer. Use the ELB Console on the Amazon website. We do not expect you to complete this task programmatically using the APIs.
+</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/create_elb.png"/>
+<p>For the health-check, you should use the /heartbeat page. Do not use a different page for the heartbeat, as we are running validation code on this page to test if you really used it.
+</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/elb_hc.png"/>
+<p>Wait for the instances to be “in-service”
+</p>
+<img src="https://s3.amazonaws.com/15619public/webcontent/elb_in_service.png"/>
+<p>Then visit the URL:<b>http://[your-load-generator-instance-dns-name]/test/elb</b></p>
+<p>Observe the minute-wise logs and monitor the utilization on the EC2 as well as ELB console. Once again, this is at: <b>http://[your-load-generator-instance-dns-name]/log?name=test.[test-number].log</b></p>
+<p>How did performance using the ELB compare with the earlier performance? Was the RPS higher or lower with ELB compared to what you had achieved earlier? Why do you think that is the case?</p>
+<p>Your code may possibly launch an extra data center instance or two towards the end after the RPS has been met. For the ELB test add only the data center instances you see in the last minute of the test log.</p>
+
+<h2 id="last-step">Submission</h2>
+<p>Once you are done with all the previous parts of the project, please submit the code you used for the Horizontal Scaling Test by clicking on the Code Submission link in the Load Generator interface. You have to upload a .zip which has your source code (*.java, *.py or *.sh) and a file containing all the references you have used (file should be called 'references'). Please note that the references file is compulsory.</p>
+<p>Please do not include any library (*.jar) or credential (*.pem,access_key.csv) files in your .zip.</p>
+<p>Your code will be graded manually.</p>
+
+
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <p>Good job!</p>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="14">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

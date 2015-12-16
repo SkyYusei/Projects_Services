@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Files v/s Databases</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/17">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/17">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 53.2682576488%;"/>
+    </div>
+    
+    <span>3 days 6 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Files v/s Databases</td>
+            <td>10/12/2015 00:01 -0400</td>
+            <td>10/18/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction and Scenario</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Operations on Flat Files - Tutorial</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Operations on Flat Files - Your Task</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Working with MySQL - Tutorial</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Working with MySQL - Your Task</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Storage Vertical Scaling - Your Task</span></a></li>
+            
+        
+            
+                <li><a href="#section_7"><i class="fa fa-li fa-check fa-lg"></i><span>Working with HBase - Tutorial</span></a></li>
+            
+        
+            
+                <li><a href="#section_8"><i class="fa fa-li fa-check fa-lg"></i><span>Working with HBase - Your Task</span></a></li>
+            
+        
+            
+                <li><a href="#section_9"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Files and Databases</h1>
+
+
+    <div class="bs-callout bs-callout-danger">
+        <h4 id="danger">Warning</h4>
+
+        <p>This project introduces you to a number of new tools. You will have several time-consuming tasks to complete, so please start <b>as early as possible</b>.</p>
+    </div>
+
+    <div class="bs-callout bs-callout-learning">
+        <h4>Learning Objectives</h4>
+
+        <p>This project will encompass the following learning objectives:</p>
+        <ol>
+            <li>Explore the advantages and disadvantages of utilizing flat files</li>
+            <li>Explore the advantages and disadvantages of utilizing databases</li>
+            <li>List the basic differences between MySQL (SQL) and HBase (NoSQL).</li>
+            <li>Develop experience with manipulating files with awk, grep and etc.</li>
+            <li>Develop experience with loading files into databases like MySQL and HBase</li>
+            <li>Explore the performance of vertical scaling in persistent cloud storage (magnetic vs SSD HDDs)</li>
+            <ol>
+            </ol>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>General Details</h4>
+
+        <p>The following table contains the general information about this project module:</p>
+        <table class="table table-bordered">
+            <tr class="info">
+                <th colspan="3">Applicable Languages</th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        <li>Bash, SQL (MySQL), HBase shell</li>
+                        <li>Any other language/framework requires permission from the course staff.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="info">
+                <th>Checkpoints</th>
+                <th>Total Budget</th>
+                <th>Bonuses?</th>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>$15</td>
+                <td>No.</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>Introduction</h2>
+
+    <h3>Introduction to Files and Databases</h3>
+
+    <p>In recent years, people gradually came to realize the power and value of data, everybody is talking about "data": big data, data mining, data visualization and etc. But what is data? Data is simply a collection of raw facts and figures. Applications are responsible for generating, storing, analyzing and consuming data, or some combination of these.</p>
+    <p>
+        How data is stored is of particular importance - without storing, data can not be persisted, not to mention further analyzed or consumed. In this project, we will be exploring and experiencing several common ways to store data. After this project, you should have a better understanding about how each of the common solutions work and be able to choose one over another in real-world scenarios based on their characteristics.</p>
+
+    <p>In the first few sections, we will introduce flat files and relational databases. In the context of this project module,
+        flat files refers to this <a href="https://en.wikipedia.org/wiki/Flat_file_database">definition</a>.</p>
+
+    <p>Files and databases are essentially resources for storing information that will be used by various computer
+        programs. Files are mostly unstructured data, while databases organize data to make it easy to access
+        efficiently for applications. To understand what unstructured or structured means, consider the following
+        example which shows how the same line is stored and accessed from a file and a database.</p>
+
+    <p>The box below shows a single line in a file:</p>
+    <pre>Name: Carnegie, Course: Cloud Computing, Section: A, Year: 2015</pre>
+    <p> The box below shows a single line (row) in a database table</p>
+      <pre>  Name           Course       Section     Year
+  Carnegie    Cloud Computing      A        2015</pre>
+    <p>As you can see, in the case of a database, the data is represented in a more structured way, as a table, which
+        makes it easier for users of this data to access specific parts of the data. In the case of a file, accessing
+        the required data might require more effort from the end user.</p>
+
+    <p>File and database have their own advantages and disadvantages, and choosing one over another is really dependent
+        on the scenario. In the next few sections, you will complete some tasks which will allow you to explore the
+        capabilities of files and databases.</p>
+
+    <p>In addition to files and traditional SQL databases, NoSQL databases are becoming a popular method of storing
+        data. The motivation for NoSQL was driven by the big-data challenges of scale and performance. Although it is
+        recent, it has became a popular for certain applications. NoSQL relaxes some of the constraints (consistency,
+        structure, etc.) that exist in SQL databases in exchange for performance and scalability.</p>
+
+    <p>In later sections, you will learn how to use one of the most popular NoSQL databases, HBase, to complete several
+        queries that are quite similar to those in "Files and MySQL". After completing all tasks, you should not only be
+        able to write <code>awk</code> or SQL HBase shell commands to perform queries, but more importantly, realize the
+        pros and cons of each one and be able to decide which one to use depending on the real-world scenario</p>
+
+
+    <h2>The Scenario</h2>
+
+    <p>Since you excelled at your job at the MSB, you were hired for a part-­time job by a music content delivery
+        company, Carnegie Records (CR), as a music data analytics consultant. Before adopting cloud storage services, CR
+        would like your help to evaluate the functionality and limitations in adopting flat files or relational
+        databases to query and perform basic analytics on their data. You will commence your work with files and move on
+        to databases.</p>
+
+    <h3>The Input Data</h3>
+
+    <p>As a first step in this process, CR has provided their dataset and a database as a saved instance on AWS. Below
+        are the sizes of the two files containing the data that you need, as well as where they are located.</p>
+
+    <p><b>Table 1:</b> Datasets for this project</p>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="active">
+            <th>File Name</th>
+            <th>Location</th>
+            <th>Size</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>million_songs_metadata.csv</td>
+            <td>/home/ubuntu/Project3_1/</td>
+            <td>1.6GB</td>
+        </tr>
+        <tr>
+            <td>million_songs_sales_data.csv</td>
+            <td>/home/ubuntu/Project3_1/</td>
+            <td>900MB</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>The Data Schematics</h3>
+
+    <p>The <b>million_songs_metadata.csv</b> is all of the track metadata from the Million Song Dataset that CR uses and
+        the <b>million_songs_sales_data.csv</b> has daily record sales count for CR for each song for a finite period of
+        time. The two formats of the two files are as shown below.</p>
+
+    <p><b>Table 2:</b>Schema for: <b>million_songs_metadata.csv</b></p>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="active">
+            <th>Col#</th>
+            <th>Name</th>
+            <th>MySQL Type</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td><code>track_id</code></td>
+            <td><code>text(19)</code></td>
+            <td>The <b>unique</b> track ID.</td>
+            <td>TRAAAAK128F9318786</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><code>title</code></td>
+            <td><code>text</code></td>
+            <td>The song title.</td>
+            <td>Scream</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><code>song_id</code></td>
+            <td><code>text</code></td>
+            <td>The song ID, note that a song can be associated with many tracks (with very slight audio differences).
+            </td>
+            <td>SOBLFFE12AF72AA5BA</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><code>release</code></td>
+            <td><code>text</code></td>
+            <td>Album name from which the track was taken.
+            </td>
+            <td>Adelitas Way</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><code>artist_id</code></td>
+            <td><code>text</code></td>
+            <td>The Echo Nest artist ID, this field is not empty.</td>
+            <td>ARJNIUY12298900C91</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><code>artist_mbid</code></td>
+            <td><code>text</code></td>
+            <td>The musicbrainz.org ID for this artist, please note this field may be empty!</td>
+            <td>6ae6a016-91d7-46cc-be7d-5e8e5d320c54</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><code>artist_name</code></td>
+            <td><code>text</code></td>
+            <td>Artist name</td>
+            <td>Adelitas Way</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><code>duration</code></td>
+            <td><code>double</code></td>
+            <td>Duration of the track in seconds.</td>
+            <td>213.9424</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td><code>artist_familiarity</code></td>
+            <td><code>double</code></td>
+            <td>An estimate of how familiar an artist is to the world.</td>
+            <td>0.639902515496</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td><code>artist_hotness</code></td>
+            <td><code>double</code></td>
+            <td>An estimation of how hot an artist is.</td>
+            <td>0.461318337541</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td><code>year</code></td>
+            <td><code>int</code></td>
+            <td>Song release year.</td>
+            <td>2009</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><b>Table 3:</b> Schema for <b>million_songs_sales_data.csv</b></p>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="active">
+            <th>Col#</th>
+            <th>Name</th>
+            <th>MySQL Type</th>
+            <th>Description</th>
+            <td>Example</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td><code>track_id</code></td>
+            <td><code>text(19)</code></td>
+            <td>The <b>unique</b> track ID.</td>
+            <td>TRAAAAK128F9318786</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><code>sales_date</code></td>
+            <td><code>datetime</code></td>
+            <td>The date corresponding to this sales record.</td>
+            <td>2014-08-12</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><code>sales_count</code></td>
+            <td><code>int(11)</code></td>
+            <td>The number of sales corresponding to this sales record.</td>
+            <td>16</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Resource Tagging</h4>
+
+        <p>For this project, assign the tag with Key: <b>Project</b> and Value: <b>3.1</b> for all resources.</p>
+    </div>
+    <div class="bs-callout bs-callout-danger">
+        <h4 id="grading-penalties">Grading Penalties</h4>
+
+        <p>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the following:</p>
+        <table class="table table-bordered">
+            <thead>
+            <tr class="danger">
+                <th>Violation</th>
+                <th>Penalty of the project grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Spending more than $15 for this project checkpoint</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Spending more than $30 for this project checkpoint</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Failing to tag all your resources for this project</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Using any instance other than those specified in write-up</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Attempting to hack/tamper the auto-grader</td>
+                <td>-100%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Operations on Flat Files - Tutorial</h1>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>AWS Details</h4>
+
+        <p>The following table contains information regarding various AWS services and technologies for this project
+            phase:</p>
+        <table class="table table-bordered">
+            <tr class="success">
+                <th>Tag Key</th>
+                <th colspan="2">Tag Value</th>
+            </tr>
+            <tr>
+                <td>Project</td>
+                <td colspan="2">3.1</td>
+            </tr>
+            <tr class="success">
+                <th>AMI Name</th>
+                <th>AMI ID</th>
+                <th>Instance Type</th>
+            </tr>
+            <tr>
+                <td>General AMI</td>
+                <td><code>ami-97c38bf2</code></td>
+                <td><code>m3.large</code>/<code>t1.micro</code> (specified in each checkpoint)</td>
+            </tr>
+            <tr class="success">
+                <th colspan="3">AWS Technologies Explored</th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        <li>Elastic Block Storage</li>
+                        <li>Elastic MapReduce (HBase)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <p>As a good consultant, you need to learn the tools necessary to carry out the job presented to you by CR. So,
+        before you start working with the operations on flat files make sure you read about the grep and awk tools in
+        Unix. Now that you have quickly become an expert, start by launching an t1.micro instance of the following
+        AMI.</p>
+
+    <p>As a reminder, the AMI and tag details are as follows:</p>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Resource Tagging and AMI ID</h4>
+
+        <p>For this checkpoint, assign the tag with Key: <b>Project</b> and Value: <b>3.1</b> for all resources. <br/>
+            For this checkpoint, provision a <code>t1.micro</code> instance using the AMI ID: <code>ami-97c38bf2</code>
+        </p></div>
+    <!-- Use Callouts for Important Stuff -->
+
+    <p><b>Grep</b> is a useful tool for finding certain keywords or patterns in a file. For example, if you wish to find
+        records in a file that contain “The Beatles”, you can use:</p>
+    <pre>grep -P 'The Beatles' million_songs_metadata.csv</pre>
+    <p>There are different settings you can use with grep. For example, try to figure out what’s different with the
+        following command:</p>
+    <pre>grep -i -P 'The Beatles' million_songs_metadata.csv</pre>
+    <p>You can count the number of lines that are returned to you by adding an additional line count command, like
+        so:</p>
+    <pre>grep -P 'The Beatles' million_songs_metadata.csv | wc -l</pre>
+    <p>The result of running the grep command returns rows that include the search pattern in any matching column. </p>
+
+    <p>What if you just wanted the ones that match the artist_name field? <code>awk</code> is a data extraction and
+        reporting tool. You can use awk to find the records with artist_name field containing The Beatles:</p>
+    <pre>awk ' BEGIN {FS = ","} ; {if ($7 ~ /The Beatles/) { print; }}' million_songs_metadata.csv</pre>
+    <p>Here, $7 denotes the 7th column and FS="," sets the field separator to a comma.</p>
+
+    <p>Now, what if we wanted to know something more complicated, like "<b>How many songs are from Michael Jackson, but
+        only from the '80s?</b>" Then you can simply expand the logic in the if statement, like so:</p>
+    <pre>awk ' BEGIN {FS = ","} ; {if (tolower($7) ~ /michael jackson/ && $11 >= 1980 && $11 < 1990) { print; }}' million_songs_metadata.csv</pre>
+    <p>And so, as you can see, as your questions become more complex, it is more difficult to write a single line of
+        code to answer the question. For these reasons (among many others) we want to explore the benefits or
+        limitations of <b>moving this data to a database</b>. But for now, let’s do a bit of practice using unix and its
+        tools on flat files.</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Operations on Flat Files - Your Task</h1>
+
+    <p>Inside <b>/home/ubuntu/Project3_1/</b> there is a file named <b>runner.sh</b> which contains various questions for you to answer. Follow the instructions for questions 1-6 carefully, and paste the commands into the indicated area for each step. Be careful of when the question asks for specific things, such as case sensitivity, and what results are expected after running your script.</p>
+    <p>In question 5, CR would like to consolidate the data in the two source csv files mentioned earlier. To do that you need to either write a program or a set of commands (using awk or shell) to join the records from the <b>million_songs_metadata.csv</b> file and <b>the million_songs_sales_data.csv</b> file using the common column track_id.</p>
+    <p>The goal is to generate a new merged dataset <b>million_songs_metadata_and_sales.csv</b> with track_id as <b>column 1</b>, sales_date as <b>column 2</b>, sales_count as <b>column 3</b> and the other columns in million_songs_metadata.csv as <b>columns 4 to 13</b>. Save the output file and the program (or set of commands) for later use.</p>
+    <!-- Additional Tasks to Try -->
+    <div class="bs-callout bs-callout-info">
+        <h4>Hints and Clarifications</h4>
+        <ol>
+            <li>Search for a unix command that lets you join two files based on a common field.</li>
+            <li>Questions should be done in a single line of script. </li>
+            <li>Do <b>NOT</b> use other languages such as Java and Python in this project.</li>
+            <li>All matches are case sensitive unless stated otherwise. </li>
+            <li>In question 6, artists can have many different artist_names, but only one artist_id, which is unique to each artist. The student should find the maximum sales based on artist_id, and return any of that artist_id’s valid artist_name</li>
+            <li>Do not terminate your instance yet. If you need to take a break, save a copy of runner.sh before terminating your instance.</li>
+        </ol>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Working with MySQL - Tutorial</h1>
+
+    <p>Carnegie Records (CR) would like its favourite consultant (you) to evaluate MySQL (an open source relational
+        database) to load and process the data sets in preparation for querying and analytics so that it can decide
+        whether to adopt flat files or databases for its needs.</p>
+
+    <p>The AMI and tag details are the same as the previous section:</p>
+    <!-- Use Callouts for Important Stuff -->
+    <div class="bs-callout bs-callout-warning">
+        <h4>Resource Tagging and AMI ID</h4>
+
+        <p>For this project, assign the tag with Key:<b> Project</b> and Value: <b>3.1</b> for all resources. <br/>
+            Provision a <code>t1.micro</code> instance using the AMI ID: <code>ami-97c38bf2</code></p></div>
+    <h3>The Basics</h3>
+
+    <p> The following video introduces some basic aspects of MySQL</p>
+
+    <div class="row" style="align:center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/x73HknyUGIM" frameborder="0"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>MySQL should be already installed and running on the AMI supplied for this project. To start a MySQL CLI client
+        and connect to the running MySQL server on your instance, use the following command:</p>
+    <pre>mysql -u root -pdb15319root song_db</pre>
+    <p>In the command above, the username is <b>root</b> and the password is <b>db15319root</b>. The database that you
+        will be using is <b>song_db</b>, which has been already created for you within the AMI.</p>
+
+    <p>You should now take a closer look at databases and what a database schema is. A database holds the records,
+        fields and cells, of data while a database schema describes how these fields and cells are structured and
+        organized and what types of relationships are mapped between these entities. A database can have multiple tables
+        that are related to each other. A table is referred to as a relation in the sense that it is a collection of
+        objects of the same type (rows). The schema defines the structure of the tables and the relations between
+        them.</p>
+
+    <p>Before loading CR’s records into the database, we need to describe the database and its fields in a schema, which
+        encapsulates the structure and relationship of the data. CR has provided two csv files,
+        million_songs_metadata.csv and million_songs_sales_data.csv. CR also provided their schemas in Table 1 and Table
+        2 described before.</p>
+
+    <p>CR has asked you to create two tables within the database according to the schemas. They have provided a <b>~/Project3_1/create_tables.sql</b>
+        file for you to get started.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes</h4>
+
+        <p>MySQL has some keywords that cannot be used in queries. When a table or column name contains a keyword use
+            the backtick (`) as an escape sequence. Example ­ `keyword`</p>
+
+        <p>The MySQL package pre­installed in the AMI provided is version 5.5. Make sure you search through the
+            documentation when looking for command references.</p>
+    </div>
+
+    <p>After creating the tables (songs & sales), you can use the following command to verify the schema of that
+        table:</p>
+    <pre>DESCRIBE songs;<br/>DESCRIBE sales;</pre>
+    <p>After executing these commands, you should compare and verify that they match with the information provided in
+        tables 1 and 2 above.</p>
+
+    <p>You now need to find the appropriate command to load the database from the supplied files,
+        million_songs_metadata.csv and million_songs_sales.csv. You can use either a <b>SQL command from within the
+            MySQL CLI client</b>, or use the <b>mysqlimport utility</b> to load the records from the CSV file into the
+        database. Please note down the command you have used.</p>
+
+    <p>To verify whether the data has been successfully loaded into the database, you can list the first 10 records of
+        the table using the SELECT command: </p>
+    <pre>SELECT * FROM songs LIMIT 10;</pre>
+    <p>MySQL allows you to make certain queries from the database using keywords such as SELECT, WHERE and LIKE. For
+        example, the equivalent SQL command to find the records that contain The Beatles (equivalent of the Beatles awk
+        command from the previous part) is:</p>
+    <pre>SELECT * FROM songs WHERE artist_name LIKE '%The Beatles%';</pre>
+    <p>Try to understand why the % exists before and after “The Beatles”. Similarly the Michael Jackson query would look
+        like:</p>
+    <pre>SELECT * FROM songs WHERE artist_name LIKE '%michael jackson%'AND year >= 1980 AND year < 1990;</pre>
+
+    <p>While evaluating flat files you have used awk to compute the average song length (using the duration field) over
+        the million songs. The equivalent SQL command is:</p>
+
+    <pre>SELECT AVG(duration) FROM songs;</pre>
+
+    <h4>The Effects of Indexes</h4>
+
+    <p>Now you have successfully built the tables and made simple queries. Since the dataset is quite large, CR wants
+        you to ensure that the database responds rapidly to queries. As an informed consultant, you will consider
+        creating an indexed database to improve performance. A database index helps speed up the retrieval of data from
+        tables. When you query data from a table, MySQL checks if the indexes exist. Then MySQL uses the indexes to
+        select exact physical corresponding rows of the table instead of scanning the whole table. You conclude that you
+        should create an index on the columns of the table from which you often query the data. Notice that all primary
+        key columns are in the primary index of the table automatically. Later on in the tasks, you are going to compare
+        the MySQL query response times before creating the index with the time recorded after creating the index.</p>
+
+    <h4>Aggregate Functions</h4>
+
+    <p>The aggregate functions allow you to perform calculations on a set of records and return a single value. The most
+        common aggregate functions include SUM, AVG, MAX, MIN and COUNT. Aggregate functions are often used with the
+        MySQL GROUP BY keyword to perform calculations on each subgroup and return a single value for each subgroup. The
+        MySQL GROUP BY keyword is used with the SELECT statement to group rows into subgroups by one or more columns or
+        expressions. It is extremely useful when several records belong to a category and other records in the same
+        table belong to another category and you want to compare between different categories rather than a single
+        record. The following statement illustrates the MySQL GROUP BY keyword syntax:</p>
+
+<pre>SELECT c1, c2, ... cn, aggregate_function(expression)
+FROM table
+WHERE where_conditions
+GROUP BY c1, c2, ... cn;</pre>
+
+    <p>For example, the query about the total sales for each of the recent 10 days looks like:</p>
+<pre>SELECT sales_date, SUM(sales_count) AS total_sales
+FROM sales 
+GROUP BY sales_date 
+ORDER BY sales_date DESC 
+LIMIT 10;</pre>
+
+    <p>The MySQL JOIN keyword is used to query data from two or more related tables. In MySQL, JOIN,CROSS JOIN and INNER
+        JOIN are syntactic equivalents (they can replace each other). The following illustrates a sample JOIN
+        syntax:</p>
+
+<pre>#select statement
+    SELECT c1,c2,....cn
+    FROM join_table;
+#join_table
+    table1 [INNER|CROSS] JOIN table2 [join_condition]
+#join_condition:
+    ON conditional_expr
+  | USING (column_list)</pre>
+
+    <p>INNER JOIN builds the Cartesian product between specified tables, that is, each and every row in the first table
+        is joined to each and every row in the second table based on the join condition. Here all the track_ids in table
+        songs have corresponding records in table sales. We are going to only cover INNER JOIN.</p>
+
+    <p>For example, the query that shows the title of the song that has the most sales count looks like:</p>
+<pre>SELECT songs.title, SUM(sales_count) AS total_sale
+FROM songs 
+INNER JOIN sales ON songs.track_id = sales.track_id 
+GROUP BY sales.track_id 
+ORDER BY total_sale 
+DESC LIMIT 10;</pre>
+
+
+    <div class="bs-callout bs-callout-info">
+        <h4>ASIDE: What about OUTER JOIN?</h4>
+
+        <p>OUTER JOIN identifies rows without a match in the joined table. Outer joins combine two or more tables in a
+            way that some columns may have NULL values. MySQL separates OUTER JOINS into LEFT or RIGHT JOINS depending
+            on which table provides the unmatched data. In a LEFT JOIN, the unmatched records from the table on the left
+            side of the JOIN clause are returned. In a RIGHT JOIN, the unmatched records from the table on the right
+            side of the JOIN clause are returned. When no match was found, MySQL sets the value of columns from the
+            joined table to NULL. This is important for example when you want to select all records from a reference
+            table that have no related data in another.</p>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Working with MySQL - Your Task</h1>
+
+
+    <p>Just like in the previous task, there are a number of questions (7-11) related to MySQL in your
+        <code>runner.sh</code> file located in <code>/home/ubuntu/Project3_1/</code> directory. Again, pay close
+        attention to the instructions provided for each step. </p>
+
+    <p>For Question 7-9, you want to create an index for the table songs. Create an index for one column to improve the
+        speed of the query in question 7. Which column do you think you should create the index for? Create an index on
+        the column you think is the most reasonable. Please note down the command you have used when creating the index
+        and remember to note down the name of your index and update the <code>INDEX_NAME</code> variable accordingly.
+        Creating an index might take a while since MySQL has to build and maintain the index table. The payoff is in
+        speeding up all subsequent queries that could take advantage of the index. After that has finished, exit MySQL
+        and restart it using the following command:</p>
+
+<pre>
+sudo service mysql restart
+</pre>
+
+    <p>Then in question 9, run the same command as in question 7, and you should notice an improvement in performance,
+        with the same results.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes and Hints</h4>
+        <ol>
+            <li>The SQL LIKE operator is case insensitive by default.</li>
+            <li>Do not modify the “mysql --skip-column-names --batch -u root -pdb15319root song_db -e” that precedes
+                each command, or the autograder will not accept your answer.
+            </li>
+            <li>The next section will involve the same type of instance. However, if you want to terminate your instance
+                and take a break, be sure to save a copy of runner.sh before doing so.
+            </li>
+        </ol>
+    </div>
+
+    <p>Now that you have explored both files and databases, you can realize that both of these storage systems have
+        advantages and disadvantages. Files can be flexible and portable, can hold structured and unstructured data, and
+        is easy to implement and modify. Databases on the other hand can represent relationships among data, and has
+        easy rollback of transactions in case of failure. Moreover, there are more advantages and disadvantages about
+        files and databases waiting for you to explore. For files, security can be achieved only through file
+        permissions while databases supports fine grain level security. The access mode for files is sequential, thus it
+        is slower when the files are larger. But for databases, it is more concurrent. Further, reads and updates can be
+        rule­based in databases using constraints which ensures data consistency. When updating databases, a specific
+        record can be updated, on the other hand, file contents have to be scanned when updating data. Furthermore, you
+        can easily rollback transactions in case of a failure in a database while you cannot do that with files.
+        Databases have to maintain transaction consistency which is expensive.</p>
+
+    <p>Some of the differences between flat files and databases are summarized in the following table:</p>
+
+    <p><b>Table: </b>Comparison between files and databases.</p>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="active">
+            <th>Characteristics</th>
+            <th>Flat files</th>
+            <th>(Relational) Databases</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Flexibility</td>
+            <td>Flexible, portable, lightweight</td>
+            <td>Restricted, installation and configuration required</td>
+        </tr>
+        <tr>
+            <td>Data schema</td>
+            <td>Structured/unstructured</td>
+            <td>Structured</td>
+        </tr>
+        <tr>
+            <td>Data format and relationship</td>
+            <td>Any format, no relationship</td>
+            <td>Well-formatted, represents relationship</td>
+        </tr>
+        <tr>
+            <td>Concurrency</td>
+            <td>Not well-supported</td>
+            <td>High concurrency</td>
+        </tr>
+        <tr>
+            <td>Security</td>
+            <td>Poor support, only file permission</td>
+            <td>Fine-grained level of security</td>
+        </tr>
+        <tr>
+            <td>Consistency</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Failure recovery</td>
+            <td>Difficult to recover</td>
+            <td>Easily rollback transactions</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Storage Vertical Scaling - Introduction</h1>
+
+    <p>Congratulations on completing learning and evaluating storing with flat files and SQL databases, but did you
+        notice that there is something important missing?</p>
+
+    <p>So far we have been talking about concepts such as: the pros and cons of flat files and SQL databases, the
+        difference between them and etc., but we never discussed the resources or devices used to actually store the
+        data, i.e. the
+        physical storage! In reality, apart from the method (flat files v/s databases) that we use, the physical device
+        where we
+        store the data often plays an important role in impacting performance.</p>
+
+    <p>In the following sections, you will get acquainted with common disk operations in Linux and use those commands to
+        perform vertical scaling of storage devices by attaching different storage devices offered in AWS to an instance
+        and measuring the performance using some common benchmarking tools. After this, you will understand why
+        physical storage devices where you store data is also of great importance.</p>
+
+    <h2>Storage Vertical Scaling - Tutorial</h2>
+
+    <h3>Common Disk Operations in Linux</h3>
+
+    <p>On this page, there are several mini-howto's for accomplishing certain disk-related tasks in Linux, similar to
+        the ones
+        you have seen in the Project Primer. The instructions for the actual project tasks that you need to complete
+        will be presented later.</p>
+
+    <p>Since most of these commands require root access, you might find it easier to run the following once: <code>sudo
+        su</code> - or alternatively you can prepend <code>sudo</code> to each command.</p>
+
+    <h3>Working with EBS Volumes</h3>
+
+    <p>The following video will demonstrate the use of EBS volumes with EC2 instances:</p>
+
+    <div class="row" style="align:center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8Bwg_wUVhkE" frameborder="0"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Show available drives</h3>
+
+    <p>GNU <code>parted</code> is a program for creating, destroying, resizing, checking and copying partitions, and the
+        file systems on them. <code>parted</code>, the partition editor, is used to manipulate the partition table on
+        block devices. It has replaced <code>fdisk</code> and supports newer features like GUID Partition Tables (GPT),
+        which are required for volumes > 2TB. You can also run <code>parted</code> with no parameters to get into the
+        interactive
+        mode. You can read more <a href="https://www.gnu.org/software/parted/manual/html_chapter/parted_1.html"
+                                   target="_blank">here</a>.</p>
+
+<pre>
+parted -l
+/dev/xvda1 – this is the OS partition
+/dev/xvdb – this is the first Ephemeral (instance store) drive
+/dev/xvdc – this is the second Ephemeral (instance store) drive
+</pre>
+
+    <h3>Create and format a partition</h3>
+
+<pre>
+umount /dev/xvdX #where “X” - is a,b,c..etc (You should use your device’s name)
+parted /dev/xvdX mklabel gpt
+parted /dev/xvdX mkpart db ext4 0% 10G
+mkfs.ext4 /dev/xvdX1 
+</pre>
+
+    <p>If you have a small volume (such as EBS), it’s easier to just format the whole device directly, without creating
+        a
+        partition table (note the missing ‘1’):</p>
+
+<pre>
+mkfs.ext4 /dev/xvdX
+</pre>
+
+    <h3>Mount a volume</h3>
+
+<pre>
+mkdir /storage/mountpoint
+mount /dev/yourdevice /storage/mountpoint
+</pre>
+
+    <p>Using <code>mountpoint</code> or not is your choice, but you have to use a different name for each filesystem
+        that is mounted at the same time. (/storage/ is arbitrary as well – most Linux distributions mount extra drives
+        under <code>/mnt</code>,
+        but this automatically mounts the first ephemeral drive at boot on EC2 images). Your device is the device or
+        partition that you have previously formatted, such as <code>xvdX1</code>, <code>md0p1</code>, etc.</p>
+
+<pre>
+mount
+</pre>
+
+    <p>Running <code>mount</code> without parameters shows all mountpoints. Use this to verify that your mount was
+        successful.</p>
+
+
+    <h2>Storage Vertical Scaling - Your Tasks</h2>
+
+    <h3>FileIO Performance Benchmarks</h3>
+
+    <p>In this part of the project, you will be experimenting with "Vertical Scaling" for storage and instance types, by
+        attaching Magnetic (i.e. spinning disks) and Solid State Drive (SSD) storage devices offered in AWS to two types
+        of instances and measuring their performance for FileIO.</p>
+
+    <p>As a result, we expect you to gain insight into the benefits of employing faster storage
+        systems such as SSD and using larger instances.
+    </p>
+
+    <p>We want you to test the following scenarios: </p>
+
+    <table class="table table-bordered">
+        <tr class="active">
+            <td>Scenario</td>
+            <td>Instance Type</td>
+            <td>Storage Type</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>t1.micro</td>
+            <td>EBS Magnetic Storage</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>t1.micro</td>
+            <td>EBS General Purpose SSD</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>m3.large</td>
+            <td>EBS Magnetic Storage</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>m3.large</td>
+            <td>EBS General Purpose SSD</td>
+        </tr>
+    </table>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Resource Tagging and AMI ID</h4>
+
+        <p>For this checkpoint, assign the tag with Key: <b>Project</b> and Value: <b>3.1</b> for all resources. <br/>
+            For this checkpoint, provision <code>t1.micro</code> and <code>m3.large</code> instances using the AMI ID:
+            <code>ami-97c38bf2</code> (same as previous checkpoints).
+        </p>
+    </div>
+
+    <p>
+        Sysbench is a suite containing multiple benchmarks. In this project, you will be using a modified version of
+        sysbench with identical functionality as the original one except that you can declare the storage type as
+        [SSD|Magnetic] when <code>sysbench run</code> command is called. To test disk performance, we can use the FileIO
+        benchmark.
+    </p>
+
+    <h4>Your Task</h4>
+
+    <p>
+        Follow the steps in the next few sections to run the sysbench benchmark for each scenario.
+        After completing your benchmark for each scenario, please note down the final <b>RPS (Request per Second)</b>
+        reported by sysbench, and answer questions 12 - 15 in <b>runner.sh</b> accordingly.
+    </p>
+
+<div class="bs-callout bs-callout-info">
+    <h4>Hint</h4>
+    <p>Data preparation can take a very long time if you use "slow" resources. Make wise decisions so that you don't spend a lot of time preparing the 100GBs of data.</p>
+</div>
+
+    <h4>Prepare Testing Data</h4>
+
+    <p>To run the benchmark for this experiment, you need to first generate some testing data:</p>
+    <ol>
+        <li>Launch a <code>t1.micro</code> or <code>m3.large</code> instance with the AMI given above.</li>
+        <li>Create a <b>120GB</b> EBS volume of the desired type (Magnetic or SSD) using the EC2 console. Make sure the
+            EBS
+            volume is in the <b>same availability zone</b> as your instance.
+        </li>
+        <li>Attache the EBS volume to the instance you just launched.</li>
+        <li>SSH into the EC2 instance, perform required steps to format and mount the EBS volume into the filesystem on
+            the instance.
+        </li>
+        <li>Be sure to <code>cd</code> to the folder where your EBS volume was mounted.</li>
+        <li>Run the following command to generate testing data:
+            <pre>sudo /home/ubuntu/Project3_1/sysbench --test=fileio --file-total-size=100G prepare</pre>
+        </li>
+        <li>The above command will generate 100GB of testing data on your EBS volume, you can reuse this EBS volume for
+            all following steps.
+        </li>
+    </ol>
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>Warning</h4>
+
+        <p>Throughout this section, please make sure all your EC2 instances are in the <b>same availability zone</b> as
+            your EBS volume! Otherwise you won't be able to attach your EBS volume correctly!</p>
+    </div>
+
+    <h4>Experiment 1 (Scenarios 1 & 2 in the table above)</h4>
+
+    <p>To run the benchmark for this experiment, perform the following steps:</p>
+
+    <ol>
+        <li>Launch a <code>t1.micro</code> instance with the AMI given above (you can reuse if you already have one).
+        </li>
+        <li>Unmount and detach the EBS volume you just launched if it's currently attached to another instance.</li>
+        <li>Make sure the your EBS volume is correctly attached and mounted to the current instance.</li>
+        <li>Run the following command on the data <b>three (3)</b> times (without allowing for a long delay
+            between runs).
+            <pre>sudo /home/ubuntu/Project3_1/sysbench [SSD|Magnetic] --test=fileio --file-total-size=100G --file-test-mode=rndrw --max-time=300 --max-requests=0 run</pre>
+            Remember to choose the parameter <code>SSD</code> or <code>Magnetic</code> accordingly.
+        </li>
+        <li>Enter your answers in runner.sh (under the corresponding scenario question).</li>
+        <li>Repeat the benchmarking steps for the next storage type (with the same instance type).</li>
+    </ol>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+
+        <p>Do not delete your EBS volume at this point, you need to reuse it for the next steps.</p>
+    </div>
+
+    <h4>Experiment 2 (Scenarios 3 & 4 in the table above)</h4>
+
+    <p><strong>Please read the following instructions carefully. They are not the same as in experiment 1.</strong></p>
+
+    <p>You can reuse the test files generated by sysbench prepare command from previous experiment. So please don’t
+        format the disks from previous experiment, or you will lose the data.</p>
+
+    <ol>
+        <li>Launch an <code>m3.large</code> instance with the AMI given above (you can reuse if you already have one).
+        </li>
+        <li>Unmount and detach the EBS volume you just launched if it's currently attached to another instance.</li>
+        <li>Make sure your EBS volume is correctly attached and mounted.</li>
+        <li>Run the following command on the data <b>three (3)</b> times (without allowing for a long delay
+            between runs).
+            <pre>sudo /home/ubuntu/Project3_1/sysbench [SSD|Magnetic] --test=fileio --file-total-size=100G --file-test-mode=rndrw --max-time=300 --max-requests=0 run</pre>
+            Remember to choose the parameter <code>SSD</code> or <code>Magnetic</code> accordingly.
+        </li>
+        <li>Enter your answers in runner.sh (under the corresponding scenario question).</li>
+        <li>Repeat the benchmarking steps for the next storage type (with the same instance type).</li>
+    </ol>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+
+        <p>If you want to redo the experiments, please reboot the instance from the AWS console.
+            After rebooting, you need to mount the disk again. But <b>DON’T</b> format the disk or generate test files
+            using
+            <code>sysbench prepare</code> command.</p>
+    </div>
+    <p>Now that you have completed running the benchmark and noted down the final <b>RPS (Request per Second)</b> reported by sysbench for each of the above scenarios, please answer questions 12 - 15 in <b>runner.sh</b> accordingly.</p>
+
+    <p>At this stage, you have also completed answering all the questions in <b>runner.sh</b>, so you should go ahead and submit by running <code>submitter</code>.</p>
+ 
+    <p>Terminate the instances and delete the volumes when you are done.</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_7" class="writeup_section" data-sequence="7">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">HBase - Tutorial</h1>
+
+    <p>Apache HBase is an open-source version of Google's <strong>BigTable</strong> distributed storage system and is
+        supported by the Apache Software Foundation. <strong>BigTable</strong> is a distributed, scalable,
+        high-performance, versioned database. BigTable's infrastructure is designed to store billions of rows and
+        columns of data in loosely defined tables. Just as traditional RDBMSs are designed to run on top of a local
+        filesystem, HBase is designed to work on top of the <strong>Hadoop Distributed File System (HDFS)</strong>. HDFS
+        is a distributed file system that stores files as replicated blocks across multiple servers. HDFS lends a
+        scalable and reliable file system back end to HBase.</p>
+
+    <p>So, in an HBase table, data are organized as rows and columns as shown in the following figure:</p>
+
+    <!-- TODO: A picture to be submitted to aws -->
+    <img src="http://cmucc-public.s3.amazonaws.com/p31/HBASE_table.png">
+    <h4>
+        <small class="caption">Fig. A typical structure of HBase table</small>
+    </h4>
+    <p>A row in HBase is referenced using a row key which is <strong>raw byte array</strong>, which can be considered to
+        be the primary key of the table in an RDBMS. The primary key of the table has to be unique and hence reference
+        one and only one row. HBase automatically sorts table rows by row key when it stores them. By default, this sort
+        is byte ordered.</p>
+
+    <p>As shown in the above figure, each key consists of the following parts: <strong>rowkey</strong>, <strong>column_family</strong>,
+        <strong>column and timestamp</strong>. Thus the mapping becomes: (rowkey, column family, column, timestamp) ->
+        value. Rowkey and value are simply bytes, so anything that could be serialized into bytes can be stored into a
+        cell. These cells in HBase are sorted lexicographically by rowkey which is a very important property as it
+        allows for quick searching.</p>
+
+    <p>Columns in HBase have a column name, which can be used to refer to a column. Columns can be further grouped into
+        column families. All column family members have a common prefix, so, in the above figure, the columns <strong>Metadata:Type</strong>
+        and <strong>Metadata:Language</strong> are both members of the Metadata column family, whereas <strong>Content:Data</strong>
+        belongs to the Content family. By default, the colon character (:) delimits the column prefix from the family
+        member. The column family prefix must be composed of <strong>printable characters</strong>. The qualifying tail
+        can be made of any arbitrary bytes.</p>
+
+    <h4>HBase Operations</h4>
+
+    <p>HBase has four primary operations on the data model: <strong>Get</strong>, <strong>Put</strong>,
+        <strong>Scan</strong>, and <strong>Delete</strong>.</p>
+
+    <p>A Get operation returns all of the cells for a specified row, which are pointed to by a row key. A Put operation
+        can either add new rows to the table when used with a new key or update a row if the key already exists. Scan is
+        an operation that iterates over multiple rows based on some condition, such as a row key value or a column
+        attribute. A Delete operation removes a row from a table. Get and Scan operations always return data in sorted
+        order. Data are first sorted by row key, then by column family, then by family members, and finally by timestamp
+        (so the latest values appear first).</p>
+
+    <p>By default, Get, Scan, and Delete operations on an HBase table are performed on data that have the latest
+        version. A Put operation always creates a new version of the data that are put into HBase. By default, Delete
+        operations delete an entire row but can also be used to delete specific versions of data in a row. Each
+        operation can be targeted to an explicit version number as well.</p>
+
+    <h4>HBase Architecture</h4>
+
+    <p>HBase is organized as a cluster of HBase nodes. These nodes are of two types: a master node and one or more slave
+        nodes called <strong>RegionServers</strong>.</p>
+
+    <!-- TODO: A picture to be submitted to aws -->
+    <img src="http://cmucc-public.s3.amazonaws.com/p31/HBASE_archi.png">
+    <h4>
+        <small class="caption"> Fig. HBase cluster structure</small>
+    </h4>
+    <p>HBase dynamically distributes the table in order to serve large amount of concurrent access. A HBase table is
+        splitted
+        into several <b>Regions</b> when the table becomes too large. A HBase <b>Region</b> is a subset of HBase table,
+        but
+        has continuous range of sorted rowkeys. Each RegionServer can serve several Regions, but one Region can only be
+        served by
+        a specific RegionServer.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes</h4>
+        <ol>
+            <li>Even though a HBase Region can only be served by one RegionServer, this doesn't mean the data of that
+                Region
+                can only exist in on RegionServer. In fact, due to data replication of HDFS, there will be some exact
+                copies of
+                the data of each Region on another RegionServer.
+            </li>
+            <li>For more information about how HBase works, you can refer to
+                <a href="http://hbase.apache.org/book.html">HBase Reference Guide</a> and
+                <a href="https://blogs.apache.org/hbase/">their blog</a></li>
+        </ol>
+    </div>
+    <p>HBase uses Apache ZooKeeper as a distribution coordination service for the entire HBase cluster. For example, it
+        handles master selection (choosing one of the nodes to be the master node), the lookup for the
+        <strong>-ROOT-</strong> catalog table, and node registration (when new regionservers are added). The master node
+        that is chosen by ZooKeeper handles such functions as region allocation, failover, and load balancing.</p>
+
+    <p>HBase is designed to use HDFS in the back end but also supports various kinds of file systems, including a local
+        file system and even Amazon S3.</p>
+
+    <p> The following video introduces some basic aspects of HBase that may help you through your tasks. Please note
+        that the video is recorded using an older version of EMR, but that shouldn't affect your use of HBase and EMR in
+        this project.</p>
+
+    <div class="row" style="align:center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/lUOFLa0DKdc" frameborder="0"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Tutorial</h3>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4 id="warnings">Warning</h4>
+        <p>Please remember that EMR can be expensive, you may want to use spot instances to save on cost.</p>
+    </div>
+    <h4>Creating the HBase Cluster with EMR</h4>
+
+    <!-- TODO: upload video VIDEO ON HBASE LAUNCH TUTORIAL -->
+
+    <p>We will be using Amazon's Elastic MapReduce (EMR) to provision an HBase cluster for us to use. HBase uses the
+        Hadoop Distributed File System (HDFS) in order to store data. HDFS is a file system that is distributed over the
+        individual core nodes in an EMR cluster. By default, Amazon configures HDFS in an EMR cluster to use the
+        built-in (instance) storage volumes that come by default in each core EC2 instance. The subsequent steps will
+        illustrate how you can run an EMR cluster to work with HBase.</p>
+
+    <ol>
+        <li>Launch an EMR cluster with <b>1 master</b> and <b>1 core</b> node.</li>
+        <ol type="a">
+            <li>Select "Go to advanced options" on the top of create cluster page</li>
+            <li>Make sure all instances are <code>m1.large</code>.</li>
+            <li>Choose <strong>AMI version 3.9.0 (hadoop version 2)</strong>.</li>
+            <li>Remove any existing services such as Pig and Hive and choose to install <strong>HBase version
+                0.94</strong>.
+            </li>
+            <li>You must specify a key-pair to be able to SSH to the individual instances. Note that the username to use
+                while SSHing to these instances is <strong>hadoop</strong>.
+            </li>
+            <li>Do not forget to set a tag that will be automatically propagated to the individual instances in the
+                cluster.
+            </li>
+            <li>Enable "termination protection" and "keep-alive" for your cluster.</li>
+        </ol>
+        <li>Make sure the security group of the core instances allows port 22 so that you can SSH to the instances. Use
+            the Master public DNS as the SSH DNS.
+        </li>
+        <li>After SSH into master node, you can run the following command to verify that HDFS is healthy being reported
+            per datanode:
+        </li>
+        <pre>hadoop dfsadmin -report</pre>
+    </ol>
+
+    <h4>Preparing to load into HBase</h4>
+
+    <p>HBase includes several methods of loading data into tables. We will introduce the Bulk Load method in this
+        project.</p>
+
+    <p>The most straightforward method is to either use the <strong>TableOutputFormat</strong> class from a MapReduce
+        job, or use the normal client APIs; However, these are not always the most efficient methods because these APIs
+        cannot handle bulk loading.</p>
+
+    <p><strong>Bulk Importing</strong> bypasses the HBase API and writes contents, which are properly formatted as HBase
+        data files – HFiles, directly to the file system. Analyzing HBase data with MapReduce requires custom coding.
+    </p>
+
+    <p>Using bulk load will use less CPU and network resources than simply using the HBase API. ImportTsv is a custom
+        MapReduce application that will by default load data in TSV (Tab Separated Value) format into HBase. By adding
+        optional arguments, importTsv can work for other format files including CSV.</p>
+
+    <ol>
+        <li>Upload dataset (in TSV/CSV format) to HDFS (Hadoop Distributed File System).</li>
+        <ol type='a'>
+            <li>The File System (FS) shell includes various shell-like commands that directly interact with the Hadoop
+                Distributed File System (HDFS) as well as other file systems that Hadoop supports, such as Local FS,
+                HFTP FS, S3 FS, and others. The FS shell is invoked by:
+            </li>
+            <pre>hadoop fs <args></pre>
+            <li>Fetch the million_songs_metadata.csv from the public S3 bucket, then put it into HDFS to prepare for
+                HBase loading. Use the following commands to complete this task.
+            </li>
+        <pre>
+mkdir P3_1
+cd P3_1
+wget https://s3.amazonaws.com/15319-p31/million_songs_metadata.csv
+hadoop fs -mkdir /songs
+hadoop fs -put *.csv /songs
+        </pre>
+            <li>To check if the file is successfully uploaded, using following command.</li>
+            <pre>hadoop fs -ls /songs</pre>
+        </ol>
+
+        <li>Open up the HBase shell and create a table called songdata. You can invoke the HBase shell by simply using
+            <code>hbase shell</code>. In the hbase shell, use the following command to create the songdata table. After
+            this, you may exit the hbase shell using <code>exit</code>.
+        </li>
+        <pre>create 'songdata', {NAME => 'data'}</pre>
+
+        <li>Use importTsv to prepare HFiles for HBase table (table name). Run the following command to transform the
+            data from the file <code>million_songs_metadata.csv</code> in HDFS to StoreFiles and store at a relative
+            path specified by <code>Dimporttsv.bulk.outputHbase</code>. Note that we are using the <code>track_id</code>
+            as the row key, as it is unique, and that all other columns are specified as the column family name (in our
+            case, ‘data’), followed by a colon, then the column name.
+        </li>
+        <pre>hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=,' -Dimporttsv.bulk.output=output1 -Dimporttsv.columns=HBASE_ROW_KEY,data:title,data:song_id,data:release,data:artist_id,data:artist_mbid,data:artist_name,data:duration,data:artist_familiarity,data:artist_hotttnesss,data:year songdata /songs</pre>
+
+        <li>You can see the progress of the MapReduce job if it launched successfully.</li>
+        <!-- TODO: A picture to be submitted to aws -->
+
+        <li>Check the Map output records to verify your result. Generally speaking, it’s equal to the number of records
+            in your dataset.
+        </li>
+        <!-- TODO: A picture to be submitted to aws -->
+
+        <li>Hint: If your dataset is in tsv format, you can omit the .separator option. As with any other MapReduce job,
+            the output directory should not exist before running.
+        </li>
+        <li>Use the completebulkload tool to complete the upload of data. Run the following to upload the data from the
+            HFiles located at output1 to the HBase table songdata.
+        </li>
+        <pre>hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles output1 songdata</pre>
+
+        <li>To verify that the data is successfully loaded, open the HBase shell and scan the table:</li>
+        <pre>scan 'songdata'</pre>
+
+        <li>Use Ctrl-C to stop the scan.</li>
+        <li>Note: Your loading method is not restricted in this project. Feel free to explore use TableOutputFormat
+            class from a MapReduce job, HBase client APIs and other possible methods.
+        </li>
+    </ol>
+
+    <h3>HBase Querying</h3>
+
+    <p>Just like MySQL, HBase also offers a shell that you can query the data with, along with some filtering tools to
+        specify your query. The data is stored in columns, specified by the column qualifier. Columns are grouped into
+        column families, which in our case is “data”. In particular, HBase is very good at matching prefixes, so we will
+        be exploring this through some “scan” queries.</p>
+
+    <p>The following semantics are the basic structure of how to make a query in the HBase shell:</p>
+
+    <pre>scan ‘table_name’, {COLUMNS => [‘column1’, ‘column2’, …], FILTER => “(FILTER1) … (FILTER2)”}</pre>
+
+    <p>So, using a similar query from earlier, we want to find all tracks whose artist_name begins with “The Beatles”.
+        Note that this is a prefix match, not a substring match. The query in the HBase shell would look like:</p>
+
+    <pre>scan 'songdata', {COLUMNS => 'data:artist_name', FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:The Beatles.*')"}</pre>
+
+    <p>Note that the columns are specified as <code>(column family name):(column qualifier name)</code>.</p>
+
+    <!--<p>Executing this query in the HBase shell would return something like the following:</p>-->
+
+    <!-- TODO: A picture to be submitted to aws -->
+
+    <p>As you can see, we are only given the artist_name column values, because that is the column we specified to the
+        COLUMNS argument in the query. If we want to see more information about each track that is returned, we can
+        expand it by adding to the COLUMNS list:</p>
+
+    <pre>scan 'songdata', {COLUMNS => ['data:artist_name', 'data:title'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:The Beatles.*')"}</pre>
+
+    <p>Now, if we run this, we will see that the row count remains at 96, however we can now also see the title as well
+        as artist_name for each row.</p>
+
+    <!-- TODO: A picture to be submitted to aws -->
+
+    <p>Just like we expanded the COLUMN argument, we can also specify multiple FILTER arguments as well. Filters can be
+        combined using logical operators like AND, OR, WHILE, etc. So, for example, if we wanted to expand the previous
+        query to songs from “The Beatles”, but only whose title begins with a ‘W’ or later in the alphabet, we would use
+        the following two filters, joined by an AND:</p>
+
+    <pre>scan 'songdata', {COLUMNS => ['data:artist_name', 'data:title'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:The Beatles.*') AND SingleColumnValueFilter('data', 'title', >= , 'binaryprefix:W')"}</pre>
+
+    <p>As an aside, any time you wish to use a FILTER for a certain column, that column must be contained in the COLUMNS
+        list, or it will be ignored.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes</h4>
+        <ol>
+            <li>For more information about HBase FILTER, please refer to <a
+                    href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/admin_hbase_filtering.html">this
+                post.</a></li>
+            <li>You may want to suppress HBase shell log output, try to figure out a way by yourself.</li>
+        </ol>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_8" class="writeup_section" data-sequence="8">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Working with HBase - Your Task</h1>
+
+    <p>First, fetch the HBase runner and submitter files using the following commands:</p>
+
+<pre>
+mkdir P3_1
+cd P3_1
+wget http://cmucc-public.s3.amazonaws.com/p31/hbase_runner.sh
+wget http://cmucc-public.s3.amazonaws.com/p31/process.py
+wget http://cmucc-public.s3.amazonaws.com/p31/hbase_submitter
+chmod 755 hbase_submitter hbase_runner.sh
+</pre>
+
+    <p>Just like in the previous task, there are a number of questions related to HBase in your
+        <code>hbase_runner.sh</code> file you just fetched. Again, pay close attention to the instructions provided for
+        each step. Note the similarities and differences between the queries you make in HBase and MySQL as you
+        progress.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes</h4>
+        <ol>
+            <li>The python script <code>process.py</code> is there to help clean the data so that only the title is
+                kept, instead of every column for every row key returned by your query.
+            </li>
+            <li>Even though the final result will be cleaned by <code>process.py</code>, you may still want to find a
+                way to supress HBase shell log output.
+            </li>
+            <li>If your scripts are taking too long to run, there might be something wrong with your query.</li>
+        </ol>
+        <p></p>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_9" class="writeup_section" data-sequence="9">
+                    <p>Good job! :)</p>
+
+<iframe src="https://docs.google.com/forms/d/11tKZaM5ASD5-EEtKLKAA829RbhlBBFF6UpmbKSYldmE/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="17">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

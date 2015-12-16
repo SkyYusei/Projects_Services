@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="hibernate.connection.url">
+			<!-- jdbc:mysql://[IP1]/[DB] -->
+			<!-- jdbc:mysql://54.172.183.253:80/twitter -->
+			jdbc:mysql://54.84.245.137:3306/twitter
+		</property>
+		<property name="hibernate.connection.username">
+			<!-- username -->
+			zhaoru
+		</property>
+		<property name="hibernate.connection.password">
+			123456
+		</property>
+		<!-- <property name="hibernate.cache.use_query_cache">true</property> <property 
+			name="hibernate.cache.provider_class"> org.hibernate.cache.EhCacheProvider 
+			</property> -->
+			
+		<property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+		<mapping resource="Entry.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

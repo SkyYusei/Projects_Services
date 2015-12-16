@@ -1,0 +1,1 @@
+scan 'songdata', {COLUMNS => ['data:artist_name', 'data:title', 'data:duration', 'data:year'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:Bob Marley.*') AND SingleColumnValueFilter('data', 'duration', > , 'binary:400') AND SingleColumnValueFilter('data', 'year', >= , 'binary:2000')"}

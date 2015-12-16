@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">OLAP with Cloud Data Warehousing</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/21">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/21">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 67.5152096954%;"/>
+    </div>
+    
+    <span>2 days 6 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>OLAP with Cloud Data Warehousing</td>
+            <td>11/09/2015 00:01 -0500</td>
+            <td>11/15/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Project Scenario</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Task - Hive</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Task - Impala</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Task - Redshift</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-unlock-alt fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <!-- SECTION 1 -->
+<!-- Use this div header for every writeup section! -->
+<div class="bs-docs-section">
+    <h1 class="page-header">Introduction and Project Scenario</h1>
+
+    <!-- Every sentence in a <p> tag -->
+    <div class="bs-callout bs-callout-learning">
+        <h4 id="learning-objectives">Learning Objectives</h4>
+        This project will encompass the following learning objectives:
+        <ol>
+            <li>Compare Online Transaction Processing (OLTP) with Online Analytic Processing (OLAP)
+                systems and discuss the role of OLAP in Business Intelligence systems.
+            </li>
+            <li>Analyze the advantages and disadvantages of using the MapReduce programming model for data warehousing
+                by running typical Business Intelligence queries using Hive.
+            </li>
+            <li>Analyze the advantages and disadvantages of using the Massive Parallel Programming engine for data
+                warehousing by running a typical Business Intelligence queries using Impala and optimizing both schema
+                and queries.
+            </li>
+            <li>Design an optimized table structure with sort keys and distribution keys for leveraging parallel
+                processing in massively parallel systems like Redshift.
+            </li>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>General Details</h4>
+
+        <p>The following table contains the general information about this project phase:</p>
+        <table class="table table-bordered">
+            <tr class="info">
+                <th colspan="3">Applicable Languages</th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        <li>SQL for Hive, Impala and Redshift.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="info">
+                <th>Sections</th>
+                <th>Total Budget</th>
+                <th>Bonuses?</th>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>$20</td>
+                <td>No</td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>AWS Details</h4>
+
+        <p>The following table contains information regarding various AWS services and technologies for this project
+            phase:</p>
+        <table class="table table-bordered">
+            <tr class="success">
+                <th>Tag Key</th>
+                <th colspan="2">Tag Value</th>
+            </tr>
+            <tr>
+                <td>Project</td>
+                <td colspan="2">3.5</td>
+            </tr>
+            <tr class="success">
+                <th>AMI Name</th>
+                <th>AMI ID</th>
+                <th>Instance Type</th>
+            </tr>
+            <tr>
+                <td>Running Instance</td>
+                <td><code>ami-b37d03d9</code>
+                </td>
+                <td><code>m1.small</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Hive Cluster/Impala CLuster</td>
+                <td><code>N/A</code>
+                </td>
+                <td><code>EMR Cluster: 1 m1.large master and 2 m3.xlarge core</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Redshift Cluster</td>
+                <td><code>N/A</code>
+                </td>
+                <td><code>2 node ds2.xlarge cluster</code>
+                </td>
+            </tr>
+            <tr class="success">
+                <th colspan="3">AWS Technologies Explored</th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        <li>Apache Hive on Amazon EMR</li>
+                        <li>Apache Impala on Amazon EMR</li>
+                        <li>Amazon Redshift</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+        <h4 id="grading-penalties">Grading Penalties</h4>
+
+        <p>The following table outlines the violations of the project rules and their corresponding grade penalties
+            besides the penalties mentioned in recitation and/or on Piazza.</p>
+        <table class="table table-bordered">
+            <tr class="danger">
+                <th>Violation</th>
+                <th>Penalty of the project grade</th>
+            </tr>
+
+            <tr>
+                <td>Spending more than $20 for this project phase</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Spending more than $40 for this project phase</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Not tagging any of your resources</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Using instances other than what is specified in the write-up</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Attempting to hack/tamper the autograder</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Submitting your AWS credentials in your code for grading</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Not submitting all the required files during final submission</td>
+                <td>At least -100%</td>
+            </tr>
+        </table>
+    </div>
+
+	<p>So far, in project 3 you have mostly dealt with transactional workloads running on OLTP (Transactional) databases. In this part of the project, we will work on a few systems that are designed for OLAP (Analytical) workloads. We will specifically work with 3 different OLAP systems: Hive, Impala and Redshift.</p>
+	
+    
+    <h2 class="page-header">OLTP vs OLAP</h2>
+
+<p>Before we dive into OLAP, let's quickly compare OLTP and OLAP databases. The following video introduces both OLTP and OLAP databases and compares them.
+</p>
+		<!-- Follow this video embedding style EXACTLY -->
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/BNgouADOemg?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1:</b> OLTP vs. OLAP.<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <p>An <strong>OLTP (Online Transaction Processing)</strong> System deals with operational data, which is, data involved in the
+        operation of a particular system.</p>
+
+    <p>OLTP is characterized by a large number of short online transactions (INSERT, UPDATE, DELETE). In an OLTP system
+        data are frequently updated and queried. So a fast response to a request is required. Since OLTP systems involve a
+        large number of update queries, the database tables are optimized for write operations.</p>
+
+    <p>To prevent data redundancy and to prevent update anomalies the database tables are normalized. The process of
+        organizing the attributes of a table in a relational database is called normalization. Normalization makes the
+        write operation in the database tables more efficient because the total data written to disk on a transaction is reduced.
+        The set of tables that are normalized are also fragmented. The fragmentation of tables makes reading large amount of 
+        data for complex queries inefficient as data from same table is stored together and reading from across different tables 
+        incurs heavy disk latency.</p>
+
+    <p>Operational data are usually of local relevance. It involves queries accessing individual tuples (an individual
+        record). These types of queries are termed as point queries. An example OLTP query: What is the Salary of
+        Mr.John?</p>
+
+    <p><strong>OLAP (Online Analytical Processing)</strong> deals with historical data or archival data. Historical data are those data
+        that
+        are archived over a long period of time. Data from OLTP are collected over a period of time and stored in a very
+        large database called
+        a <em>Data Warehouse</em>. <p>
+		
+		    <p>A data warehouse is a copy of transaction data specifically structured for querying and reporting. Decision
+        Support
+        Systems (DSS) help organizations in strategic and operational decision making processes. Strategic decision
+        making
+        requires historical
+        data. Data Warehouses(DW) are large storage systems which store historical data that can be used for strategic
+        decision making.</p>
+	
+	<p>Data warehouses are highly optimized for read and aggregation (SELECT) operation.</p>
+
+       <p>OLAP queries are of analytical form, meaning that they need to access a large amount of data and require many
+        aggregations. It accesses a large number of records from database tables and performs filtering and aggregations
+        on the required columns.</p>
+
+    <p>Updates are very rare in a OLAP data warehouse. OLAP queries enable strategic decision making through enabling
+        the analysis of historical data.</p>
+
+    <p>An example OLAP query: How is the profit changing over the last several months across different regions?</p>
+
+    <p>In general, you can think of OLTP as the provider of data to your data warehousing system and OLAP the tool to
+        analyze the data. In this project, we will be focusing on OLAP using a real-world business scenario.</p>
+
+    <div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p1.png"/>
+        <h4>
+            <small class="caption"><b>Figure 1</b>: Feedback loop in a Business Intelligence system</small>
+        </h4>
+    </div>
+
+    <h1 class="page-header">Introduction to Hive, Impala and Redshift</h1>
+
+    <p>In this project, you will get your hands on three popular data warehouses: Hive, Impala and Redshift. These
+        three data warehouses, though all being OLAP data warehouses, are implemented in quite different ways and have
+        different
+        characteristics.</p>
+
+    <p><a href="https://hive.apache.org/">Hive</a>
+        is built on top of Hadoop and facilitates querying and managing large amount of data stored in Hadoop's HDFS and
+        other compatible file systems such as Amazon S3.
+        By providing a SQL-like syntax, Hive frees users from writing complicated MapReduce jobs to get the result from
+        the
+        big dataset. Hive acts like an endpoints that translates SQL queries into MapReduce jobs and submits to Hadoop
+        for execution.
+        However, since Hive was designed to use the MapReduce framework to finish the query, it is by design heavyweight and
+        high-latency. It's mostly used for batch processing.</p>
+
+    <p><a href="http://impala.io/">Cloudera Impala</a>, another open-source data warehouse,
+        is very similar to Hive to some extent, since it offers the same SQL syntax as Hive that are familiar to normal
+        users such as analysts and data scientists.
+        Impala is also based on Hadoop. It is integrated with Hadoop to use the same file and data formats,
+        metadata, security and resource management frameworks used by MapReduce, Apache Hive, Apache Pig and other
+        Hadoop software. However, it is designed for low-latency queries. It works much faster than
+        Hive because rather than initiate a MapReduce job for each query, Impala uses a massive parallel programming
+        (MPP) engine developed by Cloudera to directly access data stored on the cluster. </p>
+
+    <p><a href="https://aws.amazon.com/redshift/">Redshift</a>
+        is a Database-as-a-Service product provided by AWS.
+        It is a data warehouse built on top of a proprietary technology from a massive parallel programming (MPP)
+        data warehouse ParAccel by Actian. Unlike Hive or Impala, Redshift is not based on MapReduce or HDFS, and is typically used for
+        real-time analytics.</p>
+
+    <h2 class="page-header">Hive</h2>
+
+    <p>The Apache Hive data warehouse software facilitates querying and managing large datasets residing in distributed
+        storage (HDFS). Hive provides a mechanism to project structure onto the data stored in HDFS and query the data using a SQL-like
+        language called HiveQL.
+        Programmers are also given the ability to plug in custom Mappers and Reducers to analyze data when such a
+        solution is
+        more efficient or it is not possible to automatically project structure onto the data in the distributed
+        storage.</p>
+
+    <p>Hive is not designed for OLTP workloads and does not offer real-time queries or row-level updates. It is best
+        used
+        for batch jobs over large sets of append-only data (like web logs). The most important characteristics of Hive
+        are:</p>
+    <ol>
+        <li>scalability (scale out with more machines added dynamically to the Hadoop cluster)</li>
+        <li>extensibility (with the MapReduce framework)</li>
+        <li>fault-tolerance (provided by HDFS)</li>
+        <li>loose-coupling with its input formats (using SerDe (Serializer/Desirializer) explained below)</li>
+    </ol>
+    <p>The following figure gives a high level overview of Hive and its relationship with HDFS.</p>
+
+    <div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p4.png"/>
+        <h4>
+            <small class="caption"><b>Figure 2</b>: Hive Architecture</small>
+        </h4>
+    </div>
+    <p>The Hive server has a SQL <b>parser</b>, <b>planner</b>, <b>executor</b> and <b>optimizer</b>
+        that will transform the SQL query to a MapReduce
+        job that runs on top of Hadoop and HDFS. The Hive metastore service stores the metadata for Hive tables and
+        partitions in a relational
+        database, and provides clients (including Hive) access to this information via the metastore service API. The
+        metadata contains information like IDs of database, IDs of tables, IDs of index, the time of
+        creation of an index,
+        the time of creation of a table, IDs of roles assigned to a particular user, inputFormat used for a Table,
+        OutputFormat used for a Table and etc.</p>
+
+    <p>Hive uses its own SQL-like query language called HiveQL. HiveQL is very much alike to normal SQL such as the one
+        you have been using with MySQL. For a brief comparison between SQL and HiveQL, you could read this
+        <a href="http://hortonworks.com/hadoop/hive/#section_5">post</a>.</p>
+
+
+    <h2 class="page-header">Impala</h2>
+
+    <p>As an open source tool in the Hadoop ecosystem, Impala is designed for interactive, ad-hoc querying using SQL
+        syntax.
+        Impala uses the same metadata, SQL syntax, ODBC driver as Apache Hive, which provides a unified and familiar
+        platform for real-time queries or batch-oriented queries. The high level of integration with Hive, and
+        compatibility
+        with the HiveQL syntax, lets you use either Impala or Hive to create tables, issue queries, load data, and so
+        on.</p>
+
+    <p>While retaining a familiar user experience as Hive, Impala provides high performance real-time SQL queries on
+        Apache
+        Hadoop. Instead of using MapReduce, Impala leverages a massively parallel processing (MPP) engine similar to
+        that
+        found in traditional
+        relational database management systems (RDBMS). It is a brand-new engine written in both C++ and Java. With this
+        architecture, you can query your data in HDFS (or HBase tables) very quickly, and leverage Hadoop's ability to
+        process
+        diverse data
+        types and provide schema at runtime. It is so far the fastest SQL-on-Hadoop system, especially for multi-user
+        scenarios (where multiple users are querying the warehouse at the same time).</p>
+
+    <h3 class="page-header">Components of Impala Server</h3>
+
+    <p>The Impala server is a distributed, massively parallel processing (MPP) database engine. It consists of different
+        daemon processes that run on specific hosts within your EMR cluster.</p>
+
+    <dl>
+        <dt>The Impala Daemon</dt>
+        <dd>Impala Daemon process is the core component of the Impala Cluster. Each DataNode of the cluster has a daemon
+            process
+            running on top of it, which is represented by the <code>impalad</code> process. The daemon process accepts queries
+            transmitted from the user application
+            through JDBC, ODBC, <code>impala-shell</code> command etc. It then parallelizes the queries, distributes the work to
+            other DataNodes across the cluster, and transmits intermediate query results back to the central coordinator node
+            that receives the query.
+            Once the aggregations are completed on the coordinator, the final result will be returned to the user. The
+            instance of the daemon process that receives the query serves as the coordinator node for that query. The
+            coordinator could be selected
+            randomly or in a round-robin manner. All DataNodes in the cluster are all symmetric so any one of the nodes
+            can
+            be the coordinator for any query.
+        </dd>
+        <dd>The Impala daemons are in constant communication with the <b>statestore</b>, to confirm which nodes are
+            healthy
+            and can accept new work. Broadcast messages from the <code>catalogd</code> daemon are also received whenever any metadata
+            is changed.
+        </dd>
+    </dl>
+    <dl>
+        <dt>The Impala Statestore</dt>
+        <dd>The <b>statestore</b> the component of the Impala server which constantly checks on the health state of Impala
+            daemons on all the DataNodes in a cluster, and relays the updates to all those daemons. The statestore is
+            represented by a daemon process
+            called <code>statestored</code>. Only one such process is needed in the whole cluster. If any nodes of the cluster go
+            offline due to network error, software issue or hardware failure, the statestore notifies all the other
+            Impala daemons so that future queries will not be propagated to those unreachable nodes.
+        </dd>
+    </dl>
+    <dl>
+        <dt>The Impala Catalog Service</dt>
+        <dd>Impala Catalog service takes care of any changes of the metadata in the cluster. It relays the metadata
+            changes from Impala SQL statements to all the DataNodes in a cluster.The Catalog service exists as a daemon process
+            named <code>catalogd</code>. Like the
+            statestore, only one such process is needed on one host in the cluster. Because the requests are passed
+            through
+            the statestore daemon, it makes sense to run the <code>statestored</code> and <code>catalogd</code> services on the same host.
+        </dd>
+    </dl>
+
+    <h3 class="page-header">Architecture</h3>
+
+    <p>Since Impala employs a finely-tuned massively-parallel query execution engine instead of MapReduce, the performance may be
+        improved by an order-of-magnitude compared to Hive. The figure below gives the architecture of Impala.</p>
+
+    <div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p7.png"/>
+        <h4>
+            <small class="caption"><b>Figure 3</b>: Impala Architecture</small>
+        </h4>
+    </div>
+
+    <h2 class="page-header">Redshift</h2>
+
+<p>Amazon Redshift data warehouse is an enterprise-class relational database query and management system. Redshift is
+        a cloud service that is offered by Amazon AWS. Here's a video introducing Redshift.</p>
+        
+				<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/eQmiUW6bgKQ?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 2:</b> Amazon Redshift<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <p>Amazon Redshift is fully managed by AWS and it runs on top of EC2 with optimizations such as locally
+        attached storage, high bandwidth interconnect across compute nodes and so on. Redshift claims to support peta-byte
+        scale data warehouse by increasing the number of compute nodes in the cluster. The following figure and sections give
+        a high level overview of Redshift’s architecture and components.</p>
+		
+    <div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p8.png"/>
+        <h4>
+            <small class="caption"><b>Figure 4</b>: Redshift Data Warehouse Archirecture</small>
+        </h4>
+    </div>
+    <dl>
+        <dt>Leader Node</dt>
+        <dd>The leader node manages communications with client programs and all communication with compute nodes. It
+            parses
+            and develops execution plans to carry out database operations. An execution plan conists of the series of steps
+            necessary to obtain results
+            for a complex query. Based on the execution plan, the leader node compiles code, distributes the compiled
+            code
+            to the compute nodes, and assigns a portion of the data to each compute node.
+        </dd>
+
+    </dl>
+    <dl>
+        <dt>Compute Nodes</dt>
+        <dd>The leader node compiles code for individual elements of the execution plan and assigns the code to
+            individual
+            compute nodes. The compute nodes execute the compiled code and send intermediate results back to the leader node
+            for final aggregation.
+            Each compute node has its own dedicated CPU, memory, and attached disk storage, which are determined by the
+            node type.
+        </dd>
+    </dl>
+    <dl>
+        <dt>Node Slices</dt>
+        <dd>A compute node is partitioned into slices; one slice for each core of the node's multi-core processor. Each
+            slice is allocated a portion of the node's memory and disk space, where it processes a portion of the
+            workload
+            assigned to the node. The
+            leader node manages distributing data to the slices and assigns the workload for any queries or other
+            database
+            operations to the slices. The slices then work in parallel to complete the operation.
+        </dd>
+        <dd>When you create a table, you can optionally specify one column as the distribution key. When the table is
+            loaded
+            with data, the rows are distributed to the node slices according to the distribution key that is defined for
+            a
+            table. Choosing a good
+            distribution key enables Amazon Redshift to use parallel processing to load data and execute queries
+            efficiently.
+        </dd>
+
+        <dd>Using columnar storage, each data block stores values of a single column for multiple rows.</dd>
+    </dl>
+    <!-- Captions for Table -->
+    <div class="img-thumbnail">
+        <table class="table table-bordered">
+            <tr class="active">
+                <th>d_datekey</th>
+                <th>d_date</th>
+                <th>d_dayofweek</th>
+            </tr>
+            <tr>
+                <td>19920101</td>
+                <td>January 1, 1992</td>
+                <td>Thursday</td>
+            </tr>
+            <tr>
+                <td>19920102</td>
+                <td>January 2, 1992</td>
+                <td>Friday</td>
+            </tr>
+        </table>
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p9.png"/>
+        <table class="table table-bordered">
+            <tr class="active">
+                <td>19920101</td>
+                <td>19920102</td>
+                <td>January 1, 1992</td>
+                <td>January 2, 1992</td>
+                <td>Thursday</td>
+                <td>Friday</td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Column 1</b>
+                </td>
+                <td colspan="2"><b>Column 2</b>
+                </td>
+                <td colspan="2"><b>Column 3</b>
+                </td>
+            </tr>
+        </table>
+        <h4>
+            <small class="caption"><b>Figure 5</b>: Block level storage of columns in column store</small>
+        </h4>
+    </div>
+
+    <p>Using columnar storage, each data block holds column field values for as many as three times the records as
+        row-based storage. This means that reading the same number of column field values for the same number of records
+        requires a third of the
+        I/O operations compared to row-wise storage. Since each block holds the same type of data, block data can use a
+        compression scheme selected specifically for the column data type, further reducing disk space and I/O.</p>
+
+    <p>The savings in space for storing data on disk also carries over to the retrieval and storage of data in
+        memory.
+        Since many database operations only need to access or operate on one or a small number of columns at a time, you
+        can
+        save memory space
+        by only retrieving blocks for columns you actually need for a query. Where OLTP transactions typically involve
+        most
+        or all of the columns in a row for a small number of records, data warehouse queries commonly read only a few
+        columns for a very
+        large number of rows. This means that reading the same number of column field values for the same number of rows
+        requires a fraction of the I/O operations and uses a fraction of the memory that would be required for
+        processing
+        row-wise blocks.
+    </p>
+</div>
+<!-- END SECTION 1 -->
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <!-- SECTION 3 -->
+<!-- Use this div header for every writeup section! -->
+<div class="bs-docs-section">
+    <h2 class="page-header">Project Scenario</h2>
+
+    <!-- Every sentence in a <p> tag -->
+    <p>Even though you have built your own social networking site, it didn't turn out to be a success.
+        After 3 months of marketing, you finally have all your family members registered on your site, but that's all
+        the customers you could manage (apart from some fake rockstars and cloud TA profiles you added to make the website look cool). So you decide that you need to find another job to make a living.</p>
+    <p>You applied for Carnegie Eagle (CE), one of the world's biggest supermarkets. You are given a chance to first
+        intern at CE for 3 months, and depending on your performance, they may finally offer you a full-time
+        job. You were given a big challenge on the first day of your internship because CE really would like to
+        know how good you are! But don't worry, this is a great chance for you to show them your abilities!</p>
+    <p>
+        CE has become very successful with sales in more than a 100 countries and half a billion
+        customers worldwide. They would like to expand their business even further and for that reason, they want to
+        analyze their historical sales
+        data which has several hundred million records. Since you have been very successful at your previous job of scaling and
+        maintaining Carnegie Records' transaction processing system,
+        CE have asked you to develop their analytics and reporting workflow using the latest
+        technologies available in the market today.</p>
+
+    <p>Since this is the first time CE builds an analytics and reporting framework for their decision
+        support system, the CTO of CE has asked you to benchmark multiple Business Intelligence (BI) tools so that they
+        use the best system available
+        for their workload. The BI tool will help them make strategic decisions for historical sales data. The executive
+        team from CE wants answers to questions like:</p>
+    <ol>
+        <li>What is the increase in revenue if discounts are reduced for a given time period.</li>
+        <li>What is the revenue from a certain product for a certain region</li>
+    </ol>
+
+    <p>Using the insights gained from the historical data captured from their transaction processing system, CE hopes to
+        improve its business. This will be accomplished by taking well informed strategic decisions for various aspects
+        of their business, such
+        as promoting certain products in certain regions, applying discounts to products etc. Figure 1 (above) shows the
+        feedback loop that portrays businesses using Business Intelligence systems.</p>
+
+    <p>After a literature survey, you have decided to use the Star Schema Benchmark (SSB). The SSB is designed to
+        measure the performance of database products with respect to data-warehousing workloads like reporting and
+        analytics. The design principles
+        and query design of the star schema benchmark are explained in the next section.</p>
+
+    <p>
+        <b>You will be doing the following tasks in this project:</b></p>
+    <div class="bs-callout bs-callout-warning">
+        <h4>Overview of Tasks</h4>
+        <ol>
+        <li>Provision a Hive (EMR) Cluster. Create external tables in Hive that reads from S3 and benchmark the
+            performance of queries 1, 2 and 3 in SSB. This task will help you analyze the advantages and disadvantages of
+            using MapReduce programming model for data warehousing workloads.
+        </li>
+        <li>Provision an Impala (EMR) Cluster. Create tables in Impala that read from local HDFS and benchmark the
+            performance of queries 1, 2 and 3 in SSB. This task will help you analyze the advantages and disadvantages of
+            using Massive Parallel Programming
+            (MPP) engine for data warehousing workloads. and compare the performance of data warehouse that uses
+            MapReduce programming model (Hive) and those that use MPP engines.
+        </li>
+        <li>Optimize both queries and table structure in Impala to improve the performance of the SSB queries by
+            leveraging the parallel execution and columnar compression in Impala.
+        </li>
+        <li>Provision a Redshift cluster, load the SSB data-set to structured (relational) tables and benchmark queries 1, 2
+            and 3 in SSB. This task will help you compare the performance of Hive with a distributed columnar store
+            (Redshift).
+        </li>
+        <li>Optimize the table structure in Redshift using sort keys and dist keys in order to improve the performance
+            of the SSB queries by leveraging the parallel execution and columnar compression in distributed columnar
+            stores.
+        </li>
+        </ol>
+    </div>
+
+    <p>The Hive Cluster, Impala Cluster and the Redshift Cluster are the backend in the context of this project as shown in the following figure.</p>
+
+<div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p2.png"/>
+        <h4>
+            <small class="caption"><b>Figure 6</b>: Project 3.5 Task Overview</small>
+        </h4>
+    </div>
+
+    <p>Now that you have already understood the scenario and had a general idea of the three data warehouses to be tested,
+        the following section will give a brief introduction to the SSB benchmark schema design and the queries of the
+        benchmark.</p>
+
+    <h2 class="page-header">The Star Schema Benchmark Schema Design</h2>
+
+    <p>Data warehouse databases commonly use a star schema design. The star schema is the simplest data warehouse
+        schema, so called because it’s representation resembles a star, with points radiating from a center. The center
+        of the star consists of one
+        or more fact tables and the points of the star are the dimension tables.</p>
+
+    <p>A star schema is characterized by one or more very large fact tables that contain the primary information in the
+        data warehouse and a number of much smaller dimension tables (or lookup tables), each of which contains
+        information about the entries
+        for a particular attribute in the fact table.</p>
+
+    <p>A fact table is at the center of a star schema. It has quantitative information about a business process that
+        needs to analyzed. For example, a fact table may contain a record for a sales transaction. The record contains
+        details such as sales lo_quantity,
+        lo_revenue, lo_orderdate, lo_custkey etc. In the above example the data that needs to be analyzed is lo_quantity
+        and lo_revenue. The lo_orderdate and the lo_custkey are foreign keys to dimension tables. The dimension tables
+        store information about
+        ways in which the fact table can be analyzed. For instance, the lo_orderdate can be used to filter information
+        from the fact table to calculate the revenue from a particular month.</p>
+
+    <p>The following figure shows the SSB data model we will be using for the benchmark.</p>
+
+    <div class="img-thumbnail">
+        <img src="https://s3.amazonaws.com/15619public/webcontent/p35p3.png"/>
+        <h4>
+            <small class="caption"><b>Figure 7</b>: The SSB data model</small>
+        </h4>
+    </div>
+
+    <p>A <b>star query</b> is a join between a fact table and a number of lookup tables. Each lookup table is joined to
+        the fact table using a primary-key to foreign-key join, but the lookup tables are not joined to each other.</p>
+
+    <h3 class="page-header">Definition</h3>
+
+    <p>A <b>primary key</b>, also called a primary keyword, is a key in a relational database that is unique for each
+        record. It is a unique identifier, such as a driver license number, telephone number (including area code), or
+        vehicle identification number
+        (VIN). A relational database must always have one and only one primary key.</p>
+
+    <p>A <b>foreign key</b> is a field (or collection of fields) in one table that uniquely identifies a row of another
+        table. The foreign key in one table (referencing table) matches the candidate key (not necessarily the primary key) column of another table
+        (referenced table). The foreign
+        key can be used to cross-reference tables.</p>
+
+    <p>A <b>star join</b> is a primary-key to foreign-key join of the dimension tables to a fact table. All of the
+        dimension tables have a primary key. The central fact table has a foreign key mapping to the dimension tables’
+        primary key. A star join selects
+        rows from the central fact table for aggregation based on a restriction (filtering condition) on the dimension
+        tables.</p>
+
+    <p>The main advantages of star schemas are that they:</p>
+    <ol>
+        <li>Provides a direct and intuitive mapping between the business entities being analyzed by end users and the
+            schema design. In an OLTP system, the tables are highly normalized. Normalization of tables is done to
+            reduce data redundancy for efficient
+            writes. The normalization of tables leads to a more complex relationship between the entities (tables) in the
+            database. A star schema reduces this complex relationship by flattening the relationship between tables by
+            having more redundant data in the tables.
+        </li>
+        <li>Provides highly optimized performance for typical data warehouse queries. This is because, the central fact
+            table has significantly more number of rows than the dimension tables to which it is being joined. This
+            enables hash joins between the
+            fact table and the smaller dimension table. In a hash join, the central fact table is processed row-by-row,
+            looking up the matching values from the in-memory hash tables of the smaller dimension tables.
+        </li>
+    </ol>
+
+    <p>The main disadvantage of the star schema is that data integrity is not enforced as strongly as it is in a highly
+        normalized database. One-off inserts and updates can result in data anomalies that normalized schemas are
+        designed to avoid. Generally
+        speaking, star schemas are loaded in a highly controlled fashion via batch processing or near-real time "trickle
+        feeds", to compensate for the lack of protection afforded by normalization.</p>
+
+    <p>The following queries are part of the SSB benchmark. They capture a typical analytic query that will be performed
+        in a data warehouse system. You will be running Query 1, 2 and 3 on Hive, Impala and Redshift to asses the
+        performance of each system
+        for a typical data warehouse query. You will use Query 1 to asses the performance optimizations in Impala
+        possible due to its table partitioning. You will also use Query 2 and Query 3 to asses the performance
+        optimizations in both Impala and Redshift
+        possible due to their columnar and distributed storage.</p>
+
+    <p><b>Query 1:</b> The first query in the benchmark will have a restriction (filtering condition) on only one
+        dimension. This is a "what if" query to find possible revenue increases. The query is meant to quantify the
+        amount of revenue increase that would have
+        resulted from eliminating certain company-wide discounts in a given percentage range for products shipped in a
+        given year.</p>
+    <pre>select sum(lo_extendedprice*lo_discount) as revenue from lineorder, dwdate where lo_orderdate=d_datekey and d_year=1997 and lo_discount between 1 and 3 and lo_quantity < 24;</pre>
+    <p><b>Query 2:</b> The second query will have restrictions on two dimensions. Our query will compare revenue for some
+        product classes, for suppliers in a certain region, grouped by more restrictive product classes and all years of
+        order.</p>
+    <pre>select sum(lo_revenue), d_year, p_brand1 from lineorder, dwdate, part, supplier where lo_orderdate = d_datekey and lo_partkey = p_partkey and lo_suppkey = s_suppkey and p_category = 'MFGR#12' and s_region = 'AMERICA' group by d_year, p_brand1 order by d_year, p_brand1 limit 500;</pre>
+    <p><b>Query 3:</b> The third query will have restrictions on three dimensions, including the remaining dimension,
+        customer. The query is intended to provide revenue volume for lineorder transactions by customer nation and
+        supplier nation and year within a given
+        region, in a certain time period.</p>
+    <pre>select c_city, s_city, d_year, sum(lo_revenue) as revenue from customer, lineorder, supplier, dwdate where lo_custkey = c_custkey and lo_suppkey = s_suppkey and lo_orderdate = d_datekey and (c_city='UNITED KI1' or c_city='UNITED KI5') and (s_city='UNITED KI1' or s_city='UNITED KI5') and d_yearmonth = 'Dec1997' group by c_city, s_city, d_year order by d_year asc, revenue desc limit 5;</pre>
+</div>
+<!-- END SECTION 2 -->
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <!-- SECTION 4 -->
+<!-- Use this div header for every writeup section! -->
+<div class="bs-docs-section">
+    <h1 class="page-header">Task for Hive</h1>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4 id="warnings">Warnings</h4>
+
+        <p>For this project, assign the tag with <code>Key: Project</code> and <code>Value: 3.5</code> for all EC2, EMR
+            and Redshift resources.</p>
+
+        <p>Some of the services including the Hive cluster, Impala cluster and Redshift cluster that you will be using
+            for this project are <b>expensive</b> when left running. Please plan ahead and pay special attention to the
+            instructions and tasks <b>before</b> provisioning
+            any resources.</p>
+
+        <p>You will be graded for this project only if you run the benchmark queries on all three databases using the
+            runner script and finish optimizing both Impala and Redshift.</p>
+    </div>
+    <h3>Benchmarking</h3>
+
+    <p>Launch an <code>m1.small</code> Runner Instance (RI) with <code>ami-b37d03d9</code>. You will be mainly working with
+        this instance to launch benchmarks against the data warehouse backend.</p>
+
+    <p>In order to run the SQL queries on the backend instance, we have provided you with a runner program
+        (<code>Runner.jar</code>) and a SQL script (<code>project3_5.sql</code>) on the Runner Instance.
+        You will be using <code>Runner.jar</code> to invoke <code>project3_5.sql</code> to execute all the queries.
+        The details of the SQL script and the runner program are given below.
+    </p>
+    <h4>The “project3_5.sql” script</h4>
+
+    <p>This is a SQL script that can be found in the Runner instance ami (<code>ami-b37d03d9</code>) at the path
+        <code>/home/ubuntu/Project3_5/project3_5.sql</code>. This is where we have put some skeleton code, and you should be
+        changing this file as needed. The Runner program will read SQL commands from this script and run
+        it in the specified backend (Hive/Impala/Redshift).
+    </p>
+
+    <p>The script is divided into multiple sections. Each section can have multiple SQL commands delimited by <code>;</code>
+    </p>
+
+    <p>Each section is identified by the following start and end comments as follows:</p>
+
+    <p></p>
+        <pre>-- [start section_name]
+[SQL commands delimited with ;]
+-- [end section_name]</pre>
+
+
+    <h4>The Runner program</h4>
+
+    <p>The Runner program is located at <code>/home/ubuntu/Project3_5/Runner.jar</code> (for Hive and Redshift) and
+        <code>/home/ubuntu/Project3_5/RunnerImpala.jar</code> (for Impala only) on Runner Instance. You can use the runner
+        program to run the required section from
+        the <code>project3_5.sql</code> file on a specific backend (Hive/Impala/Redshift).</p>
+
+    <p>You should complete the <code>config.properties</code> file located at
+        <code>/home/ubuntu/Project3_5/config.properties</code> before running the Runner program.</p>
+
+    <p>The <code>config.properties</code> file has the following structure.</p>
+    <pre>
+REDSHIFT_JDBC_URL=[redshift jdbc endpoint]
+REDSHIFT_USERNAME=[username]
+REDSHIFT_PASSWORD=[password]
+IMPALA_JDBC_URL=jdbc:hive2://[Impala(EMR) cluster master DNS]:21050/;auth=noSasl
+HIVE_JDBC_URL=jdbc:hive2://[Hive(EMR) cluster master DNS]:10000</pre>
+    <p>After correctly completing the configuration file, you can run the Runner program as follows
+        to test your queries locally.</p>
+    <pre>
+Usage: java -jar Runner.jar [backend] [section_name]
+[backend] : “hive” or “redshift”
+[section_name] : section name to run from the project3_5.sql</pre>
+    <p>For the Impala part, please use <code>RunnerImpala.jar</code> instead of <code>Runner.jar</code>.
+        The usage is the same as Runner.jar.</p>
+    <pre>
+Usage: java -jar RunnerImpala.jar [backend] [section_name]
+[backend]: "impala"
+[section_name]: section name to run from the project3_5.sql</pre>
+    <div class="bs-callout bs-callout-info">
+        <h4 id="note">Note</h4>
+        <ol>
+            <li>You should always use <code>Runner.jar</code> or <code>RunnerImpala.jar</code> to invoke
+                the <code>project3_5.sql</code> file to execute the queries.
+            </li>
+            <li>Do not initiate multiple processes of the Runner program from the same instance at the same time. This may affect your performance and/or correctness of the output. If you would like to work in parallel, please start a new Runner instance.
+            </li>
+            <li>Running some of the queries will take a significant amount of time to finish. Consider using tools like <code>byobu</code> or use <code>nohup</code> to keep your SSH session alive.
+            </li>
+        </ol>
+    </div>
+
+    <h2 class="page_header">Tasks</h2>
+
+    <h3>Launch an EMR cluster with Hive</h3>
+
+    <p>We will now benchmark the performance of SSB using queries 1, 2 and 3 on a Hive cluster to analyze the advantages and disadvantages of MapReduce for data warehousing. For this task we will be using a 1 master 2 core EMR cluster
+        with the Hive application installed.
+        (You can also choose to install Impala at this step since we are going to use it in the next step. Otherwise you
+        have to create another EMR cluster with Impala installed, which will be a waste of your budget.) The following
+        is the configuration you will be using for the EMR cluster.</p>
+
+    <p>
+        <b>Cluster Name:</b> < Your choice of EMR Cluster Name ><br>
+        <b>Termination Protection:</b> Yes <br>
+        <b>Tags: Key:</b> Project <b>Value:</b> 3.5<br>
+        <b>AMI Version:</b> 3.10.0<br>
+        <b>Applications to be installed:</b> Hive 0.13.1 (, optionally Impala 1.2.4)<br>
+        <b>Hardware Configuration:</b> Master m1.large*1; Core m3.xlarge*2<br>
+        <b>EC2 Keypair:</b> < your ec2 key pair >
+    </p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+
+        <p>Make sure that the cluster’s security group allows traffic to ports <code>10000</code> and <code>21050</code> to allow the Runner Program's JDBC connection access into Hive/Impala.</p>
+    </div>
+    <div class="bs-callout bs-callout-warning">
+        <h4>Task Steps</h4>
+        <ol>
+            <li>Once the Cluster is running, use the master instance’s DNS in the JDBC endpoint for the runner program.
+                You
+                can set this value in <code>config.properties</code> file.
+            </li>
+            <li>Execute the <code>hive_create_table</code> section in <code>project3_5.sql</code> using the <code>Runner.jar</code>
+                program. The commands here will create all the required tables for the benchmark.
+            </li>
+            <li>Run <code>submitter_hive</code> to execute query1, query2 and query3. The query results will be
+                written into three
+                files called <code>hive_query1</code>, <code>hive_query2</code> and <code>hive_query3</code> respectively under folder <code>Project3_5</code>. The program
+                will also record the time each query takes to complete. Please be patient, since this query process may take up to 1 hour.
+            </li>
+            <li>Note down the time taken to finish query 1 to 3.</li>
+            <li>Once you are done with testing query1 to query3 by running submitter_hive, you will get the points of this task. No optimization is required for this task.</li>
+            <li>Run <code>drop_tables</code> section in <code>proect3_5.sql</code> to drop all tables in Hive.
+            </li>
+            <li><b>Do not terminate your Runner Instance, as you will need it to benchmark the remaining data warehouses</b></li>
+        </ol>
+    </div>
+    <p>The data for the SSB dataset is located at <code>s3://cmucc-public/p35/ssbgz/</code> . The Hive queries will
+        automatically fetch data from this location to run the MapReduce job.</p>
+</div>
+<!-- END SECTION 4 -->
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <!-- SECTION 5 -->
+<!-- Use this div header for every writeup section! -->
+<div class="bs-docs-section">
+    <h1 class="page-header">Task for Impala</h1>
+
+    <h3>Launch an EMR cluster with Impala</h3>
+
+    <p>We will now benchmark the performance of ssb-query1, 2 and 3 on an Impala cluster to analyze the advantage and
+        disadvantage of Massive Parallel Programming for data warehousing.</p>
+
+	<div class="bs-callout bs-callout-warning">
+		<strong>Note</strong>: You can skip the part for launching an
+            EMR cluster for Impala if you’ve already installed Impala 1.2.4 in the EMR cluster you have launched for the Hive task. However, make sure to drop all the tables you created in Hive before starting this task.</p>
+    </div>
+
+		<p>For
+        this task, we will be using a 1 master 2 core EMR cluster with Impala application installed. The following is
+        the configuration you will be using for the EMR cluster.</p>
+    <p>
+        <b>Cluster Name:</b> < Your choice of EMR Cluster Name> <br>
+
+        <b>Termination Protection:</b> Yes<br>
+        <b>Tags: Key:</b> Project <b>Value:</b> 3.5<br>
+        <b>AMI Version:</b> 3.10.0<br>
+        <b>Applications to be installed:</b> Hive 0.13.1, Impala 1.2.4<br>
+        <b>Hardware Configuration:</b> 1 x Master m1.largea and 2 x Core m3.xlarge nodes<br>
+        <b>EC2 Keypair:</b> < your ec2 key pair >
+
+    </p>
+    <div class="bs-callout bs-callout-info">
+        <p>Make sure that the cluster’s security group allows traffic to port <b>21050</b> for the JDBC
+        connection between your runner instance and the cluster.</p>
+    </div>
+
+    <h3>Step 1: Create the Testing Dataset</h3>
+    <ol>
+        <li>Once the Cluster is running, use the master instance’s DNS in the JDBC endpoint for the runner program. You
+            can set the value in <code>config.properties</code> file.
+        </li>
+        <li>SSH onto the master node with your EC2 Keypair:
+            <pre>$ ssh -i key.pem hadoop@master-node-public-dns</pre>
+        </li>
+        <li>Since Impala 1.2.4 does not support S3 as a data source, we first need to download the data into HDFS in this EMR cluster.
+            <ol style="list-style-type: lower-alpha;">
+                <li>Create a directory on HDFS cluster using the following <code>hadoop</code> command
+                    <pre>$ hadoop fs -mkdir /data</pre>
+                </li>
+                <li>Create five subdirectories under <code>/data</code> in HDFS: <code>part</code>, <code>customer</code>, <code>supplier</code>, <code>lineorder</code> and <code>dwdate</code>. The command to create the <code>customer</code> subdirectory is shown:
+                    <pre>$ hadoop fs -mkdir /data/customer</pre>
+                </li>
+                <li>Load data from the S3 bucket to HDFS in parallel using <code>distcp</code>. Remember to load each directory individually:
+                    <pre>$ hadoop distcp s3://cmucc-public/p35/customer/* /data/customer/</pre>
+                </li>
+                <li>You may use the <code>hadoop fs</code> command to verify the contents of the directories after loading:
+                    <pre>$ hadoop fs -ls -R /data</pre>
+                </li>
+            </ol>
+        </li>
+        <li>Execute the <code>impala_create_table_unoptimized</code> section in <code>project3_5.sql</code> using
+            <code>RunnerImpala.jar</code> program. You
+            may notice that Impala’s SQL syntax is very similar to HiveQL. This step projects structure onto the data in
+            HDFS. Please note that the <code>CREATE</code> command
+            used in the above script will <b>NOT</b> apply automatic compression encodings to any of the columns in the table. <strong>Please Note the cumulative load time for all five tables.</strong>.</li>
+
+        </li><p>To verify the tables were loaded correctly, execute the <code>count_tables</code> section from
+            <code>project3_5.sql</code> using
+            <code>RunnerImpala.jar</code> program. You should see the following results for each SSB table:</p>
+            <table class="table table-bordered">
+                <tr class="active">
+                    <th>Table Name</th>
+                    <th>Rows</th>
+                </tr>
+                <tr>
+                    <td>LINEORDER</td>
+                    <td>600,037,902</td>
+                </tr>
+                <tr>
+                    <td>PART</td>
+                    <td>1,400,000</td>
+                </tr>
+                <tr>
+                    <td>CUSTOMER</td>
+                    <td>3,000,000</td>
+                </tr>
+                <tr>
+                    <td>SUPPLIER</td>
+                    <td>1,000,000</td>
+                </tr>
+                <tr>
+                    <td>DWDATE</td>
+                    <td>2,556</td>
+                </tr>
+            </table>
+        </li>
+    </ol>
+
+    <h3>Step 2: Test the System Performance to Establish a Baseline</h3>
+    <ol>
+        <li>Now we can test Impala's query performance. Since Impala caches query results in memory, queries get faster when you re-execute them. For our analysis, do <b>NOT</b> use the results for the first time
+            you execute the query. Instead, compare the times for the second execution of each query. Execute the
+            <code>query1</code>, <code>query2</code>, <code>query3</code> sections from <code>project3_5.sql</code> using <code>RunnerImpala.jar </code>program. <b>You may notice some errors in this step. Don't worry about that. You will figure the reason behind that out and fix them shortly.</b>
+        </li>
+        <li>Note down the time spent on each query for this task.</li>
+    </ol>
+    <div class="bs-callout bs-callout-info">
+        <h4>Why am I getting errors in some of the queries?</h4>
+        <dl>
+            <dt>Not all the queries can be executed correctly.</dt>
+
+            <dd><p>Instead of loading entire tables into memory, Impala builds hash tables in memory, such as the
+                right-hand side table of a join or the result set of an aggregation. Hence Imapala tends to use large amounts of memory as I/O buffers, and the number of processor cores on the
+                cluster as well as the speed of the scanners determine the amount of buffering that is necessary in order to keep all cores busy. This explains why we can query on a dataset that is way bigger than our memory size
+                while some small tables can
+                also use up the available memory.</p>
+           
+		   <p>If the memory on a node is not big enough to hold the hash table, or the query is not optimized appropriately, an out-of-memory condition may arise, and you will see exceptions like <code>Invalid data, Invalid query handle, Connection refused</code>. This is because at least one of the data node in the cluster has an out-of-memory issue and thus crashed so it's no longer accessible to other nodes. Fortunately, a user does not need to do anything but wait until the bad node reboots and the node will be available again.</p>
+        </dl>
+    </div>
+
+
+    <h3>Step 3: Optimizing the Table Design and Queries for Impala</h3>
+
+    <p>In the previous step, you may have noticed that some queries cannot be executed on Impala directly, while others might
+        be taking
+        too long to return the query result. In an effort to make the most use of the available resources, it is
+        extremely necessary to optimize
+        your Impala tables as well as your queries. In this step, you will be exploring different optimization
+        techniques in order to solve the out-of-memory error as well as to speed up your queries on Impala.</p>
+    <p>You will need to:</p>
+    <ol>
+        <li>Design the schema in a manner that is optimized for Impala. Be sure to follow the naming convention <code>[table_name]_opt</code>
+            to name your new
+            tables. For example, you should name your optimized <code>customer</code> table as
+            <code>customer_opt</code>. You will have to work directly within Impala shell as there is <b>NO</b>
+            corresponding SQL section in the <code>project3_5.sql</code> file to create the optimized schema.
+        </li>
+        <li>Populate your optimized tables with data we used in the first step. (What we used in the first step may
+            not be working.)
+        </li>
+        <li>To verify that the tables are populated correctly, execute the <code>count_tables_opt</code> section from
+            <code>project3_5.sql</code> using the runner program.
+        </li>
+        <li>In addition to modifying the table schema, you also need to optimize your queries to minimize the querying time.
+            We have created three more sections called <code>query1_opt</code>,
+            <code>query2_opt</code>, <code>query3_opt</code> and copied query 1, 2 and 3 directly without any modification.
+            Feel free to change these sections to your own queries, but your optimized queries must generate the exact result as
+			the corresponding unoptimized queries.
+        </li>
+        <li>Run <code>query1_opt</code>, <code>query2_opt</code> and <code>query3_opt</code> from
+            <code>RunnerImpala.jar</code> program to test the effect of your optimizations. Note that, in order
+            to earn points, your optimized queries must both return correct responses and run fast enough.</li>
+			
+        <li>Note down the SQL statements you used for creating optimized tables, put them in a file called
+            <code>schema.sql</code> under
+            <code>/home/ubuntu/Project3_5/</code>. If you have any other SQL statements that you used in optimizing (e.g. statements
+            for populating the tables), make
+            sure to include them in <code>schema.sql</code> as well. Remember to add comments to your SQL statements if they are not
+            self-explanatory.
+        </li>
+    </ol>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Hints and Tips</h4>
+		  <p>We are going to give you some extremely useful hints to get you through.
+        </p>
+        <dl>
+			            <dt>Using the Impala shell</dt>
+            <dd>Impala shell is the interface provided by Impala for the user to set up databases and tables, insert data,
+                and issue queries. You can submit SQL statements in an interactive session for queries and exploration.
+                The impala-shell accepts most of HiveQL statements as well as some shell-only commands.
+            To use the impala shell, you have to first SSH to the master node of your Impala EMR cluster:
+                <pre>$ ssh -i key.pem hadoop@master-node-public-dns</pre>
+                Once you log into the master node, you can open the Impala shell by executing <code>impala-shell</code> command
+                in your SSH session. You can type in any of the supported SQL statements in the shell and Impala will execute
+                them for you.</dd>
+			<dt>Hadoop File Formats</dt>
+            <dd>
+            Impala supports various file formats that are also supported in Hadoop, including Parquet, Text, Avro and SequenceFile, among others. Typically for large amounts of data (say, multiple gigabytes per
+                partition or table), certain file formats perform better when compared to traditional file formats.
+                Many of these formats use features such as columnar storage layout, large I/O request size, and compression and encoding. Choose the file format that is best suited for this task.</dd>
+            <dt>Considerations for Join Queries</dt>
+			<dd>Database joins tend to be the most time consuming and intensive tasks to perform on a database. Queries that involve join operations are good targets for optimization. The bigger the
+                tables are, the bigger the result set from a join query could be. Remember, however, that Impala does not load entire tables
+                into memory. Instead, Impala builds hash
+                tables of the right-hand side tables in a join query in memory, filtering out unrelated data based on
+                the SQL clause and then sends the intermediate query result back to the coordinator for aggregation. If
+                the table used for building up an
+                in-memory hash table is too big, the memory of the datanode may not be enough and thus causes an
+                out-of-memory error.</p>
+            <p>The join operation is done from left to right. Tables on the left hand side of your join query will be
+                executed first. This means the joining result from the left side can limit the size of result set of the
+                join operations on the right side.
+                For example, suppose we do a join with a small table A and a huge table B under the constraint that A’s
+                primary key equals B’s foreign key. Since the size of table A is very small, the joining result will be
+                small as well.
+            </p></dd>
+            <dt>Caching Techniques</dt>
+            <dd>Caching might be a good option when you have some data that is frequently accessed. Putting hot
+                data that is frequently accessed across queries in cache will improve query performance.</dd>
+            <dt>Partition your data</dt>
+            <dd>By default, the data file for one table is stored in a single directory. This feature may hinder our
+                query execution process since most of the time we are not interested in all the data in the table. For
+                example, a query includes a WHERE condition
+                like <code>sid=1001</code> should only examine the sections of the file that satisfy this filter. However, since
+                by default all the data files of the table are stored in one directory, Impala has to scan the
+                entire directory. If we can partition
+                the data files into different directories based on the fields that are used in queries, Impala can avoid unnecessary scanning over the data files that are not relevant to the query.
+            </dd>
+            <dt>Using statistics for query optimization</dt>
+            <dd>If Impala knows the volume of data and how values are distributed across the cluster, Impala can
+                automatically optimize the queries by parallelizing and distributing the work in a more scientific way. </dd>
+             <dd><b>Do not use <code>COMPUTE STATS</code> in impala</b> as there is a bug in this command hiding in Hive.</dd>
+			<dt>Impala Versions</dt>
+            <dd>Because EMR only provides a fairly old version of Impala, not all the optimization techniques we gave above are
+                applicable. You should read the
+                <a href="http://www.cloudera.com/content/www/en-us/documentation/archive/impala/1-x/1-2-4/Cloudera-Impala-Frequently-Asked-Questions/Cloudera-Impala-Frequently-Asked-Questions.html?scroll=faq_performance_unique_1">
+                    Impala 1.2.4 documentation
+                </a>
+                we just gave, try out different optimizations and
+                think about other possibilities that are not mentioned above.</dd>
+        </dl>
+    </div>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>How to submit</h4>
+        <ol>
+            <li>To complete the project, after completing the tasks above, you can verify your implementation locally using the
+                <code>RunnerImpala.jar</code> program.
+                But you will need to follow the steps given below to complete your submission for this project.
+            </li>
+            <li>Launch an m1.small(<code>ami-b37d03d9</code>) Runner Instance if you haven’t done so.</li>
+            <li>In the Runner Instance, go to the autograder folder which is located at <b>/home/ubuntu/Project3_5/</b></li>
+            <li>Inside Project3_5/ you will find <code>submitter_impala</code>, which will be used to execute your
+            queries in <code>project3_5.sql.</code> and submit your results.</li>
+            <li>You will be tested on both the correctness of your queries and the time taken to complete the queries.</li>
+            <li>Once you have confidence of your optimizations, you can run <code>submitter_impala</code>
+                to submit. Make sure you have noted down the SQL statements (other than those within <code>project3_5.sql</code>)
+                you used for Impala schema optimization in a file called <code>schema.sql</code> and put that file
+                under <code>/home/ubuntu/Project3_5</code>. Also make sure you have added all the references (links and Andrew IDs)
+                in the <code>references</code> file in the same folder.
+            </li>
+            <li>You will receive basic points as long as your optimized Impala schema and queries can return correct results. The faster your optimization works, the more points you will receive.</li>
+            <li>Keep in mind that performance variations on EC2 and the network may affect your results, so you may need to submit multiple times to get a full score.
+            </li>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+        <p>After finishing this part, you can shut down your EMR cluster to save money since we are not going to need EMR 
+            in the next section. However, <b>Do NOT terminate your runner instance at this point, as we will continue to use it for benchmarking Redshift in the next section.</b>
+        </p>
+    </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <!-- SECTION 6 -->
+<!-- Use this div header for every writeup section! -->
+<div class="bs-docs-section">
+    <h1 class="page-header">Task for Redshift</h1>
+
+    <h3>Launching a Redshift Cluster</h3>
+
+    <p>Redshift is a stand-alone service in AWS that does not use EMR to provision a cluster. For this task, we will be
+        launching a multi-node redshift cluster with 1 leader (provided for free) and 2 compute
+        nodes. Redshift is a fairly expensive service so make sure you read the entire writeup and understand your task
+        before you provision a cluster. Please follow the steps below for launching the cluster.</p>
+    <ol>
+        <li>Sign in to the AWS Management Console and open the <a
+                href="https://console.aws.amazon.com/redshift/">Amazon Redshift console</a>.
+        </li>
+        <li>In the left navigation pane, click <b>Clusters</b> and then click <b>Launch Cluster</b>.</li>
+        <li>On the <b>Cluster Details</b> page, enter the following values and then click <b>Continue</b>:
+            <ul>
+                <li><b>Cluster Identifier:</b> Type an identifier of your choice. (example: <code>ssb-benchmark</code>)
+                </li>
+                <li><b>Database Name:</b> Type a database name of your choice. (example: <code>ssb</code>)</li>
+                <li><b>Database Port:</b> Leave the port number to the default value. Make sure that the security group
+                    you select in the subsequent step allows traffic on this port.
+                </li>
+                <li><b>Master User Name:</b> Type a master user name of your choice. You will use this username and
+                    password to connect to your database after the cluster is available.
+                </li>
+                <li><b>Master User Password and Confirm Password:</b> Type a password for the master user account.</li>
+                <dd>(Note: Make sure you note down the username and password. You will use these values to establish a
+                    JDBC connection to the Redshift cluster.
+                </dd>
+            </ul>
+        </li>
+        <li>On the Node Configuration page, select the following values and click continue,
+            <ul>
+                <li><b>Node Type:</b> <code>ds2.xlarge</code></li>
+                <li><b>Cluster Type:</b> Multi Node</li>
+                <li><b>Number of Compute Nodes:</b> 2</li>
+            </ul>
+        </li>
+        <li>On the Additional Configuration page,
+            <ul>
+                <li><b>Cluster Parameter Group:</b> select the default parameter group.</li>
+                <li><b>Encrypt Database:</b> none.</li>
+                <li><b>Choose a VPC:</b> Default VPC (<code>vpc-xxxxxxxx</code>)</li>
+                <li><b>Cluster Subnet Group:</b> default</li>
+                <li><b>Publicly Accessible:</b> Yes</li>
+                <li><b>Choose a Public IP address:</b> No</li>
+                <li><b>Availability Zone:</b> No preference</li>
+                <li><b>VPC Security Group:</b> Select a security group that allows traffic on the database port you
+                    selected in step 3
+                </li>
+                <li><b>Create CloudWatch Alarm:</b> No</li>
+            </ul>
+        </li>
+        <li>On the Review page, review all your configuration options and then click on <b>Launch Cluster</b>.</li>
+        <div class="img-thumbnail">
+            <img src="https://s3.amazonaws.com/15619public/webcontent/p35p10.png"/>
+            <h4>
+                <small class="caption"><b>Figure 8</b>: Redshift Cluster Configuration</small>
+            </h4>
+        </div>
+        <li>On the Clusters page, click the cluster that you just launched and review the Cluster Status information.
+            Make sure that the Cluster Status is available and the Database Health is healthy before you try to connect
+            to the database.
+        </li>
+        <div class="img-thumbnail">
+            <img src="https://s3.amazonaws.com/15619public/webcontent/p35p11.png"/>
+            <h4>
+                <small class="caption"><b>Figure 9</b>: Redshift Cluster Status Information</small>
+            </h4>
+        </div>
+        <li><b>Remember to tag your Redshift cluster by clicking on "Manage Tags" in the Clusters dashboard</b></li>
+        <li>Copy the username, password and the JDBC endpoint URL to the file
+            <code>/home/ubuntu/Project3_5/config.properties</code>
+        </li>
+    </ol>
+
+    <p>We have now launched the cluster and configured the runner program to connect to our Redshift cluster. As with
+        the previous tasks, we can now proceed to benchmark query performance on Redshift for the ssb-benchmark
+        dataset.</p>
+
+    <p>The following steps, (Steps 1-4) are used to analyze the optimizations possible in Redshift. In Steps 1 and 2 we
+        will test the performance of the Redshift cluster without applying any
+        optimizations. In Step 3 we
+        will explore the capabilities and optimizations possible in a Redshift cluster. Finally in Step 4 we will apply
+        the optimizations discussed in Step 3 and benchmark the performance of ssb queries to evaluate if they lead to
+        any improvements
+        in performance.</p>
+
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>Budget Warning</h4>
+
+        <p>Redshift can be extremely expensive! Please make sure you understand how Redshift is charged and work
+            wisely.</p>
+    </div>
+
+    <h3>Step 1: Create the Schema and Load the Dataset</h3>
+    <ol>
+        <li>First we will create the ssb tables with minimum attributes (they will not have sort keys, distribution
+            styles, or compression encodings). Execute the <code>redshift_create_table_unoptimized</code> section from
+            <code>project3_5.sql</code> using <code><code>Runner.jar</code></code>.
+        </li>
+        <li>Load the tables using the ssb sample data.Execute the <code>redshift_load_uncompressed</code> section from
+            <code>project3_5.sql</code> using <code><code>Runner.jar</code></code>. Replace the
+            <code>[AWS_ACCESS_KEY_ID]</code> and <code>[AWS_SECRET_ACCESS_KEY]</code> in the SQL command with your own
+            AWS access key and secret key respectively. <b>Please remove your credential before submission to avoid penalty.</b>
+        </li>
+        <li>
+            The copy command used in the above script will not apply automatic compression encodings to the columns in
+            the table. This is because of the <code>gzip compupdate off</code> option in the copy command.
+        </li>
+        <li>To verify the tables were loaded correctly, execute the “count_tables” section from project3_5.sql using the
+            runner program. The following results table shows the number of rows for each SSB table.
+        </li>
+        <table class="table table-bordered">
+            <tr class="active">
+                <th>Table Name</th>
+                <th>Rows</th>
+            </tr>
+            <tr>
+                <td>LINEORDER</td>
+                <td>600,037,902</td>
+            </tr>
+            <tr>
+                <td>PART</td>
+                <td>1,400,000</td>
+            </tr>
+            <tr>
+                <td>CUSTOMER</td>
+                <td>3,000,000</td>
+            </tr>
+            <tr>
+                <td>SUPPLIER</td>
+                <td>1,000,000</td>
+            </tr>
+            <tr>
+                <td>DWDATE</td>
+                <td>2,556</td>
+            </tr>
+        </table>
+        <li>Note the cumulative load time for all five tables.</li>
+    </ol>
+
+    <h3>Step 2: Test the System Performance to Establish a Baseline</h3>
+    <ol>
+
+        <li>Test query performance. The first time you run a query, Amazon Redshift compiles the code, and then sends
+            compiled code to the compute nodes.
+        </li>
+        <li>As with Impala, when you compare the execution times for queries, you should <b>NOT</b>
+            use the
+            results for the first time you
+            execute the query. Instead, compare the times for the second execution of each query. Execute the <code>query1</code>,
+            <code>query2</code>, <code>query3</code> sections from <code>project3_5.sql</code> using the runner program.
+        </li>
+    </ol>
+
+    <h3>Step 3: Optimizing the Table Design for Query Performance. </h3>
+
+    <p>There are number of ways in which you can optimize the table design to improve the query performance. Among
+        them is the correct choice of sort and dist keys.</p>
+    <dl>
+        <dt>Sort Key</dt>
+        <dd>When you create a table, you can specify one or more columns as the sort key. Redshift stores your data on
+            disk in sorted order according to the sort key. How your data is sorted has an important effect on disk I/O,
+            columnar compression, and query
+            performance. In this step, you choose sort keys for the SSB tables based on these best practices:
+
+            <ul>
+                <li>If recent data is queried most frequently, specify the timestamp column as the leading column for
+                    the
+                    sort key.
+                </li>
+                <li>If you do frequent range filtering or equality filtering on one column, specify that column as the
+                    sort
+                    key.
+                </li>
+                <li>If you frequently join a (dimension) table, specify the join column as the sort key.</li>
+            </ul>
+        </dd>
+
+        <dt>To select sort keys:</dt>
+        <dd>
+            <ol>
+                <li>Evaluate your queries to find timestamp columns that are used to filter the results.</li>
+                <li>Look for columns that are used in range filters and equality filters.</li>
+                <li>For smaller dimension tables, choose the primary keys as their sort keys.</li>
+            </ol>
+        </dd>
+        <dt>Dist Keys:</dt>
+        <dd>
+            <p>When you load data into a table, Redshift distributes the rows of the table to each of the node slices
+                according to the table's distribution style. The number of slices is equal to the number of processor
+                cores
+                on the node. For example, the ds2.xlarge
+                cluster that you are using here has two nodes, so it has eight slices. The nodes all
+                participate
+                in parallel query execution, working on data that is distributed across the slices.</p>
+
+            <p>When you execute a query, the query optimizer redistributes the rows to the compute nodes as needed to
+                perform any joins and aggregations. Redistribution might involve either sending specific rows to nodes
+                for
+                joining or broadcasting an entire
+                table to all of the nodes. You should assign distribution styles to achieve these goals.</p>
+
+            <ul>
+                <li>Collocate the rows from joining tables</li>
+                <li>When the rows for joining columns are on the same slices, less data needs to be moved during query
+                    execution.
+                </li>
+                <li>Distribute data evenly among the slices in a cluster.</li>
+                <li>If data is distributed evenly, the workload can be allocated evenly to all the slices. These goals
+                    may
+                    conflict in some cases, and you will need to evaluate which strategy is the best choice for overall
+                    system performance. For example, even
+                    distribution might place all matching values for a column on the same slice. If a query uses an
+                    equality
+                    filter on that column, the slice with those values will carry a disproportionate share of the
+                    workload.
+                    If tables are collocated based
+                    on a distribution key, the rows might be distributed unevenly to the slices because the keys are
+                    distributed unevenly through the table.
+                </li>
+            </ul>
+            <p>In this step, you evaluate the distribution of the SSB tables with respect to the goals of data
+                distribution, and then select the optimum distribution styles for the tables.</p>
+        </dd>
+
+        <dt>Distribution Style</dt>
+        <dd>When you create a table, you designate one of three distribution styles: KEY, ALL, or EVEN.
+            <ul>
+                <li>
+                    <dl>
+                        <dt>KEY distribution</dt>
+                        <dd>The rows are distributed according to the values in one column. The leader node will attempt
+                            to
+                            place matching values on the same node slice. If you distribute a pair of tables on the
+                            joining
+                            keys, the leader node collocates the rows
+                            on the slices according to the values in the joining columns so that matching values from
+                            the
+                            common columns are physically stored together.
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>ALL distribution</dt>
+                        <dd>A copy of the entire table is distributed to every node. Where EVEN distribution or KEY
+                            distribution place only a portion of a table's rows on each node, ALL distribution ensures
+                            that
+                            every row is collocated for every join that the
+                            table participates in.
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>EVEN distribution</dt>
+                        <dd>The rows are distributed across the slices in a round-robin fashion, regardless of the
+                            values in
+                            any particular column. EVEN distribution is appropriate when a table does not participate in
+                            joins or when there is not a clear choice
+                            between KEY distribution and ALL distribution. EVEN distribution is the default distribution
+                            style.
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </dd>
+
+        <dt>To Select Distribution Styles:</dt>
+        <dd>
+            <p>When you execute a query, the query optimizer redistributes the rows to the compute nodes as needed to
+                perform any joins and aggregations. By locating the data where it needs to be before the query is
+                executed,
+                you can minimize the impact of the
+                redistribution step.
+            </p>
+
+            <p>The first goal is to distribute the data so that the matching rows from joining tables are collocated,
+                which
+                means that the matching rows from joining tables are located on the same node slice.</p>
+
+            <ol>
+                <li>
+
+                    <dd>To look for redistribution steps in the query plan, execute an EXPLAIN command followed by the
+                        query.
+                    </dd>
+                    <dd>Execute the “explain_query2” section from project3_5.sql using the runner program.</dd>
+                    <dd>DS_BCAST_INNER indicates that the inner join table was broadcast to every slice. A DS_DIST_BOTH
+                        label, if present, would indicate that both the outer join table and the inner join table were
+                        redistributed across the slices. Broadcasting
+                        and redistribution can be expensive steps in terms of query performance. You want to select
+                        distribution strategies that reduce or eliminate broadcast and distribution steps.
+                    </dd>
+                </li>
+                <li>Distribute the fact table and one dimension table on their common columns. Each table can have only
+                    one distribution key, which means that only one pair of tables in the schema can be collocated on
+                    their common columns. The central fact
+                    table is the clear first choice. For the second table in the pair, choose the largest dimension that
+                    commonly joins the fact table by analyzing the output from step 1.
+                </li>
+            </ol>
+        </dd>
+    </dl>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Hints</h4>
+        <ol>
+            <li>Query 1 has range filtering on the lineorder table for one of its field. That should be the sort key for
+                lineorder. All other dimension tables are small when compared to lineorder and hence according to best
+                practice we can sort them based on the primary key.
+            </li>
+            <li>Only 2 tables can be collocated with each other based on the join column. Clearly, we have to collocate
+                one of the tables with lineorder based on one join column from lineorder and the other table. Identify
+                the other table using the <code>explain_query2</code> command. Find the table which is larger among
+                the two tables joined in Query 2. Distribute
+                this larger table so that it is collocated with the lineorder table. This reduces the redistribution of
+                rows and increases performance.
+            </li>
+        </ol>
+    </div>
+
+    <h3>Step 4: Reload the Dataset and Benchmark the Queries</h3>
+
+    <p>Now that we have created an optimized schema in Redshift, we can reload the ssb dataset and test the query
+        performance. </p>
+    <ol>
+        <li>You need to drop the SSB tables before you run the <code>CREATE TABLE</code> commands. Execute the <code>drop_tables</code>
+            section
+            from the <code>project3_5.sql</code> using the runner program.
+        </li>
+        <li>Create the tables with sort keys and distribution styles.</li>
+        <li><p>Execute the <code>“redshift_create_table_optimized”</code> section from <code>project3_5.sql</code> using
+            the runner program. You need to change the create table operations for all tables so that the right sortkey
+            and distkey are selected.</p>
+
+            <p>By default (when no distkey is selected), the distribution is <b>EVEN</b>. If a distkey is selected, the
+                distribution style is <b>KEY</b> distribution. If diststyle "all" is specified, then it is the
+                <b>ALL</b> distribution.</p>
+
+            <p>For example, consider the dwdate table. This is a dimension table, so the best sort key is the
+                primary key of the table. We could also distribute the table across the nodes with the same field. The
+                way to create the table with both sortkey and distkey set to the primary key of <code>dwdate</code>
+                table
+                would be as follows:
+<pre>CREATE TABLE dwdate (
+d_datekey integer not null sortkey distkey,
+ d_date varchar(19) not null,
+ d_dayofweek varchar(10) not null,
+ d_month varchar(10) not null,
+ d_year integer not null,
+ d_yearmonthnum integer not null,
+ d_yearmonth varchar(8) not null,
+ d_daynuminweek integer not null,
+ d_daynuminmonth integer not null,
+ d_daynuminyear integer not null,
+ d_monthnuminyear integer not null,
+ d_weeknuminyear integer not null,
+ d_sellingseason varchar(13) not null,
+ d_lastdayinweekfl varchar(1) not null,
+ d_lastdayinmonthfl varchar(1) not null,
+ d_holidayfl varchar(1) not null,
+ d_weekdayfl varchar(1) not null
+); 
+</pre>
+            <p>But this is a small dimension table, this table can be replicated in all nodes by occupying some
+                additional space on all nodes in the cluster. i.e. diststyle all. So the optimized table design for
+                <code>dwdate</code> would be as follows:
+            </p>
+				<pre>CREATE TABLE dwdate (
+d_datekey integer not null sortkey,
+
+ d_date varchar(19) not null,
+ d_dayofweek varchar(10) not null,
+ d_month varchar(10) not null,
+ d_year integer not null,
+ d_yearmonthnum integer not null,
+ d_yearmonth varchar(8) not null,
+ d_daynuminweek integer not null,
+ d_daynuminmonth integer not null,
+ d_daynuminyear integer not null,
+ d_monthnuminyear integer not null,
+ d_weeknuminyear integer not null,
+ d_sellingseason varchar(13) not null,
+ d_lastdayinweekfl varchar(1) not null,
+ d_lastdayinmonthfl varchar(1) not null,
+ d_holidayfl varchar(1) not null,
+ d_weekdayfl varchar(1) not null
+) diststyle all;</pre>
+
+        </li>
+        <li>
+            <p>Load the tables using the same sample data. This time we will make use of <code>copy</code> command's
+                auto compress
+                feature to automatically analyze and apply appropriate compression schemes for the columns.
+            </p>
+
+            <p>Execute the <code>redshift_load_compressed</code> section from <code>project3_5.sql</code> using the
+                runner program.</p>
+        </li>
+        <li>
+            <p>Test query performance. The first time you run a query, Amazon Redshift compiles the code, and then
+                sends compiled code to the compute nodes. When you compare the execution times for queries, you should
+                not use the results for the first time
+                you execute the query. Instead, compare the times for the second execution of each query.
+            </p>
+
+            <p>Execute the “query1”, “query2”, “query3” sections from <code>project3_5.sql</code> using the <code>Runner.jar</code>
+                program.</p>
+        </li>
+    </ol>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>How to submit</h4>
+
+        <p>To complete this task, you are expected to run benchmark testing on Redshift, and submit your optimization
+            results via the submitter. To submit your work to the auto grader, please do the following:</p>
+        <ol>
+            <li>Go to the auto-grader folder located at <code>/home/ubuntu/Project3_5/</code></li>
+            <li>The <code>submitter_redshift</code> will automatically execute the optimized queries on your optimized
+                Redshift data warehouse. Query results are checked. Your Redshift cluster has to respond within a
+                specific
+                time duration. Otherwise you will not receive full marks for this part.
+            </li>
+            <li>Edit the text file <code>references</code> to include all the links that you referred to for completing
+                this project.
+                Remember, copying any code from the internet is considered cheating. Also include the Andrew IDs of all
+                the other students who you might have discussed general ideas with when working on this project in
+                the same file. Please remember, copying any code from any other student is considered cheating.
+            </li>
+            <li><b>DO remember to remove your AWS credentials from file project3_5.sql as this file will be uploaded when you submit.</b> Including your credential in your submission may cause penalty to your grade!</li>
+            <li>Once you are confident about your optimizations, and have put all the required files
+                (<code>references</code> and <code>project3_5.sql</code>) in the <b>Project3_5</b> folder,
+                you can run <code>submitter_redshift</code> to submit.
+                Make sure your modified <code>project3_5.sql</code> is in folder <b>Project3_5</b>.
+            </li>
+            <li>Keep in mind that performance variations on EC2 and the network may affect your results, so you may need
+                to submit multiple times to get a full score.
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- END SECTION 6 -->
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <iframe src="https://docs.google.com/forms/d/1khpZTsorzwM8LRYhMZ5ayE5tmt3diWk3Ri6x3pjLrD0/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="21">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

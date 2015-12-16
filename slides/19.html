@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Consistency in Distributed Key-Value Stores</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/19">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/19">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 24.7851773118%;"/>
+    </div>
+    
+    <span>5 days 7 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Consistency in Distributed Key-Value Stores</td>
+            <td>10/26/2015 00:01 -0400</td>
+            <td>11/01/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Consistency Models</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Scenarios</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Consistency in Cross Region Datastores</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Tasks</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    	<div class="bs-docs-section">
+	<h1 class="page-header">3.3 Consistency in Distributed Key-Value Stores</h1>
+	<div class="bs-callout bs-callout-learning">
+		<h4>Learning Objectives</h4><p>This project will encompass the following learning objectives:</p>
+		<ol>
+			<li>Discuss the various levels of consistency (Strong, Causal and Eventual) that can employed in a distributed data store.</li>
+			<li>Implement and evaluate strong, causal and eventual consistency models for a distributed key-value store.</li>
+			<li>Compare the various trade-offs that exist in using different levels of consistency.</li>
+			<li>Explore the advantages and disadvantages of replicating over different geographical locations.</li>
+			<ol/>
+		</ol>
+	</div>
+	<div class="bs-callout bs-callout-info">
+		<h4>General Details</h4>
+		<p>The following table contains the general information about this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="info">
+				<th colspan="3">Applicable Languages</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Java only</li>
+					</ul>
+				</td>
+			</tr>
+			<tr class="info">
+				<th>Sections</th>
+				<th>Total Budget</th>
+				<th>Bonuses?</th>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>$15</td>
+				<td>No</td>
+			</tr>
+		</table>
+	</div>
+	<div class="bs-callout bs-callout-danger">
+		<h4>Project Grading Penalties</h4><p>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the following:</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Violation</th>
+					<th>Penalty of the project grade</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>Spending more than $15 for this project phase</td>
+				<td>-10%</td>
+			</tr>
+			<tr>
+				<td>Spending more than $30 for this project phase</td>
+				<td>-100%</td>
+			</tr>
+			<tr>
+				<td>Failing to tag all your resources for this project</td>
+				<td>-10%</td>
+			</tr>
+			<tr>
+				<td>Using instances other than what is specified in the write-up</td>
+				<td>-10%</td>
+			</tr>
+			<tr>
+				<td>Attempting to hack/tamper the autograder</td>
+				<td>-100%</td>
+			</tr>
+			<tr>
+				<td>Submitting your AWS credentials in your code for grading</td>
+				<td>-10%</td>
+			</tr>
+			<tr>
+				<td>Not submitting all the required files during final submission</td>
+				<td>At least -100%</td>
+			</tr>
+		</table>
+	</div>
+	<h2>Introduction</h2><p>In Project 3.2, we introduced two different distributed storage methods, sharding and replication. In both of these methods, it is important to ensure that the correctness and integrity of the data is maintained. In this module, we will focus on exploring different levels of consistency for a replicated key-value store. </p>
+	<h3>Consistency in Distributed Databases</h3>
+	<p> In large globally distributed applications, the data for the application may be replicated across various locations across the globe. This is done for a number of reasons. Some of the reasons for doing this are listed below:</p>
+	<ol>
+		<li>
+			<b>Reliability/Availability:</b> Having a distributed data store ensures normal operation in case of single node failures.</li>
+		<li>
+			<b>Performance:</b> Having multiple replicas for the application data can reduce the potential of one data store being overloaded with requests, which could become a potential bottleneck to the application.</li>
+		<li>
+			<b>Latency:</b> Having multiple replicas for the same data can help in reducing access time for requests coming from different geographic locations, as the data can be served from the nearest datastore.</li>
+	</ol>
+	<p>Most web-scale applications these days are globally distributed. For example, Facebook hosts its application servers and data across several data centers in order to reduce the latency and access time (which in turn increases usability of the application) for users from across different geographic locations. A Facebook user from anywhere in Europe may be served a page from the application running in their Dublin datacenter whereas the users from the west coast of the United States may be served from the application server hosted in Silicon Valley.</p>
+	
+	<p>Having multiple copies of the same data across different datastores that are globally distributed for the same application raises several design questions. Some important questions for developers to ask are:</p>
+	<ol>
+	<li>What is the target performance (in terms of throughput and latency) that users in different parts of the world should experience?</li>
+	<li>How many replicas should there be, and where should they be located?</li>
+	<li>To which replica should a particular read be directed, and based on what parameters?</li>
+	<li>To which replica should a particular write be directed, and based on what parameters?</li>
+	<li>How should the change caused by a single write be cascaded to all replicas?</li>
+	<li>What level of locking should be used to support a particular transaction?</li>
+	<li>How often does the data between the various datastore replicas need to be synchronized?</li>
+	</ol>Different application requirements might require different levels of consistency in the replicas. In the next paragraph, we describe the different levels of consistency that are possible in a distributed key-value store. Different levels of consistency can be employed, however, there is a trade-off between how fresh the data ought to be in the replicas and an application's performance requirements. For example, if an application deals with important information such as bank balances, then it may choose to employ strict or strong consistency, sacrificing performance in exchange for the guarantee that all replicas will be consistent at any point in time. You will see more applications of different consistency levels later on in this project.</p>
+	
+	<h4>An Example of Inconsistency</h4><p>Consider the following setup with three datacenter nodes and three clients. Client 1 reads from Datacenter 1, Client 2 from Datacenter 2 and Client 3 from Datacenter 3. The data is replicated across the three datacenter instances. Any update occurring at a Datacenter node has to be reflected in the other two Datacenter nodes in order to keep the data consistent.</p>
+<div class="img-thumbnail">
+	<img style="width:600px" src="https://cmucc-public.s3.amazonaws.com/p33/figures/Figure1.png">
+</div>
+		<p>Let a particular record be denoted by X. Its current value is 1 in all datacenters. Now, the following operations (shown in Figure 2) occur:</p>
+<div class="img-thumbnail">
+		<img style="width:600px" src="https://cmucc-public.s3.amazonaws.com/p33/figures/Figure2.png">
+</div>
+		<p>Let's say that client 1 performs the update X = 2 at timestamp 1. Assuming that the two clients read X at timestamp 2 (i.e., after the update X=2 has been completed on datacenter 1), what are the values of B and C? Turns out, B and C can be any of 1 or 2. The answer depends on the consistency model implemented by the system designers.</p>
+		</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <h2>Consistency Models</h2>
+<p>Ordered from the strongest to the weakest, these are the various consistency models that we will be discussing:
+</p>
+<ol>
+    <li><b>Strict</b></li>
+    <li><b>Strong (Linearizability)</b></li>
+    <li><b>Sequential</b></li>
+    <li><b>Causal</b></li>
+    <li><b>Eventual</b></li>
+</ol>
+<h3>Strict Consistency</h3>
+<p>In strict consistency, each operation must be stamped with an absolute global time and all operations must be
+    executed in the order of their timestamps. Further, each read must get the latest written value. However, in a
+    distributed system, it is hard to synchronize clocks to be exactly equal, and the time between instructions can be
+    less than the time taken to communicate with the other processor(s)/node(s) to let them know about the issuing of an
+    operation. Thus, strict consistency is hard to achieve on multiprocessors, let alone distributed datacenters.
+</p>
+<p>Although Strong consistency is the next weakest form of consistency (after strict), we look at sequential consistency first, as it will make it easier to explain.</p>
+<h3>Sequential Consistency</h3>
+<p>Sequential consistency is achieved when all operations were executed in some sequential order and all replicas see
+    the operations in the exact same order. Hence, in the case of this project, all datacenters must see the operations
+    in the same order, and any write occurring at a datacenter node must be instantly visible at the other datacenter
+    nodes. To achieve this, operations for the object being updated must be locked until the updates have been made
+    across all replicas.
+</p>
+<p>
+    As shown in the following figure, while the value of X is being updated at Datacenter 1, the clients reading from
+    Datacenters 2 and 3 are locked from accessing X. They can't read or write to the object X, but they can read/write
+    to the other objects in those Datacenters. Once the value of X has been updated
+    across all Datacenters, Clients 2 and 3 can read the latest updated value from their respective Datacenters.
+</p>
+<div class="img-thumbnail">
+<img style="width:600px" src="https://cmucc-public.s3.amazonaws.com/p33/figures/Figure3.png">
+</div>
+<h3>Strong Consistency (Linearizability)</h3>
+<p>Strong consistency is sequential consistency with an additional requirement. In sequential consistency, every
+    operation had a timestamp associated with it. This timestamp can be obtained through a <a
+            href="https://en.wikipedia.org/wiki/Vector_clock">vector clock</a> . The timestamps
+    of two operations can be compared in order to determine whether one operation occurred before the other or if the
+    two operations were concurrent. If two operations were concurrent, sequential consistency gives you the liberty to
+    order those arbitrarily as long as the same order is seen by all nodes in the distributed
+    system. In Strong consistency, however, each operation receives a global timestamp sometime during its execution, and all operations must be ordered according to their timestamps.
+    This is in contrast to strict consistency in which the timestamp is the exact global time when the operation was
+    issued.</p>
+<p>Thus, the key difference between strong consistency (linearizability) and sequential consistency is that, sequential consistency ensures a unique order of operations, whereas linearizability ensures operations in order of time. Thus, sequential consistency allows the system to interleave operations coming from different nodes as long as the order from each node is maintained. In linearizability, the interleaving of operations across clients is limited by the wall clock time.</p> 
+<p>In this project, you will be implementing strong consistency. The order in which the operations <b>arrive</b> will be used
+    as the timestamp for ordering them. To achieve strong consistency, you must make sure that at any point of time, all
+    the clients should read the exact same data from any of the datacenter replicas.</p>
+	<p>We will describe Strong consistency in an example to make the concepts clearer.</p>
+	<div class="img-thumbnail">
+		<img style="width:600px" src="https://cmucc-public.s3.amazonaws.com/p33/figures/Figure4.png">
+	</div>
+<p>The diagram above shows a scenario where strong consistency needs to be enforced. Let's say that a banking
+    application has its datastores distributed across various locations in order to serve its customers effectively. In
+    this scenario, let's say Joe and his wife Jane hold a shared account in the bank (which currently has $1000
+    balance). If both of them try to withdraw money from the shared account simultaneously from two different locations
+    as shown in the figure above, there is a possibility for an inconsistency as the two updates can deduct the amount
+    ($50) twice respectively in the replicas where the requests came, but not $100 overall. This is not an acceptable
+    situation for a banking application. In order to prevent this, the banking application must ensure strong
+    consistency across its datastores as it ensures that only one operation can update all the replicas at a time. If a
+    user is currently trying to update the datastore (by withdrawal or deposit), the banking system should block all
+    other users from updating this specific user's data in all its datastores. The next user is allowed to modify the
+    datastore only once all the datastores are made consistent from the previous transaction. Although this is a desired
+    solution, it adds a lot of latency to each update. Not all applications might require strong consistency.
+</p>
+<h3>Causal Consistency</h3>
+<p>Causal consistency is a slightly weaker form compared to sequential consistency. Causal consistency refers to the
+    level of consistency where the writes can be seen by different clients in different order, except for causally
+    related writes. The order refers to the order of operations that are requested to the distributed datastore. Two
+    writes are said to be "causally" related if they are dependent on each other in some way. For example, operation 1
+    is PUT(A, 2) and operation 2 is GET(A). These two operations can be causally dependent since the result of the
+    second operation depends on the first. If two writes are causally related, then these writes need to be seen in the
+    same order in all the clients. Replicas can be updated periodically or based on some predefined trigger. The causal
+    consistency model provides much better performance over the strong consistency model, as all the datastores will not be
+    blocked completely for each and every operation.</p>
+	<div class="img-thumbnail">
+		<img style="width:600px" src="http://cmucc-public.s3.amazonaws.com/p33/figures/Figure5.png">
+	</div>
+	<p>Consider the example of a distributed photo sharing social network (InstaSnap) application which employs causal
+    consistency in its datastore. InstaSnap values low latency over data staleness. Different users using the social
+    network may see different data. For example, if user 1 updates a particular photo on the datastore in USWest, user 2
+    may not get the update in the datastore in Japan at the end of the operation as the local datastore may not be
+    updated immediately as in the case of strong consistency model. However, all the users should see the order of comments
+    on the photo in the same order (Ordering for comments should be strictly ensured, and the update of comments coming
+    from across the globe can be considered causally related). The above described scenario is acceptable for a social
+    networking application. Hence, causal consistency might be suited for some scenarios.</p>
+<p>In the context of this project, you will implement causal consistency in a distributed keyvalue store where all the
+    updates on a particular key are ordered across all the replicas. This will ensure that the values are ordered
+    correctly, but because there are no locks for read requests, a client may read a stale value.
+</p>
+<h3>Eventual Consistency</h3>
+<p>The requirement to achieve eventual consistency is that operations are executed as they are received by the
+    datacenters. This relaxes the requirement of having to lock all datastores when performing an operation, and further
+    removes the requirement that each datacenter carries out each update request in the order they are received.</p>
+<p>In the context of this project, the replicas each update in the order that write requests arrive at the replica. This
+    means that updates on a particular key may have different ordering than updates on the same key at a different
+    replica, due to delays in communication between regions. As a result, the client may read improperly ordered values,
+    or stale data. However, what eventual consistency can guarantee is given a long enough period of time after the
+    requests are made, that the list of values for a given key will be complete with all values updated for that key.
+    The list of values may be unordered, but all updated values for that key will exist within that list.
+</p>
+<div class="bs-callout bs-callout-warning">
+    <p><strong>NOTE</strong>: It becomes crucial to decide the level of consistency in an application that uses a
+        distributed datastore, because this will have direct implications on the performance and speed of the
+        application accessing the data store. If your application requires that all client read the same data at any
+        point in time, then it has to use a strong consistency model. Using a strong consistency model can reduce
+        throughput as the datastores need to be locked each time an update operation is performed. Using a causal or
+        eventual consistency model can increase throughput of the operations, but at the cost of the clients receiving
+        stale or unordered data.</p>
+</div>
+<p>The following video should refresh some of the concepts discussed above:</p>
+    <div class="row" style="align:center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/tNUARdbuUtQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <h2>The Scenario</h2>
+<p>Carnegie Records (CR) has realized that social interactions are a key component in any successful online
+    marketing company. You were chosen to implement the backend storage system for their new social network,
+    FaceCloud.
+</p>
+<p>Thanks to Project 3.2, you realize the potential of globally replicated storage. However, to implement a popular social network,
+    you are willing to sacrifice strong consistency to improve the performance (and hence end-user experience).
+    You realize that different consistency levels may be needed to fully optimize the backend storage servers for different scenarios. 
+</p>
+<p>The prototype key-value store you built for the previous project will be useful as a starting point, with a few modifications made by the engineering team.
+    Specifically, there are now datastores all across the world, meaning that communication between each region is no longer instantaneous, and has a non-trivial delay. Additionally, instead of storing a single value for any given key, you must now maintain a list of values as they are
+    updated. This would prove to be useful for things like adding purchases to an account history, or adding comments to an existing conversation.
+</p>
+<p>It is now your task to further explore the various levels of consistency and realize the advantages and tradeoffs for
+    each. In this project, you will be exploring strong, causal and eventual consistency. Then, you will implement a new
+    Coordinator and Datacenter to see the various consistency levels in action.
+</p>
+<p>
+    Once again, just like the previous project, your key-value store is intended to serve the following purpose:</p>
+<p>1. The <code>PUT</code> requests to the distributed datastore.</p>
+<p>2. The <code>GET</code> requests to the distributed datastore.</p>
+<h4>What Consistency Level fits where?</h4>
+<p>The developers already working on FaceCloud has come up with some scenarios for the backend storage that they would
+    like to consult with you on. In each of the following scenarios, consider the given requirements and use your
+    newfound knowledge of consistency levels to determine which of the consistency levels best fits the described
+    scenario.
+</p>
+
+<h4>Scenario 1:</h4>
+<p>
+Social networks could offer the possibility for people to have currency which enables their ability to make purchases from other users. This requires the functionality of keeping track of financial transactions using the social network issued currency. CR wants to provide this functionality in FaceCloud to allow people to purchase songs from one another or from CR directly. Since a profile can be accessed by a user from different devices, FaceCloud has to adopt a consistency model that ensures that the transactions keep the financial data consistent.</p>
+
+<h4>Scenario 2:</h4>
+<p>As with any other functional social network, social interactions are a key aspect of FaceCloud. However,
+    conversations involving multiple users require special care in how they are handled. Ordering
+    amongst the comments is particularly important in order for the conversations to make sense. For example, take the
+    following sequence of comments as a conversation between two friendly coworkers:</p>
+<pre>
+<li>P1: Hey want to get food later?</li>
+<li>P2: Yeah hold on let me finish coding some stuff.</li>
+<li>P1: Oh, what are you writing?</li>
+<li>P2: A little bot to crunch Wall Street data.</li>
+<li>P1: Cool. Well, what do you want to eat?</li>
+<li>P2: Chipotle, and maybe ice cream after</li>
+</pre>
+<p>If ordering is not maintained, and the comments are swapped around, then a third person may see something that's far
+    from what the original conversation had intended. It may not even make sense. For example, a basic swap of the 4th
+    and 6th comment results in this incorrect conversation that may thoroughly confuse readers:</p>
+<pre>
+<li>P1: Hey want to get food later?</li>
+<li>P2: Yeah hold on let me finish coding some stuff.</li>
+<li>P1: Oh, what are you writing?</li>
+<li>P2: Chipotle, and maybe ice cream after</li>
+<li>P1: Cool. Well, what do you want to eat?</li>
+<li>P2: A little bot to crunch Wall Street data.</li>
+</pre>
+
+<h4>Scenario 3:</h4>
+<p>Social networks are empowered by the ability for users to connect with others, so being able to make friends on
+    FaceCloud is essential. FaceCloud allows users to befriend other users. CR wants the users to be able to see what
+    friends a user has befriended, so they are including the "Friends list" feature, which is simply a list of all the
+    friends a user has made. Just like with user profiles in the previous section, it's not a big deal if a user's
+    friends list is slightly outdated. Unlike comments in a conversation, it really doesn’t even matter what comes
+    first or last in the list of friends! Whether Tom is friends with "Jerry, Spike and Tyke" or "Spike, Tyke and Jerry"
+    doesn't really matter to anyone. Because of this, CR has to decide what consistency model is sufficient for this
+    scenario.
+</p>
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <h2>Consistency in Cross Region Datastores</h2>
+<p>In the previous project, you implemented a Coordinator that managed data storage across three backend instances. In
+    this project, you will be implementing three Coordinators, as well as the three backend storage systems to handle
+    data storage in three different regions. Each Coordinator will be in charge of handling requests from clients in
+    their respective regions.
+</p>
+<p>You will be implementing both the <code>Cooridinator.java</code> in the Coordinator instance, as well as the <code>KeyValueStore.java</code>
+    in the Datastore instance in their respective regions. The actual code should be the same for every region, except
+    for the snippets that are responsible for accounting for the different delays in communication. Thus, at the core of
+    this task, you are implementing the same Coordinator and KeyValueStore, and adjusting the delays as needed for each
+    region.</p>
+<h3>Endpoints and APIs</h3>
+<p>
+    The endpoints for your storage is the same as it was in the previous project. Coordinator.java is the web server
+    (Vert.x) that clients will interact with to access your datastore. It has the following endpoints (Table 1):</p>
+<!-- Captions for Table -->
+<div class="col">
+    <p><b>Table 1:</b> Coordinator Endpoints.
+
+    <p>
+</div>
+<table class="table table-bordered">
+    <tr class="active">
+        <th>Endpoint</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td style="width:550px"><code>CoordinatorDNS:8080/consistency?consistency=CONSISTENCY_LEVEL</code></td>
+        <td>This endpoint is used by the autograder to specify the level of consistency the coordinator has to support.
+            The expected values are <b>strong</b>, <b>causal</b> and <b>eventual</b>. You need to use this value to
+            program your coordinator to handle the expected consistency level.
+        </td>
+    </tr>
+    <tr>
+        <td style="width:550px"><code>CoordinatorDNS:8080/put?key=KEY&value=VALUE&timetamp=TIME</code></td>
+        <td>This endpoint will receive the key, value pair that needs to be stored in the datastore instances, as well
+            as the timestamp representing when the client sent the request. You will need to use this timestamp to order
+            your values appropriately in the backend as necessary. The timestamp will be a <code>Long</code> value.
+        </td>
+    </tr>
+    <tr>
+        <td style="width:550px"><code>CoordinatorDNS:8080/get?key=KEY&timetamp=TIME</code></td>
+        <td>This endpoint will receive the key for which the values have to be returned by the coordinator. The
+            coordinator has to retrieve the list of values associated with the requested key from the local datastore,
+            and send it back to the client. The timestamp will be necessary for determining when the request should be
+            serviced in strong consistency.
+        </td>
+    </tr>
+</table>
+<p>It is important to note that these endpoints are <b>different</b> than what you've seen in the previous project in
+    that
+    timestamps are now provided for you in the URL, instead of programmatically at the time of reception. This is to
+    help synchronize the timestamps into a unified timing schema. Thus, you will not need to worry about time zone
+    differences. Timestamps are provided as <code>Long</code> values, where a greater value means a later time.
+</p>
+<p>Another key point to note is that location is no longer provided in the GET URL, since it is assumed that
+    Coordinators always service the request from the <b>local</b> datacenter.</p>
+<p>In order to help you communicate more effectively between your Coordinator and Datacenter instances, additional API
+    functions (available in (<code>KeyValueLib</code> ) have been provided, with 4 methods that you can access within
+    <code>Coordinator.java</code> (Table 2). However, because the communication occurs in various parts of the world,
+    crossregion communication comes with a delay. These delays will be provided to you later on.</p>
+<div class="col">
+    <div class="col">
+        <p><b>Table 2:</b> <code>KeyValueLib</code> API.
+
+        <p>
+    </div>
+    <table class="table table-bordered">
+        <tr class="active">
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td style="width:550px"><code>KeyValueLib.PUT(String datastoreDNS, String key, String value, String
+                timestamp, String consistency) throws IOException</code></td>
+            <td><p>This API method will pass along all the information of the PUT request to the specified datastore, in
+                addition to the region associated with the coordinator making
+                the call. This extra parameter will help you in determining what the delay in communication is. There is
+                a delay with this method, check the table below for the actual delay. After the datastore receives the
+                request, the timestamp will be affected by the delay. The parameters available to your KeyValueStore as
+                a result of this call are:</p>
+                <ol type="a">
+                    <li>key : String</li>
+                    <li>value : String</li>
+                    <li>timestamp : Long</li>
+                    <li>region : int</li>
+                    <li>consistency : String</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:550px"><code>KeyValueLib.GET(String datastoreDNS, String key, String timestamp, String
+                consistency) throws IOException</code></td>
+            <td>
+                <p>This API method will pass along the information for the GET request to the specified datastore, and
+                    return the value that is provided by the datastore back to the client. There is no delay with this
+                    method, because the GET method is expected to be serviced by the local datacenter. You will still
+                    need the timestamp to appropriately handle the request for strong consistency. The parameters
+                    available to your KeyValueStore as a result of this call are:</p>
+                <ol type="a">
+                    <li>key : String</li>
+                    <li>timestamp : Long</li>
+                    <li>consistency : String</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:550px"><code>KeyValueLib.FORWARD(String coordinatorDNS, String key, String value, String
+                timestamp) throws IOException</code></td>
+            <td>
+                <p>This API method will forward the request to the specified coordinator. It will be as if the target
+                    coordinator received the request from a client in its region, however, an additional parameter of
+                    {"forward" : "true"} will be provided in the URL, as well as the region from which the request
+                    originated. You may check for this parameter to determine whether a request is sent by a client,
+                    (since it will be null), or if it was forwarded by another coordinator, (since it will be "true").
+                    You will need to use this method for passing PUT requests between coordinators. There is a
+                    delay with this method, check the table below for the actual delay. After the coordinator receives
+                    the request, the timestamp will be affected by the delay. The parameters available to the target
+                    Coordinator as a result of this call are:</p>
+                <ol type="a">
+                    <li>key : String</li>
+                    <li>value : String</li>
+                    <li>timestamp : Long</li>
+                    <li>region : int</li>
+                    <li>forward = "true" : String</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:550px"><code>KeyValueLib.AHEAD(String key, String timestamp) throws IOException</code></td>
+            <td>
+                <p>This API method will contact the datastores in every region, and notify them that a PUT request is
+                    being serviced for the specified key, starting at the specified timestamp. You will need this method
+                    to properly handle GET requests in strong consistency. There is no delay in this communication to
+                    any of the datastores. The timestamp that is provided is the timestamp that the datastores will see
+                    upon receiving this message. The parameters available to your KeyValueStore as a result of this call
+                    are:</p>
+                <ol type="a">
+                    <li>key : String</li>
+                    <li>timestamp : Long</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:550px"><code>KeyValueLib.COMPLETE(String key, String timestamp) throws IOException</code>
+            </td>
+            <td>
+                <p>This API method will contact the datastores in every region, and notify them that a PUT request for
+                    the specified key that started at the given timestamp has been completed. You will need this method
+                    to properly handle GET requests in strong consistency. There is no delay in this communication to
+                    any of the datastores. The timestamp that is provided is the timestamp that the datastores will see
+                    upon receiving this message. The parameters available to your KeyValueStore as a result of this call
+                    are:</p>
+                <ol type="a">
+                    <li>key : String</li>
+                    <li>timestamp : Long</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+
+    <p><strong>NOTE</strong>: Just like the previous project, none of the API methods described above are synchronized
+        (In
+        other words, any number of threads can call these API methods simultaneously).</p>
+
+    <p>As you may have noticed in the API method descriptions, some of the methods have a delay in communication, while
+        others don't. This is because communication across large distances, especially data intensive communication, can
+        be
+        quite expensive and slow. In the context of our project, the Value is what causes communication to be slow,
+        because
+        it can be anything from a simple comment, to bank authentication information, to pictures or media. As a result,
+        methods that involve communicating the Value will have a delay. Methods that only deal with the Key and
+        Timestamp
+        are quicker, since there aren't as much data being transported, and the delays are thus negligible.
+    </p>
+
+    <p>The delays in communication vary depending on which regions are communicating with each other. The three regions
+        that
+        you will be handling are:
+    </p>
+    <ol>
+        <li>us-east, represented by the numerical value 1.</li>
+        <li>us-west, represented by the numerical value 2.</li>
+        <li>ap-southeast(Singapore), represented by the numerical value 3.</li>
+    </ol>
+    <p>The region you are currently in is available to your Coordinator as the following
+        field:<code>KeyValueLib.region</code>, which is an integer matching the regions specified above.
+    </p>
+
+    <p>The actual delays in communication between regions are specified below:</p>
+
+    <p><b>Table 3:</b> Communication Delay</p>
+    <table class="table">
+        <thead>
+        <th>Region</th>
+        <th>Communication Delay (Commutative)</th>
+        <th>Region</th>
+        </thead>
+        <tr>
+            <td>(1) us-east</td>
+            <td>200ms</td>
+            <td>(2) us-west</td>
+        </tr>
+        <tr>
+            <td>(1) us-east</td>
+            <td>600ms</td>
+            <td>(3) ap-southeast</td>
+        </tr>
+        <tr>
+            <td>(2) us-west</td>
+            <td>800ms</td>
+            <td>(3) ap-southeast</td>
+        </tr>
+    </table>
+    <p>There are three important things to note:</p>
+    <ol>
+        <li>There is only delay when communicating across regions. Thus,
+            communication between the Coordinator in us-east and the datastore in
+            us-east has negligible delay.
+        </li>
+        <li>All delays are commutative. This means that a message from us-east sent
+            to us-west, and a message from us-west sent to us-east both have the
+            same delay of 200ms.
+        </li>
+        <li>The delay is the same between Coordinators (when using FORWARD) and
+            between Coordinators and Datastores (when using PUT). This means that if the delay for forwarding a request
+            from
+            us-east's Coordinator to us-west's Coordinator has the same 200ms delay as executing a PUT request from US
+            East's Coordinator to us-west's datastore.
+        </li>
+    </ol>
+    <p>One final note. The methods that have communication delays will have the delays reflected appropriately in the
+        timestamp. Thus, if there is a communication delay between a sender and a receiver, then the timestamp that the
+        receiver sees will be different (greater) than the timestamp that the sender sent.
+    </p>
+
+    <p>For example, the Coordinator at us-east may execute the following PUT method for us-west's Datastore:
+    </p>
+    <code>KeyValueLib.PUT(USWDatastoreDNS, "Hello", "1", 50000, "strong")</code>
+
+    <p>When the us-west Datastore receives this request 200ms later, it will see the following parameters:</p>
+    <ol type="a">
+        <li>key = "Hello"</li>
+        <li>value = "1"</li>
+        <li>timestamp = <b>"50200"</b></li>
+        <li>consistency = "strong"</li>
+    </ol>
+    <p>Thus, you should remember that the timestamp received will reflect the 200ms delay that resulted from the
+        communication exchange.</p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Assumptions</h4>
+
+        <p>Just like in the previous project, you can make the following assumptions when designing your storage
+            system:</p>
+
+        <ol>
+
+            <li>All nonspecified delays are negligible, and will not affect the timestamps you receive. This applies to
+                local, same region communication, as well as when using the AHEAD and FORWARD methods
+            </li>
+
+            <li>All specified delays are perfectly predictable. This means that the delays you see in the table are the
+                delays that will be reflected in the timestamp. Even if the delay end up fluctuating a bit, (such as if
+                us-east took 190ms to send a message to us-west instead of 200ms), the timestamp will still show the same
+                delay that is represented in the table. This may not always be true in the real world, but for the
+                context
+                of this project, you can assume that delays are always the same.
+            </li>
+        </ol>
+
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <h3>Tasks to Complete</h3>
+<strong>Please read the requirements in this section carefully before starting any instances.</strong>
+
+
+<p>Your task for this project is to implement a crossregion system of Coordinators and KeyValueStores to handle requests
+    from each region. There are three total regions, as specified previously. Each region will have its own Coordinator,
+    and KeyValueStore. Each Coordinator and KeyValueStore exists in its own AMI instance. Thus, there are 6 instances in
+    total 1 Coordinator and 1 KeyValueStore for each of the 3 regions. Additionally, there is a Client instance which
+    you will use to test your implementation and submit your work through.</p>
+<p>The AMI and tag details are as follows:</p>
+
+<div class="bs-callout bs-callout-task">
+    <h4>AWS Details</h4>
+
+    <p>The following table contains information regarding various AWS services for this project phase:</p>
+    <table class="table table-bordered">
+        <tr class="success">
+            <th>Tag Key</th>
+            <th colspan="2">Tag Value</th>
+        </tr>
+        <tr>
+            <td>Project</td>
+            <td colspan="2">3.3</td>
+        </tr>
+        <tr class="success">
+            <th>AMI Name</th>
+            <th>AMI ID</th>
+            <th>Instance Type</th>
+        </tr>
+        <tr>
+            <td>us-east Datacenter</td>
+            <td><code>ami-05a5d36f</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <tr>
+            <td>us-west Datacenter</td>
+            <td><code>ami-af1049ca</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <tr>
+            <td>ap-southeast(Singapore) Datacenter</td>
+            <td><code>ami-49db822c</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <tr>
+            <td>us-east Coordinator</td>
+            <td><code>ami-2d1f4648</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <tr>
+            <td>us-west Coordinator</td>
+            <td><code>ami-c51e47a0</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <td>ap-southeast(Singapore) Coordinator</td>
+        <td><code>ami-3ddb8258</code></td>
+        <td><code>t1.micro</code></td>
+        <tr>
+            <td>Client</td>
+            <td><code>ami-891b42ec</code></td>
+            <td><code>m1.small</code></td>
+        </tr>
+    </table>
+</div>
+<p>To complete the section, you need to complete the following tasks:</p>
+<ol>
+    <li>
+        Launch 3 Datastore instances of type <code>t1.micro</code>, using 1 of the AMIs from each region. For the
+        context of this project, launch them all in the <strong>us-east</strong> Region for stability. Make sure your
+        security group allows traffic on port <code>8080</code>.
+    </li>
+    <li>
+        The datastore instances contain the code required for the keyvalue store. You will need to modify the code in
+        <code>KeyValueStore.java</code> located in the folder <code>/home/ubuntu/Project3_3/vertx/bin</code>, to make it
+        functional. You may run the key­value store using the following command inside the directory containing the
+        KeyValueStore.java: <code>./vertx run KeyValueStore.java</code>
+
+        <p>Remember to do this for all three regions before testing!
+        <p>If you encounter JAVA_HOME error, you can use <code>export JAVA_HOME=/usr/lib/jvm/java-7-oracle</code> or change the JAVA_HOME in <code>/home/ubuntu/.bashrc</code> to <code>/usr/lib/jvm/java-7-oracle</code> to fix it.</p>
+        <p>
+    </li>
+    <li>
+        Launch 3 Coordinator instances of type <code>t1.micro</code>, using 1 of the AMIs from
+        each region. For the context of this project, launch them all in the <strong>us-east</strong> Region for
+        stability. Make sure your security group allows traffic on port <code>8080</code>.
+    </li>
+    <li>
+        The Coordinator instances contain the code required for the Coordinator. You will need to modify the code in
+        <code>Coordinator.java</code> located in the folder <code>/home/ubuntu/Project3_3/vertx/bin</code>, to make it
+        functional. You may run the key­value store using the following command inside the directory containing the
+        Coordinator.java:<code>./vertx run Coordinator.java</code>
+
+        <p>Remember to do this for all three regions before testing!
+
+        <p>
+    </li>
+    <li>
+        You will need to implement your <code>Coordinator.java</code> and <code>KeyValueStore.java</code>
+        to support strong, causal and eventual consistency. The full requirements are specified in the next section
+    </li>
+</ol>
+<h3>Shared Requirements for All Consistency Levels</h3>
+<ol>
+    <li>Requests must be handled concurrently (multithreaded) using threads. The skeleton code for this has already been
+        provided to you in the Coordinator instance. However, depending on how you choose to implement your design, you
+        may need to use threads on your datacenters too.
+    </li>
+    <li>
+        Both your Coordinator and your Datacenter must be free of race conditions, and always have consistent behavior.
+        You will be expected to make use of various concurrency safety techniques at your discretion.
+    </li>
+    <li>
+        Your Coordinator must not block <code>PUT</code> requests. Rather, it should acknowledge the request and
+        internally prepare to handle the <code>PUT</code> requests whenever ready. You can refer to Project 3.2 for
+        clarifications.
+    </li>
+    <li>
+        Your Coordinator may <strong>NOT</strong> permanently store any KeyValue on the Coordinator instance at any
+        point in time. (Temporary storage of Keyvalue pairs while requests are being processed is fine)
+    </li>
+    <li>
+        Your Coordinator should be programmed in a way such that the consistency levels can be dynamically changed using
+        the endpoint provided, as defined earlier.
+    </li>
+    <li>
+        Only the primary coordinator (see "Hints and Clarifications") of a key may handle the <code>PUT</code> requests
+        for that key. Any other coordinators that receive <code>PUT</code> requests for that key must forward the
+        request to the primary coordinator to process. This will be elaborated in the next section.
+    </li>
+    <li>
+        All <code>GET</code> requests must be serviced by the datacenter that is in the <b>same region</b> as the coordinator
+        that received it. One of the main reasons that we are replicating over various regions is to provide better
+        performance for <code>GET</code> requests by servicing from the local datacenters.
+    </li>
+</ol>
+<p>However, as you will notice, there are many differences between the last project, and this project's implementation.</p>
+<div class="bs-callout bs-callout-info">
+    <h4>Hints and Clarifications</h4>
+    <ol>
+        <li>Unlike the previous project, where the timestamp of the requests was programmatically determined at the time
+            you
+            received the request, timestamps are now provided to you as a parameter in the URL. You will use this
+            timestamp
+            to determine ordering where needed.
+        </li>
+        <li>Instead of storing only the latest value (which was a string) for any given key, we are now storing a list
+            of
+            StoreValue objects. This provides a sense of "history" for any given key, since old values are no longer
+            discarded. StoreValue objects are objects that contain both the value and the timestamp of the request which
+            you
+            may use to both order and obtain the values from. For more specific details, you may look in the <code>StoreValue.java</code>
+            class provided to you on the Datacenter instances in the same directory as the KeyValueStore.java. For
+            <code>GET</code> requests, you should return the list of values separated by spaces for the requested key.
+            The
+            basic skeleton code for converting your list of StoreValue objects to a autograder compatible string is
+            provided
+            to you in <code>KeyValueStore.java</code>. Do <strong>NOT</strong> change it unless you have to.
+        </li>
+        <li>There are now 3 Coordinators instead of one, with each being located in a different region. Coordinating
+            activity between different Coordinators at the same time for the same key is quite complex, so you will be
+            required to bring over your consistent hashing algorithm from the previous project to ensure that every key
+            has a <b>primary coordinator</b>, and that only the primary coordinator can handle <code>PUT</code> requests for any
+            given key. To help do this, you will need the <code>KeyValueLib.FORWARD</code> method to communicate between
+            coordinators. Recall from the previous project that a consistent hashing algorithm that for any given key,
+            the primary coordinator determined must always remain the same. This will help simplify the locking mechanisms
+            you need for handling <code>PUT</code> requests, since all requests for a given key will be serviced by the same
+            Coordinator.
+        </li>
+       <li> You are free to implement your own helper functions for timestamp adjustment. However you may find <code>Skews.java</code> very useful on your Coordinators and Datastores. 
+       </li>
+    </ol>
+</div>
+<h4>Requirements for Strong Consistency</h4>
+<p>You've implemented Strong consistency in a replicated datastore in the last project, so you should have an idea of
+    what is expected for strong consistency. However, implementing strong consistency is far more complex when we are
+    dealing with multiple regions with separate coordinators. Below are the key requirements for strong consistency,
+    some of which you may remember from the last project:</p>
+<ol>
+    <li>Every <code>PUT</code> to the keyvalue store should be atomic (per key). This means that at any point in time,
+        there can be only one <code>PUT</code> operation per key
+        being performed in the coordinator. To give an example, let's say your primary coordinator for key "A" gets two
+        <code>PUT</code> requests with key "A" at timestamps 1 and 2 respectively. The request that arrived at timestamp
+        1 should be processed first (the second request should be blocked in the Coordinator meanwhile). Once the key
+        value pair has been successfully put in all the three datastores, the second request (which arrived at timestamp
+        2) needs to be processed. Also, the <code>PUT</code> requests for multiple keys can be performed in parallel
+        (This means that the locking of the datacenters has to be done at key level)
+    </li>
+    <li> Every <code>GET</code> to the keyvalue store should read the most recent list of values with respect to the
+        <code>GET</code> request's timestamp. If a <code>GET</code> request arrives when a <code>PUT</code> request is
+        currently being performed in the store, the <code>GET</code> operation should be blocked until the
+        <code>PUT</code> is completed. Once the current <code>PUT</code> is completed, the <code>GET</code> operation
+        should be performed. However, let's say that a <code>PUT</code> request for key "A" is being serviced at
+        timestamp 1, then a <code>GET</code> request for key "A" arrives at timestamp 2, followed by another
+        <code>PUT</code> request for key "A" at timestamp 3. Your <code>GET</code> request should wait for the first
+        <code>PUT</code> request to finish, but <b>NOT</b> wait for the second one to finish before returning the list
+        of values.
+    </li>
+    <li>
+        The ordering of the list of StoreValue objects in the datacenter should be done with respect to the timestamp of
+        the values that arrive at the datacenter. This means that you should look at the timestamp of the PUT request,
+        which is provided to you as a parameter in the URL, and put the StoreValue object at the appropriate location in
+        your list.
+    </li>
+</ol>
+<div class="bs-callout bs-callout-info">
+    <p><strong>Hints and Suggestions for Strong Consistency</strong>:
+    <ol>
+        <li>Because of the strictness in both <code>PUT</code> and <code>GET</code> operations, strong consistency will
+            likely be the most difficult of the three consistency levels you need to implement, even with the prior
+            experience from P3.2
+        </li>
+        <li>
+            Recall that <code>PUT</code> requests are always handled by the <strong>primary coordinator</strong>, but
+            <code>GET</code> requests are not, since they are serviced locally. This means that to implement proper
+            locking, you will need to implement a layer of locking in the datacenters as well.
+        </li>
+        <li><code>KeyValueLib.AHEAD</code> and <code>KeyValueLib.COMPLETE</code> methods will be vital for implementing
+            locking for your <code>GET</code> requests. Take advantage of
+            the fact that these methods allow a Coordinator to notify all datacenters about <code>PUT</code> requests
+            without delay.
+        </li>
+    </ol>
+</div>
+
+<h4>Requirements for Causal Consistency</h4>
+<p>The exact definition of causal consistency varies depending on your application. For the sake of our project, we will
+    assume that all <code>PUT</code> operations relating to any given key are causally related. In more concrete terms,
+    that means that the following behavior is expected of your implementation on causal consistency:</p>
+<ol>
+    <li>
+        Because all <code>PUT</code> operations for a key are causally related, that means all <code>PUT</code>
+        operations for a key should be ordered as they are seen by the Coordinators. Essentially, this means that the
+        ordering of StoreValue objects at the datacenters should be the same as they were in strong consistency.
+        However, instead of locking all three datacenters until the <code>PUT</code> operation is complete for all
+        datacenters, you should only lock each datacenter individually. This means that if two <code>PUT</code> requests
+        for key "A", the coordinator should update all three datacenters with the first <code>PUT</code> request. But
+        instead of waiting for all three datacenters to complete before issuing the second <code>PUT</code> request, you
+        should immediately issue the second <code>PUT</code> request to each datacenter as they finish. While this
+        ensures that ordering is correct, it no longer guarantees that all the datacenters will be consistent with one
+        another at any point in time.
+    </li>
+    <li>
+        As we have defined only <code>PUT</code> operations to be causally related, that means that <code>GET</code>
+        operations are not causally related to any other operation, and thus may be serviced immediately as they come.
+        This means that as soon as a coordinator receives a <code>GET</code> operation, it should immediately service it
+        from the local datacenter without waiting. This may return an incomplete list of values, but it will at least
+        ensure that what values are returned are in the correct order, as that is guaranteed during the <code>PUT</code>
+        operations.
+    </li>
+</ol>
+<div class="bs-callout bs-callout-info">
+    <p><strong>Hints and Suggestions for Causal Consistency</strong>:</p>
+
+    <p>Implementing <code>PUT</code> operations in causal consistency should be quite straightforward after you have
+        completed strong consistency. It simply comes down to a matter of coarse grain locking versus fine grain locking
+        for each operation.</p>
+</div>
+<h4>Requirements for Eventual Consistency</h4>
+<p>Eventual consistency emphasizes performance over consistency. It makes no guarantee about the ordering of the data,
+    nor does it ensure that the values returned by <code>GET</code> requests are the most recent or correctly ordered.
+    However, it does guarantee that after some time, all datacenters will eventually have all of the values associated
+    with a given key. It doesn't guarantee that the values are in the right order, only that they are in the list.
+    Concretely, the following requirements should be met for eventual consistency:</p>
+<ol>
+    <li>
+        There should be no locking on either <code>PUT</code> or <code>GET</code> operations at all.
+    </li>
+    <li>
+        Instead of looking at the timestamp and finding the correct location for
+        each StoreValue object created in the datacenter, it should simply append
+        it to the end of the list of StoreValue objects associated with the key.
+    </li>
+    <li>
+        Like in causal consistency, <code>GET</code> requests should also be serviced
+        immediately
+    </li>
+</ol>
+<div class="bs-callout bs-callout-info">
+    <p><strong>Hints and Suggestions for Eventual Consistency</strong>:</p>
+
+    <p>This task should be relatively straightforward. You should note that there is a lack of any locking or ordering
+        mechanism for this consistency, and realize that such is the cost for high performance keyvalue datastores.</p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+    <h4>How to submit</h4>
+
+    <p>To complete the project, after completing the tasks above, you can verify your implementation using the
+        auto­grader. Follow the steps given below to complete your submission for this project.</p>
+    <ol>
+        <li> Launch a <code>m1.small</code>(<code>ami-65580b00</code>) client instance.</li>
+        <li>In the client instance, go to the autograder folder which is located at
+            <code>/home/ubuntu/Project3_3/</code>
+        </li>
+        <li>
+            The autograder folder has the following files <code>consistency_checker</code>,
+            <code>config.prop</code>, <code>submitter</code> and <code>references</code>.
+        </li>
+        <li>We have provided a consistency checker executable called
+            <code>consistency_checker</code>. In order to use the consistency checker, you need to fill the details of
+            your coordinator and datacenter instances in the file <code>config.prop</code>. Ensure that you put the
+            correct instance DNS's in the right regions, as this will affect your autograding process. The <code>consistency_checker</code>
+            script has several test cases to check your implementation. Once you have updated the details in
+            config.prop, you can run the <code>consistency_checker</code> using the command <code>./consistency_checker
+                consistency_type</code>. The value of storage_type can be either strong, causal, eventual or bonus. The
+            script runs a series of tests and also reports if a test case has succeeded or not. Before running the
+            consistency checker, ensure that all the coordinators and datastores are running.
+        </li>
+        <li> Once you have verified your implementation using the consistency_checker, you need to submit the results
+            using the executable
+            submitter. You need to <b>copy your implementation of the coordinator <code>Coordinator.java</code>, as well as
+            your datacenter <code>KeyValueStore.java</code> files to the <code>/home/ubuntu/Project3_3</code> folder of
+            the client instance</b>. If they are all the same, then you only need to include one copy. However, you do need
+            to include any extra classes or files you created. Also make sure you add all the references (links and
+            Andrew IDs) in the references file in the same folder.
+        </li>
+       <li>
+            As network performance can influence your result, you may want to submit multiple times to get a full score.
+      </li>
+    </ol>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>Warning</h4>
+    <p>Be sure to copy all your files, including but not limited to <code>Coordinator.java</code> and <code>KeyValueStore.java</code>, to the folder where <code>submitter</code> is on the client instance before you run <code>submitter</code>. Failure to submit all your files may cause you to lose at least 100% of your grade for this project.</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <iframe src="https://docs.google.com/forms/d/179rUio6wAZUL5C3NN7YPmOoXYyspkUZlgJi7j8T1qL4/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="19">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

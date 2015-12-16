@@ -1,0 +1,21 @@
+CREATE TABLE `Entry` (
+  `USER_ID` varchar(30) COLLATE utf8mb4_bin DEFAULT NULL,
+  `TWEET_TIME` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `TWEET_ID` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `SCORE` varchar(30) COLLATE utf8mb4_bin DEFAULT NULL,
+  `TWEET_TEXT` varchar(2000) COLLATE utf8mb4_bin DEFAULT NULL,
+  KEY `name` (`USER_ID`,`TWEET_TIME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+CREATE TABLE `Entry` (  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT, `USER_ID` varchar(30) DEFAULT NULL,   `TWEET_TIME` varchar(50) DEFAULT NULL,   `TWEET_ID` varchar(50) DEFAULT NULL,   `SCORE` varchar(30) DEFAULT NULL,   `TWEET_TEXT` varchar(2000) DEFAULT NULL, PRIMARY KEY (`ID`), INDEX name (`USER_ID`,`TWEET_TIME`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+cat /mnt/ebs1/input/part* | java -cp $CP DatabaseInitialization
+
+LOAD DATA LOCAL INFILE '/home/ubuntu/cc/input/inputfile' INTO TABLE Entry CHARSET 'utf8mb4' FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' (USER_ID, TWEET_TIME, TWEET_ID, SCORE, TWEET_TEXT);
+
+sudo aws s3 cp s3://testmr619/output/ . --recursive
+sudo aws s3 cp s3://testmr619/sh/shard0/ . --recursive
+
+cat part* > inputfile
+
+mysql -u zhaoru -p --local-infile

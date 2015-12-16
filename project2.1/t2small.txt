@@ -1,0 +1,96 @@
+Waiting for load generator and first data center are running
+Load generator and first data center are running
+
+Sending 'GET' request to URL : http://ec2-52-23-209-63.compute-1.amazonaws.com/password?passwd=AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body>You have entered your submission password<br> Click <a href='/'>here</a> to return to the homepage.</body></html>
+
+Sending 'GET' request to URL : http://ec2-52-23-209-63.compute-1.amazonaws.com/log?name=test.1443064959126.log
+; 2015-09-24T03:22:39+0000; Horizontal Scaling Test; isTestingThroughCode=true; Test launched. Please check every minute for update.; Your goal is too achieve rps=4000 in 30 min; Minimal interval of adding instances is 100 sec[Test]type=horizontaltestId=1443064959126testFile=test.1443064959126.log[Minute 1]ec2-52-23-208-104.compute-1.amazonaws.com=552.56[Minute 2]ec2-52-23-208-104.compute-1.amazonaws.com=715.67[Minute 3]ec2-52-23-208-104.compute-1.amazonaws.com=716.49[Minute 4]ec2-52-23-208-104.compute-1.amazonaws.com=715.70[Minute 5]ec2-52-23-208-104.compute-1.amazonaws.com=712.74[Minute 6]ec2-52-23-208-104.compute-1.amazonaws.com=715.92[Minute 7]ec2-52-23-208-104.compute-1.amazonaws.com=716.11[Minute 8]ec2-52-23-208-104.compute-1.amazonaws.com=715.88[Minute 9]ec2-52-23-208-104.compute-1.amazonaws.com=716.72[Minute 10]ec2-52-23-208-104.compute-1.amazonaws.com=714.83[Minute 11]ec2-52-23-208-104.compute-1.amazonaws.com=711.86[Minute 12]ec2-52-23-208-104.compute-1.amazonaws.com=716.08[Minute 13]ec2-52-23-208-104.compute-1.amazonaws.com=714.41[Minute 14]ec2-52-23-208-104.compute-1.amazonaws.com=715.54[Minute 15]ec2-52-23-208-104.compute-1.amazonaws.com=715.08[Minute 16]ec2-52-23-208-104.compute-1.amazonaws.com=716.05[Minute 17]ec2-52-23-208-104.compute-1.amazonaws.com=713.37[Minute 18]ec2-52-23-208-104.compute-1.amazonaws.com=714.73[Minute 19]ec2-52-23-208-104.compute-1.amazonaws.com=715.53
+100s
+; 2015-09-24T03:22:39+0000; Horizontal Scaling Test; isTestingThroughCode=true; Test launched. Please check every minute for update.; Your goal is too achieve rps=4000 in 30 min; Minimal interval of adding instances is 100 sec[Test]type=horizontaltestId=1443064959126testFile=test.1443064959126.log[Minute 1]ec2-52-23-208-104.compute-1.amazonaws.com=552.56[Minute 2]ec2-52-23-208-104.compute-1.amazonaws.com=715.67[Minute 3]ec2-52-23-208-104.compute-1.amazonaws.com=716.49[Minute 4]ec2-52-23-208-104.compute-1.amazonaws.com=715.70[Minute 5]ec2-52-23-208-104.compute-1.amazonaws.com=712.74[Minute 6]ec2-52-23-208-104.compute-1.amazonaws.com=715.92[Minute 7]ec2-52-23-208-104.compute-1.amazonaws.com=716.11[Minute 8]ec2-52-23-208-104.compute-1.amazonaws.com=715.88[Minute 9]ec2-52-23-208-104.compute-1.amazonaws.com=716.72[Minute 10]ec2-52-23-208-104.compute-1.amazonaws.com=714.83[Minute 11]ec2-52-23-208-104.compute-1.amazonaws.com=711.86[Minute 12]ec2-52-23-208-104.compute-1.amazonaws.com=716.08[Minute 13]ec2-52-23-208-104.compute-1.amazonaws.com=714.41[Minute 14]ec2-52-23-208-104.compute-1.amazonaws.com=715.54[Minute 15]ec2-52-23-208-104.compute-1.amazonaws.com=715.08[Minute 16]ec2-52-23-208-104.compute-1.amazonaws.com=716.05[Minute 17]ec2-52-23-208-104.compute-1.amazonaws.com=713.37[Minute 18]ec2-52-23-208-104.compute-1.amazonaws.com=714.73[Minute 19]ec2-52-23-208-104.compute-1.amazonaws.com=715.53
+
+Sending 'GET' request to URL : http://ec2-52-23-209-63.compute-1.amazonaws.com/log?name=test.1443064959126.log
+; 2015-09-24T03:22:39+0000; Horizontal Scaling Test; isTestingThroughCode=true; Test launched. Please check every minute for update.; Your goal is too achieve rps=4000 in 30 min; Minimal interval of adding instances is 100 sec[Test]type=horizontaltestId=1443064959126testFile=test.1443064959126.log[Minute 1]ec2-52-23-208-104.compute-1.amazonaws.com=552.56[Minute 2]ec2-52-23-208-104.compute-1.amazonaws.com=715.67[Minute 3]ec2-52-23-208-104.compute-1.amazonaws.com=716.49[Minute 4]ec2-52-23-208-104.compute-1.amazonaws.com=715.70[Minute 5]ec2-52-23-208-104.compute-1.amazonaws.com=712.74[Minute 6]ec2-52-23-208-104.compute-1.amazonaws.com=715.92[Minute 7]ec2-52-23-208-104.compute-1.amazonaws.com=716.11[Minute 8]ec2-52-23-208-104.compute-1.amazonaws.com=715.88[Minute 9]ec2-52-23-208-104.compute-1.amazonaws.com=716.72[Minute 10]ec2-52-23-208-104.compute-1.amazonaws.com=714.83[Minute 11]ec2-52-23-208-104.compute-1.amazonaws.com=711.86[Minute 12]ec2-52-23-208-104.compute-1.amazonaws.com=716.08[Minute 13]ec2-52-23-208-104.compute-1.amazonaws.com=714.41[Minute 14]ec2-52-23-208-104.compute-1.amazonaws.com=715.54[Minute 15]ec2-52-23-208-104.compute-1.amazonaws.com=715.08[Minute 16]ec2-52-23-208-104.compute-1.amazonaws.com=716.05[Minute 17]ec2-52-23-208-104.compute-1.amazonaws.com=713.37[Minute 18]ec2-52-23-208-104.compute-1.amazonaws.com=714.73[Minute 19]ec2-52-23-208-104.compute-1.amazonaws.com=715.53[Minute 20]ec2-52-23-208-104.compute-1.amazonaws.com=716.08[Minute 21]ec2-52-23-208-104.compute-1.amazonaws.com=715.34
+
+
+
+
+
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body><a href='/log?name=test.1443070266240.log'>Test</a> running.</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; 2015-09-24T06:19:37+0000
+; Horizontal Scaling Test
+; isTestingThroughCode=false
+; You used your browser to start this test. 
+; The result won't be reported to MSB. 
+; Test launched. Please check every minute for update.
+; Your goal is too achieve rps=4000 in 30 min
+; Minimal interval of adding instances is 100 sec
+[Test]
+type=horizontal
+testId=1443075576683
+testFile=test.1443075576683.log
+
+[Minute 1]
+ec2-52-23-210-186.compute-1.amazonaws.com=554.41
+
+[Minute 2]
+ec2-52-23-210-186.compute-1.amazonaws.com=713.33
+
+[Minute 3]
+ec2-52-23-210-186.compute-1.amazonaws.com=711.80
+
+[Minute 4]
+ec2-52-23-210-186.compute-1.amazonaws.com=713.90
+
+[Minute 5]
+ec2-52-23-210-186.compute-1.amazonaws.com=715.16
+
+[Minute 6]
+ec2-52-23-210-186.compute-1.amazonaws.com=688.57
+
+[Minute 7]
+ec2-52-23-210-186.compute-1.amazonaws.com=714.44
+
+[Minute 8]
+ec2-52-23-210-186.compute-1.amazonaws.com=714.53
+
+[Minute 9]
+ec2-52-23-210-186.compute-1.amazonaws.com=712.91
+
+[Minute 10]
+ec2-52-23-210-186.compute-1.amazonaws.com=716.00
+
+[Minute 11]
+ec2-52-23-210-186.compute-1.amazonaws.com=714.79
+
+[Minute 12]
+ec2-52-23-210-186.compute-1.amazonaws.com=714.28
+
+[Minute 13]
+ec2-52-23-210-186.compute-1.amazonaws.com=715.03
+
+[Minute 14]
+ec2-52-23-210-186.compute-1.amazonaws.com=714.68
+
+[Minute 15]
+ec2-52-23-210-186.compute-1.amazonaws.com=712.98
+ec2-52-23-192-225.compute-1.amazonaws.com=550.01
+
+[Minute 16]
+ec2-52-23-210-186.compute-1.amazonaws.com=716.30
+ec2-52-23-192-225.compute-1.amazonaws.com=706.93
+

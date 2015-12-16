@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Social Networking Timeline with Heterogeneous Backend(s) </h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/20">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/20">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 10.9008919286%;"/>
+    </div>
+    
+    <span>6 days 5 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Social Networking Timeline with Heterogeneous Backend(s) </td>
+            <td>11/02/2015 00:01 -0500</td>
+            <td>11/08/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>The Scenario: Build Your Own Social Network</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Task1: Implementing Basic Login with MySQL</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Task2: Storing Social Graph using HBase</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Task3: Build Homepage using DynamoDB</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Task4: Put Everything Together</span></a></li>
+            
+        
+            
+                <li><a href="#section_7"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Social Networking Timeline with Heterogeneous Back-ends</h1>
+
+    <div class="bs-callout bs-callout-learning">
+        <h4>Learning Objectives</h4>
+
+        <p>This project will encompass the following learning objectives:</p>
+        <ol>
+            <li>Explore the provisioning, configuration and management of various Database-as-a-Service (DBaaS) offerings on AWS.</li>
+            <li>Compare and contrast the ETL processes and query operations of MySQL, DynamoDB and HBase using a Java API.</li>
+            <li>Combine multiple back-end database services to provide data to a single, complex web application.</li>
+            <li>Compare and contrast the relative capabilities of different database systems when used in a single application.</li>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>General Details</h4>
+
+        <p>The following table contains general information about this module:</p>
+        <table class="table table-bordered">
+            <tr class="info">
+                <th colspan="3">Applicable Languages</th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        <li>Java only.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="info">
+                <th>Sections</th>
+                <th>Total Budget</th>
+                <th>Bonuses?</th>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>$15</td>
+                <td>No.</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="bs-callout bs-callout-danger">
+        <h4 id="grading-penalties">Grading Penalties</h4>
+
+        <p>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the following:</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Violation</th>
+                <th>Penalty of the project grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Spending more than $15 for this project module</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Spending more than $30 for this project module</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Failing to tag all your resources for this project</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Submitting your AWS credentials in your code for grading</td>
+                <td>-20%</td>
+            </tr>
+            <tr>
+                <td>Using any instance other than those specified in the writeup</td>
+                <td>-10%</td>
+            </tr>
+            <tr>
+                <td>Attempting to hack/tamper the auto-grader</td>
+                <td>-100%</td>
+            </tr>
+            <tr>
+                <td>Failure to submit all the required files</td>
+                <td>At least -100%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <h2>Introduction</h2>
+
+	<p>Recall in previous projects in this course, you provisioned instances and set up various database systems yourself, and,
+	in the last few projects, implemented fairly sophisticated protocols in order to manage data that is distributed across multiple
+	data stores. Many of the tasks involved in designing, configuring and managing these databases are non-trivial. In fact, in the 
+	traditional IT model where software and resources are owned by individual organizations, multiple full-time personnel are hired
+	simply to configure, monitor and maintain database systems, known as database administrators or (DBAs).</p>
+	
+	<p>There are multiple tasks involved in keeping a database within operational parameters for an application. The DB must be monitored 
+	periodically to ensure that query performance is within the expected range of the application. Data in the DB must be periodically backed-up
+	or snap-shotted to recover in case of failure events.</p>
+	
+	<p>An important value-added service that many cloud services offer is the ability to "outsource" or shift the responsibility of running and maintaining
+	a database systems away from the user and to the cloud provider. In the cloud computing industry, these type of services have been typically referred to as
+	Database-as-a-Service or (DBaaS).</p>
+	
+	
+    <h3>Database-as-a-Service (DBaaS)</h3>
+
+    <p>Database-as-a-Service are a managed database services offered by cloud providers. In DBaaS, cloud providers offer packaged database services which
+	users can configure and deploy, while the cloud provider performs the traditional database administration
+        functions. The database can seamlessly scale and is maintained, upgraded and backed-up by the cloud provider.
+        DBaaSes also provide better monitoring failure resiliency than typical off-the-shelf database installations, and can hence improve application availability
+and manageability. DBaaSes can typically handle many of the routine tasks that typically require full-time DBAs.</p>
+
+    <p>In this module we will introduce you to AWS' Database-as-a-Service (DBaaS) offerings. These services enable users to rapidly
+        configure and deploy a database system without having to manually launch instances and configure database
+        software. You will learn about a NoSQL database service provided by AWS (Amazon's DynamoDB).
+        In addition, you will continue to use MySQL on EC2 and HBase on EMR.</p>
+
+    <h3>Social Networking Application Fundamentals</h3>
+    <p>Social networking applications such as Facebook, Twitter and Instagram provide people with a method to virtually
+        connect to others, share their life with others and see what others are up to. Today, billions of people across the world use these applications. As you can imagine, these services require complex and well designed back-end systems to handle the various types of user data, provide consistently fast performance and low latency, and use cutting-edge analytics to derive information that is valuable to these companies and advertisers, in near-real time. In this project, we will walk you through a process to help you build your own social network!</p>
+
+<p>The following (Figure 1) shows a page from a social networking application, Facebook, in case you are fortunate enough to have never seen it:</p>
+
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/1-sns-demo.png" width=600/>
+        <h4>
+            <small class="caption"><b>Figure 1</b>: A screenshot of a social network website (Facebook) belonging to your competitor (keep reading)</small>
+        </h4>
+    </div>
+<p></p>
+    <p>Most social networks have to deal with various types of data. For instance, each post you make on Facebook may
+        contain text,
+        links, images, videos and/or any combination of them. In addition, users access content about themselves and their connections that is dynamically generated and personalized for each user.
+		Consider the timeline view that is shown in Figure 1. A single HTTP request to retrieve and display a page in a social network may trigger a
+        large number of subsequent requests and database actions at the back-end. In most cases, it does not make sense for different types of media to be
+        stored and retrieved in the same manner. In this module, you will build a social network application that
+        retrieves different types of media from different back-end systems.</p>
+
+    <p>Apart from having to deal with a complex web service architecture, web-scale applications also suffer from a huge
+        work amplification. Think about a single google search query:</p>
+    
+	<blockquote><p>When you enter a single query in the Google search box, or just speak it to your phone, you set in
+        motion as much computing as it took to send Neil Armstrong and eleven other astronauts to the moon. Not just the
+        actual flights, but all the computing done throughout the planning and execution of the 11-year, 17 mission
+        Apollo program.</p>
+		<footer>Udi Manber and Peter Norvig, Google</footer>
+		</blockquote>
+
+    <p>Most requests made to the front-end of a social network application trigger requests to many internal back-end
+        services to retrieve fresh information, serve valid advertisements, forward data to the MSB, etc. Here is an
+        example of a typical fan-out graph for a small user-generated request to
+        <a href="https://www.usenix.org/sites/default/files/conference/protected-files/nishtala_nsdi13_slides.pdf">Facebook</a>.
+        Every leaf node (lowest tier) in the graph represents a single computation, whereas non-leaf nodes indicate
+        aggregation and additional computation. Often a single database cannot handle all of these queries, leading to
+        distributed back-ends that employ replication and sharding to serve data effectively.</p>
+
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/2-DAG.png" width=600/>
+        <h4>
+            <small class="caption"><b>Figure 2</b>: A sample fan-out tree at Facebook</small>
+        </h4>
+    </div>
+
+    <h3>Architectural Overview</h3>
+
+    <p>Generally speaking, a modern social networking site at least needs to store and process 3 kinds of data - user profiles,
+        user activities, and a big data analytics system.</p>
+
+
+    <ol>
+        <li>User Profiles
+            <ol type="a">
+                <li>User Authentication System (such as a Single-Sign-On or SSO)</li>
+                <li>User Info / Profile</li>
+                <li>Action Log</li>
+                <li>Social Graph of the User: follower, followee, family etc.</li>
+            </ol>
+        </li>
+        <li>User Activity System - All user generated media</li>
+        <li>Big Data Analytics System
+            <ol type="a">
+                <li>Search System</li>
+                <li>Recommender System</li>
+                <li>User Behaviour Analysis</li>
+            </ol>
+        </li>
+    </ol>
+
+    <!-- TODO insert architecture image-->
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/3-arch.png" width=1000/>
+        <h4>
+            <small class="caption"><b>Figure 3</b>: Architectural Overview</small>
+        </h4>
+    </div>
+   <p>This week we will focus on storing the user and profile information, leaving analytics databases to Project 3 Module 5 (next week).</p>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">The Scenario: Build Your Own Social Website</h1>
+
+    <p>Three weeks after you started to work on the database systems at Carnegie Records, the company (coincidentally?) started facing
+        financial issues. Unfortunately, to cut a long story short, you ended up getting fired. Now, with only $15 in your pocket, you decide to launch your own startup. Your mom is willing to lend you $15 more for a 10% stake in your company, but you are trying to avoid that. And if you need more than $30, you will need to borrow from the Pinklepuss twins, who will probably take over your company and hold on to all your profits.</p>
+    <p>The first product of your new company is a social networking website called CinemaChat, where people discuss their favorite movies. Your first task is to build a timeline to display posts and comments. Since the only resource you own is your laptop, which you cannot leave connected to the Internet all the time, you decide to build the website on AWS. </p>
+    <p>Your friends at TPZ Inc. help you build a simple web front-end in return for a candy bar, so you are only responsible for implementing the back-end. With no data source, the front-end looks like this:</p>
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/6-task4-1.png" width="640"/>
+        <h4>
+            <small class="caption"><b>Figure 4</b>: Front-end Screenshot</small>
+        </h4>
+    </div>
+    <p></p>
+    <div class="bs-callout bs-callout-task">
+        <h4>AWS Details</h4>
+
+        <p>The following table contains information regarding various AWS services and technologies for this project
+            phase:</p>
+        <table class="table table-bordered">
+            <tr class="success">
+                <th colspan="2">Tag Key</th>
+                <th colspan="2">Tag Value</th>
+            </tr>
+            <tr>
+                <td colspan="2">Project</td>
+                <td colspan="2">3.4</td>
+            </tr>
+            <tr class="success">
+                <th>AMI Name</th>
+                <th>AMI ID</th>
+                <th>Instance Type</th>
+                <th>Security Group</th>
+            </tr>
+            <tr>
+                <td>Frontend Instance (FI)</td>
+                <td><code>ami-67681a0d</code></td>
+                <td><code>m3.large</code></td>
+                <td>all traffic</td>
+            </tr>
+            <tr>
+                <td>Backend Instance (BI)</td>
+                <td><code>ami-5c6c1e36</code></td>
+                <td><code>m3.large</code> or <code>m3.xlarge</code></td>
+                <td>all traffic</td>
+            </tr>
+
+            <tr class="success">
+                <th>Dataset Name</th>
+                <th>Data Store Used</th>
+                <th>Description</th>
+                <th>Location</th>
+            </tr>
+
+            <tr>
+                <td>Login Information</td>
+                <td>MySQL</td>
+                <td>[UserID, Password]</td>
+                <td>/home/ubuntu/users.csv</td>
+            </tr>
+            <tr>
+                <td>User Profile</td>
+                <td>MySQL</td>
+                <td>[UserID, Name, Profile Image URL]</td>
+                <td>/home/ubuntu/userinfo.csv</td>
+            </tr>
+            <tr>
+                <td>Relation</td>
+                <td>HBase</td>
+                <td>[Followee, Follower]</td>
+                <td>/home/ubuntu/links.csv</td>
+            </tr>
+            <tr>
+                <td>Posts</td>
+                <td>DynamoDB</td>
+                <td><a href="http://www.w3schools.com/json/">JSON Format</a></td>
+                <td>/home/ubuntu/posts.json</td>
+            </tr>
+            <tr>
+                <td>Profile and Post Images</td>
+                <td>S3</td>
+                <td>Backend system only need to provide URLs</td>
+                <td>URLs are in userinfo.csv and posts.json</td>
+            </tr>
+            <tr class="success">
+                <th colspan="4">AWS Technologies Explored</th>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <ul>
+                        <li>HBase on Elastic MapReduce</li>
+                        <li>AWS DynamoDB</li>
+                        <li>AWS Data Pipeline</li>
+                        <li>AWS S3</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h1 class="page-header">Tutorial: Get Started!</h1>
+
+    <p>In this project, we will use the simple web service architecture shown in the following figure.</p>
+
+    <center>
+        <div class="img-thumbnail">
+            <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/2-scenario-1.png" width=600/>
+            <h4>
+                <small class="caption"><b>Figure 5</b>: Project Architecture Overview</small>
+            </h4>
+        </div>
+    </center>
+    <p></p>
+    <p>
+        You need to load four different datasets into three different kinds of databases (MySQL, HBase, DynamoDB)
+        and query the heterogeneous database system for correct answers which will be returned in JSON format
+        according to the HTTP
+        requests received. All
+        datasets are
+        provided in CSV (comma-separated values) format and you need to design your own schema for all the
+        databases. Your Back-end Instance (BI) should be able to deal with in total <b>four</b> kinds of queries <b>simultaneously</b>
+        and the Front-end Instance (FI) is only used to display the result. All of your work should be done on BI only.
+    </p>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4 id="warnings">Warnings</h4>
+
+        <p>1. Some of the services you will be using for this project, such as DynamoDB and EMR, are expensive when
+            left running or configured incorrectly. Please plan ahead and pay special attention to the instructions
+            before provisioning any
+            resources.</p>
+
+        <p>2. You should store the datasets in back-end system listed in the AWS Details table. You may use any number
+            of tables, but use the correct system for each item of data.</p>
+    </div>
+
+    <h3>Setting up a Front-end Instance</h3>
+
+    <ol>
+        <li>Launch one Front-end Instance (FI) of type <code>m3.large</code> or <code>m3.xlarge</code> and set its
+            security groups to allow <code>all traffic</code>.
+        </li>
+        <li>SSH to the FI and run the following shell script to start the service:
+            <pre>/home/ubuntu/wildfly-8.2.0.Final/bin/standalone.sh</pre>
+        </li>
+        <li>Go to <code>http://frontend-public-dns:8080/p3-3.4/index.html</code> in your browser and if you can see
+            the following page, your FI is correctly launched. The launch process may take up to 5 minutes.
+        </li>
+            <div class="img-thumbnail">
+                <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/2-scenario-2.png" width="850"/>
+                <h4>
+                    <small class="caption"><b>Figure 6</b>: Frontend View (Without Backend)</small>
+                </h4>
+            </div>
+        <p></p>
+    </ol>
+
+    <h3>Setting up a Back-end Instance</h3>
+
+    <ol>
+        <li>Launch one Back-end Instance (BI) of type <code>m3.large</code> and set its security groups to allow <code>all
+            traffic</code>. All tour work will be done on
+            BI. The FI is only used for rendering and displaying your response.</p>
+        </li>
+        <li>SSH into the server instance using <b>ubuntu</b> as the user name and navigate to <b>Project3_4</b> folder
+            in
+            your home directory. We use <a href="https://maven.apache.org/run.html">Apache Maven 3</a> to manage build,
+            reporting and documentation of this project due to the complex dependency relations.
+        </li>
+        <li>You can find the project object model (POM) file <a
+                href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html">pom.xml</a> which
+            contains information about the project and configuration details used by Maven to build the project. All the
+            necessary libraries are already included in
+            pom.xml. If you do not want to add some extra dependencies, you do not need to worry about pom.xml.
+        </li>
+        <li>You can find five .java files under
+            <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+            directory. Your task is to complete <b>four</b> Java Servlet files: <b>ProfileServlet.java (task 1)</b>,
+            <b>FollowerServlet.java (task2)</b>,
+            <b>HomepageServlet.java (task 3)</b>, and <b>TimelineServlet.java (task 4)</b>. Some starter code is
+            provided in
+            each of these files. You can also find another file called <b>MiniSite.java</b> which is the
+            server for this project. All the deployments of Servlets are written in this file and you should
+            <b>NOT</b> change anything in <b>MiniSite.java</b>.
+        </li>
+        <li>
+            You can also find the executable <b>submitter</b> and
+            <b>references</b> file under the same directory.
+        </li>
+        <li>
+            To build the project, run the following command under
+            <code>/home/ubuntu/Project3_4</code> directory:
+            <pre> mvn clean package</pre>
+            Then launch your server with the following command:
+            <pre>mvn exec:java</pre>
+        </li>
+        <li>
+            Go to
+            <code>http://frontend-public-dns:8080/p3-3.4/index.html?id=2&pwd=oltaa&task=1&dns=backend-public-dns</code>
+            in your browser and verify that you can see the default response:
+        </li>
+            <div class="img-thumbnail">
+                <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/2-scenario-3.png" width="850"/>
+                <h4>
+                    <small class="caption"><b>Figure 7</b>: Default Response</small>
+                </h4>
+            </div>
+        <li>Now that you are done setting up, you need to only complete four simple tasks to build your own social networking site that's better than Facebook!
+        </li>
+    </ol>
+    <div class="bs-callout bs-callout-info">
+        <h4>Notes on Java Servlet</h4>
+        <ol>
+            <li>Each of the given <code>xxxServlet.java</code> is dedicated for one specific task.</li>
+            <li>Within each Servlet file, there is a method called <code>doGet</code> which you will need to implement
+                in order to complete this project.
+            </li>
+            <li>Inside each <code>doGet</code>method, you will need to parse the request, connect to your backend
+                database,
+                send queries, parse the result returned and send a response back to the client.
+            </li>
+            <li>A basic demo of how to process <code>request</code> and <code>response</code> in Servlet is given in
+                each file.
+            </li>
+            <li>You may want to initialize your database connection in the constructor of each Servlet.</li>
+        </ol>
+    </div>
+    <div class="bs-callout bs-callout-warning">
+        <h4>Notice</h4>
+        <ol>
+            <li>
+                <p>The starter codes are using <code>org.json</code> package to deal with JSON, you can read more
+                    about it <a href="http://www.json.org/java/">here</a>. You can feel free to use any other JSON
+                    libraries you like such as <code>google/gson</code>.</p>
+            </li>
+            <li>
+                Reading data from each database will be used in multiple tasks, therefore you need to design your
+                program carefully so that it's reusable.
+            </li>
+            <li>
+                <p>Adding a new dependency to the project is easy in a Maven project. You just need to follow a few
+                    steps:
+                <ol type="a">
+                    <li>Search for the dependency required from <a href="http://mvnrepository.com/">Maven
+                        Repository</a>.
+                    </li>
+                    <li>Add the contents between
+                        &lt;dependency&gt; tag into pom.xml between
+                            &lt;dependencies&gt;.
+                        <pre>
+&lt;dependency&gt;
+   &lt;groupId&gt;org.json&lt;/groupId&gt;
+   &lt;artifactId>json&lt;/artifactId&gt;
+   &lt;version>20150729&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                    </li>
+                </ol>
+                </p>
+            </li>
+        </ol>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">Task1: Implementing Basic Login with MySQL</h1>
+
+    <p>As you have seen in the Tutorial section, the page shows "Unauthorized" for all request parameters.
+        So the first thing to create is a login system which allows users to access their own profile using a valid <b>UserID</b>
+        / <b>Password</b> pair.</p>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>Task1 Details</h4>
+
+        <table class="table table-bordered">
+            <tr class="success">
+                <th colspan="2">MySQL Username</th>
+                <th colspan="2">MySQL Password</th>
+            </tr>
+            <tr>
+                <td colspan="2">root</td>
+                <td colspan="2">15319project</td>
+                <!-- db15319project-->
+            </tr>
+            <tr class="success">
+                <th>Dataset Name</th>
+                <th>Database Used</th>
+                <th>Description</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>Login Information</td>
+                <td>MySQL</td>
+                <td>
+                    [UserID, Password]
+                </td>
+                <td>/home/ubuntu/users.csv</td>
+            </tr>
+            <tr>
+                <td>User Profile</td>
+                <td>MySQL</td>
+                <td>
+                    [UserID, Name, Profile Image URL]
+                </td>
+                <td>/home/ubuntu/userinfo.csv</td>
+            </tr>
+            <tr class="success">
+                <th colspan="2">Servlet Name</th>
+                <th colspan="2">Directory</th>
+            </tr>
+            <tr>
+                <td colspan="2">ProfileServlet.java</td>
+                <td colspan="2">/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</td>
+            </tr>
+        </table>
+    </div>
+
+    <h1 class="page-header">Implementation Requirements</h1>
+    <ol>
+        <li>
+            This query simulates the login process of a user, and tests whether your backend system is
+            functioning properly.
+            Your web application will receive a pair of <b>UserID</b> and <b>Password</b>, and you need to check in your
+            backend database to see if the UserID and Password is a valid pair. You should construct your response
+            accordingly:
+            <ol type="a">
+                <li>If <b>YES</b>, send back the user's <b>Name</b> and <b>Profile Image URL</b>.</li>
+                <li>If <b>NOT</b>,
+                    set <b>Name</b> as "Unauthorized" and <b>Profile Image URL</b> as "#".
+                </li>
+            </ol>
+        </li>
+        <li>To finish this task, you need to make use of two of the datasets provided - <b>Login Information</b>
+            and <b>User Profile</b></li>
+    </ol>
+
+    <p>The format that your web application running on <b>Backend Instance</b> will receive is as follows:</p>
+
+    <p>Request Format:
+    <pre>GET /task1?id=[UserID]&pwd=[Password]</pre>
+    </p>
+
+    <p>Your web application's response should be a JSON object, the format is given below:</p>
+    <p>Response Format:
+    <pre>{"name":"my_name", "profile":"profile_image_url"}</pre>
+    </p>
+    <p>In order to save you some hassle, here is some sample code to create the JSON response:
+<pre>
+JSONObject result = new JSONObject();
+result.put("name", "my_name");
+result.put("profile", "profile_image_url");
+PrintWriter writer = response.getWriter();
+writer.write(String.format("returnRes(%s)", result.toString()));
+writer.close();</pre>
+    </p>
+
+    <p>A sample request that your web application will receive looks like this:
+    <pre>http://backend-public-dns:8080/MiniSite/task1?id=3&pwd=cvrdakraa</pre>
+    </p>
+    <p>The expected response that your web application should construct and return look like this:
+    <pre>returnRes({"name":"Aalto","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/e8a7e982144ee3078f432d0d0b105a.png"})</pre>
+    </p>
+    <div class="bs-callout bs-callout-info">
+        <h4 id="warnings">Notes</h4>
+
+        <p>
+            You may notice the returnRes() outside of the JSON file. This is used as a callback function for the
+            frontend to make a cross-domain HTTP request. You can ignore it and pay attention to the correctness of the
+            JSON
+            inside of it only.
+        </p>
+    </div>
+
+    <br/>
+    <h4>Test Task1 with your FI</h4>
+
+    <p>After completing your tasks in your BI, you can visualize and test the results using your Frontend Instance.</p>
+
+    <p>You need to add the public dns of BI to the request parameter the first time you send the query. This helps
+        connect your BI with FI. If you find you BI being unable to correctly receive request from your FI, try to include BI
+        dns in your request to FI again. You need to add a task parameter in your request to FI too.
+    </p>
+
+    <p>Sample Request:
+    <pre>http://frontend-public-dns:8080/p3-3.4/index.html?id=2&pwd=oltaa&dns=backend-public-dns&task=1</pre>
+    </p>
+    <p>You should be able to see the following screen after running the sample request (notice the change in user name
+        and
+        profile image):
+
+    <center>
+        <div class="img-thumbnail">
+            <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/3-task1-1-1.png" width="640"/>
+            <h4>
+                <small class="caption"><b>Figure 8</b>: Task1 FI Response.</small>
+            </h4>
+        </div>
+    </center>
+    </p>
+    <div class="bs-callout bs-callout-info">
+        <h4>How to Submit</h4>
+
+        <p>
+            Please follow the steps to submit your project:
+        </p>
+        <ol>
+            <li>
+                Keep your server running on the BI and run the submitter binary under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                directory. You do not need to finished all the tasks before receiving a score. You should make sure
+                that your server is running and can respond to queries.
+            </li>
+            </li>
+            <li>
+                <p>When submitting, please make sure the following files are under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                    directory:</p>
+                <ol type="a">
+                    <li>ProfileServlet.java</li>
+                    <li>FollowerServlet.java</li>
+                    <li>HomepageServlet.java</li>
+                    <li>TimelineServlet.java</li>
+                    <li>MiniSite.java and any other helper source code files</li>
+                    <li>references file</li>
+                </ol>
+            </li>
+            <li>Execute the submitter under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                directory using the command <code>./submitter</code>. It may take up to 3 minutes to finish all the
+                tests.
+            </li>
+            <li>If your submitter does not finish running after a long time, this may because your program keeps trying
+                connecting to the databases.
+            </li>
+        </ol>
+    </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+
+    <h1 class="page-header">Task2: Storing Social Graph using HBase</h1>
+
+    <p>To build a social networking site, apart from the user information, you also need to store the relations between
+        users. This is done using a social graph, a data structure that represents the relations between users.</p>
+
+    <h4>HBase</h4>
+    <p>Google's original use case for BigTable was the storage and processing for web graph information, represented as
+        sparse matrices. Thus HBase is naturally suitable for storing a social graph. It's massively scalable, well-suited to
+        the graphical data model, and supports multi-hop querying. As HBase is a column-based database, it provides good
+        performance on graph analysis. You may also want to check out the graph databases built on top of
+        HBase, such as <a href="http://thinkaurelius.github.io/titan/">TitanDB</a>, which provide more scalable
+        solutions and can support thousands of concurrent users executing complex graph traversals in real time.</p>
+    <h4>Some data models to store a graph</h4>
+    <p>
+    <ol>
+        <li>Adjacency Matrix</li>
+
+        <div class="img-thumbnail">
+            <table>
+                <tr>
+                    <td>
+                        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/4-task2-1.png" width=200/>
+                        <h4>
+                            <small class="caption"><b>Figure 9</b>: Graph Example</small>
+                        </h4>
+                    </td>
+                    <td>
+                        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/4-task2-2.png" width=200/>
+                        <h4>
+                            <small class="caption"><b>Figure 10</b>: Adjacency Matrix of Figure 1</small>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ol type="a">
+            <li>Can use vectorized libraries</li>
+            <li>Requires O(n^2) memory</li>
+        </ol>
+        <li>Adjacent List</li>
+
+        <div class="img-thumbnail">
+            <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/4-task2-3.png" width=300/>
+            <h4>
+                <small class="caption"><b>Figure 11</b>: Adjacent List of Figure 1</small>
+            </h4>
+        </div>
+    </ol>
+    </p>
+    <br/>
+
+    <p>In task 2, you will need to build a database system to store the social graph in HBase. The raw data is in
+        <Followee, Follower> pairs. Therefore, you need to choose a data model to store the social graph
+        so that when we write a query for a user, your system can provide the user's followers and the also list of people the user follows.
+    </p>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>Task2 Details</h4>
+
+        <table class="table table-bordered">
+            <tr class="success">
+                <th>EMR Hadoop Version</th>
+                <th>EMR HBase Version</th>
+                <th>Master and Core Nodes Type</th>
+                <th>Number of Core Nodes</th>
+            </tr>
+            <tr>
+                <td>Amazon 3.9.0</td>
+                <td>0.94.18</td>
+                <td><code>m3.xlarge/m1.large</code></td>
+                <td>1</td>
+            </tr>
+            <tr class="success">
+                <th>Dataset Name</th>
+                <th>Database Used</th>
+                <th>Description</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>Relation</td>
+                <td>HBase</td>
+                <td>
+                    [Followee, Follower]
+                </td>
+                <td>/home/ubuntu/links.csv</td>
+            </tr>
+            <tr class="success">
+                <th colspan="2">Servlet Name</th>
+                <th colspan="2">Directory</th>
+            </tr>
+            <tr>
+                <td colspan="2">FollowerServlet.java</td>
+                <td colspan="2">/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</td>
+            </tr>
+        </table>
+    </div>
+
+    <h1 class="page-header">Implementation Requirements</h1>
+    <ol>
+        <li>
+            This query asks for the followers of a given user.
+            Your web application will receive a single <code>UserID</code> as request parameter,
+            and you need to send back the <code>Name</code> and <code>Profile Image URL</code> of his/her
+            <b>Followers</b> .
+        </li>
+        <li>
+            You should sort the followers <b>alphabetically</b> in <b>ascending</b> order by
+            <code>Name</code>. If there is a tie in the followers name, sort <b>alphabetically</b> by their <code>Profile
+            Image URL</code>
+            in <b>ascending</b> order.
+        </li>
+        <li>To complete this task, you need to process the given dataset and design appropriate schema by yourself. You
+            may want to review the writeup of Project 3.1 for more information about HBase.
+        </li>
+    </ol>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Hints</h4>
+        <ol>
+            <li>
+                HBase and Hadoop libraries are already installed on the project's Backend Instance.
+            </li>
+            <li>To connect HBase, you may want to import, but not restricted to, the following libraries:
+            <pre>
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.Get;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.hbase.client.HTablePool;
+import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.KeyValue;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.client.HConnection;
+import org.apache.hadoop.hbase.client.HConnectionManager;</pre>
+            </li>
+            <li>
+                You can set up the HBase cluster in the same subnet with the BI and use the private ip address of master
+                node to connect to HBase.
+            </li>
+            <li>
+                Read more about HBase APIs and examples <a
+                    href="https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/client/package-summary.html">here</a>.
+            </li>
+            <li>EMR Amazon 3.9.0 version uses Amazon Linux instead of ubuntu. Therefore, you may need to use
+                <code>yum</code> command to install s3cmd and other tools.
+            </li>
+        </ol>
+
+    </div>
+
+    <p>Request Format:
+    <pre>GET /task2?id=[UserID]</pre>
+    </p>
+    <p>Response Format (in JSON):
+    <pre>{"followers":[{"name":"follower_name_1", "profile":"profile_image_url_1"}, {"name":"follower_name_2", "profile":"profile_image_url_2"}, ...]}</pre>
+    </p>
+    <p>Below is a sample code to add a JSONObject to JSONArray in order to construct the response object.
+<pre>
+JSONArray followers = new JSONArray();
+JSONObject follower = new JSONObject();
+
+follower.put("name", "follower_name_1");
+follower.put("profile", "profile_image_url");
+followers.put(follower);
+</pre>
+    </p>
+
+    <p>Sample Request (there are 58 followers in total, but only the first 5 is listed here):
+    <pre>http://backend-public-dns:8080/MiniSite/task2?id=2</pre>
+    </p>
+    <p>Sample Response:
+    <pre>returnRes({"followers":[{"name":"Africando","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/0a552ed6273943ac7a9b81093014c9.png"},{"name":"Afrika Bambaataa","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/c43b0148a9c98a5d2baedd96be07a2.png"},{"name":"Alex Band","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/15d6a8647c411e1f16899893f031fa.png"},{"name":"Anthony B","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/bce126a97ca09c1b410e60ccd63af4.png"},{"name":"Apathy","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/53489fd2afc2e6242b98516f91098f.png"},{"name":"Arma Angelus","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/4227429669d2c063597153be8a21f5.png"}, ...]})</pre>
+    </p>
+
+    <h4>Test task2 with your FI</h4>
+
+
+    <p>You can visualize and test your Task2 results using the Frontend Instance.</p>
+
+    <p>Sample Request:
+    <pre>http://frontend-public-dns:8080/p3-3.4/index.html?id=2&task=2</pre>
+    </p>
+    <p>You should be able to see the following screen after running the request (notice that it shows "58 Followers" and
+        the first 14 followers' profile can be shown too):</p>
+
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/4-task2-4.png" width="900"/>
+        <h4>
+            <small class="caption"><b>Figure 12</b>: Task2 FI Response.</small>
+        </h4>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+
+        <p>If you find you BI cannot correctly receive request from your FI, try including the
+            BI public dns in your request again..
+        </p>
+    </div>
+</div>
+
+
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+
+    <h1 class="page-header">Task3: Build Homepage using DynamoDB</h1>
+
+    <p>Amazon's DynamoDB is a NoSQL distributed database, similar to HBase and Cassandra. You have already implemented
+        your
+        own distributed datastore with <b>eventual consistency</b> in the previous project. DynamoDB is one of
+        best-known
+        examples of a database using eventual consistency (it however also supports strong consistency).</p>
+
+    <p>As an application developer using DynamoDB, your only concern is how
+        much read and write throughput your application needs - you do not have to worry about scaling, tuning,
+        replication, etc. DynamoDB takes care of the scaling requirements for you.</p>
+
+    <p>DynamoDB supports both document and key-value store models. Its flexible data model and reliable performance make
+        it a great fit for mobile, web, gaming, ad-tech, IoT, and many other applications.
+    </p>
+
+    <h4>Key-value Store</h4>
+
+    <p>A key-value store provides the simplest possible data model and is exactly what the name suggests: it's a storage
+        system that stores values indexed by a key. You're limited to query by key and the values are opaque, i.e., the store
+        doesn't know anything about them. This allows very fast read and write operations (a simple disk access) and you can imagine this
+        model as a kind of non volatile cache (i.e. well suited if you need fast accesses by key to long-lived
+        data).
+    </p>
+
+    <h4>Document Store</h4>
+
+    <p>A document-oriented database extends the previous model. Values are stored in a structured format (a document
+        ) that the database can understand. This is different from traditional RDBS though since the format can be extended
+        or truncated at will. For example, a document could be a blog post and the comments
+        and the tags stored in a denormalized way. Since the data is structured by fields, the store can do more work (like
+        indexing fields of the document) and you're not limited to query by key. Such databases allow fetching the data for an entire page
+        with a single query and are well suited for content oriented applications (which is why big sites like Facebook or Amazon like them).
+    </p>
+
+    <h4>DynamoDB Data Model</h4>
+
+    <p>
+        The DynamoDB data model concepts include tables, items and attributes.
+        In Amazon DynamoDB, a database is a collection of tables. A table is a collection of items and each item is a
+        collection of attributes.
+    </p>
+    <ol>
+        <li><b>Tables</b>
+
+            <p>
+                DynamoDB only requires that a table has a primary key, but does not require you to define all of the
+                attribute names and data types in advance.
+            </p>
+        </li>
+        <li><b>Items</b>
+
+            <p>Individual items in a DynamoDB table can have any number of
+                attributes, although there is a limit of 400 KB on the item size. An item size is the sum of lengths of
+                its attribute names and values (binary and UTF-8 lengths).
+            </p>
+        </li>
+        <li><b>Attributes</b>
+
+            <p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set.
+                For example, a book item can have title and authors attributes. Each book has one title but can have
+                many authors. The multi-valued attribute is a set; duplicate values are not allowed.
+            </p>
+        </li>
+        <li><b>Primary Key</b>
+            <ol type="a">
+                <li>Simple Primary Key
+                    <p>The primary key is made of one attribute, a <b>hash attribute</b>. DynamoDB builds an <b>unordered</b>
+                        hash
+                        index on this primary key attribute. Each item in the table is uniquely identified by its hash
+                        key value.
+                    </p>
+                </li>
+                <li>Composite Primary Key
+                    <p>The primary key is made of two attributes. The first attribute is the <b>hash attribute</b> and
+                        the
+                        second one is the <b>range attribute</b>. DynamoDB builds an <b>unordered</b> hash index on the
+                        hash primary
+                        key attribute, and a <b>sorted</b> range index on the range primary key attribute. Each item in
+                        the
+                        table is uniquely identified by the combination of its hash and range attribute values. It is
+                        possible for two items to have the same hash attribute value, but those two items must have
+                        different range attribute values.
+                    </p>
+                </li>
+            </ol>
+        </li>
+    </ol>
+    <br/>
+
+    <p>In task 3, you will need to build a database system to store all the posts of the social network using DynamoDB. The raw data is provided in
+        JSON format where each post is represented by a complex nested JSON Object. Therefore, you need to choose an
+        appropriate hash key (and probably an appropriate range key too) to store the posts so that
+        when we query your server with a user's id, you should be able to show us all of the posts for that user.
+    </p>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>Task3 Details</h4>
+
+        <table class="table table-bordered">
+            <tr class="success">
+                <th colspan="2">DynamoDB Read Throughput</th>
+                <th colspan="2">DynamoDB Write Throughput</th>
+            </tr>
+            <tr>
+                <td>Suggested Value (Load Data)</td>
+                <td>Suggested Value (Query)</td>
+                <td>Suggested Value (Load Data)</td>
+                <td>Suggested Value (Query)</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>100</td>
+                <td>500</td>
+                <td>50</td>
+            </tr>
+            <tr class="success">
+                <th>Dataset Name</th>
+                <th>Database Used</th>
+                <th>Description</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>Posts</td>
+                <td>DynamoDB</td>
+                <td>Each line is a single post in JSON format</td>
+                <td>/home/ubuntu/posts.json</td>
+            </tr>
+            <tr class="success">
+                <th colspan="2">Servlet Name</th>
+                <th colspan="2">Directory</th>
+            </tr>
+            <tr>
+                <td colspan="2">HomepageServlet.java</td>
+                <td colspan="2">/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</td>
+            </tr>
+        </table>
+    </div>
+
+    <h1 class="page-header">Implementation Requirements</h1>
+    <ol>
+        <li>
+            This query asks for all the posts of a given user.
+            Your web application will receive a single <b>UserID</b> as request parameter,
+            and you need to send back all of the user's <b>Posts</b>.
+        </li>
+        <li>
+            Each line in posts.json is a JSON object for a single post. The detailed structure is listed as bellow:
+            <pre>
+{
+    "pid":xxx,                                      // PostID
+    "uid":xxx,                                      // UserID of poster
+    "name":"xxx",                                   // User name of poster
+    "profile":"xxx",                                // Poster profile image URL
+    "timestamp":"YYYY-MM-DD HH:MM:SS",              // When post is posted
+    "image":"xxx",                                  // Post image
+    "content":"xxx",                                // Post text content
+    "comments":[                                    // comments json array
+        {
+            "uid":xxx,                              // UserID of commenter
+            "name":"xxx",                           // User name of commenter
+            "profile":"xxx",                        // Commenter profile image URL
+            "timestamp":"YYYY-MM-DD HH:MM:SS",      // When comment is made
+            "content":"xxx"                         // Comment text content
+        },
+        {
+            "uid":xxx,
+            .......
+        },
+        ......
+    ]
+}</pre>
+        </li>
+        <li>
+            Note that you do not need to change anything in the post json, all the comments are already sort by <code>Timestamp</code>
+            in <b>ascending</b> order.
+        </li>
+        <li>You should sort the posts by <code>Timestamp</code> in <b>ascending</b> order (from the oldest to the latest
+            one).<br>
+            If there is a tie in the timestamp, sort the posts with the same timestamp <b>numerically</b> in
+            <b>ascending</b> order by their
+            <code>PID</code> (PostID).
+        </li>
+    </ol>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>Setting up DynamoDB</h4>
+        Before proceeding make sure you understand how <a href="https://aws.amazon.com/dynamodb/pricing/">cost</a> is calculated
+        for DynamoDB, since this can be quite expensive and you may burn through your entire budget very quickly.
+        <ol>
+            <li>In AWS, choose DynamoDB service from console and create a new DynamoDB table</li>
+            <li>Choose primary key type and assign to appropriate attributes</li>
+            <li>You can skip the <b>Add Index</b> page by click <b>Continue</b></li>
+            <li>Set the Read and Write capacities according to your need. E.g. If you are about to load data, it will be
+                good to set the write capacity to 500 unit. You can also monitor read/write capacity from the <b>Monitoring</b>
+                tab.
+            </li>
+            <li>After successfully creating a DynamoDB table, you should be able to view it in the console after a few
+                minutes.
+            </li>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Load Data into DynamoDB using Data Pipeline</h4>
+        <ol>
+            <li>Prepare posts.json for loading
+                <p>You can directly use the import table function provided by DynamoDB. However, tables of DynamoDB is
+                    stored in a
+                    different format other than CSV/TSV files, so first you need to convert the data into the correct
+                    format for DynamoDB. You can find a detailed description on DyanmoDB data format <a
+                            href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html">here</a>
+                </p>
+                <ol type="a">
+                    <li>A sample for DynamoDB import file is provided at <code>/home/ubuntu/sample</code> of your BI
+                    </li>
+                    <li>Upload the processed file to S3 and put it in an empty folder</li>
+                </ol>
+            </li>
+            <li>Load data with correct format into DynamoDB
+                <ol type="a">
+                    <li>Click <b>Export/Import</b> in DynamoDB Console.</li>
+                    <li>Select a table and choose <b>Import into DynamoDB</b>.</li>
+                    <li>Set up the import and log directory, then you need to create two IAM roles, a <b>Data Pipeline
+                        Default Role</b> and a
+                        <b>Default Resource Role</b>. Without correct IAM role, the pipeline will not be able to access
+                        DynamoDB and/or S3.
+                    </li>
+                    <li>Go to IAM in Services and choose <b>Roles</b> from the dashboard on the left.</li>
+                    <li>Create a <b>Data Pipeline Default Role</b> using the following steps.</li>
+                    <ol type="i">
+                        <li>Create a role (role1) with Role Type <b>AWS Data Pipeline</b>. Click Next Step and leave the checkbox
+                            empty.
+                        </li>
+                        <li>Go to <b>Policies</b> and choose <b>Create Policy</b> => <b>Create Your Own Policy</b>. Then add the following to
+                            <b>Policy
+                                Document</b>
+                <pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+         {
+            "Effect": "Allow",
+            "Action": [
+                "s3:List*",
+                "s3:Put*",
+                "s3:Get*"
+                "s3:DeleteObject",
+                "s3:CreateBucket",
+                "dynamodb:DescribeTable",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:BatchGetItem",
+                "dynamodb:UpdateTable",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:DeleteTags",
+                "ec2:Describe*",
+                "ec2:CancelSpotInstanceRequests",
+                "ec2:CreateSecurityGroup",
+                "ec2:DeleteTags",
+                "ec2:CreateTags",
+                "ec2:ModifyImageAttribute",
+                "ec2:ModifyInstanceAttribute",
+                "ec2:RequestSpotInstances",
+                "ec2:RunInstances",
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:TerminateInstances",
+                "elasticmapreduce:*",
+                "rds:DescribeDBInstances",
+                "rds:DescribeDBSecurityGroups",
+                "redshift:DescribeClusters",
+                "redshift:DescribeClusterSecurityGroups",
+                "sdb:BatchPutAttributes",
+                "sdb:Select*",
+                "sns:GetTopicAttributes",
+                "sns:ListTopics",
+                "sns:Publish",
+                "sns:Subscribe",
+                "sns:Unsubscribe",
+                "iam:PassRole",
+                "iam:ListRolePolicies",
+                "iam:GetRole",
+                "iam:GetRolePolicy",
+                "iam:ListInstanceProfiles",
+                "cloudwatch:*",
+                "datapipeline:DescribeObjects",
+                "datapipeline:EvaluateExpression"
+            ],
+            "Resource": [
+                "*"
+            ]
+         }
+     ]
+}
+                </pre>
+                        </li>
+                        <li>Attach the policy to role1 you created just now</li>
+                        <li>Select role1 in <b>Roles</b>, and choose <b>Edit Trust Relationship</b> to replace the default one with
+                            the
+                            following
+                <pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "datapipeline.amazonaws.com",
+                    "elasticmapreduce.amazonaws.com"
+                ]
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+                </pre>
+                        </li>
+                    </ol>
+                    <li>Create another role (role2) with Role Type <b>Amazon EC2 Role for Data Pipeline</b> and attach the
+                        following to Policy
+                <pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "dynamodb:*",
+                "ec2:Describe*",
+                "elasticmapreduce:Describe*",
+                "elasticmapreduce:ListInstance*",
+                "elasticmapreduce:AddJobFlowSteps",
+                "rds:Describe*",
+                "datapipeline:*",
+                "cloudwatch:*",
+                "redshift:DescribeClusters",
+                "redshift:DescribeClusterSecurityGroups",
+                "sdb:*",
+                "sns:*",
+                "sqs:*"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+                </pre>
+                    </li>
+                    <li>Go back to the DynamoDB console.</li>
+                    <li>Set role1 as <b>Data Pipeline Default Role</b> and role2 as <b>Default Resource Role</b> in DynamoDB Create
+                        Import Table Data.Then click <b>Create Import Pipeline</b> and the import should be finished in roughly
+                        an hour. You can also check
+                        the progress of the import in EMR.
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+
+    <div class="bs-callout bs-callout-warning">
+        <h4>DynamoDB Java API</h4>
+
+        <p>Since the API for DynamoDB is updated frequently, we will use the latest version <b>AWS Java SDK For Amazon
+            DynamoDB
+            » 1.10.27</b> in this project.
+        </p>
+        <ol>
+            <li>Connect and query DynamoDB using the Java API
+                <p>You need your credentials to connect to DynamoDB. Use the method in previous projects to import
+                    credentials/properties. Do not explicitly leave your credential information in the code.</p>
+            </li>
+            <li>You can find some official examples for AWS Java SDK for Amazon DynamoDB <a
+                    href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/JavaQueryScanORMModelExample.html">here</a>
+            </li>
+            <li>To connect Amazon DynamoDB, you may want to import (but are not restricted to) the following libraries:
+            <pre>
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.model.*;
+import com.amazonaws.services.dynamodbv2.document.*;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
+import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;</pre>
+            </li>
+        </ol>
+    </div>
+
+    <p>Request Format:
+    <pre>GET /task3?id=[UserID]</pre>
+    </p>
+    <p>Response Format:<br/>
+        Each JSON object (e.g. post1_json) in the "posts" JSON array should follow the format described in <b>Implementation Requirements</b>
+    <pre>{"posts":[{post1_json}, {post2_json}, ...]}</pre>
+    </p>
+    <h4>Sample Backend Instance for Task 3</h4>
+    <p>Sample Request:
+    <pre>http://backend-public-dns:8080/MiniSite/task3?id=1</pre>
+    </p>
+    <p>Sample Response (Some posts and comments are omitted):
+    <pre>returnRes({"posts":[{"content":"Wow, just experienced Barrio Cuba","timestamp":"2010-05-25 06:18:11","uid":1,"name":"Aaliyah","image":"http://cmucloudsocial.s3.amazonaws.com/posts/Barrio_Cuba.png","pid":49138,"comments":[{"uid":16779,"timestamp":"2010-07-18 01:03:49","content":"This award-winning film from Havana follows the struggles of three multi-generational families. Sweltering heat, dilapidated buildings, a dysfunctional economy, and a spartan diet ('We're having beans and rice again because that's what the grocery had') are only the beginning of their deeply human struggles. Magalis bikes to her job as a nurse and attracts all the wrong sort of men-- an aging carpenter who's hopelessly in love with her, a no-good cheater, and a rich Italian, but her real challenge is the fight between her dictatorial father and her gay brother. When Maria dies in childbirth her husband Santos flees, leaving the grandmother to raise the boy and to salvage the son's image of his absent father. In the third story, the engineer Chino and his pharmacist wife Vivian suffer a miscarriage, and with it the expectations of their parents for a grandchild, both of which are aggravated by a sibling who flees with his family from Cuba. The three stories are not connected in the film, except for a common theme -- people who flee their problems then face the challenge to return for reconciliation. The problems are real, but their resolutions are contrived.","name":"Kostia","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/24afc9707d42cc756b02efae729a2d.png"},...<b>(Some comments are omitted here)</b>...],"profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/9cc1886c5af388976e959787fa810c.png"},{"content":"Wow, just experienced American Gun [VHS]","timestamp":"2015-05-26 01:02:18","uid":1,"name":"Aaliyah","image":"http://cmucloudsocial.s3.amazonaws.com/posts/American_Gun_VHS_.png","pid":89533,"comments":[...<b>(Some comments are omitted here)</b>]}</pre>
+    </p>
+
+    <h4>Sample Frontend Instance for Task 3</h4>
+
+    <p>Sample Request:
+    <pre>http://frontend-public-dns:8080/p3-3.4/index.html?id=1&task=3</pre>
+    </p>
+    <p>You should be able to see the following screen after running the request:</p>
+
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/5-task3-1.png" width="900"/>
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/5-task3-2.png" width="900"/>
+        <h4>
+            <small class="caption"><b>Figure 13</b>: Task3 FI Response.</small>
+        </h4>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+        <p>If you find your BI is unable to correctly receive a request from your FI, try including the BI's public dns in your request.
+        </p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>AWS Credentials</h4>
+        <p>Please remember not to hard-code your AWS credentials in your code, otherwise they will be uploaded by the <code>submitter</code>
+        </p>
+    </div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <div class="bs-docs-section">
+
+    <h1 class="page-header">Task4: Put Everything Together</h1>
+
+    <p>In Task 4, you will need to make use of all the databases you worked on in the previous three tasks and implement a "timeline page" on your simple social networking site.
+    </p>
+
+    <div class="bs-callout bs-callout-task">
+        <h4>Task 4 Details</h4>
+
+        <table class="table table-bordered">
+            <tr class="success">
+                <th colspan="2">Servlet Name</th>
+                <th colspan="2">Directory</th>
+            </tr>
+            <tr>
+                <td colspan="2">TimelineServlet.java</td>
+                <td colspan="2">/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</td>
+            </tr>
+        </table>
+    </div>
+
+    <h1 class="page-header">Implementation Requirements</h1>
+    <ol>
+        <li>
+            This query asks for the <b>latest 30</b> posts from the followees of a given user, and the personal
+            information of that given user. Your website will receive a single <b>UserID</b>, and you need to respond with the user's <code>Name</code>,
+            <code>Profile Image URL</code>, list of <code>Followers</code>, and a list of the latest 30 the
+            <code>Posts</code> from the people that the user <code>Follows (Followees)</code>.
+        </li>
+        <li>
+            You should sort the followers <b>alphabetically</b> in <b>ascending</b> order by
+            <code>Name</code>. If there is a tie in the followers name, sort <b>alphabetically</b> by their <code>Profile
+            Image URL</code> in <b>ascending</b> order.
+        </li>
+        <li>You should sort the latest 30 posts from the followees by <code>Timestamp</code> in <b>ascending order</b>
+            (from the oldest to the latest). If there is a tie in the timestamp, sort the posts with the same timestamp
+            <b>numerically</b> in
+            <b>ascending</b> order by their <code>PID</code> (PostID).<br>
+            If there are less than <b>30</b> posts, you should return all the posts.
+        </li>
+    </ol>
+
+    <p>Request Format:
+    <pre>GET /task4?id=[UserID]</pre>
+    </p>
+    <p>Response Format:
+    <pre>{"name":"my_name", "profile":"my_profile_image_url",
+"followers":[{"name":"follower_name_1", "profile":"profile_image_url_1"}, {"name":"follower_name_2", "profile":"profile_image_url_2"}, ...],
+"posts":[{post1_json, post2_json, ...}]}</pre>
+    </p>
+
+    <p>Sample Request:
+    <pre>http://backend-public-dns:8080/MiniSite/task4?id=29964</pre>
+    </p>
+    <p>Sample Response (Some posts and comments are omitted):
+    <pre>returnRes({<b>"name"</b>:"Mrigesh",<b>"profile"</b>:"https://cmucloudsocial.s3.amazonaws.com/profiles/1fd04396b266de0fa03bb63166966e.png"},<b>"followers"</b>:[{"name":"Anshima","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/701235433e5338d0da521cf8f11e14.png"}, ...<b>(Some followers are omitted here)</b>...,{"name":"Zichang","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/1b1b2afd761166258b074a1c44c415.png"}],<b>"posts"</b>:[{"content":"Wow, just experienced Cooperstown Baseball's Main Street [VHS] (1995)","timestamp":"2014-01-30 00:08:13","uid":35915,"name":"Suhail","image":"http://cmucloudsocial.s3.amazonaws.com/posts/Cooperstown_Baseball_s_Main_Street_VHS_1995_.png","pid":19143,"comments":[{"uid":35900,"timestamp":"2015-03-26 14:05:47","content":"This is a great video. You get the Hall, Double Day Field and a feel for this great town. Cooperstown has that old time feel. Something everyone can appreciate. It's baseball heaven. This isn't one of those tapes you watch annually. I have always wanted to go. After seeing this, I am making plans to go asap. My only gripe is the length. It should have been longer than (approx.) twenty-eight minutes. Still, a must have for every baseball fan.","name":"Debjani","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/af7ad2ca674c46b5799593c447b99b.png"},...<b>(Some comments are omitted here)</b>...],"profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/0d8642e4fb42c8cc61eb1c16cf88ba.png"},...<b>(Some posts are omitted here)</b>...,{"content":"Wow, just experienced Walker, Texas Ranger: Seasons 1-5 and the Final Season","timestamp":"2015-10-08 08:14:18","uid":35907,"name":"Mengyu","image":"http://cmucloudsocial.s3.amazonaws.com/posts/Walker_Texas_Ranger_Seasons_1_5_and_the_Final_Season.png","pid":103646,"comments":[{"uid":35910,"timestamp":"2015-10-21 02:39:01","content":"Walker, Texas Ranger is an awesome show! For years I've watched reruns on TV and now I can watch the whole dang thing again with no commercials. if you are a fan of karate or Indians or Chuck himself, this is a must watch. Kudos to all his co-stars. great DVDs!","name":"Prajwal","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/7c5889fadc362e815d8ceef234b1ae.png"},...<b>(Some comments are omitted here)</b>...,{"uid":35914,"timestamp":"2015-10-25 08:30:59","content":"I watch it over and over. His shows I can't get enough of. It has inspirited me to do kick boxing as an good work out.","name":"Siyuan","profile":"https://cmucloudsocial.s3.amazonaws.com/profiles/5c6661092d81b393473bda2ca9669a.png"}]})</pre>
+    </p>
+
+    <h4>Test Task 4 with your FI</h4>
+
+    <p>Sample Request:
+    <pre>http://frontend-public-dns:8080/p3-3.4/index.html?id=29964&task=4</pre>
+    </p>
+    <p>You should be able to see the following screen after running the request:
+
+    <div class="img-thumbnail">
+        <img src="https://cmucc-public.s3.amazonaws.com/p34/figures/6-task4-2.png" width="640"/>
+        <h4>
+            <small class="caption"><b>Figure 14</b>: Task4 FI Response.</small>
+        </h4>
+    </div>
+    </p>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Note</h4>
+
+        <p>If you find your BI is unable to correctly receive a request from your FI, try including the BI's public dns in your request.
+        </p>
+    </div>
+
+    <div class="bs-callout bs-callout-info">
+        <h4>Reminder: How to Submit</h4>
+
+        <p>
+            Please follow the steps to submit your project:
+        </p>
+        <ol>
+            <li>
+                Keep your server running on the Backend Instance and run the submitter binary under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                directory. You do not need to finish all the tasks to receive a score, but you should
+                make sure
+                that
+                your server does not block when handling a query.
+            </li>
+            </li>
+            <li>
+                <p>When submitting, please make sure the following files are under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                    directory:</p>
+                <ol type="a">
+                    <li>ProfileServlet.java</li>
+                    <li>FollowerServlet.java</li>
+                    <li>HomepageServlet.java</li>
+                    <li>TimelineServlet.java</li>
+                    <li>MiniSite.java</li><li>... and any other helper source code files</li>
+                </ol>
+            </li>
+            <li>Execute the submitter under <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code>
+                directory using the command <code>./submitter</code>. It may take a few minutes to finish all the tests.
+            </li>
+        </ol>
+    </div>
+</div>
+<div>
+    <p>This project uses <a href="https://snap.stanford.edu/data/web-Amazon.html">Amazon review data from SNAP</a> and images gathered using <a href="https://www.flickr.com/services/api/explore/flickr.photos.search">Flickr photo search</a> with safe search set to 1. People post stupid things on social networks, and we hope that CinemaChat fulfills the standards you have come to expect of social networks. <font color="white">We're looking for people to help us mine <a href="https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment"><font color="white">Reddit comments</font></a> for next semester.</font></p>
+                </div>
+            
+        
+            
+                <div id="section_7" class="writeup_section" data-sequence="7">
+                    <iframe src="https://docs.google.com/forms/d/1UQUkZrK-QxdCyjPM7eH21TTgXUJG0r7_BAey8PgMOMY/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="20">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

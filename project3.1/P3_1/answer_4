@@ -1,0 +1,1 @@
+scan 'songdata', {COLUMNS => ['data:artist_name', 'data:artist_hotttnesss', 'data:title'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:.*Consequence.*') AND SingleColumnValueFilter('data', 'artist_hotttnesss', >= , 'binary:1') AND SingleColumnValueFilter('data', 'title', = , 'regexstring:.*Family.*')"}

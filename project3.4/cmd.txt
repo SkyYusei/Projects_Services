@@ -1,0 +1,44 @@
+Task1:
+CREATE USER 'task1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON * . * TO 'task1';
+
+mysql -u root -p15319project --local-infile
+
+LOAD DATA LOCAL INFILE '/home/ubuntu/users.csv' INTO TABLE login_info CHARSET 'utf8' FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (userid, password);
+
+LOAD DATA LOCAL INFILE '/home/ubuntu/userinfo.csv' INTO TABLE user_profile CHARSET 'utf8' FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (userid, name, url);
+
+Task2:
+sort by column:
+cat links.csv | sort -t, -nk1,1 -nk2,2 > linkfollower.csv
+cat links.csv | sort -t, -nk2,1 -nk1,2 > linkfollowee.csv
+
+merge similiar rows:
+process files:
+cat linkfollower.csv | awk 'BEGIN {FS=","} {if($1==x){i=i" "$2}else{if(NR>1){print i};i=$0};x=$1;y=$2} END{print i}' > outfollower.csv
+
+cat linkfollowee.csv | awk -F, 'BEGIN {FS=","} {print $2","$1}' > file.csv
+
+cat file.csv | awk 'BEGIN {FS=","} {if($1==x){i=i" "$2}else{if(NR>1){print i};i=$0};x=$1;y=$2} END{print i}' > outfollowee.csv
+
+awk 'BEGIN {FS=","} NR==FNR {h[$1] = $2; next} {print $1","h[$1]","$2}' outfollower.csv outfollowee.csv > follow.csv
+
+build table:
+hadoop fs 
+mkdir Project3_4
+cd Project3_4
+scp -i ~/ruz/15619/15619_Project0.pem hadoop@ec2-54-174-10-144.compute-1.amazonaws.com:/home/hadoop/hbase/conf/hbase-site.xml .
+hadoop fs -mkdir /p34hbase
+hadoop fs -put * /p34hbase
+
+hbase shell
+
+create 'followinfo', {NAME => 'data'}
+
+exit
+
+hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=,' -Dimporttsv.bulk.output=output1 -Dimporttsv.columns=HBASE_ROW_KEY,data:follower,data:followee followinfo /p34hbase
+
+hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles output1 followinfo
+
+scan 'followinfo'

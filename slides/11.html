@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Azure Playground</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/11">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/11">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Azure Playground</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Overview</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Launching Virtual Machines and Benchmarking</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Web Server Benchmarking</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Overview</h1>
+
+<p>Computing on the cloud is often performed on isolated resources called <b>Virtual Machines</b> (VMs). Cloud Service Providers (CSPs) like Microsoft Azure provide different metered options of these VMs to users, allowing you to select the VM or instance type with the OS and resources (memory, CPU, and network capabilities) for your specific application's constraints and budget. Hence, the user has to decide which instance types to provision on the cloud.</p>
+
+
+<p>The objective of this project (Project 0) is to introduce you to virtual machines, running applications on them, and understanding the performance implications of various types of virtual machines. For example, certain virtual machine or instance types provide more resources than others and hence cost more to run per hour than others. Would provisioning an expensive instance translate into a proportional improvement in the performance of the instance? What is a good metric to measure performance? How often does the performance vary? These are hard questions, but this introductory project will give you some insight into these problems.</p>
+
+<p>We will work with Azure's virtual machines in this part of the project. We also expect you to have finished all of the project primers before attempting this project, particularly the <b>Azure primer</b>.</p>
+
+<p>This part of the project is divided into multiple sections. We will begin by asking you to launch 3 different types of Azure virtual machines, assess their relative performance using a number of internal benchmarking tools, and finally assess their performance as public-facing web servers. You will need to complete all of the tasks and answer a few AssessMe questions before proceeding to the next section on this page.</p>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Launching Virtual Machines and Benchmarking</h1>
+
+<p>As this may be your first time working on a public cloud environment, you may be unsure about the capabilities of Azure's virtual machines. Let us create a few general purpose VMs and experiment on them to analyze their performance:</p>
+
+<ol>
+
+<li>
+<p>Visit the <a href="https://portal.azure.com" target="_blank">Azure portal</a> and create a new virtual machine running <b>Ubuntu 14.04 LTS</b> using the <b>Resource Manager</b> deployment model using your <b>Azure pass subscription</b> with location of <b>East US</b>.</p>
+
+<li>
+<p>We need to launch Virtual Machines of sizes <code>A1</code>, <code>A2</code> and <code>A3</code>.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/instance_size.png" alt="azure-create-vm-size" />
+<h4><small class="caption"><b>Figure</b>: Azure Sizes</small></h4>
+</div>
+</li>
+
+<li>
+<p>Under the <b>Settings</b>-><b>Storage</b>,  select the <b>Standard</b> disk type, and create a new <b>storage account</b> with type <b>Standard-LRS</b>, virtual network at <b>East US</b></p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/instance_settings.png" alt="azure-create-vm-settings" />
+<h4><small class="caption"><b>Figure</b>: Azure Advanced Settings</small></h4>
+</div>
+</li>
+
+
+<li><p>After creating the virtual machine, modify and add TCP port <code>80</code> to the <b>Inbound security rules</b>.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/azure-network-security.png" alt="azure-network-security" />
+<h4><small class="caption"><b>Figure</b>: Inbound Security Rules</small></h4>
+</div>
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/azure-security-rules.png" alt="azure-security-rules" />
+<h4><small class="caption"><b>Figure</b>: Port 80 TCP</small></h4>
+</div></li>
+
+<li>Tag the virtual machines with Key: "Project" and Value: "0"</p>
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/azure_tagging.png" alt="azure-tagging" />
+<h4><small class="caption"><b>Figure</b>: Tagging Azure</small></h4>
+</div>
+</li>
+
+<li>
+Once that the VM is running, you will be able to SSH into the machine by <pre>ssh [username]@[Public IP address]</pre> and providing the authentication method.
+</li>
+
+</ol>
+
+
+
+<h2>System Benchmarking</h2>
+
+<p>To measure the performance of a launched instance you need to install a benchmarking tool on the instance. If you do not know how to install software on an Ubuntu virtual machine, we suggest reading through the <a href="../2/6">Linux primer</a>.
+</p>
+
+<p><b>Systems benchmarking</b> is the process of running a fixed computer program or workload in multiple environments in order to assess the relative performance of the program in each environment. For example, consider a large agricultural services company that wants to use Azure resources to stitch together global satellite images to form a real-time weather and terrain map. The company would first benchmark their image stitch program on different Azure instances to find the type that had the best memory, CPU and IO configuration that met their needs in line with their budget.</p>
+
+<p>Although Cloud Service Providers release a virtual list of resources for each instance type, it is important to realize that the performance of cloud instances are neither guaranteed nor stable. In most cases, the degree of variation is sufficiently low so that it does not impact the requirements of the deployed application. However, before investing a large sum of money in a particular cloud solution, it is important to benchmark the resources required in order to be able to understand the scale of the system to be built. We often use benchmarking tools to do this. In this part of the project, we will use <code>sysbench</code>, a modular, cross-platform lightweight benchmark tool which can be used to quickly evaluate CPU, Memory and File I/O performance.</p>
+
+<p>To get started, install the <code>sysbench</code> on the instance from the APT repositories. Once <code>sysbench</code> is installed, we can begin benchmarking the virtual machine instance.</p>
+
+<h3>CPU Performance Benchmarking</h3>
+<p>To calculate the CPU performance of each instance type, we use <code>sysbench</code> to compute all the prime numbers within a particular range of values using a fixed number of CPU threads.</p>
+
+<p>On each VM, run <code>sysbench</code> sequentially with the following parameters:</p>
+
+<table class="table table-striped table-bordered" style="width:60%">
+<tbody>
+<tr>
+  <th>Max Prime Numbers</th>
+  <th>Number of CPU Threads</th>
+</tr>
+<tr>
+  <td>20000</td>
+  <td>8</td>
+</tr>
+<tr>
+  <td>40000</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>50000</td>
+  <td>4</td>
+</tr>
+</tbody>
+</table>
+
+<h3>File IO Performance Benchmarking</h3>
+<p>Next, we test the file IO performance of each instance. Azure often guarantees a particular set of Input/Output Operations per Second (IOPS) for a disk. These values can vary widely depending upon the type of disk access pattern. For example, accessing the disk sequentially yields much higher IOPS than  randomly accessing data on a disk. This gain in performance is due to factors such as caching, as well as the type of disk. Rotating (<b>Magnetic</b>) drives are impacted by the <i>seek time</i> and <i>rotational latency</i>, whereas <b>Solid State Drives</b> (SSDs)  are impacted by the speed of the drive interface and the device's controller.</p>
+
+
+<p>To run a disk IO performance benchmark, we must create a large file and then read and write to it, either <em>randomly</em> or <em>sequentially</em>. Using <code>sysbench</code>, we can run the benchmark on all instances as follows:</p>
+
+<ol>
+<li>
+
+<p>Prepare a 20 GB file to check the disk IO performance. This can be done using the command below.</p>
+
+<p><pre>sysbench --test=fileio --file-total-size=20G prepare</pre>
+</li>
+<li>
+You should prepare a new file for each <code>sysbench</code> IO test that you run. This test file should be bigger than your RAM size (to avoid caching the file in memory during the benchmark). This step might take around 30 minutes, so you should use <code>byobu</code>/<code>screen</code>/<code>tmux</code> to avoid losing any work after disconnecting from the ssh.</p>
+</li>
+
+<li>
+<p>Now, run a benchmark that randomly reads and writes to this file. You should use the command:</p>
+<pre>sysbench --test=fileio --file-total-size=20G --file-test-mode=rndrw --init-rng=on --max-time=300 --max-requests=0 run</pre>
+</li></ol>
+
+<p>Observe the operations per second for your instance. As you compare instance the instance types <code>A1</code>, <code>A2</code>, <code>A3</code>, do the operations per second scale up as you use more expensive instances?</p>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Web Server Benchmarking</h1>
+<p>
+This course relies on developing the skill of configuring, building and deploying web services. To be able to do this, you should be familiar with hosting a web service. To complete Project 0, you should install and host a simple web server on each virtual machine that you have already provisioned, and modify the Internet-facing home page, which can be tested by our load generators.</p>
+
+<p>The following video explains the Apache Web Server in detail:</p>
+
+<div class="row" style="align:center">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/6_tPobCyF9o?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <p><b>Video:</b>Apache Web Server<p>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+<ol>
+<li><p>Start by installing a generic <b>Apache</b> web server on the virtual machine. Use <code>apt-get</code> to install  the <code>apache2</code> package on your virtual machine. Verify that <code>apache</code> is running by visiting the <b>Public DNS Address</b> of your running virtual machine on a web browser. You should see the following "It Works" page or a variant of it:</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/it_works_azure.png" alt="azure-create-vm" />
+<h4><small class="caption"><b>Figure</b>: The Default Apache Webpage</small></h4>
+</div>
+</li>
+
+
+<li>
+<p>Now, modify the HTML file that serves as the home page so that it only contains the following line:</p>
+
+<pre>15619 is awesome!</pre>
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/DC.png" alt="azure-create-vm" />
+<h4><small class="caption"><b>Figure</b>: HTML File. Notice that the HTML file only contains the string <code>15619 is awesome!</code>, no other tags of any kind.</small></h4>
+</div>
+
+<p>Since a large part of this class is self-driven, you are expected to find the on-disk location of the default home page for an <code>apache2</code> server, either using Linux commands or searching on the Internet, and modify it on the VM.</p>
+</li>
+
+<li>
+
+Once you have modified the home page, check if the change is applied to your website by visiting the public DNS/IP address of your virtual machine. For Azure, the public DNS will typically end with <code>cloudfront.net</code>. 
+</li>
+
+<li>
+<p>Now we will see if each of the virtual machines has been set up to respond to HTTP requests. 
+For some projects, you will build web services that will be assessed by a group of <b>load generators</b>. A load generator is a system that sends HTTP requests to a web target. Typically, a load generator will be used to measure the performance and correctness of your web service. The performance of a web server is often measured in terms of the average number of requests per second that it can handle. Correctness is typically assigned as a percentage value, based on string or regular expression matching of the content of your HTTP response.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/LG.png" alt="azure-create-vm" />
+<h4><small class="caption"><b>Figure</b>: The Load Generator Webpage</small></h4>
+</div>
+</li>
+
+<li>
+To generate requests to this virtual machines using a load generator, start a test, enter the DNS addresses of your virtual machine, your andrew ID, and your submission password. The submission password can be found by clicking on the button on the top of this page. 
+</li>
+
+<li>
+If you have correctly configured the website, you should see a message saying: 
+<pre>Success!! Check TPZ for your score</pre>
+</li>
+
+<li>You can verify that you have completed the project by checking the your submission status and scoreboard status using the tabs on the top of this page.</li>
+
+</ol>
+
+<div class="bs-callout bs-callout-warning">
+<h4>Note on Grading</h4>
+<p>Please note that since this is an unscored project, the checking is very relaxed. Future projects will be tested rigorously and need careful handling of many edge cases and boundary conditions.</p>
+</div>
+
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="11">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

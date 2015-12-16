@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="/Users/zhaoru/ruz/15619/project4.1/hadoop-core-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/zhaoru/ruz/15619/project4.1/commons-cli-2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/zhaoru/ruz/15619/project4.1/hbase-0.94.18.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

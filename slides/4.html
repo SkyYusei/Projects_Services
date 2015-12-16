@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Microsoft Azure</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/4">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/4">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Microsoft Azure</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Microsoft Azure</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Microsoft Azure Compute</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Microsoft Azure Storage</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Microsoft Azure CLI</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 id="aws" class="page-header">Microsoft Azure</h1>
+<h2>Introduction to Azure</h2>
+<p>Microsoft Azure is a cloud computing platform and infrastructure, created by Microsoft, for building, deploying and managing applications and services through a global network of Microsoft-managed and Microsoft partner hosted datacenters. It provides both PaaS and IaaS services and supports many different programming languages, tools and frameworks, including both Microsoft-specific and third-party software and systems. You will work with setting up Azure Virtual Machines (VMs) and using its storage services for various projects in this course.</p>
+
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/ZNgvZE0MLeo?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption"><b>Video</b>: Introduction to Azure (Source: Microsoft)</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+<p>You can visit the Azure console either in <a href="https://portal.azure.com" target="_blank"> Azure Portal </a> or <a href="https://manage.windowsazure.com" target="_blank"> Azure Manage </a> (Azure Portal is the newer console, so try to use it in this course when possible). For more information you can read through the Azure introduction <a href="https://azure.microsoft.com/en-us/documentation/articles/fundamentals-introduction-to-azure" target="_blank">here</a>.</p>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 id="microsoft_azure_compute" class="page-header">Microsoft Azure Compute</h1>
+<h3> Introduction </h3>
+<p>Azure compute services provide virtual machines that you can configure and launch, log in, and install and run software. To launch an Azure virtual machine:</p>
+
+<ol>
+	<li>Go to the <a target="_blank" href="https://portal.azure.com/">Azure Portal</a> and click on <b>New</b> -> <b>Compute</b></li>
+	<li>Select <b>Ubuntu Server 14.04 LTS</b></li>
+	<li>Under <b>Select a Deployment Model</b>, choose <b>Resource Manager</b>.</li>
+	<li>You will need to specify a <b>Name</b>, <b>User name</b> and <b>Password</b>.</li>
+	<li>You will also need to specify a <b>Resource group</b>, you can use or create a default resource group here.</li>
+	<li>Leave the <b>Location</b> as <b>East US</b> by default.</li>
+	<li>Next, you will be required to choose a size for your virtual machine. Click on <b>View All</b> and select the <b>A0:Basic</b> size.</li>
+	<li>In the next section, you can leave most options as default. You can modify the <b>Network security group</b> to open up additional ports HTTP(80) and so on.</li>
+	<li>Finally, in the <b>Summary</b> section, you can view all the options for this virtual machine. Click on <b>OK</b> to launch the virtual machine.</li>
+</ol>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/auzre-create-vm.png" alt="azure-create-vm" />
+<h4><small class="caption"><b>Figure</b>: Creating Azure VMs</small></h4>
+</div>
+
+<p>The following video contains information on how to create a linux virutal machine on Azure:</p>
+
+      <div class="row">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+ <iframe src="https://channel9.msdn.com/Blogs/Windows-Azure/Create-Linux-Virtual-Machine-Azure/player" width="960px" height="540px" frameBorder="0"></iframe>
+					</div>
+					<div class="col">
+						<h4>
+							<small class="caption"><b>Video</b>: Creating a Ubuntu VM on Azure</small>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="bs-callout bs-callout-warning">
+<h4>Deployment Models</h4>
+<p>Azure has two deployment models: <b>Azure Service Manager</b> (ASM, also known as Classic) and <b>Azure Resource Manager</b> (ARM). ARM is the newer management type and has improved APIs, hence in this course, we will use ARM wherever possible.</p>
+
+<p> <strong>Note</strong>: If resources are deployed under one management type, they will not appear in the other. More information on ARMs can be found <a href="http://blogs.msdn.com/b/cloud_solution_architect/archive/2015/03/17/rbac-and-the-azure-resource-manager.aspx" target="_blank">here</a>.</p>
+</div>
+
+<div class="bs-callout bs-callout-success">
+<h4>Tasks to try:</h4>
+<p>You should get comfortable doing the following tasks:
+<ol>
+	<li>Configure and launch a VM with pricing tier of <code>A0 standard</code> using Ubuntu Server 14.04 LTS and the Resource Manager deployment model.</li>
+	<li>Connect to the VM using SSH from your computer.</li>
+	<li>SFTP/SCP a small file from your computer to the VM.</li>
+	<li>Use any text editor on the instance to create a small script or program (such as a bash or python script) and run it on the VM instance.</li>
+	<li>Terminate the VM and storage data disk when done.</li>
+</p>
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 id="aws" class="page-header">Azure Storage</h1>
+
+<p>Azure storage is a unified storage service available to Azure users which provides highly scalable, durable and globally available storage for various application needs. Azure storage is offered in three forms:</p>
+
+<ol>
+	<li><b>Azure Blobs</b>, an object storage system, similar to Amazon's S3;</li>
+	<li><b>Azure Tables</b>, a database system;</li>
+	<li><b>Azure Queues</b>, a messaging queue for applications, and</li>
+	<li><b>Azure Files</b>, a file system.</li>
+</ol>
+
+<p>We will look at Azure Blobs in this primer, and as you complete additional projects in this course, the differences between the various storage systems will be more apparent to you. To access the service, you must first create an Azure Storage account.</p>
+
+<h2>Creating an Azure Storage Account</h2>
+
+<p>To create an Azure storage account:</p>
+
+<ol>
+	<li>Go to the <a target="_blank" href="https://portal.azure.com/">Azure Portal</a> and click on <b>New</b> -> <b>Data + Storage</b>.</li>
+	<li>Select <b>Storage account</b>.</li>
+	<li>You will need to specify a unique Storage account name.</li>
+	<li>Under <b>Pricing tier</b>, click on <b>View All</b> and select the <b>L:Locally Redundant</b> pricing tier.</li>
+	<li>Select the <b>East US</b> <b>location</b>.</li>
+	<li>You can leave the <b>Diagnostics</b> unconfigured.</li>
+</ol>
+
+<p>Your storage account will take a few minutes to get provisioned. Once provisioned, you have access to Blobs, Containers, Queues and File Shares. In the next section, we will work with Blob storage using the Azure CLI tool.</p>
+
+<p><div class="img-thumbnail">
+<img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/azure-create-storage.png" alt="azure-create-storage" />
+<h4><small class="caption"><b>Figure</b>: Creating Azure Storage</small></h4>
+</div></p>
+
+
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <h1>Azure CLI</h1>
+<h4>Downloading and installing Azure CLI</h4>
+<p>Before this section, you should have already created your Azure account using instructions in the service set-up primer section. 
+Go to <a href="http://azure.microsoft.com/en-us/downloads/" target="_blank"> Azure </a>  and at ‘Command-line Tools, download the respective client for the operating system you’re using. Follow through the instructions and complete the installation.</p>
+
+<p><div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/download-azure-cli.png" alt="azure-cli-download" />
+<h4><small class="caption"><b>Figure</b>: Downloading Azure CLI</small></h4>
+</div></p>
+
+<h4> Configuring Azure CLI </h4>
+<p>Do <code>azure account download</code> and a new window on your 
+default browser should open up. Select the Microsoft account in which azure was setup in, then it will automatically download your subscription file.
+
+<p><div class="img-thumbnail">
+<img  class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/download-azure-account.png" alt="azure-account-download" />
+<h4><small class="caption"><b>Figure</b>: Downloading Azure Account</small></h4>
+</div></p>
+
+Then import your account by running the command <code>azure account import [file]</code>.
+So now if you run the command <code>azure account list</code> you should be able to see your account along with your subscription information.
+
+<p><div class="img-thumbnail">
+<img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/azure-import-account.png" alt="azure-import-account" />
+<h4><small class="caption"><b>Figure</b>: Importing Azure Account</small></h4>
+</div></p>
+
+<p>By default azure mode is set to ASM or Azure Service Manager (v1), check by <pre>azure config list</pre>. We want to use ARM or Azure Resource Manager (v2) by doing <code>azure config mode arm</code> to switch from ASM to ARM.
+
+
+The difference between the two modes can be found <a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-azurerm-versus-azuresm" target="_blank">here</a>.</p>
+
+<p>Everything that you can do on manage.windowsazure.com can be done via the Azure CLI. For more information visit <a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-command-line-tools" target="_blank"> here</a>.</p>
+
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="4">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

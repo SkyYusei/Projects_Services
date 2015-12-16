@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Batch Processing with MapReduce</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/22">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/22">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 7.55618162185%;"/>
+    </div>
+    
+    <span>6 days 11 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Batch Processing with MapReduce</td>
+            <td>11/16/2015 00:01 -0500</td>
+            <td>11/22/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction to Distributed Programming Models</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>The MapReduce Programming Paradigm</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Building an Input Text Predictor - N-Gram Generation</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Building an Input Text Predictor - Language Model</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Building an Input Text Predictor - Connecting to a web service</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Introduction to Distributed Programming Models</h1>
+
+	<!-- Every sentence in a <p> tag -->
+	<div class="bs-callout bs-callout-learning">
+		<h4 id="learning-objectives">Learning Objectives</h4>
+		<ol>
+			<li>List various parallel and distributed programming models.</li>
+			<li>Explain the execution workflow of the MapReduce programming paradigm.</li>
+			<li>Process a large text-based dataset and manipulate it using MapReduce.</li>
+                        <li>Perform an n-gram count and build a probabilistic language model using MapReduce jobs.</li>
+                        <li>Loading the output of a MapReduce job into a back end store.</li>
+                        <li>Build a front end web service to connect to the back end store to display the results.</li>
+		</ol>
+	</div>
+	
+	<h3>Introduction to Distributed Programming Models</h3>
+	<p>The process of developing distributed programs on the cloud (or, in general, designing and implementing software systems that successfully exploit the capabilities of massively distributed computational resources) presents formidable challenges. Difficulties arise from the multiplicity of possible logical interactions and temporal interleavings among numerous software and hardware components. Program bugs can be difficult to reproduce, and due to some non-deterministic behavior. Thus, analyzing such a system's behavior can be quite tricky.</p><p>
+	As researchers and practitioners have gradually gained a better understanding of this problem, they have developed models of programming and computation that mitigate the inherent complexity of distributing computation. These models, which are embodied in software/hardware systems, stand between the developer and the underlying computational resources, providing the programmer stylized design patterns, a relatively simpler way of thinking about distributed programming, and a flexible interface to applications, data, and resources.
+</p><p>The current generation of distributed programming models builds on classical predecessors that support interprocess communication based on shared memory and message passing. 
+	Although those earlier systems provided basic facilities for interaction among distributed tasks, they lacked the capability to parallelize and distribute tasks automatically and to recover from faults. Their modern descendants, including Hadoop MapReduce, Pregel, 
+spark and GraphLab, provide greater sophistication and specifically address the demands of distributed programming and computing in cloud environments. Among other advantages, these current models relieve developers from concerns with many of the difficult aspects of distributed programming and allow programmers to focus on sequential portions of their application's algorithms. </p>
+<p>Distributed Programming Models are often categorized based on the latency of their runtime and their frequency of execution. Generally, three high-level views of these systems are accepted:</p>
+	<h4>Batch Processing Systems</h4>
+	<p>Batch processing refers to processing collected data in batches. Data is collected, consumed by a batch processing system, processed and the results are produced. 
+	This entire process is done in batches. Batch processing systems are effective for processing large amounts of historical data that is not time-critical. Depending on
+	the size of the data being processed and the computational power of the system that is performing the processing, the time taken for generating the output can vary. MapReduce is 
+	an example of a batch processing system (which you will be using in this project).</p>
+	
+	<h4>Iterative Data Processing Systems</h4>
+	<p>Although possible, a batch processing system like MapReduce is not very effective when the processing of the data has to be done in an iterative fashion until a convergence criteria is met. The Hadoop MapReduce framework will save the result of one iteration, intermediate data, into a distributed file system to be consumed by the next iteration which might be expensive when the number of iterations is high.  Iterative data processing systems are built to solve this problem by attempting to save intermediate data in memory.
+	Iterative processing is required in many systems such a graph processing system or a machine learning processing system. Iterative data processing models help in solving this problem by 
+	providing the capability to run iterative algorithms on large scale data. Spark is an example for an in-memory iterative data processing system which you will be using in Project 4.2.</p>
+
+	<h4>Streaming or Real-time processing systems</h4>
+	<p>Both the previous two models described are used to process historical data. The capability of doing this processing on real-time data is becoming increasingly important.
+	Stream processing or real-time processing involves continual input and output of data. Data should be processed in a shorter period of time. Spark Streaming, Apache Storm, Samza are examples 
+	of real time processing systems. You will be working with a real-time processing system in Project 4.3.</p>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">Warnings</h4>
+		<p><b>You MUST manually copy your code to the specified folder when submitting. Not submitting code will lead to a 100% penalty in this project module</b></p>
+	</div>
+	
+	<div class="bs-callout bs-callout-info">
+		<h4>General Details</h4>
+		<p>The following table contains the general information about this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="info">
+				<th colspan="3">Applicable Languages</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Java</li>
+						<li>Any other language/framework requires permission from the course staff.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr class="info">
+				<th>Sections</th>
+				<th>Total Budget</th>
+                                <th>Bonus</th>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>$20</td>
+                                <td>Yes. Details in the last section.</td>
+			</tr>
+		</table>
+	</div>
+	<div class="bs-callout bs-callout-task">
+		<h4>AWS Details</h4>
+		<p>The following table contains information regarding various AWS services and technologies for this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="success">
+				<th>Tag Key</th>
+				<th colspan="2">Tag Value</th>
+			</tr>
+			<tr>
+				<td>Project</td>
+				<td colspan="2">4.1</td>
+			</tr>
+			<tr class="success">
+				<th>AMI Name</th>
+				<th>AMI ID</th>
+				<th>Instance Type</th>
+			</tr>
+			<tr>
+				<td>MapReduce Instance</td>
+				<td><code>No AMI</code></td>
+				<td><code>Any type which has on-demand pricing less than or equal to m3.xlarge</code></td>
+			</tr>
+			<tr class="success">
+				<th colspan="3">AWS Technologies Explored</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>AWS Elastic MapReduce (EMR)</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="bs-callout bs-callout-danger">
+			<h4 id="grading-penalties">Grading Penalties</h4>
+			<p>The following table outlines the violations of the project rules and their corresponding grade penalties for the first week of the course.</p>
+			<p>These rules apply for the week starting Nov 16 and ending on Nov 22nd.</p>
+			<table class="table table-bordered">
+				<tr class="danger">
+				  <th>Violation</th>
+				  <th>Penalty of the project grade</th>
+				</tr>
+
+				<tr>
+				  <td>Using more than $20 of AWS resources</td>
+				  <td>10%</td>
+				</tr>
+				<tr>
+				  <td>Using more than $30</td>
+				  <td>100%</td>
+				</tr>
+				<tr>
+				  <td>Not tagging any of your resources</td>
+			      <td>10%</td>
+				</tr>
+				<tr>
+				  <td>Not submitting code during final submission</td>
+			      <td>100%</td>
+				</tr>
+				<tr>
+				<td>Using any "Project" tags apart from "Project":"4.1"</td>
+				<td>10% penalty</td>
+			</tr>
+			</table>
+	</div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">The MapReduce Programming Paradigm</h1>
+	
+	<p>The MapReduce programming model, pioneered by Google, is designed to process big data using a large number of commodity machines. MapReduce was designed to run in large server farms similar to machines that are deployed at Google's data centers and is proprietary. <a href="http://hadoop.apache.org/">Hadoop</a> is an open-source implementation of Google's MapReduce. 
+</p>
+
+<p>In a MapReduce program, data, stored as Key/Value pairs, is processed by a Map function. Mappers output a transformed set of Key/Value pairs, which are subsequently processed by a Reduce function (see Figure 1 Below:).</p>
+	<div class="img-thumbnail">
+	<img src="https://s3.amazonaws.com/15619public/webcontent/MapRed.PNG" />
+	<h4><small class="caption"><b>Figure 1</b>: MapReduce Overview.</small></h4>
+	</div>
+
+	<p>The input also acts on a KeyValue pair. 
+	The <a href="https://hadoop.apache.org/docs/current/api/org/apache/hadoop/mapreduce/InputFormat.html">InputFormat</a> defines how to read data from a file into the Mapper instances. Hadoop comes with several implementations of InputFormat; some work with text files and describe different ways in which the text files can be interpreted. 
+	The Map function will process these values and write an output value of a particular <a href="https://hadoop.apache.org/docs/current/api/org/apache/hadoop/io/Writable.html">Writable</a> type.</p>
+	
+	<p><code>Map(k1,v1) --> list(k2,v2)</code></p>
+	
+	<p>The next step is the Shuffle and Sort, where the results emitted from each mapper are sorted by key, and partitioned into one of the reducers. 
+	This is done when each map task completes to avoid an overload of traffic at the end of the final mapper's operation. 
+	This data is written to the local disk and passed into the memory of a waiting reduce task.</p>
+
+	<p>The Reduce function is called once for each unique key emitted from the mapper. 
+	The Reducer has an iterator for all values for each key. This may be used to aggregate results, and finally returns another output in the desired OutputFormat which is written to a destination by a specific Output Writer.</p>
+	
+	<p>Reduce(k2, list (v2)) --> list(v3)</p>
+<p>Perhaps studying an example will make this clearer.</p>
+
+	<h3>MapReduce Word Count Example</h3>
+	
+	<p>In this example, we will compile and run a Word Count program to process text files and report the number of times each word appears in the input files.
+		For help on the various hadoop command line syntax, we shall refer you to the <a href="http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">MapReduce Tutorial</a> and <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html">HDFS Command Guide</a>.
+		The following video will cover the classical Word Count Java example for Hadoop: </p>
+		<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/3O5e6zGb1dw?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1:</b> MapReduce word count example.<p>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+	<p>Note: In the video, we have compiled the Word Count example in Eclipse to run on the cluster. Newer versions of Eclipse and/or the JDK may use JRE 1.8, which is not compatible with JRE 1.7 that is typically found on EMR clusters. 
+Please compile the code using the correct JRE, or compile the program on the cluster as described below.
+
+	<h3>Code Walkthrough</h3>
+	<p>The code for Word Count on Hadoop is best explained in the <a href="http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">Apache Hadoop tutorial</a>.
+		Please read the tutorial carefully, and create <code>WordCount.java</code> using first the <a href="http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0">simple</a> eample, and then later the <a href="http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v2.0">more complex</a> example.</p>
+	
+	<h3>Running a Hadoop Program on EMR</h3>
+	
+	<p>The following is a video that demos the steps to run a MapReduce program in EMR.</p>
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/iWGqAhViyfY?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1:</b> Running a Hadoop program on EMR<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+        <p>To run or change the word count example, please follow these steps:</p>
+        <p>Login to the master instance of your hadoop cluster to author the <code>WordCount.java</code> file.</p>
+	<p>Compile your code and package it as a jar using the following commands:</p>
+	<p><code>cd ~</code><br><code>mkdir wordcount_classes</code><br>
+	<code>cp /usr/share/aws/emr/hadoop-state-pusher/lib/hadoop-common-2.4.0-amzn-3.jar .</code><br>
+	<code>cp /usr/share/aws/emr/hadoop-state-pusher/lib/hadoop-mapreduce-client-core-2.4.0-amzn-3.jar .</code><br>
+	<code>cp /usr/share/aws/emr/hadoop-state-pusher/lib/hadoop-mapreduce-client-common-2.4.0-amzn-3.jar .</code><br>
+	<code>javac -classpath hadoop-common-2.4.0-amzn-3.jar:hadoop-mapreduce-client-core-2.4.0-amzn-3.jar:hadoop-mapreduce-client-common-2.4.0-amzn-3.jar -d wordcount_classes WordCount.java
+jar -cvf wordcount.jar -C wordcount_classes/ .</code></p>
+
+	<p>Please note the trailing . at the end of the jar command. If you have trouble finding the jar command in your instance, a version may be located in <code>/usr/lib/jvm/*/bin</code> OR <code>/usr/java/latest/bin/jar</code></p>
+	<p>To prepare the input, you can either create a simple text file and upload it to HDFS using the command <code>hadoop dfs -put/wordcount/input</code>, or for a much larger dataset, you can run RandomTextWriter in the hadoop examples jar file with the parameter /wordcount/input to generate the input data. This uses the configuration to generate about 40 GB of data, (10 GB of data per node), which can take a while to complete. Once the program has finished, use the HDFS commands to check the contents of <code>/wordcount/input</code></p>
+	<p>Run your MapReduce jar file (wordcount.jar) over <code>/wordcount/input</code>. Use <code>/wordcount/output</code> as the destination for your output files.</p>
+	<p>Once the program has completed execution, you can use the hadoop dfs commands to inspect and copy the output of your program.</p>
+	
+	<h2>The Scenario</h2>
+	<p>At Carnegie Records you realized that the music industry is no longer profitable, since it is too easy to find illegal copies of music online. You come to the realization that true power is held by those who control the flow of information and data.
+		You decide to join Mellon Search, a corporation for search and data analytics. Of course, there are some small companies that currently dominate the search market, so you need to build an engine that is faster and provides more accurate results than the incumbents.
+		The first stage is to build a simple engine that can predict what people want to search for. Studies have shown that millennials are too lazy to type in the entire search term in the search box.
+		This week, you will use a simple Hadoop program to build an Input Text Predictor.</p>
+	
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	
+	<h2>Building an Input Text Predictor</h2>
+	<p>For this project, you will be building your own input text predictor, similar to ones you may have seen in Google Instant search queries. We will build this input text predictor using a text corpus.
+The steps involved in building this input text predictor are:</p>
+	<ul>
+		<li>Given a text corpus, generate a list of n-grams, which is simply a list of phrases in a text corpus with their corresponding counts.</li>
+		<li>Generate a statistical language model using the n-grams. The statistical language model contains the probability of a word appearing after a phrase.</li>
+		<li>Create a user interface for the input text predictor, so that when a word or phrase is typed, the next word can be predicted and displayed to the user using the statistical language model.</li>
+	</ul>
+	<p>We will start the project by generating n-grams from a text corpus for this module.</p>
+	
+	<h2>Step 1: Building an n-gram model</h2>
+	<p>In the first part of the project, you will work with a plain-text corpus from Wikipedia dataset (which has been pre-processed to extract plain-text) and generate a list of n-grams from it.</p>
+        <p>An n-gram is a phrase with n-words in it. For example a 1-gram is a single word such as "this" or "where", and 2-grams are phrases with two words, such as "this is" or "where is".
+This text corpus has been processed and stored in the following S3 location: <code>s3://p41-dataset/wiki-dataset</code></p>	
+  
+        <p>Process the entire text corpus using a MapReduce job to output every phrase in the corpus, along with the number of times the phrase appeared. These n-grams must be in the following plain-text format: <code><phrase><\t><count></code></p>
+
+	<p>For example: <br><pre>this        1000<br>this is     500<br>this is a   250</pre></p>
+
+        <p>Once you have your n-grams, select the top 100 n-grams (ordered by count, break ties alphabetically) and store them in a file. You will use this file of 100 n-grams for grading later. We strongly recommend using Hive which you learned in Project 3 to get this data using SQL-like syntax, though you are free to use any method you see fit. Please note the following instructions/assumptions:</p>
+	<ol>
+        <li>You must generate 1-gram, 2-gram, 3-gram, 4-gram, 5-gram outputs in the same MapReduce job. The following figure shows an example (The figure shows 6-gram as well which you don't need to generate as part of your program)</li>
+<div class="img-thumbnail">
+		<img src="https://s3.amazonaws.com/15619public/webcontent/p41-ngrams.PNG" />
+		<h4><small class="caption"><b>Figure 2</b>: Probability of a word appearing after a phrase</small></h4>
+	</div>
+		<li>You need to generate raw n-grams and not worry about punctuation or phrase semantics.</li>
+		<li>You must limit the words in the phrase to be purely alphabetical [A-Za-z] and strip all punctuation and numbers. Non-alphabetical characters can be replaced with a space, generating additional words in the line.</li>
+		<li>Treat your words as case-insensitive, store only lower-case words.</li>
+		<li>You must process each line independently. You do not need to consider n-grams and phrases that span multiple lines in the text corpus.</li>
+		<li>Treat underscore '_' as a non-word character (some regular expressions do otherwise).</li>
+		<li>Run your MapReduce job on a cluster provisioned using Amazon EMR. (Remember, you are not allowed to use EMR streaming to complete this project.  Your Java code will be manually graded.)</li>
+		<li>Use spot instances when you can.</li>
+		<li>Do not exceed more than 2 USD per hour for your EMR cluster (consider all costs in this calculation).</li>
+		<li>If you need to take a break before Step 2, transfer the output of your program to an S3 bucket for the next part of the project. You can do this by using s3cmd or by directly writing to S3 from your MapReduce program.</li>
+		<li>Consider using <code>hadoop distcp</code> if you ever need to transfer files between S3 and HDFS.</li>
+		<li>If your instance is small, or you have no extra EBS provisioned, you will find yourself running out of space if you try to copy the entire output to local disk, so we suggest copying the data out to ephemeral storage in /mnt, or copying small parts of your output for inspection.</li>
+		<li>Do not output any empty characters "" or double spaces " " between words.</li>
+		<li>Treat apostrophe as punctuation - so the word don't would generate the n-grams don ; don t ; t ;</li>
+		<li>We recommend that you code and test and debug your program on a small file first before attempting to generate the n-grams for an entire text corpus.</li>
+    </ol>
+
+	<h3>Tasks to complete</h3>
+	<ol>
+		<li>Launch an EMR cluster (with Hive/HBase/Hadoop installed) to run your MapReduce job for step 1 as explained in the video. Make sure you use AMI version 3.10.0 in EMR</li>
+		<li>Get the top 100 ngrams and store them in a file called "ngrams".</li>
+		<li>SSH into the master of your EMR cluster and download the submitter file from here:<pre>cd ~<br>wget https://s3.amazonaws.com/15-319-f15/ngram_submitter<br>chmod +x ngram_submitter</pre></li>
+		<li>Copy your "ngrams" file and the MapReduce code into the same folder as the submitter and run the following command:<code>./ngram_submitter</code></li>
+		<li>This will grade the accuracy of your ngrams and update your score.</li>
+	</ol>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	
+	<h2>Step 2: Building a language model for the input text predictor</h2>
+	<p>We will now compute a statistical language model using the n-gram counts and store them in an efficient manner so that they can be accessed easily from a web interface.</p>
+	<p>A statistical language model is a collection of probabilities of words appearing after a phrase. Using the n-gram counts as input, the probability of a word appearing after a phrase can be expressed in simple terms as: </p>
+	<div class="img-thumbnail">
+		<img src="https://s3.amazonaws.com/15619public/webcontent/prob1.png" />
+		<h4><small class="caption"><b>Figure 3</b>: Probability of a word appearing after a phrase</small></h4>
+	</div>
+
+	<p>For example, consider the following input:<br><pre>this        1000<br>this is     500<br>this is a   125<br>this is a blue           60<br>this is a blue house     20</pre></p>
+	
+	<p>The following probabilities can be calculated:</p>
+	<div class="img-thumbnail">
+		<img src="https://s3.amazonaws.com/15619public/webcontent/prob2.png" />
+		<h4><small class="caption"><b>Figure 4</b>: Probabilities to be calculated</small></h4>
+	</div>
+	
+	<p>Your task is to generate the statistical language model for all words and phrases appearing in the n-gram counts generated from a text corpus. You must complete this task using a MapReduce job that reads the input file from HDFS and writes the output file to HBase. Specifically, you must:</p>
+	<ol>
+		<li>Develop a schema in HBase to store the words appearing after phrases and their probabilities. You must also account for how the data is likely to be accessed from the user interface. Users will type a phrase and will expect to see an ordered list of the next word that the user is “most” likely to type.</li>
+		<li>Write a Mapreduce program to read the n-gram counts generated from the previous checkpoint, and process them to generate the probabilities as outlined above. The output from the MapReduce program should be written directly to an HBase table, following the schema that you have designed in step 1.</li>
+	</ol>
+
+	<h3>Hints, Assumptions, and References:</h3>
+	<ol>
+        <li>You can launch a cluster that has both HBase and Hadoop automatically using EMR.</li>
+		<li>You will want to ignore phrases that appear below a certain threshold, say t, from your n-gram count for your statistical language model to be accurate. Use t = 2.
+</li>
+		<li>For a given phrase, store only the top n words with the highest probabilities. This value should also be a command-line parameter to your MapReduce application. If two words have the same probability, choose the one which is lexicographically higher i.e. 'ab' comes before 'bc'. Use n = 5. The following figure shows an example of sorted probabilities</li>
+       <div class="img-thumbnail">
+		<img src="https://s3.amazonaws.com/15619public/webcontent/p41-prob.PNG" />
+		<h4><small class="caption"><b>Figure 5</b>: Sorting probabilities</small></h4>
+	</div>
+		<li>Use GenericOptionsParser class, along with apache.commons.cli packages to parse command line options.</li>
+		<li>Use no more than 5 instances to complete the MapReduce job. Use spot instances for all EMR instances, if they are cheaper than the on-demand pricing.</li>
+		<li>HBase is covered in the Storage Module of the course; Practical aspects of HBase are available at http://hbase.apache.org/book/. Hadoop, The Definitive Guide by Tom White includes a good chapter on HBase. In addition, HBase, The Definitive Guide by Lars George is also a good reference.</li>
+		<li>As always, create a small test set to verify your approach and algorithm before running it over the entire dataset.</li>
+		<li>Once you have loaded the phrases, words and their associated probabilities into HBase, please use the hbase shell to test out some get operations.</li>
+    </ol>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	
+	<h2>Step 3: Connecting the language model to a web interface</h2>
+	<p>Once the language model has been generated and loaded on to HBase, we can connect it to the Web interface to test out the language auto-completion. Please follow the steps below: </p>
+       <div class="img-thumbnail">
+		<img src="https://s3.amazonaws.com/15619public/webcontent/p41-hbase.PNG" />
+		<h4><small class="caption"><b>Figure 6</b>: P4.1 architecture</small></h4>
+	</div>
+	<ol>
+		<li>Log in to your master instance and run the command: <code>hbase-daemon.sh start rest</code>. This will start the HBase rest server which your interface will interact with. </li>
+		<li>Start/restart Apache: <code>sudo service httpd restart</code></li>
+		<li>Install the demo PHP code for this project. From this step it is preferable that you enter a root shell since most of the commands you run will require root access.
+<pre>sudo su
+cd ~
+wget https://s3.amazonaws.com/15-319-f15/proj4_web.tgz
+cd /var/www/html
+sudo tar xzf ~/proj4_web.tgz</pre>
+</li>
+		<li>Verify the Apache server is running by visiting the IP address of your server instance through a browser (For eg. http://ec2-111-222-333-444.compute-1.amazonaws.com/proj4_web/info.php). Set the security group of the master instance to allow all traffic.</li>
+		<li>You should be able to see information about PHP displaying correctly. If the .php file is downloaded instead of displaying in the browser, try restarting apache2 again, or look at /var/log/httpd/error_log</li>
+		<li>Modify the PHP file provided with the details of your HBase schema (tablename and column family) in order to read data from your HBase table. The code assumes a schema with the phrase as a row key and all words that can appear after the phrase to be column names. Modify the PHP code to match your schema if it is different.</li>
+	</ol>
+	
+	<h3>Tasks to complete</h3>
+	<ol>
+        <li>Launch an EMR cluster and run your MapReduce code to generate the language model.</li>
+		<li>Follow the instructions in step 3 to create your user interface. The .tar.gz mentioned in step 3 will have the skeleton code as well as the submitter file.</li>
+		<li>This project module has 2 grading components. The ngram file you generated in task 1 will be graded by running <code>ngram_submitter</code>. Tasks 2 and 3 will be graded by running <code>submitter</code>. The submitter will also upload all code for this module for grading. <b>Please copy ALL MapReduce code for steps 1 and 2 to this folder before making your final submission. Not doing so will lead to 100% penalty in this project</b>.</li>
+    </ol>
+	
+	<h2>Bonus Step: Creating a character-gram model for supporting word auto-completion</h2>
+	<p>Once you are done with completing the language model, as a bonus task, you will extend the ideas to build a model for auto-completing words. Some hints for this task are given below. </p>
+	<ol>
+		<li>You can use the wikipedia dataset to get the word count for building the model for auto-complete.</li>
+		<li>You should be using HBase to store the model similar to what you did for the language model.</li>
+		<li>The input should be a partial word, while the results should show the auto-complete recommendations.</li>
+		<li>For example, for the input "carne", the auto-complete suggestions would be "carnegie", "carneiro", "carnell", "carnevale" and "carnelian".</li>
+		<li>You should suggest at least 3 words in your auto-complete suggestions. A maximum of 5 words can be suggested.</li>
+		<li>You are free to choose the algorithm required to build this model.</li>
+		<li>You should use the same web interface that you used in the previous step for evaluating character-grams.</li>
+		<li>For grading this bonus task, follow the exact same steps as you did for submitting the language model. Use <code>bonus_submitter</code> (Use the command <code>wget https://s3.amazonaws.com/15-319-f15/bonus_submitter</code> to download the bonus submitter) to submit your work.</li>
+	</ol>
+	
+</div>
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <iframe src="https://docs.google.com/forms/d/1UGOZP5nS6908STCQ4c9DGzOe3b6ZkNy6iMYryXP0SiQ/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="22">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

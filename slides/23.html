@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Iterative Programming with Spark</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/23">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/23">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 25.3685444842%;"/>
+    </div>
+    
+    <span>10 days 10 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Iterative Programming with Spark</td>
+            <td>11/23/2015 00:01 -0500</td>
+            <td>12/06/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction to Spark</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Programming in Apache Spark</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Task 1 : Enumerating the Twitter Social Graph</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Task 2 : Find the Number of Followers for Each User</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Task 3 : Rank Each User by Influence</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Bonus (Fun with GraphLab)</span></a></li>
+            
+        
+            
+                <li><a href="#section_7"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Introduction</h1>
+
+	<!-- Every sentence in a <p> tag -->
+	<div class="bs-callout bs-callout-learning">
+		<h4 id="learning-objectives">Learning Objectives</h4>
+		<p>This project will encompass the following learning objectives:</p>
+		<ol>
+			<li>Develop distributed iterative applications on large datasets using the Apache Spark framework.</li>
+			<li>Analyze the Twitter social graph using PageRank to find the most influential users on the network.</li>
+		</ol>
+	</div>
+	
+		
+	<p>Social networks such as Facebook and Twitter are extremely popular with billions of users worldwide. Social networks can analyze interesting information about users in order
+	to derive information about a user's connections. In this project, we will analyze the Twitter social graph using Apache Spark and perform a number of different graph computations in order to understand the nature of the Twitter social graph. We will finally run the PageRank algorithm on the graph to find out the most influential users on Twitter. </p>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">Warning: Start Early!</h4>
+		<p>This project introduces a new programming framework that we have not used in this class, Spark. Additionally, PageRank is a non-trivial algorithm that may be difficult to implement for those who are unfamiliar with it. Thus, you should start this project early on to avoid any potential roadblocks before the deadline. We also highly recommend reading
+		about Spark on OLI before continuing this project.</p>
+	</div>
+		
+	<p>So far, you have used Apache Hadoop's MapReduce programming model in various ways to process large amounts of data. You may have noticed that we have used MapReduce for jobs that are fairly data-parallel, and our analysis would typically require a single Map and Reduce function to finish the job at hand. As MapReduce got more popular over the years, communities working on different types of large-scale data analytics have attempted to use MapReduce for applications  that are more complex (such as Machine Learning tasks) and require multiple iterations of a MapReduce job to be applied in a chained fashion to get the required result. These kinds of computations are known as <em>iterative</em> computations, and implementers started to see the inherent performance limitations of MapReduce. Recall that MapReduce spills to the distributed file system (HDFS) at the end of every job. At the start of the next job, the same data needs to be read back from disk again. However, keeping the data in HDFS was good for fault-tolerance since copies of the data were available in case of node or even rack failures. If there was a way to keep data in memory, in a way that is fault-tolerant, we could possibly accelerate such iterative computation by orders of magnitude. This is where Apache Spark comes in.</p>
+	
+	<h2>Apache Spark</h2>
+	<p>Spark is an open source cluster computing framework developed at the UC Berkeley AMPLab. It uses in-memory primitives that allow it to perform over 100x faster than traditional MapReduce for certain applications. The following video covers the basics of Spark:</p>
+   <!-- Follow this video embedding style EXACTLY -->
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/mjgUJ9BLXco?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1: </b>Apache Spark Basics<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<p>At the heart of the Spark framework lies a new data abstraction called <strong>Resilient Distributed Datasets</strong> or (RDDs), which allow for a distributed dataset to remain in-memory in the nodes of a cluster during various stages of computation. RDDs also store the <em>lineage</em> information about the data, keeping a record of all the operations that were performed to bring an RDD to its present state. This way, if a node fails on a Spark cluster, the data that was in-memory and lost can be re-loaded from the source (often the distributed file system) and the operations that were recorded in the lineage information can be re-applied to bring the data to its present state. Thus, data can remain in memory through multiple stages of transformation without spilling to disk, and applications can run many times faster than traditional frameworks that rely on disk accesses in between stages.</p>
+	
+	<p>Let's take a look at how Spark works with an example. Consider an iterative application that runs a machine learning algorithm on a large graph. Spark would store this graph as a Resilient Distributed Dataset (RDD) (Figure 1). The Spark Client would store the details of the program to be executed and map it to Spark-specific operations for a cluster, which comprises of many workers. There is a cluster manager that converts these operations into tasks and executes them on worker nodes. Any cluster requires applications to be scheduled well to maximize the utilization and improve performance. Spark allows different policies to be used to schedule tasks on the cluster depending upon factors such as the priority, duration, and resources required by each task.</p>
+	
+		<!-- Images to use this syntax -->
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/spark_overview.png" />
+	<h4><small class="caption"><b>Figure 1</b>: Spark Components.</small></h4>
+	</div>
+	
+	<p>To use Spark, you need to write a driver program to connect to a Spark cluster of workers. The driver defines one or more RDDs and invokes actions on them. The driver also tracks the RDDs’ lineage, which records the history of how this RDD is generated as a Directed Acyclic Graph (DAG). The workers are long-lived processes (running for the entire lifetime of an application) that can store RDD partitions in RAM across operations.</p>
+	
+	<p>The <code>SparkContext</code> object can connect to several types of cluster managers that handle the scheduling of applications and tasks (Figure 2). The cluster manager isolates multiple Spark programs from each other- each application has its own driver and runs on isolated executors coordinated by the cluster manager. Currently, Spark supports applications written in Scala, Java and Python.
+	</p>
+
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/spark_cluster.png" />
+	<h4><small class="caption"><b>Figure 1</b>: Spark Components.</small></h4>
+	</div>
+	
+	<p>Once the <code>SparkContext</code> connects to the Cluster Manager, Spark acquires executors on the worker nodes, which are the actual processes that run computation and store data. After an executor is acquired, the Java/Python/Scala code is sent to the executor and run as tasks. Notice that each application has its own executor processes, which run tasks in multiple threads. The executor exists for the entire application life cycle.</p>
+	
+	<p>An advantage of this approach is that applications are isolated from each other. Scheduling decisions are made by individual drivers independent of other applications. Also, executors for different applications are isolated as each one runs in a separate JVM. The disadvantage is that it is more difficult to share data between applications.</p>
+	
+	<p>Each Spark application runs as an independent set of processes on a distributed cluster. The driver is the process that runs the <code>main()</code> function of the application and creates a <code>SparkContext</code> object. Spark applications are coordinated by the <code>SparkContext</code> object. The <code>SparkContext</code> in turn connects to a Cluster Manager, which allocates resources across all applications on the cluster. The <code>SparkContext</code> object also contains a number of implicit conversions and parameters for use with various Spark features.</p>
+	
+	<p>Now that we have covered some of the basics of Spark, we can continue to the next section, were we can look at a sample Spark program, and work on the first task for this project.</p>
+	
+	<div class="bs-callout bs-callout-info">
+		<h4>General Details</h4>
+		<p>The following table contains the general information about this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="info">
+				<th colspan="3">Applicable Languages</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Your choice of any language natively supported by the Spark Framework: Java/Scala/Python</li>
+					</ul>
+				</td>
+			</tr>
+			<tr class="info">
+				<th>Sections</th>
+				<th>Total Budget</th>
+				<th>Bonuses?</th>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>$30</td>
+				<td>Yes. Details in the last section.</td>
+				
+			</tr>
+		</table>
+	</div>
+	<div class="bs-callout bs-callout-task">
+		<h4>AWS Details</h4>
+		<p>The following table contains information regarding various AWS services and technologies for this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="success">
+				<th>Tag Key</th>
+				<th colspan="2">Tag Value</th>
+			</tr>
+			<tr>
+				<td>Project</td>
+				<td colspan="2">4.2</td>
+			</tr>
+			<tr class="success">
+				<th>AMI Name</th>
+				<th>AMI ID</th>
+				<th>Instance Type</th>
+			</tr>
+			<tr>
+				<td>Submitter Instance</td>
+				<td><code>ami-68fcbb02</code></td>
+				<td><code>m1.small</code></td>
+			</tr>
+			<tr class="success">
+				<th colspan="3">AWS Technologies Explored</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Spark on AWS Elastic MapReduce</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="bs-callout bs-callout-danger">
+			<h4 id="grading-penalties">Grading Penalties</h4>
+			<p>The following table outlines the violations of the project rules and their corresponding grade penalties for this project phase.</p>
+			<p>These rules apply for the week starting Nov 23 and ending on Dec 6.</p>
+			<table class="table table-bordered">
+				<tr class="danger">
+				  <th>Violation</th>
+				  <th>Penalty of the project grade</th>
+				</tr>
+
+				<tr>
+				  <td>Using more than $30 of AWS resources</td>
+				  <td>10%</td>
+				</tr>
+				<tr>
+				  <td>Using more than $50</td>
+				  <td>100%</td>
+				</tr>
+				<tr>
+			<td>Not tagging any of your resources</td>
+			<td>10%</td>
+				</tr>
+				<tr>
+				<td>Using any "Project" tags apart from "Project":"4.2"</td>
+				<td>10%</td>
+			</tr>
+                        <tr>
+				<td>Using GraphX or MLLib library functions</td>
+				<td>100%</td>
+			</tr>
+			</table>
+	</div>
+</div>
+<!-- END SECTION 1 -->
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Programming in Apache Spark</h1>
+	<p>As described in the previous section, computation in Apache Spark involves the manipulation of in-memory data stored in the form of RDDs. As an example, let's take a look at the familiar wordcount example expressed as a Spark program with examples in Scala, Java and Python:</p>
+
+	<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#scala">Scala</a></li>
+  <li><a data-toggle="tab" href="#java">Java</a></li>
+  <li><a data-toggle="tab" href="#python">Python</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="scala" class="tab-pane fade in active">
+<pre>
+val file = spark.textFile("hdfs:///input")
+val counts = file.flatMap(line => line.split(" "))
+                 .map(word => (word, 1))
+                 .reduceByKey(_ + _)
+counts.saveAsTextFile("hdfs:///output")
+</pre>
+<p><strong>Note</strong>: An underscore in Scala is an example of <a href="http://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a>. In the Word Count example, <code>reduceByKey(_ + _)</code> is equivalent to <code>reduceByKey(case (a, b) => a + b)</code>. The keyword case is a Scala-specific concept of <a href="http://docs.scala-lang.org/tutorials/tour/case-classes.html">case classes</a>. If you are interested in more Spark code examples in Scala, please visit <a href="https://spark.apache.org/examples.html">this link</a>.</p>
+  </div>
+  <div id="java" class="tab-pane fade">
+<pre>
+JavaRDD file = spark.textFile("hdfs:///input");
+
+JavaRDD words = file.flatMap(new FlatMapFunction() {
+  public Iterable call(String s) { return Arrays.asList(s.split(" ")); }
+});
+
+JavaPairRDD pairs = words.mapToPair(new PairFunction() {
+  public Tuple2 call(String s) { return new Tuple2(s, 1); }
+});
+
+JavaPairRDD counts = pairs.reduceByKey(new Function2() {
+  public Integer call(Integer a, Integer b) { return a + b; }
+});
+
+counts.saveAsTextFile("hdfs:///output");
+
+</pre>
+  </div>
+  <div id="python" class="tab-pane fade">
+<pre>
+file = spark.textFile("hdfs:///input")
+counts = file.flatMap(lambda line: line.split(" ")) \
+             .map(lambda word: (word, 1)) \
+             .reduceByKey(lambda a, b: a + b)
+counts.saveAsTextFile("hdfs:///output")
+</pre>
+  </div>
+</div>
+
+<p>The walk-through of the code is as follows and is also illustrated in Figure 3:</p>
+
+<ol>
+	<li>First, we load the text files at the HDFS path (say <code>/input</code>) by <code>textFile()</code> as an RDD. This RDD would represent the entire string contents of the file.</li>
+	<li>Next, we split each line by space to get all the words in the line. We use the <code>flatMap()</code> function here, because we expect to get an RDD of words from the RDD of lines and each line can have multiple words.</li>
+	<li>We now need to emit the count 1 along with each word. So we use <code>map()</code> to transform the RDD of word into an RDD of (word, count) pair. Steps 2 and 3 are equivalent to the mapper in MapReduce.</li>
+	<li>We can now sum the count for each word by using <code>reduceByKey()</code>. This transforms the RDD of (word, count) pair where count = 1, into the final RDD of (word, count) pair where count is the number of times the word appears. Step 4 is equivalent to the reducer in MapReduce.</li>
+	<li>Finally, we can persist the RDD as plain text files to the HDFS path (say <code>/output</code>).</li>
+</ol>
+	
+	
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/sparkwordcount.PNG" />
+	<h4><small class="caption"><b>Figure 3</b>: Wordcount Example in Spark.</small></h4>
+	</div>
+
+	<div class="bs-callout bs-callout-info">
+		<h4 id="warnings">Map and Reduce functions in Scala</h4>
+		<p>Just like MapReduce, Spark code often uses <code>map()</code> and <code>reduce()</code> primitives, allowing you to apply a single function to an entire RDD.</p>
+		<p>Notice that we use <code>flatMap(func)</code> in Step 2 of our wordcount example. <code>flatMap(func)</code> expects the <code>func</code> to return a list rather than an object, and the result is flattened as a list.</p>
+		
+		<p>For example, the following code shows the transformation of and RDD called <code>rdd</code>:</p> 
+		
+		<pre>
+rdd = (1, 2, 3, 4),
+rdd.map(x => (x, x + 1)) => ((1, 2), (2, 3), (3, 4), (4, 5))
+rdd.flatMap(x => (x, x + 1)) => (1, 2, 2, 3, 3, 4, 4, 5)
+		</pre>
+		
+		<p>There is also a key difference between <code>reduce(func)</code> and <code>reduceByKey(func)</code>. <code>reduce(func)</code> can be applied to an RDD of any object, while <code>reduceByKey(func)</code> can only be applied to an RDD of object pair. Values that belong to the same key are aggregated together by <code>func</code>. For example:</p>
+		
+<pre>
+rdd = (1, 2, 3, 4)
+rdd.reduce(case (a, b) => a + b) => 10
+</pre>
+
+<p>In this case, we cannot apply <code>rdd.reduceByKey(case (a, b) => a + b)</code> because it expects an RDD of object containing a pair of values. Conversely, if we had the following:</p>
+
+<pre>
+rdd = ((1, 2), (1, 3), (2, 4), (2, 5))
+</pre>
+
+<p><code>rdd.reduce(case (a, b) => a + b)</code> cannot be applied because the <code>+</code> operator is not defined for an object pair. We can, however apply the following stamement:</p>
+
+<pre>
+rdd.reduceByKey(case (a, b) => a + b) => ((1, 5), (2, 9))
+</pre>
+
+
+	</div>
+	
+  <h2>Launching a Spark cluster</h2>
+  <p>To start a Spark cluster, you can either use the ec2 script provided by Spark or Spark on EMR in AWS. Spark on EMR gives you an easy and fast way to launch a cluster but it burns your budget more quickly. On the other hand, the ec2 script gives you more control on the cluster and avoids the additional cost incurred by using EMR, but it takes a longer time to configure your cluster.</p>
+
+  <h4>Launching the cluster by using the ec2 script in Spark</h4>
+  <p>If you choose to use the ec2 script, you can follow the instructions in <a href="https://spark.apache.org/docs/latest/ec2-scripts.html">Running Spark on EC2</a>. The following video gives a demo on using Spark with this method:</p>
+
+    <!-- Follow this video embedding style EXACTLY -->
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/3pXjl3NTuvk?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 2: </b>Apache Spark Demo<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+  <p>For your convenience, we have also listed the following steps for reference:</p>
+  <ol>
+    <li>Download the pre-compiled Spark version 1.5.1 that is compatible with Hadoop 2.6 through the following command:
+<pre>
+wget http://apache.mirrors.ionfish.org/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.6.tgz
+</pre>
+	</li>
+  <li>Untar the file and go to the <code>spark-1.5.1-bin-hadoop2.6/ec2</code> directory.</li>
+  <li>Set your AWS access and secret key to the environment variables:
+<pre>
+export AWS_SECRET_ACCESS_KEY=[your AWS secret key]
+export AWS_ACCESS_KEY_ID=[your AWS access key]
+</pre>
+  </li>
+  <li>Launch a Spark cluster by using the command:
+<pre>
+./spark-ec2 -k [keypair] -i [key-file] -s [num-slaves] --hadoop-major-version yarn launch [cluster-name]
+</pre>
+<p>where <code>[keypair]</code> is the name of your EC2 key pair (which you see on the AWS Web Console), <code>[key-file]</code> is the private key file for your key pair, <code>[num-slaves]</code> is the number of slave nodes to launch, and <code>[cluster-name]</code> is the name to give to your cluster.<p>
+<p>You can specify the instance type with the <code>-t</code> option. Additionally, the <code>--spot-price</code> option will save a lot of money, but your cluster may take longer to provision. Use your resources judiciously.<p>
+</li>
+<li>Tag launched instances immediately.</li>
+<li>Login to the Spark master using the command.
+<pre>
+./spark-ec2 -k [keypair] -i [key-file] login [cluster-name]
+</pre>
+You can also SSH into the master directly by using your key pair with <code>root</code> as the username.
+</li>
+<li>To check if Spark is installed correctly, you can run the Spark Pi Calculator by executing:
+<pre>
+spark/bin/run-example SparkPi
+</pre>
+If you see a message like Pi is roughly 3.13768, it means that you have successfully started a Spark cluster and are ready to move on!
+</li>
+<li>
+<code>./bin/spark-submit</code> can be used to launch custom standalone programs. See this <a href="https://spark.apache.org/docs/latest/submitting-applications.html">URL</a> for more details or use the --help option to see all options.
+</ol>
+
+<h4>Launching the cluster by using Spark on EMR</h4>
+<p>If you choose to use EMR to launch the Spark cluster, you can refer to this <a href="https://docs.aws.amazon.com/ElasticMapReduce/latest/ReleaseGuide/emr-spark-launch.html">document</a> for detailed instructions. For your convenience, we have listed the following steps:
+<ol>
+  <li>Open the Amazon EMR console and choose <b>Create cluster</b>.</li>
+  <li>Click <b>Go to advanced options</b> at the top of the page</li>
+  <li>In the <b>Software Configuration</b> section:
+    <ul>
+      <li>Use Amazon EMR-4.2.0 as the Hadoop distribution</li>
+      <li>Select Spark as the application to be installed</li>
+      <li>Click <b>Edit software settings</b> at the bottom of this section and set the configuration to:
+<pre>
+[{"classification":"spark","properties":{"maximizeResourceAllocation":"true"}}]
+</pre>
+      </li>
+    </ul>
+  </li>
+  <li>Set other options such as the name of your cluster, number and type of instances, tag, EC2 key pair as usual and click <b>Create cluster</b></li>
+  <li>After the cluster is created, you can login to the master instance to use <code>spark-submit</code> to submit your job or use <b>Add step</b> in the console to run your code.
+</ol>
+
+
+</div>
+<!-- END SECTION 2 -->
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Scenario</h1>
+        <div><p>You have built a successful search engine, but no one seems to be using it. You try to spread the word by asking all your 2773 Facebook friends and 32 Twitter followers to use the Mellon Search Input Text Predictor (MSITP).</p><p>Unfortunately, this doesn't work. After one week, only 7 people have used your website. You realize that, for it to be a success, you need to showcase your service to highly influential people who are easily impressed -- Twitter celebrities!</p>
+    <div class="img-thumbnail">
+        <img src="http://blog.postbit.com/upload/62/20110912/Twitter-network-visualization-social-graph-1024-postbit-1802.jpg" width="900"/>
+        <h4>
+            <small class="caption"><a name="kwakup"></a><b>Figure</b>: Twitter's network is dominated by a small number of influential people, and a large number of silent observers</small>
+        </h4>
+    </div>
+<p>You encounter a dataset and some research by Kwak <a href="#kwak">[1]</a>, describing the analysis of a network of Twitter users. Some further digging reveals the PageRank algorithm for identifying influential nodes in a network. You download the dataset and decide to use your MapReduce skills to run PageRank and find the influential nodes to target.</p><p>Unfortunately, many network analysis and machine learning algorithms rely on multiple iterations of execution. This is where MapReduce works poorly- after each iteration of Map and Reduce, it spills all the data to disk and spends a lot of time saving and loading the data.</p>
+<p><a name="kwak"></a>Fortunately, the Cloud Computing course introduces you to Spark at exactly the right time. Spark is optimized for iterative jobs, by storing intermediate results in memory. In this module, you will be introduced to Spark through an increasingly harder set of tasks, and finally use it to perform PageRank on the dataset of Twitter users to find the influencers.</p> </div>
+        <hr></hr>
+        <div><small>[1] </small> <a href="#kwakup">^</a><a href="http://law.di.unimi.it/webdata/twitter-2010/">Kwak, H., Lee, C., Park, H., & Moon, S. (2010, April). What is Twitter, a social network or a news media?. In Proceedings of the 19th international conference on World wide web (pp. 591-600). ACM</a></div>
+</div>
+<div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	<p>We are going to use the Apache Spark framework to run a few graph computations on the Twitter social graph. The dataset details are as follows:</p>
+	
+	<!-- Captions for Table -->
+		<div class="col">
+		   <p><b>Table 1:</b> Dataset for this project.<p>
+		</div>	
+
+		<table class="table table-bordered">
+			<tr class="active">
+				<th>File Name</th>
+				<th>Location</th>
+				<th>Size</th>
+			</tr>
+			<tr>
+				<td>twitter-graph.txt</td>
+				<td>s3://f15-p42/twitter-graph.txt</td>
+				<td>10.4GB</td>
+			</tr>
+		</table>
+
+	<p>The graph is stored as an edge list format. This provides the list of source and destination vertices for each edge of the graph. Each node represents a user in the Twitter social network and an edge (u, v) means user u follows user v in Twitter.</p>
+	
+	<h2>Task 1: Find The Number of Edges and Vertices of the Graph</h2>
+	
+	<p>Your first task is to find the number of edges and vertices in the Twitter social graph. The edges in the graph are directed, so if there are edges (u, v) and (v, u), you should count them as two edges. You will need to write a Spark program to perform this task. </p>
+	<p>Once you have completed the task you may submit your work using the following steps:</p>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Log into the Submitter Instance (small ami-68fcbb02) and go to directory <code>Project4_2/task1</code>.</li>
+      <li>Put all the code you used to complete this task in the folder.</li>
+      <li>Put the numbers you got from your program in the file <code>answer</code>.</li>
+			<li>Run <code>submitter_task1</code> to make the submission.</li>
+		</ol>
+	</div>
+	
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Task 2 : Find the Number of Followers for Each User</h1>
+	<p>Now that you have some experience with the dataset, and ran a basic computation on it, lets move on to a slightly more demanding analysis of the graph:</p>
+	
+	<p>We want to find the number of followers for each user in the Twitter social graph. Do the following steps to complete this task:
+	
+	<ol>
+		<li><p>Write a spark program that produces the following output for the entire Twitter social graph:</p>
+<pre>
+[user_id]\t[num_followers]
+</pre>
+		</li>
+		
+		<li>
+    <p>Once you have generated the list, please load it into the MySQL database located in the submitter instance. We have already created the table
+    <code>follower</code> for you, and you can access the database through the following command:<p>
+<pre>
+mysql -uuser -ppassword cc
+</pre>
+		</li>
+		
+    <li><p>Once the data is loaded, launch the webserver by using the following command</p> 
+<pre>
+sudo nohup python server.py 80 &
+</pre>
+    </li>
+		
+		<li>You can now try a sample query to return the number of followers for a given twitter user. The query syntax is as follows:
+<pre>
+GET /follower?id=[user_id]
+</pre>
+		</li>
+	</ol>
+	
+	<p>Once you have completed the task, you may submit and test your solution against our autograder by doing the following:</p>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Go to the directory <code>Project4_2/task2</code> and put all the code you used to complete this task in the folder.</li>
+			<li>Run <code>submitter_task2</code> to make the submission. Make sure your webserver is running while you submit this task.</li>
+		</ol>
+	</div>
+	
+</div>
+<!-- END SECTION 4 -->
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Task 3 : Rank Each User by Influence</h1>
+	<p>Let us now run an iterative computation on the Twitter social graph. For this final task, you will rank each user by their influence.</p>
+	
+	<p>The <a href="https://en.wikipedia.org/wiki/PageRank">PageRank</a> algorithm is a graph-computation that iteratively computes the importance of each vertex of the graph based on the importance of its neighbors. Intuitively, a person that is being followed by an influential user that has many followers is also likely to be influential as well. Using PageRank, we can compute and assign a rank for each vertex that is computed from the rank of all of the vertices neighbors. Clearly, such an algorithm cannot be computed just once, it must be computed iteratively as the ranks are continuously updated using the ranks of the neighbors. The computation can be run for a fixed number of iterations, or it can be run until the ranks of each node converge (they do not change beyond a certain threshold).</p>
+	
+	<p>For this task, we will use the following expression (Figure 4) to update the rank of a vertex in a graph:</p>
+	
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/page_rank.png" />
+	<h4><small class="caption"><b>Figure 4</b>: PageRank Expression.</small></h4>
+	</div>
+	
+	<div class="bs-callout bs-callout-info">
+		<h4 id="warnings">PageRank Implementation Rules</h4>
+		<dl>
+			<dt>Initial Rank Values</dt>
+			<dd>The initial value of the rank of each user should be <code>1.0</code>. This value needs to be assigned to every vertex, so it's easy to think of this as being a <code>map</code> operation.</dd>
+			
+      <dt>Damping Factor</dt>
+      <dd>There are many possible values for the damping factor, and in this task we set it to <code>0.85</code>.
+			<dt>Output Format</dt>
+			<dd>You must ensure that the output of your PageRank function matches the same syntax of the input, so that the algorithm can iteratively compute the ranks.</dd>
+			
+			<dt>Dangling Users</dt>
+			<dd><p>You need to handle the case of dangling users (users who don't follow anyone who is in our dataset). 
+			The weight of the dangling users must be redistributed across all the users during each iteration.<p>
+			
+			<p>
+			Consider the following example: You are given the following graph of people:
+<pre>
+key: user1 rank: 1.0 follows: user2 user3 
+key: user2 rank: 1.0 follows: user3 user1 
+</pre>
+			</p>
+			
+			<p>After 1 iteration, the following contributions will be received by each user, as shown:</p>
+			<pre>
+key: user1 contributions received: 0.5 follows: user2 user3 
+key: user2 contributions received: 0.5 follows: user3 user1 
+key: user3 contributions received: 1.0 follows: 
+			</pre>
+			
+			<p><code>user3</code> is a dangling user. Dangling users are users whose follow information is unavailable. Unfortunately, the total aggregate of all rank values should be a constant (as per the formal definition of PageRank). However, dangling users do not emit any weight and hence, the system tends to lose weight at each iteration. The way to correct this is by redistributing the weight of dangling users across all the users at each iteration. In this example, there is only one dangling user (<code>user3</code>). Hence, its weight (<code>1.0</code>, which is the initial value) should be distributed equally among <code>user1</code>, <code>user2</code>, <code>user3</code>.
+
+			Hence, the new Ranks are:		
+<pre>
+user1 = 0.15 + 0.85 * (0.5 + 1.0/3) = 0.8583
+user2 = 0.15 + 0.85 * (0.5 + 1.0/3) = 0.8583
+user3 = 0.15 + 0.85 * (1.0 + 1.0/3) = 1.2834
+</pre>
+
+</p>
+			</dd>
+			
+		</dl>
+	</div>
+	
+
+	<ol>
+    <li><p>Write a Spark program that computes the PageRank value for each node in the Twitter social graph. Your program should follow the implementation rules described above and produce the following output for the entire graph by running <code>10</code> iterations of computation.
+<pre>
+[user_id]\t[PageRank_value]
+</pre>
+		</li>
+		
+		<li>
+		Once you have generated the list, please load it into the MySQL database located in the submitter instance. We have already created the table
+    <code>pagerank</code> for you and you can use the same command in task 2 to access the database.
+		</li>
+		
+    <li>Once the data is loaded, launch the webserver by using the same command in task 2.</li>
+		
+		<li>You can now try a sample query to rank a set of users by their PageRank values. The query syntax is as follows:
+<pre>
+GET /pagerank?startId=[user_id]&endId=[user_id]
+</pre>
+		</li>
+	</ol>
+	
+	<p>Once you have completed the task, you may submit and test your solution against our autograder by doing the following:</p>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Go to the directory <code>Project4_2/task3</code> and put all the code your used to complete this task in the folder</li>
+			<li>Run <code>submitter_task3</code> to make the submission. Make sure your webserver is running while you submit this task.</li>
+		</ol>
+	</div>
+	
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Bonus</h1>
+  <p>In the previous tasks, you have gained some experience with using Spark to write an iterative program. The PageRank algorithm you implemented, performs 
+  several iterations on the graph to analyze the links and compute the weight of each node. During each iteration, a node will need values from all the 
+  neighbors. This nature of PageRank makes it perfectly fit into the graph parallel model. In this task, you will use the graph-parallel framework GraphLab to implement the PageRank algorithm. By completing this task, you will get the bonus. More importantly, you will gain experience in developing graph-parallel programs and a deeper understanding of the advantage of adopting the graph programming model to deal with iterative applications where the data is highly dependent. 
+	<h2>GraphLab</h2>
+  <p>In this section, we will give a brief introduction to some aspects of GraphLab needed for this task. To have a deeper understanding of GraphLab, you should read Unit 5 in OLI.</p> 
+  <p>GraphLab is a distributed graph-parallel framework developed by CMU, which is used to perform machine learning and data mining algorithms efficiently on large-scale datasets. GraphLab abstracts the computation as vertex and data dependencies between computations as edges. It uses a vertex-centric model, where the user-defined program is represented as an update function running on a scope consisting of a centric vertex and its adjacent vertices and edges. The computation can be either performed synchronously with Bulk Synchronous Model (BSP) or asynchronously using flexible consistency models.<p>
+
+  <p>In GraphLab1.0,  the data represented as a graph is partitioned using edge-cut, meaning two endpoints of an edge may be located at different machines. In GraphLab2.0 (also called PowerGraph), the partition method is changed to vertex-cut in order to handle the power-law property of having a few highly connected vertices which is exhibited in most of the natural graphs. In the PowerGraph approach, each edge along with its two endpoints will be on only one machine, and for each vertex, one of its copies will be selected as the master node, the rest of its copies are considered as mirror nodes.</p>
+
+  <p>In the rest of this section, when we refer to GraphLab, we mean GraphLab 2.0.
+
+    <div class="img-thumbnail">
+    <img src="https://15619public.s3.amazonaws.com/webcontent/graphlab-edge-cut.png" width="400" height="200"/>
+    <h4><small class="caption"><b>Figure 5</b>: Edge-cut in GraphLab 1.0</small></h4>
+    </div>
+
+    <div class="img-thumbnail" style="margin-left: 20px;">
+    <img src="https://15619public.s3.amazonaws.com/webcontent/graphlab-vertex-cut.png" width="400" height="200"/>
+    <h4><small class="caption"><b>Figure 6</b>: Vertex-cut in GraphLab 2.0</small></h4>
+    </div>
+
+  <p>To develop applications in GraphLab, a user needs to write a program which runs on each vertex. This is accomplished using the following three steps:</p>
+  <ol>
+    <li><b>Gather</b>. For each vertex, its master and mirror nodes will accumulate information from their adjacent vertices or edges.</li>
+    <li><b>Apply</b>. In this step, the accumulated information will be aggregated in the master node of a vertex and be applied to update the state of the master node. The updated state of the master node will be subsequently synchronized to all the mirror nodes.
+    </li>
+    <li><b>Scatter</b>. This is the final step where both the master and mirror nodes of a vertex could choose to update the data on their adjacent edges and send messages to their adjacent vertices. The vertices which receive messages will be activated and will continue performing subsequent computations.</li>
+  </ol>
+
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/graphlab-gas.png" width="800" height="280"/>
+	<h4><small class="caption"><b>Figure 7</b>: Gather, Apply, Scatter in a user-defined program</small></h4>
+	</div>
+
+  <h2>Launching a GraphLab cluster</h2>
+  <p>The same as Spark, GraphLab provides the script to launch a cluster on AWS. To use this script, follow the instructions below:
+  <ol>
+    <li>Download GraphLab from <a href="https://github.com/dato-code/PowerGraph">this repository</a>.</li>
+    <li>Untar the file and go to <code>graphlab-master/scripts/ec2</code>.</li>
+    <li>Set your AWS access and secret key to the environment variables:
+<pre>
+export AWS_SECRET_ACCESS_KEY=[your AWS secret key]
+export AWS_ACCESS_KEY_ID=[your AWS access key]
+</pre>
+    </li>
+    <li>Launch a GraphLab cluster by using the command:
+<pre>
+./gl-ec2 -k [keypair] -i [key-file] -t [instance-type] -s [num-slaves] -r us-east-1 -a ami-4992d423 launch [cluster-name]
+</pre>
+  </li>
+  <li>Tag launched instances immediatly.</li>
+  <li>Login to the GraphLab master by using the command:
+<pre>
+./gl-ec2 -k [keypair] -i [key-file] -r us-east-1 login [cluster-name]
+</pre>
+  <li>Once you are done with your computation, terminate the cluster by using the command:
+<pre>
+./gl-ec2 -k [keypair] -i [key-file] -r us-east-1 destroy [cluster-name]
+</pre>
+  </li>
+</ol>
+
+  <h2>Task to Complete</h2>
+  <p>To get the bonus, you need to implement the PageRank with GraphLab. Do the following steps to complete this task:</p>
+  <ol>
+    <li>Launch a GraphLab cluster and login to the master instance.</li>
+    <li>Go to the <code>graphlab/apps/pagerank</code> directory. We have provided the starter code <code>pagerank.cpp</code> here and you need to complete this code to use GraphLab's API to compute the PageRank values.</li>
+    <li>Once you are done with your code, go to directory <code>graphlab/release/apps/pagerank</code> and execute <code>make</code> to compile your code.</li>
+    <li>After compiling your code, stay in the current directory and use the following command to distribute your program to all machines:
+<pre>
+~/graphlab/scripts/mpirsync
+</pre>
+    </li>
+    <li>Now you can use the following command to run the PageRank program. In this task, you need to run 15 iterations:
+<pre>
+mpiexec -hostfile ~/machines -n [num_of_machines] ./mypagerank --graph ~/data/twitter --iterations 15 --saveprefix [path_of_output]
+</pre>
+    </li>
+    <li>Collect the output files from all machines and merge them into a single file in the master instance.
+  </ol>
+Once you have completed the task you may submit your work using the following steps:
+
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Log into the Submitter Instance and copy your final output file into this instance.</li> 
+      <li>Load the result into the table <code>bonus</code> in the MySQL database and launch the webserver.</li>
+      <li>Go to <code>Project4_2/bonus</code> directory. Copy your <code>pagerank.cpp</code> into this folder and run <code>submitter_bonus</code> to make your submission.</li>
+		</ol>
+	</div>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>Tutorial and API reference for GraphLab</h4>
+    <p>After downloading and extracting the GraphLab files on your own computer, you can go the <code>graphlab-master</code> directory and run <code>doxygen</code> to generate the documentation files. The generated files are located at <code>graphlab-master/doc/doxygen/html</code>, you can open the <code>index.html</code> in your broswer to start viewing the whole document.</p>
+  </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_7" class="writeup_section" data-sequence="7">
+                    <iframe src="https://docs.google.com/forms/d/16uKOmCuvGk5PdhlvAYUC9ic7qWWiFOo707lsapRXoeI/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="23">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

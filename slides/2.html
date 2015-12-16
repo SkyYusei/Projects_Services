@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Account Setup</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/2">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/2">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Account Setup</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>AWS Account Sign Up</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Azure Account Sign Up</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 class="page-header">AWS Account Sign Up</h1>
+
+<p>Welcome to the projects of the Cloud Computing course! For the projects in this course, you will work on instances provisioned on Amazon EC2 (Elastic Compute Cloud) and utilize S3 (Simple Storage System) for persistent storage. In addition, we will be working with various other AWS (Amazon Web Services) technologies such as Elastic Block Store (EBS), CloudWatch, and DynamoDB, among others. For more information about AWS, please refer to the <a href="http://aws.amazon.com" target="_blank" >AWS website</a>, or read the <a href="/student/writeup/2/3" target="_blank">AWS Primer</a> in this course. Let's get started by creating an AWS account.</p>
+
+<h2>AWS Account</h2>
+
+<p>The following video will outline the steps necessary to create your own AWS account and link it with the course account for payment purposes:</p>
+
+<div class="row" style="align:center">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/1ey0EDVjyeY?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <p><b>Video:</b> AWS Sign Up<p>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+<p>Please follow the steps outlined below in order to set up your AWS account for use with the course:</p>
+<ol><li>Create a new AWS account at <a href="http://aws.amazon.com"  target="_blank"  rel="nofollow">http://aws.amazon.com</a> by clicking on <b>Sign Up</b>.</li>
+<li>Follow the onscreen instructions as outlined in the video. <b>Please use your andrew email to sign up for AWS</b>. You will need to enter a credit/debit card and address information as EC2 requires a credit card on file for use.  A $1 (USD) hold may occur on the card during verification. However, your EC2 usage charges for the class will be paid by the Cloud Computing Course after you have completed the steps on this guide.</li>
+<li><b>Ensure that you sign up for only basic support when asked.</b></li>
+<li>Once you have completed the EC2 sign up, and completed the phone verification process, wait for EC2 authorization mail and activation. This can take up to one business day. </li>
+<li>You can now sign into your account at <a href="http://aws.amazon.com"  target="_blank" rel="nofollow">http://aws.amazon.com</a>.</li>
+<li>Sign in to AWS and retrieve your AWS account number.</li>
+<li>Update your <a href="https://theproject.zone/website/profile/" target="_blank" >profile page</a>, click on "Change Account" and enter your AWS account information and the email address you used to sign up for the account in the relevant field.</li>
+<li>In one or two business days, you should receive a consolidated billing request in your email, <b>please click and approve the request</b> you get by email from AWS so that your EC2 usage can be charged to the university.</li></ol>
+
+<div class="bs-callout bs-callout-danger">
+<h4>Warning</h4>
+<p>You must provide your AWS account information and the email address used to create the account so that the course staff can issue an AWS account link request.  Linking your AWS account to the course AWS account is mandatory otherwise you will not be able to gain access to course-specific resources on the cloud.</p>
+<p>After we issue the AWS account link request, you must click and approve the consolidated billing request that you get by email. Failure to do so will result in your account not being linked and charges will be forwarded to the credit/debit card on file with AWS.</p>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+<h4>Grade Penalties on Excessive Use</h4>
+<p>You are solely responsible for the usage of your AWS account. Each project in the course has an associated budget which must be followed strictly. Usage reports will be monitored by the instructors and excessive use will be grounds for grade penalties.</p>
+
+<p>Your AWS account that you create and link to the course should be used <b>exclusively</b> for the projects in this course. This account must not be used for any private work or for other courses/projects at CMU or elsewhere.<p>
+</div>
+
+<div class="bs-callout bs-callout-info">
+<h4>Dropping the Course</h4>
+<p>You will be removed from the AWS consolidated billing if you drop the course. You will receive an email indicating that you will be removed from the billing account. After you have been removed from the course account, any resources that you have left running will be billed on the card you have used to sign up for AWS. Please ensure that you terminate all resources and delete your account, if you do not plan to use AWS in the future.
+</div>
+
+<h2>AWS Educate Account</h2>
+
+<p>Students in this course have to sign up for an AWS Educate Account. Please follow the steps outlined below in order to set up your AWS Educate account for use with the course:</p>
+<ol><li>Visit the <a href="https://aws.amazon.com/education/awseducate/apply/" target="_blank" >Apply for AWS Educate</a> page.</li>
+<li>Click on the <b>Apply for AWS Educate for Students</b>.</li>
+<li>Select <b>Student</b> and click on <b>Next</b>.</li>
+<li>Fill out the application with your information and fill out your AWS Account ID when asked, click on <b>Next</b></li>
+<li>As you fill out your application, you should receive an email. Verify your email address on the next page and click on <b>Next</b>.</li>
+<li>Accept the terms and conditions on the next page and finish the application.</li>
+<li>You should receive an email confirmation from AWS indicating that you have successfully joined the AWS Educate program. </li>
+</ol>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Azure Account Setup</h1>
+
+<p>In addition to AWS, we are offering students the ability to get familiar with Azure, the cloud service from Microsoft. For more information about Azure, please refer to the <a href="http://azure.microsoft.com/" target="_blank" >Azure Website</a>, or read the <a href="/student/writeup/2/4" target="_blank">Azure Primer</a> in this course.</p>
+
+<h2>Azure Account Sign Up</h2> 
+
+<p>Please follow the steps outlined below in order to set up your Azure account for use with the course:</p>
+
+<div class="bs-callout bs-callout-danger">
+<h4>Warning</h4>
+<p>Please make sure you <strong>DO NOT use your Carnegie Mellon issued andrew email id</strong> as your id when you sign up with Azure. </p>
+</div>
+<ol>
+<li><p>Obtain the <b>Azure sign-up pass</b> using the form below. You should find your <b>Submission Password</b> as a clickable button at the top of this page.</p>
+<form class="form-horizontal" action="http://theproject.zone:8000/azure" id="idForm">
+<fieldset>
+
+<!-- Form Name 
+<legend>Get CMU AzurePass</legend> -->
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="andrewid">Andrew ID</label>  
+  <div class="col-md-4">
+  <input id="andrewid" name="andrewid" type="text" placeholder="(e.g. msakr)" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submissionpwd">Submission token</label>
+  <div class="col-md-4">
+    <input id="submissionpwd" name="submissionpwd" type="password" placeholder="" class="form-control input-md" required="">
+<br/>
+    <input type="submit" class="btn btn-info" value="Submit">
+  </div>
+</div>
+
+</fieldset>
+</form>
+</li>
+
+
+<li>Create a new Azure account at <a  href="http://www.microsoftazurepass.com" target="_blank" >http://www.microsoftazurepass.com</a>. Enter the region as your current country location and use the <b>Azure sign-up pass</b> and click <b>Activate</b>.</li>
+<li>In the next screen, you will be required to use a Microsoft ID. You may use an existing Microsoft/Outlook/Hotmail email ID or sign up for one.
+
+</li>
+<li>Next, Azure may sometimes require phone verification, please enter a valid phone number to receive a confirmation code. Enter the confirmation code and agree to the Azure terms of service to continue.</li>
+<li>Now, Azure will set up your account, which may take a few minutes.</li>
+<li>You can now log into your azure account by visiting <a href="http://portal.azure.com" target="_blank" >http://portal.azure.com</a>.</li>
+</ol>
+
+<div class="bs-callout bs-callout-warning">
+<h4>Usage Responsibility</h4>
+<p>The Azure pass provided entitles you to $100 per month for 6 months. You will be responsible for excessive usage on your account. Monitor your usage and ensure that you terminate all resources on Azure after you have completed using them.</p>
+</div>
+
+<h2>Azure Account Linking</h2> 
+
+<p>In order to assess and monitor student progress with projects, we require you to link your account to a central monitoring system. Please follow the steps outlined below:</p>
+
+<ol>
+<li>Sign out of all Microsoft services, or start a new incognito/private browsing session.</li>
+<li>Ensure that you have completed all the steps in the Azure Account Sign Up section above, and you have access to the <a href="http://portal.azure.com">Azure Portal Console</a>.</li>
+<li>Obtain the <b>Default Directory Name</b> of your Azure subscription.
+  <ol>
+    <li>In the Azure Management Console home page, mouse over your profile on the top-right corner of the page.</li>
+    <li>The Directory name will be structured as "<code>[xyz].onmicrosoft.com</code>". Note this down for the next step.</li>
+
+                <div class="img-thumbnail">
+                <img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/azure-directory.png" alt="azure-directory" width=600  />
+                <h4><small class="caption"><b>Figure</b>: Azure Directory</small></h4>
+                </div>
+
+  </ol>
+<li>Visit <a href="http://azurebillingportalregistration.azurewebsites.net">http://azurebillingportalregistration.azurewebsites.net</a> to register your Azure subscription.</li>
+<li>Enter the default Directory’s name for your Azure Subscription in to the textbox shown below:</li>
+
+<p><div class="img-thumbnail">
+<img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/azurebillingregister.png" alt="azure-billing" width=600 />
+<h4><small class="caption"><b>Figure</b>: Azure Billing Registering</small></h4>
+</div></p>
+
+<li>Authorize the application on the next page.</li>
+<li>In the next page, enter your andrewID in the display name and click on <b>Allow Monitoring</b>.</li>
+
+<p><div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/authorize-monitoring.png" alt="azure-enable-monitoring" width=600/>
+<h4><small class="caption"><b>Figure</b>: Azure Enable Monitoring</small></h4>
+</div></p>
+
+</li>
+
+<li>The page should now show that the monitoring is enabled.
+<p><div class="img-thumbnail">
+<img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/Azure+Complete.png" width=600 />
+<h4><small class="caption"><b>Figure</b>: Monitoring Enabled</small></h4>
+</div></p>
+</li>
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="2">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

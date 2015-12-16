@@ -1,0 +1,47 @@
+; 2015-09-23T01:43:38+0000
+; Vertical Scaling Test
+; Test launched. Please check every minute for update.
+[Test]
+type=vertical
+testId=1442972618735
+testFile=test.1442972618735.log
+
+[Minute 1]
+rps=775.31
+
+[Minute 2]
+rps=837.42
+
+[Minute 3]
+rps=838.67
+
+[Minute 4]
+rps=839.13
+
+[Minute 5]
+rps=841.00
+
+[Load Generator]
+awsId=744348354487
+andrewId=ruz
+amiId=ami-4389fb26
+instanceId=i-d36c3370
+instanceType=m3.medium
+publicHostname=ec2-54-152-228-185.compute-1.amazonaws.com
+ipAddress=54.152.228.185
+passwd=AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw
+
+[Data Center]
+instanceType=t2.large
+andrewId=ruz
+instanceId=i-c29bc461
+amiId=ami-abb8cace
+publicHostname=ec2-54-210-236-42.compute-1.amazonaws.com
+ipAddress=54.210.236.42
+awsId=744348354487
+
+; MSB is validating...
+; MSB congratulates you on completing vertical scaling test on a large instance!
+; Your mean rps of last 4 minutes for this type is 839.05.
+; Test finished
+Your submission is received, the token is CD15619Pp21AIDruzTM20150922214847551. Wait and check tpz for the score. 

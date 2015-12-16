@@ -1,0 +1,6 @@
+var single_words = lines.flatMap( line => line.split(" "))
+var vertxs = single_words.map( word => (word,1))
+var users = vertxs.reduceByKey(_ + _)
+var nodes = users.map( word => ("numOfEnodes",1))
+var num_nodes = nodes.reduceByKey(_ + _)
+num_nodes.saveAsTextFile("s3://15619project42ruz/numOfEnodes")

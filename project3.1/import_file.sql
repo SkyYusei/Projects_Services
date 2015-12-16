@@ -1,0 +1,2 @@
+LOAD DATA LOCAL INFILE 'million_songs_sales_data.csv' INTO TABLE sales FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+

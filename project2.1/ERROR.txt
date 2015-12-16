@@ -1,0 +1,10 @@
+Sending 'GET' request to URL : http://ec2-52-23-186-203.compute-1.amazonaws.com/password?passwd=AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw
+Exception in thread "main" java.net.SocketException: Unexpected end of file from server
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:792)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:789)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1535)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440)
+	at MSBRunInstance.sendGet(MSBRunInstance.java:208)
+	at MSBRunInstance.main(MSBRunInstance.java:101)

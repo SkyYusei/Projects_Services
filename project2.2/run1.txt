@@ -1,0 +1,249 @@
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+chek if instance is running
+
+Sending 'GET' request to URL : http://ec2-52-23-170-239.compute-1.amazonaws.com
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body><h3>Welcome to MSB Load Generator & Test Center, ruz!</h3><br>Step 0. <a href='/password'>Enter your submission password</a><br>Step 1. <a href='/burst'>Burst Test</a><br>Step 2. <a href='/plat'>Plateau Test</a><br>Step 3. <a href='/junior'>Junior System Architect Test</a><br>Step 4. <a href='/upload'>Upload Code</a><br><br><a href='/warmup'>Warmup</a><br><a href='/log'>Test logs</a><br></body></html>
+Instance in service
+
+Sending 'GET' request to URL : http://ec2-52-23-170-239.compute-1.amazonaws.com/password?passwd=AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body>You have entered your submission password<br> Click <a href='/'>here</a> to return to the homepage.</body></html>
+Warm up start!
+
+Sending 'GET' request to URL : http://ec2-52-23-170-239.compute-1.amazonaws.com/warmup?dns=Project2point2ELB-903833535.us-east-1.elb.amazonaws.com
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body><a href='/log?name=test.1443759112500.log'>Test</a> launched.</body></html>
+
+Sending 'GET' request to URL : http://ec2-52-23-170-239.compute-1.amazonaws.com/warmup?dns=Project2point2ELB-903833535.us-east-1.elb.amazonaws.com
+Exception in thread "main" java.io.IOException: Server returned HTTP response code: 400 for URL: http://ec2-52-23-170-239.compute-1.amazonaws.com/warmup?dns=Project2point2ELB-903833535.us-east-1.elb.amazonaws.com
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1839)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440)
+	at MSB.sendGet(MSB.java:382)
+	at MSB.warmupCheck(MSB.java:423)
+	at MSB.main(MSB.java:168)
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html><html><head><title>MSB Load Generator</title></head><body><h3>Welcome to MSB Load Generator & Test Center, ruz!</h3><br><a href='/log?name=test.1443759871900.log'>Test</a> is running. <a href='/test/kill'>Kill</a> it.<br>Step 0. <a href='/password'>Enter your submission password</a><br>Step 1. <a href='/burst'>Burst Test</a><br>Step 2. <a href='/plat'>Plateau Test</a><br>Step 3. <a href='/junior'>Junior System Architect Test</a><br>Step 4. <a href='/upload'>Upload Code</a><br><br><a href='/warmup'>Warmup</a><br><a href='/log'>Test logs</a><br></body></html>
+
+
+
+
+
+
+
+
+
+
+; MSB Junior System Architect Test
+; Test launched. Please check every minute for update.
+[Test Start]
+time=2015-10-02 16:31:07
+type=junior
+testId=1443803467341
+testFile=test.1443803467341.log
+
+[Minute 1]
+rps=332.78
+
+[Minute 2]
+rps=233.15
+
+[Minute 3]
+rps=125.06
+
+[Minute 4]
+rps=1305.40
+
+[Minute 5]
+rps=961.40
+
+[Minute 6]
+rps=1254.93
+
+[Minute 7]
+rps=2784.68
+
+[Minute 8]
+rps=2512.73
+
+[Minute 9]
+rps=1733.51
+
+[Minute 10]
+rps=3192.78
+
+[Minute 11]
+rps=3532.21
+
+[Minute 12]
+rps=2825.23
+
+[Minute 13]
+rps=2079.28
+
+[Minute 14]
+rps=370.58
+
+[Minute 15]
+rps=525.63
+
+[Minute 16]
+rps=761.96
+
+[Minute 17]
+rps=301.38
+
+[Minute 18]
+rps=889.53
+
+[Minute 19]
+rps=925.38
+
+[Minute 20]
+rps=2839.01
+
+[Minute 21]
+rps=906.45
+
+[Minute 22]
+rps=897.00
+
+[Minute 23]
+rps=314.46
+
+[Minute 24]
+rps=210.91
+
+[Minute 25]
+rps=617.18
+
+[Minute 26]
+rps=310.01
+
+[Minute 27]
+rps=768.95
+
+[Minute 28]
+rps=322.26
+
+[Minute 29]
+rps=1507.00
+
+[Minute 30]
+rps=326.75
+
+[Minute 31]
+rps=1014.40
+
+[Minute 32]
+rps=328.63
+
+[Minute 33]
+rps=639.80
+
+[Minute 34]
+rps=286.75
+
+[Minute 35]
+rps=325.03
+
+[Minute 36]
+rps=758.66
+
+[Minute 37]
+rps=1496.66
+
+[Minute 38]
+rps=1489.50
+
+[Minute 39]
+rps=1481.08
+
+[Minute 40]
+rps=676.41
+
+[Minute 41]
+rps=815.56
+
+[Minute 42]
+rps=1452.13
+
+[Minute 43]
+rps=1462.26
+
+[Minute 44]
+rps=928.65
+
+[Minute 45]
+rps=565.43
+
+[Minute 46]
+rps=212.88
+
+[Minute 47]
+rps=303.33
+
+[Minute 48]
+rps=973.55
+
+[Load Generator]
+awsId=744348354487
+andrewId=ruz
+amiId=ami-312b5154
+instanceId=i-d53d1075
+instanceType=m3.medium
+publicHostname=ec2-54-175-141-82.compute-1.amazonaws.com
+ipAddress=54.175.141.82
+
+[Elastic Load Balancer]
+dns=elb-88013239.us-east-1.elb.amazonaws.com
+
+[Test End]
+time=2015-10-02 17:19:14
+rps=1059
+ih=181.13
+; Instance-Hour Usage
+; i-00321fa0	m3.medium	26.23	2015-10-02 16:31:07	2015-10-02 16:57:21
+; i-01cbe6a1	m3.medium	3.52	2015-10-02 17:15:26	2015-10-02 17:18:57
+; i-170c21b7	m3.medium	13.02	2015-10-02 16:31:07	2015-10-02 16:44:08
+; i-201b3680	m3.medium	16.02	2015-10-02 16:32:18	2015-10-02 16:48:19
+; i-211b3681	m3.medium	14.52	2015-10-02 16:31:48	2015-10-02 16:46:19
+; i-221b3682	m3.medium	5.02	2015-10-02 16:31:48	2015-10-02 16:36:49
+; i-34f7da94	m3.medium	7.02	2015-10-02 17:02:57	2015-10-02 17:09:58
+; i-4c0c21ec	m3.medium	26.23	2015-10-02 16:31:07	2015-10-02 16:57:21
+; i-8acce12a	m3.medium	8.02	2015-10-02 17:10:59	2015-10-02 17:19:00
+; i-a4e2cf04	m3.medium	24.52	2015-10-02 16:53:53	2015-10-02 17:18:24
+; i-aeecc10e	m3.medium	15.02	2015-10-02 16:40:22	2015-10-02 16:55:23
+; i-eee9c44e	m3.medium	22.02	2015-10-02 16:44:20	2015-10-02 17:06:21
+
+; MSB is validating...
+; MSB has recorded this test
+Your submission is received, the token is CD15619Pp22AIDruzTM20151002131958306. Wait and check tpz for the score. 
+; Test finished

@@ -1,0 +1,49 @@
+sudo aws s3 cp s3://cchackersetl/q4fullout/ . --recursive
+cat part* > q4input
+
+bash redis:
+cat out | redis-cli --pipe
+cat out | unix2dos | redis-cli --pipe
+
+free memory:
+sync; echo 1 > /proc/sys/vm/drop_caches
+
+install new redis:
+$ sudo apt-get install -y python-software-properties
+$ sudo add-apt-repository -y ppa:rwky/redis
+$ sudo apt-get update
+$ sudo apt-get install -y redis-server
+
+cat q4input | java -cp $CP RedisParse
+
+SSDB:
+wget --no-check-certificate https://github.com/ideawu/ssdb/archive/master.zip
+unzip master
+cd ssdb-master
+make
+
+**************************************************
+
+CREATE TABLE `q2` (
+  `q2key` varchar(100) DEFAULT '',
+  `q2value` varchar(2000) DEFAULT '',
+  KEY `q2key` (`q2key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+LOAD DATA LOCAL INFILE '/home/ubuntu/cc/data/q2/q2data' INTO TABLE q2 CHARSET 'utf8mb4' FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' (q2key, q2value);
+
+LOAD DATA LOCAL INFILE '/home/ubuntu/cc/data/q3/q3data' INTO TABLE q3 CHARSET 'utf8mb4' FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' (q3key, q3value);
+
+mysql -u zhaoru -p123456 --local-infile
+
+CREATE TABLE `q6` (
+  `q6key` varchar(20) NOT NULL DEFAULT '',
+  `q6value` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`q6key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `q6s` (
+  `q6key` varchar(20) NOT NULL DEFAULT '',
+  `q6value` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`q6key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

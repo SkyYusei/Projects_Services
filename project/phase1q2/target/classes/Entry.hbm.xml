@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="Entry" table="Entry">
+      <id name="id" type="int" column="ID">
+      </id>
+      <property name="userId" column="USER_ID" type="string"/>
+      <property name="tweetTime" column="TWEET_TIME" type="string"/>
+      <property name="tweetId" column="TWEET_ID" type="string"/>
+      <property name="score" column="SCORE" type="string"/>
+      <property name="tweetText" column="TWEET_TEXT" type="string"/>
+   </class>
+</hibernate-mapping>

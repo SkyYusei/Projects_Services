@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Phase 3: Building a Competitive Analytics Web Application</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/58">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/58">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0.392490262584%;"/>
+    </div>
+    
+    <span>20 days 21 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>KaarQPMXqAEqyJwbUWtcXdldVcBcKkOh</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Phase 3: Building a Competitive Analytics Web Application</td>
+            <td>11/12/2015 00:01 -0500</td>
+            <td>12/02/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Welcome to Phase 3</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Query 5</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Query 6</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-unlock-alt fa-lg"></i><span>Success</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div>
+      <h1>Twitter Analytics on the Cloud - Phase 3</h1>
+      <div>
+  <div class="bs-callout bs-callout-learning">
+<h4>Learning Objectives</h4>
+    <p>This project will encompass the following learning objectives:</p>
+    <ol>
+      <li>Display working knowledge of the skills developed in this course.</li>
+      <li>Design, develop, deploy and optimize fully functional web-servers to handle high loads.</li>
+      <li>Implement Extract Transform and Load (ETL) on a large data set (~ 1 TB) and load into MySQL and HBase systems.</li>
+      <li>Design and optimize MySQL and HBase databases to deal with scale and improve throughput.</li>
+      <li>Evaluate the importance of the storage hierarchy and it's impact on performance.</li>
+      <li>Explore and utilize various methods and tools to improve the performance of a complete web service.</li>
+      <li>Extend web-servers to handle various queries.</li>
+      <li>Develop backend servers to handle range queries.</li>
+      <li>Develop consistent servers to handle write queries.</li>
+      <li>Develop fault-tolerant, scalable web-servers to answer live loads.</li>
+      <ol>
+  </div>
+      </div>
+    
+ <h3>Introduction</h3>
+<p>
+In the previous 2 phases, you have already built a web service consisting of a front end system and two different databases, and also worked on 2 datasets of different sizes. In this phase, instead of working on both MySQL and HBase separately, you can choose to use either or both of them, and build a system for the final Live Test, which is generally extremely competitive and fun. As in the previous phases, you will implement 2 new queries on your system and focus on optimizing the performance of the overall system. For this phase, you will refine you ETL skills, design more complicated database schemas and also handle write queries.
+</p>
+<div class="bs-callout bs-callout-warning">
+    <h4>Resource Tagging And Budgets</h4>
+<ol>
+<li>Tag all of your instances with <code>Key: 15619project</code> and <code>Value: phase3</code> for all resources</li>
+        <li>In addition to the tag above, all instances in your HBase cluster should be tagged with <code>Key: 15619backend</code> and <code>Value: hbase</code>, and all instances with MySQL installed should be tagged with <code>Key: 15619backend</code> and <code>Value: mysql</code>.</li>
+        <li>You can use any instances for ETL and debugging.</li>
+        <li>You can ONLY use instances in the <strong>M family</strong> which are <strong>smaller than or equal to Large</strong> for your web service (both your front-end and back-end systems).</li>
+        <li>You can use any free AMI as your base. You should be building your own AMIs for this project.</li>
+        <li>Each run (test submitted to the website) must have a maximum budget of <strong>$1.25 per hour</strong> (include on-demand EC2, storage and ELB costs. Ignore EMR and Network, Disk I/O costs). <strong>Even if you use spot pricing, the constraints that apply pertain to on-demand pricing.</strong></li>
+        <li>You will have a budget of <strong>$50/team</strong> for all the tasks in this phase including the live test.</li>
+</ol>
+  </div>
+
+<div class="bs-callout bs-callout-info">
+<h4>Grading and Live Tests</h4>
+<p>
+Phase 3 accounts for <strong>60%</strong> of the total grade for this 15619Project. </p>
+<p>You will be adding two more queries to your web-service and your performance will be tested with Live Tests on <strong>December 02</strong> with your chosen database(either HBase or MySQL or both) for Q1, Q2, Q3, Q4, Q5 and Q6. 
+The Live Test for this phase will last 4 hours. 
+In order to get a full score, you need to reach the target RPS requirements.</p>
+<p>A detailed scheduled can be seen here. </p>
+<h4>Live Tests</h4>
+<table class="text-left table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Value</th>
+              <th>Target</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+ <tr>
+<td>6:00 pm - 6:30 pm</td>
+            <td>Warm-up (Q1 only)</td>
+            <td>-</td>
+            <td>0%</td>
+          </tr>
+           <tr>
+            <td>6:30 pm - 7:00 pm</td>
+            <td>Q1</td>
+            <td>25000</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+<td>7:00 pm - 7:30 pm</td>
+            <td>Q2</td>
+            <td>10000</td>
+            <td>12%</td>
+          </tr>
+<tr>
+            <td>7:30 pm - 8:00 pm</td>
+            <td>Q3</td>
+            <td>5000</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>8:00 pm - 8:30 pm</td>
+            <td>Q4</td>
+            <td>8000</td>
+            <td>12%</td>
+          </tr>
+           <tr>
+            <td>8:30 pm - 9:00 pm</td>
+            <td>Q5</td>
+            <td>10000</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>9:00 pm - 9:30 pm</td>
+            <td>Q6 (Writes)</td>
+            <td>5000</td>
+            <td>12%</td>
+          </tr>
+        <tr>
+            <td>9:30 pm - 10:00 pm</td>
+            <td>Mixed Reads(Q1,Q2,Q3,Q4,Q5)</td>
+            <td>4000/3000/3000/3000/3000</td>
+            <td>3+3+3+3+3 = 15%</td>
+          </tr>
+        </table>
+<h4>Report</h4>
+    <p>A report which describes your approaches and optimizations needs to be submitted after live tests.</p>
+
+<table class="text-left table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Value</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+ <tr>
+<td>December 03, 11:59 pm</td>
+            <td>Report</td>
+            <td>20%</td>
+          </tr>
+        </table>
+  </div>
+<div id="#grading-penalties" class="bs-callout bs-callout-danger">
+    <h4 id="project-grading-penalties">Project Grading Penalties</h4>
+    <p>The following table outlines the violations of the project rules and their corresponding
+      grade penalties for this project.</p>
+    <table class="table">
+      <thead>
+        <tr class="danger">
+          <th>Violation</th>
+          <th>Penalty of the project grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+              <td>Using over $50 to complete this phase</td>
+              <td>-10%</td>
+            </tr>
+             <tr>
+              <td>Using more than $1.25 per hour for submissions</td>
+              <td>-2*n%(where n is the percentage of exceeded budget. e.g. spending $1.35 per hour will result in 16% penalty)</td>
+            </tr>
+            <tr>
+              <td>Using over $75 to complete this phase</td>
+              <td>-100%</td>
+            </tr>
+            <tr>
+              <td>Publishing your code to a public source (e.g. a Public Repository on Github/Bitbucket)</td>
+              <td>-200% at least</td>
+            </tr>
+            <tr>
+              <td>Copying code from the Internet, other teams or solutions from previous semesters</td>
+              <td>-200% at least</td>
+            </tr>
+            <tr>
+              <td>Any kind of collaboration across teams</td>
+              <td>-200% at least</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <h3>Query 5 (Tweet Counter) <br> Target Throughput: 10000 rps <br> Due 16:59 PM EST, Wed December 02 (one hour before Live Test starts)</h3>
+<p>The query asks for the total number of tweets sent by a range of userids. </p>
+<p>We send you two user ids and your web service needs to return number of tweets sent within the range of user ids where user ids are inclusive:</p>
+<p>Request format: 
+      <p>
+      <pre>GET /q5?userid_min=u_id&userid_max=u_id</pre>
+      <p>Response format:</p>
+      <pre>
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+Count<font color="red">\n</font>
+</pre>
+ 
+A sample request is as follows:
+<p>Sample Request</p> 
+          <pre>GET /q5?userid_min=15&userid_max=100</pre>
+          <p>Sample Response</p>
+      <pre>Team,1234-5678-1234<font color="red">\n</font><wbr>
+43<font color="red">\n</font></p>
+
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <h3>Query 6 (Tweet Tagger) <br> Target Throughput: 5000 rps 
+<p> Due 16:59 PM EST, Wed December 02 (one hour before Live Test starts)</p>
+</h3>
+<p>Now that you have built a web service for some static Twitter data, there are several clients who want to use it. However, to be of any value to them, your clients want to write their insights to your database. In particular, you have been contacted by a <a href="https://en.wikipedia.org/wiki/Natural_language_processing">Natural Language Processing</a> organization known as Babel Unlimited (BU), who have developed an algorithm to understand the subject of a tweet. BU has been reading your tweets using <code>/q2</code>, analyzing the text, and generating the subject for each tweet. In <code>/q6</code>, they want to be able to append the subject of the tweet to the end of the its text.
+</p>
+<p>In this query you will be performing the simplest form of writes, namely appends. Specifically, you will be asked to append a random string at the end of an existing tweet. You may be asked to return the text after the append operation to verify that you have written the data correctly.</p>
+
+<h3>Dealing with writes</h3>
+<p>Since you cannot guarantee that the network will deliver all requests in-order, you request BU to send a sequence number with each request that they send. This allows you to apply updates in the correct sequence at your front-end. If a read that follows an update sees a stale value, or a "future" value, this read will be treated as Incorrect by the Load Generator.</p>
+<p>Of course, applying a single set of sequence numbers across the entire domain of updates makes it hard to parallelize, and also makes the impact of a single failure quite high. Based on what you learned about consistency models, you request BU to break the requests into short transactions which are independent of each other. BU agrees to split their updates into transactions, which never operate on the same keys.</p>
+<p>There are five different parameters in the request URL for a write to /q6.<ul>
+<li>opt (operation type)</li>
+<li>tid (transaction ID)</li>
+<li>seq (sequence number)</li>
+<li>tweetid (tweet ID that you need to append to)</li>
+<li>tag (the string that you will append at the end of the tweet text)</li>
+</ul>
+</p>
+
+<p>There are four different types of operations, which correspond to different parameters being sent to the /q6 endpoint. 
+<ul><li><b>Start transaction:</b> The first request in a given transaction. It has opt=s. e.g. /q6?tid=1&opt=s</li>
+<li><b>Append:</b> The request for appending tweet to the text of a given tweet id. It has opt=a. e.g. /q6?tid=1&seq=1&opt=a&tweetid=12312421312&tag=ILOVE15619!123</li>
+<li><b>Read:</b> The request to read the entire tweet text with the given tweet id. It has opt=r. e.g. /q6?tid=1&seq=2&opt=r&tweetid=12312421312</li>
+<li><b>End transaction:</b> The request to end the transaction with the given transaction id. It has opt=e.   e.g. /q6?tid=1&opt=e</li>
+</ul>
+Thus, a full transaction with tid=2 will consist of:
+<ul>
+<li>a start transaction message with tid=2&opt=s,</li>
+<li>multiple intermingled append and read transactions with a uniformly increasing sequence id all with tid=2,</li>
+<li>the end transaction message with tid=2&opt=e</li>
+</ul>
+</p>
+
+<p>
+<b>Remember:</b> Queries are grouped into transactions. There is no overlap on keys between any 2 transactions. This means that the queries between different transaction IDs can be parallelized while queries with different sequence ID but with the same transaction ID have to be processed in sequential order. 
+For instance, the queries with tid=1, and queries with tid=2 can be read and written at the same time. However, the query with tid=1 with sid=1 has to be processed before query with tid=1 and sid=2.
+Your job is to guarantee the order of reads and appends within each transaction.
+</p>
+
+<p>Request / Response example with a sample transaction:</p>
+<pre>
+/q6?tid=3000001&opt=s	
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+0<font color="red">\n</font>
+
+/q6?tid=3000001&seq=1&opt=a&tweetid=458875845231521792&tag=ILOVE15619!12 
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+ILOVE15619!12<font color="red">\n</font>
+
+/q6?tid=3000001&seq=2&opt=a&tweetid=458875895550205952&tag=ILOVE15619!30 
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+ILOVE15619!30<font color="red">\n</font>
+
+/q6?tid=3000001&seq=3&opt=a&tweetid=448988310417850370&tag=ILOVE15619!215 
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+ILOVE15619!215<font color="red">\n</font>
+
+/q6?tid=3000001&seq=4&opt=a&tweetid=458875924923297792&tag=ILOVE15619!311 
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+ILOVE15619!311<font color="red">\n</font>
+
+/q6?tid=3000001&seq=5&opt=r&tweetid=448988310417850370	
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+@Maria_LeonPL chulada de mujeres....sensacional  paisana...estaremos atento de su intervención... besos tu caballero de la noche¡¡ILOVE15619!215<font color="red">\n</font>
+
+/q6?tid=3000001&opt=e
+TEAMID,TEAM_AWS_ACCOUNT_ID<font color="red">\n</font>
+0<font color="red">\n</font>
+</pre>
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    Success!
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="58">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

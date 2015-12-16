@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">The Internals and Strategies of a Load Balancer</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/16">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/16">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 7.91045669478%;"/>
+    </div>
+    
+    <span>6 days 10 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>The Internals and Strategies of a Load Balancer</td>
+            <td>10/05/2015 00:01 -0400</td>
+            <td>10/11/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction and Motivation</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Load Distribution Strategies</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Round Robin in Practice</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Improve the Load Balancing Strategy</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Monitor Data Center Health</span></a></li>
+            
+        
+            
+                <li><a href="#section_6"><i class="fa fa-li fa-check fa-lg"></i><span>Success!</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Introduction and Motivation</h1>
+  <div class="bs-callout bs-callout-learning">
+    <h4>Learning Objectives</h4>
+    <p>This project will encompass the following learning objectives:</p>
+    <ol>
+      <li>Identify the basic internal components of a load balancer.</li>
+      <li>Recognize the various factors that can affect a load distribution strategy.</li>
+      <li>Recognize how a load distribution strategy can affect the Quality of Service of an application.</li>
+      <li>Demonstrate the ability to implement a load balancer using the Round-Robin strategy.</li>
+      <li>Demonstrate the ability to observe and analyze the affect of an incoming load on the resource utilization of data centers, and be able to implement an efficient load distribution strategy to balance resource utilization.</li>
+      <li>Demonstrate the ability to monitor the health of datacenters and handle failures efficiently, without dropping requests.</li>
+      <ol>
+  </div>
+  <h3>Load Balancers Review</h3>
+  <p>
+    As discussed in earlier project modules, load balancers are an important element in web services. In general, recall that the need for load balancing in computing stems from two basic requirements,
+    <ol>
+      <li>Improved Quality of Service (QoS), which includes several considerations such as throughput, latency requirements among others.</li>
+      <li>High Availability (HA), which is the property of a service that is available for near 100% of the time when any client tries to access the service.</li>
+    </ol>
+    Over the last two project modules we have used Amazon's Elastic Load Balancer (ELB) as a
+    means to improve QoS by distributing the load across multiple data centers (allowing
+    us the ability to scale horizontally) in order to maximize performance while
+    minimizing cost and to handle failures.
+  </p>
+  <p>
+    In Project 2.1 for horizontal scaling, initially load balancing was done by the load
+    generator. When you added each individual data center instance, the load generator
+    maintained a list of these and tried to route the load to all of the attached
+    data center instances manually. In the last task of Project 2.1, instead of providing
+    all the data centers to the load generator, we used an ELB which implements its
+    own strategy to distribute the load. This allowed us to scale the number of data
+    center instances we were using at the back end and hide that information from the client
+    (for our purpose, the load generator can be considered as a large pool of clients).
+    This allows us to handle varying amounts of load without needing to update the
+    client application.
+  </p>
+  <p>
+    In Project 2.2, in addition to distributing load, the load balancer served an additional
+    purpose of masking failure. By serving as an extra layer on top of the data center instance
+    layer the load balancer can remove an offending data center instance from service and
+    continue to serve requests, as long as at least one of the data center instances is alive.
+    ELB does this by monitoring a health check endpoint on every data center instance in order
+    to ensure that the data center instances respond to requests.
+  </p>
+  <p>
+    The ELB seems like a good solution to the above issues, however, it is not straight forward to design and deploy an effective ELB. Choosing the distribution strategy could impact the effectiveness of the load balancing. Let's discuss this next.
+  </p>
+  <h3>Load Distribution Strategy</h3>
+  <p>
+    As you already know by now, Amazon's ELB uses a Round-Robin strategy to distribute
+    the load it receives onto the different data center instances attached to it. It does
+    so without regard to the nature of the request or the current load on the server.
+    (If it has instances across availability zones, the ELB does use weights to assign requests to a data center instance closer to the source of
+    the originating request, but we will ignore this for now, since we are only dealing
+    with a single availability zone).
+  </p>
+  <p>
+    You would have noticed that in both previous projects modules, the load generator provided
+    a uniform type of load on all the data center instances. What we mean by this is that
+    every request made to a data center instance required a very similar amount of resources on
+    the data center instance (including CPU Utilization, Memory, Disk I/O and Network In/Out)
+    in order to service the request. Therefore when the load varies (i.e. the number
+    of requests per second goes up or down), we can manage the change in capacity
+    easily by scaling out or scaling in.
+  </p>
+  <p>
+    But consider the scenario where the load is not of uniform type. Here are some of
+    the questions you should ask yourself. What happens in the cases where certain requests
+    use a large amount of resource? Will Round-Robin be an effective solution? Will
+    the utilization of all resources be balanced? How could this affect the Quality of Service
+    if one of the data center instances is over-utilized?
+  </p>
+  <h3>Project Overview</h3>
+  <p>
+    In this project module, we will try to address the concerns presented above by implementing
+    a custom load balancing strategy. We will also explore another core concept of
+    load balancers, which is monitoring the health of the data center instances, and ensuring
+    that only healthy data center instances are considered for load distribution.
+  </p>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Load Distribution Strategies</h1>
+<h3>Load Patterns - Resource Contention</h3>
+<p>
+  We introduced the concepts of non-uniform load patterns in the previous section, let's look at what this means a little more closely. Let's consider a single data center instance, which is an EC2 instance that we have provisioned on AWS. What are the limitations on the physical resources for this particular instance? It has limited:
+  <ol>
+    <li>Compute Capacity - The instance has a specified capacity of instruction execution. The more complex a request, the more number of compute cycles are required to fulfill the request. Which means that as the volume of requests or the complexity of requests increases, the total number of requests that the instance can serve goes down.</li>
+    <li>Memory Capacity - The instance has a specified capacity of physical memory. The more memory accesses or capacity that a request requires, the lower its capacity gets for other tasks or other requests. Again as the number of requests goes up or if certain requests make higher demands on memory, the throughput of the application will most likely go down.</li>
+    <li>Disk I/O - The instance has a cap on the number of reads and writes that can be performed per second. Same as CPU and memory, as a request requires more reads and writes from the disk, the instance's ability to service requests diminishes.</li>
+    <li>Network I/O - The instance also has a limit on how much network traffic can pass through the instance. Larger data packets on requests/responses will increase resource contention, and will slow down the traffic for all requests passing through the instance.</li>
+  </ol>
+
+  In practice any request causes resource contention on all of the resources mentioned above. What happens when a resource is overwhelmed? Let's assume that your service consumes all of the available memory and the OS needs to perform some operations to keep the instance alive.   The lack of free memory, or Out of Memory (OOM), will result in yous system's inability to allocate more memory and the kernel usually kills the current running task. The outcome is usually reduced QoS and/or dropped requests.
+</p>
+<p>
+So how to address this problem of resource contention? So far we have addressed this problem of resource contention by either provisioning bigger or more instances. But this costs more money. And even then, there are always limitations on capacity. We need to make sure that we distribute the load evenly so that all our data center instances are equally utilized.
+</p>
+<h3>Round Robin</h3>
+<p>
+Using Round-Robin, each request is distributed to data center instances in a circular order, handling all processes without priority or starvation. Why is Round Robin a good load distribution strategy? This approach is one of the simplest approaches to implement.
+</p>
+<p>
+When could Round-Robin become ineffective? An important drawback to this approach is that certain resource-heavy client requests may aggregate and hit a subset of the data center instances, causing a few nodes to get overwhelmed while others remain underutilized. This means both cost and QoS are being compromised.
+</p>
+<p>
+Will Round-Robin always struggle with heterogeneous loads? The short answer is no. The reason is that it depends on the amount of clients making requests and the number of data center instances serving the requests. So for a sufficiently large system and client pool, it is has low probability of overwhelming a single data center instance. However it is not completely unlikely and it depends on the service and the expected load profile.
+</p>
+<h3>Intelligent Load Distribution Strategies</h3>
+<p>
+In light of what we discussed above, can we do better? The answer is of course yes but at a cost. Instead of simply routing requests in circular order (or even simpler, at random), before we do so, we can try to establish which is the best data center instance to service a particular request, before sending the request to that resource. How can we identify the best data center instance?
+  <ol>
+    <li>We need to observe the traffic to try to establish what type of resource contention we are dealing with for a request.</li>
+    <li>We need to keep track of the resource utilization of each data center instance.</li>
+    <li>We need to decide, based on the utilization, where to place the next incoming request, so that the QoS of each request is uniform.</li>
+  </ol>
+</p>
+<p>
+Can you think of a good strategy that will help achieve all of the above (some of these are described below)? Can you think of a good data structure to help you keep track of resource utilization of data center instances and then decide which one to choose for the next request?
+</p>
+<p>
+Is this approach strictly better than Round-Robin? The answer to this is no. As you can imagine, implementing all the steps above requires more resources, more computation and hence, introduces additional latency in the system. Frequent polling of the data center instances may also trigger overhead resource contention on the data center instances. It is important to note that this overhead is beneficial only if it improves QoS and cost in a significant way.
+</p>
+<p>
+Here are a couple of intelligent load distribution strategies.
+</p>
+<h4>Request execution time based strategies</h4>
+<p>
+  These strategies use a priority scheduling algorithm, whereby request execution times are used in order to judge the most appropriate order of load distribution. The main challenge in using this approach is to predict the execution time of a particular request.
+</p>
+<h4>Resource utilization based strategies</h4>
+<p>
+  These strategies use the resource utilization on each data center instance to balance the utilization across all data center instances. The load balancer maintains an ordered list of data center instances based on their utilization and thus directs requests to the least loaded node.
+</p>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+  <h1 class="page-header">Round Robin in Practice</h1>
+
+  <p>In this project module, we will get started with the first task of asking you to develop a Round Robin based load balancer and evaluate its effectiveness under different loads.  Let's get started with some administrative announcements and then the scenario.
+  </p>
+
+  <div class="bs-callout bs-callout-warning">
+    <h4>AWS Resource Details</h4>
+    <table class="text-left table">
+      <thead>
+        <tr>
+          <th>Tag Key</th>
+          <th colspan="2">Tag Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Project</td>
+          <td colspan="2">2.3</td>
+        </tr>
+        <tr>
+          <th>AMI Name</th>
+          <th>AMI ID</th>
+          <th>Instance Type</th>
+        </tr>
+        <tr>
+          <td>Load Generator (LG)</td>
+          <td>ami-xxxxxxx</td>
+          <td>m3.medium</td>
+        </tr>
+        <tr>
+          <td>Data Center Instance (DCI)</td>
+          <td>ami-xxxxxxx</td>
+          <td>m3.medium</td>
+        </tr>
+        <tr>
+          <td>Load Balancer (LB)</td>
+          <td>ami-xxxxxxx</td>
+          <td>m3.large</td>
+        </tr>
+        <tr>
+          <th colspan="3">AWS Technologies Used</th>
+        </tr>
+        <tr>
+          <td colspan="3">Amazon EC2</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div id="#grading-penalties" class="bs-callout bs-callout-danger">
+    <h4 id="project-grading-penalties">Project Grading Penalties</h4>
+    <p>The following table outlines the violations of the project rules and their corresponding
+      grade penalties for this project.</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Violation</th>
+          <th>Penalty of the project grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Failing to tag your all your instances for this project</td>
+          <td>-10%</td>
+        </tr>
+        <tr>
+          <td>Attempting to hack/tamper the autograder in any way</td>
+          <td>-100%</td>
+        </tr>
+        <tr>
+          <td>Using more than
+            <strong>$10</strong> to complete this project</td>
+          <td>-10%</td>
+        </tr>
+        <tr>
+          <td>Using more than
+            <strong>$20</strong> to complete this project</td>
+          <td>-100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Scenario</h3>
+  <p>Given recent developments and MSB's concerns of relying on existing technologies that could include malicious code, the MSB would like to develop its capacity at designing and implementing robust load balancers for its systems. The powers that be at the MSB want to start by building a good performing yet simple load balancers. Since you are their upcoming star, they have decided to give you the task of designing, implementing and evaluating a Round Robin based load balancer.
+</p>
+<p>To evaluate your solution, the MSB will provide you with two traffic patterns - the first one represents the weekend traffic profile (Round Robin Test) of the surveillance system, and the second one represents the week day traffic profile (Custom Scheduling Algorithm Test) when there is more activity and more information for the MSB to collect and more requests to respond to.  Let's get started.
+</p>
+
+  <div class="bs-callout bs-callout-task">
+    <h4 id="task">Tasks to Complete</h4>
+    <ol>
+      <li>Launch a new load balancer instance.</li>
+      <li>SSH into the load balancer AMI and go to <code>/home/ubuntu/vertx/loadbalancer</code></li>
+      <li>Explore the load balancer skeleton code that has been provided to you.
+        <ul>
+          <li>You will find placeholders for DNS of your Data Center Instances in
+            <code>Main.java</code>.</li>
+          <li>You will also find the method
+            <code>start()</code> in
+            <code>LoadBalancer.java</code>. This is the class where you will be writing code for your load balancing strategy.</li>
+        </ul>
+      </li>
+      <li>Fill in the method <code>start()</code> in <code>LoadBalancer.java</code> so that the load would be distributed
+        to the connected data center instances in a round robin manner. Once done, compile your code using the command <code>javac *.java</code>.
+      </li>
+      <li>Once you are confident that your code is correct, launch three data center instances. Enter their public DNS as <strong>http://[your DCI DNS]</strong> in the placeholders in <code>Main.java</code>.
+      </li>
+      <li>Compile <code>Main.java</code> and run your code using the command <code>sudo java Main</code>.</li>
+      <li>Test your code manually by going to
+        <strong>http://[your load balancer DNS]</strong> on your browser. The data center instance UI should be visible there.
+      </li>
+      <li>Once you are confident that your load balancer's Round Robin strategy is working, launch a load generator instance.
+      </li>
+      <li>Enter your submission password on the Load Generator interface.
+      </li>
+      <li>Start the <strong>Round Robin Test</strong>.</li>
+      <li>Observe the resource utilization (CPU, Disk I/O, Network, etc) of your data
+        center instances using CloudWatch(You may wish to enable detailed monitoring for a better
+        picture of resource utilization).</li>
+    </ol>
+
+    <p>
+      Is the load distribution even? Are all the resources utilized on all
+      data center instances? Do you think, that for this load, round robin is a good
+      load balancing strategy?
+    </p>
+    <p>
+      Now, start the <strong>Custom Scheduling Algorithm Test</strong>.
+    </p>
+
+    <p>
+      Again, observe the resource utilization (CPU, Disk I/O, Network, etc) of the data
+      center instances. Is the load distribution even? Are all the resources utilized
+      evenly on all data center instances? Do you think, that for this load,
+      Round Robin is still a good load balancing strategy? If not, what can you do
+      to make the load distribution even? Which resource is the most under contention?
+      If you, in your load balancer code, had access to each data center instance’s resource utilization metrics, could you come up with a better load balancing strategy?
+    </p>
+  </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+
+  <h1 class="page-header">Improve the Load Balancing Strategy</h1>
+  <p>
+    Well Done! The MSB was impressed with your implementation and evaluation. As a result, you
+    are being considered for a promotion to become a Senior System Architect at MSB who has the primary
+    responsibility of all load balancer related design and development. Your next task is to develop
+    a load balancing strategy with improved results when tested with the Custom Scheduling Algorithm Test.
+  </p>
+  <p>
+    To make it convenient for you to get the CPU utilization without having to use CloudWatch
+     APIs, the data center team in the MSB has exposed an API that you can access at
+    <strong>http://[data center instance dns]:8080/info/cpu</strong>. You can query that URL in
+    order to get that DCI’s CPU utilization at that moment. Can you use it to devise
+    a load balancing strategy that can respond well to the Custom Scheduling Algorithm Test?  Here are that tasks that you have to complete.
+  </p>
+  <div class="bs-callout bs-callout-task">
+    <h4 id="task">Tasks to Complete</h4>
+    <ol>
+      <li>Launch a new load balancer instance (in-case you terminated it in the previous step,
+      otherwise reuse the same instance).</li>
+      <li>SSH into the load balancer AMI and go to <code>/home/ubuntu/vertx/loadbalancer</code></li>
+      <li>Fill in the method
+        <code>start()</code> in
+        <code>LoadBalancer.java</code> so that the load would be distributed to the connected
+        data center instances in a manner that takes CPU Utilization
+        into consideration. Once done, compile your code using the command <code>javac *.java</code>.
+      </li>
+      <li>Once you are confident that your code is correct, launch three data center
+         instances (in-case you terminated them in the previous step, otherwise reuse the same
+         instances). Enter their public DNS as <strong>http://[your DCI DNS]</strong> in the placeholders in <code>Main.java</code>.
+      </li>
+      <li>Compile <code>Main.java</code> and run your code using the command <code>sudo java Main</code>.</li>
+      <li>Test your code manually by going to
+        <strong>http://[your load balancer DNS]</strong> on your browser. The data center
+        UI should be visible there.
+      </li>
+      <li>Once you are confident that your load balancing strategy is working, launch
+        a load generator instance (in-case you terminated it in the previous step,
+        otherwise reuse the same instance).
+      </li>
+      <li>Start the
+        <strong>Custom Scheduling Algorithm Test</strong>.</li>
+      <li>Observe the resource utilization (CPU, Disk I/O, Network, etc) of your data
+        center instances (You may wish to enable detailed monitoring for a better
+        picture of resource utilization).</li>
+    </ol>
+
+    <p>
+      Is the load distribution even? Are all the resources utilized evenly on all
+      data center instances? Do you think that you have improved the load distribution for the Custom Scheduling Algorithm Test?
+    </p>
+  </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+  <h1 class="page-header">Monitor Data Center Instance Health</h1>
+    <p>
+    Again, well Done! The MSB was impressed with your new and improved load balancing strategy.
+    However there is still one last hurdle before you can seal your promotion for
+    the Senior System Architect. In light of the attacks that MSB has witnessed,
+    they want to improve their load balancer so that it can handle failures. Ideally,
+    the MSB wants the load balancer to detect the failure as soon as possible, stop
+    sending requests to that instance, and launch a new instance to replace the failed
+    instance.
+  </p>
+<p>
+To check if a data center is alive, you can generate an HTTP request to one of the URLs that you observe in the tests from the previous week. A 200 response code is the only indication of success. You can choose to mark it as unhealthy based on any criteria that you feel are appropriate.
+</p>
+  <p>
+  </p>
+  <div class="bs-callout bs-callout-task">
+    <h4 id="task">Tasks to Complete</h4>
+    <ol>
+      <li>Launch a new load balancer instance (in-case you terminated it in the previous
+        step, otherwise reuse the same instance).</li>
+      <li>SSH into the load balancer AMI and go to <code>/home/ubuntu/vertx/loadbalancer</code></li>
+      <li>Implement your health check code in your load balancer. The code should detect instance
+        failure as soon as it happens and then stops sending requests to that data
+        center instance. It should then launch a new data center instance to replace
+        the failed one. For simplicity, you can assume that the load would be similar
+        to the Round Robin test, except that your data center instances may fail.
+      </li>
+       <li>Once done,
+        compile your code using the command <code>javac *.java</code>.
+      </li>
+      <li>Once you are confident that your code is correct, launch three data center
+         instances (in-case you terminated them in the previous step, otherwise reuse the same
+         instances). Enter their public DNS as <strong>http://[your load balancer DNS]</strong> in the placeholders in <code>Main.java</code>.
+      </li>
+      <li>Compile <code>Main.java</code> and run your code using the command <code>sudo java Main</code>.</li>
+      <li>Test your code manually by going to
+        <strong>http://[your load balancer DNS]</strong> on your browser. The data center
+        UI should be visible there.
+      </li>
+      <li>Once you are confident that your health check strategy will work, launch a
+        load generator instance (in-case you terminated it in the previous step,
+        otherwise reuse the same instance).
+      </li>
+      <li>Start the
+        <strong>Health Check Test</strong>. Make sure you are able to handle failure
+        in this scenario.</li>
+      <li>Once you are confident that your load balancer can now handle failure, now
+        is the time to put everything together and get your promotion. Start the
+        <strong>Senior System Architect Test</strong>. This will test that your load balancer
+        that can intelligently distribute load as well as handle instance failures
+        at the same time.</li>
+    </ol>
+    After all tests have been completed successfully, terminate all your instances except the load generator instance. You should create a package (it should be a .zip file) with all your code (include all .java files located in <code>/home/ubuntu/vertx/loadbalancer</code>) and a <code>references</code> file. Please add a <code>readme</code> file if your code structure is complex or has additional files. As always your code must be properly documented and must contain comments describing all methods and complex areas in code. Upload your code at <strong>http://[your load generator DNS]/upload</strong> and then terminate your load generator instance.
+  </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_6" class="writeup_section" data-sequence="6">
+                    <div class="bs-docs-section">
+  Congratulations! As a result of your performance on all the tests, MSB has officially
+  promoted you to the position of Senior System Architect.
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="16">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Amazon Web Services</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/3">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/3">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Amazon Web Services</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Amazon Web Services</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Elastic Compute Cloud (EC2)</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Simple Storage Service (S3)</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>AWS Command-Line Tool</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>CloudWatch</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 id="aws" class="page-header">Amazon Web Services</h1>
+<p>Amazon Web Services (AWS) is by far the most popular cloud computing provider and is widely credited with the introduction of innovative concepts in cloud computing. AWS offers various services such as Amazon Simple Storage Service (S3) and Amazon Elastic Compute Cloud (EC2). For the projects in this course, you will work on instances provisioned on Amazon EC2 and utilize S3 for persistent storage. In addition, we will be working with various other AWS technologies such as Elastic Block Store (EBS), CloudWatch, and DynamoDB, among others. For more information about AWS, please refer to the <a href="http://aws.amazon.com/" target="_blank" >AWS website</a>.</p>
+
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/jOhbTAU4OPI?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption"><b>Video</b>: Introduction to AWS</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+
+
+<h3>AWS Authentication</h3>
+<p>Apart from your AWS account username/password, API access to various AWS services can be granted using the <strong>AWS Access Key ID</strong> and <strong>AWS Secret Key</strong> pair. These are unique credentials that can be generated by the user and used within scripts and programs that interact with AWS services.</p>
+
+<p>To generate an Access Key ID and Secret Key pair, sign into your AWS account. Once you have signed in, choose Security Credentials from the drop-down menu on the top right corner. Under Access Keys click on Create a new Access Key and note down the Access Key ID and the Secret Access Key. If you ever need to refer to these keys in the future, simply visit the Security Credentials page to access them.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive"  src="https://s3.amazonaws.com/15619public/webcontent/access_key_screenshot.png" alt="AMIs" />
+<h4><small class="caption"><b>Figure</b>: Security Credentials in AWS</small></h4>
+</div>
+
+
+<div class="bs-callout bs-callout-warning">
+<h4>Keeping your Keys Secure</h4>
+<p>Your AWS keys have complete control over your AWS account, including the ability to launch, destroy and modify all types of AWS resources. The keys must be kept safe, preferably encrypted by password on your PC.
+
+<p><b>Here are a few important guidelines:</b></p>
+<ol>
+<li><b>Do not</b> share the AWS keys with anyone else.</li>
+<li><b>Do not</b> leave your keys in plain text in your source code.</li>
+<li><b>Do not</b> commit code to any repositories with your AWS keys in the source code.</li>
+</ol>
+The safest method to reference the keys in your source code is to define them as environment variables:
+<pre>
+export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY_HERE"
+export AWS_SECRET_KEY="YOUR_SECRET_KEY_HERE"</pre>
+
+You can then access them from within your code, for example, using <code>System.getenv("AWS_ACCESS_KEY_ID")</code> or <code>os.environ['AWS_ACCESS_KEY_ID']</code>.
+
+</ol></p>
+</div>
+
+<h3>AWS Management Console</h3>
+<p>The following video will provide a short overview of AWS:</p>
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/EfnfcIqq_IU?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption"><b>Video</b>: AWS Management Console</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+</div>    
+
+<div>
+Please keep in mind that this course has a preset amount of cloud resources that is being shared by all enrolled students. To make sure that we do not suffer from excess use, we have to employ budgets and penalties for each project module. For this project module, the budget is outlined below. Exceeding the budget for this project will result in the following penalties:
+</div>
+<div class="bs-callout bs-callout-danger">
+        <h4 id="grading-penalties">Grading Penalties</h4>
+        <p>The following table outlines the violations of the project rules and their corresponding grade penalties for the first week of the course. The cost limits include both Project 0 and the Primers. </p>
+        <p>These rules apply for the week starting Aug 31 and ending on Sep 6.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Violation</th>
+              <th>Penalty of the project grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Using more than $5 of AWS resources (on Project 0 and Primer combined)</td>
+              <td>Warning email</td>
+            </tr>
+            <tr>
+              <td>Using more than $10</td>
+              <td>Possible penalty on future projects</td>
+            </tr>
+            <tr>
+		<td>Not tagging any of your resources</td>
+		<td>Warning email</td>
+            </tr>
+            <tr>
+	        <td>Using any "Project" tags apart from "Project":"0"</td>
+	        <td>Warning email</td>
+	    </tr>
+          </tbody>
+        </table>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 id="aws" class="page-header">Elastic Compute Cloud (EC2)</h1>
+
+<p>Amazon Elastic Compute Cloud (Amazon EC2) is a service in AWS that provides resizable computing capacity in the AWS cloud. Amazon EC2 makes virtual servers (also known as instances) available to you as a service, thereby eliminating your need to invest in hardware up front and enabling you to develop and deploy applications faster. You can use the web service interfaces or API calls to launch as many or as few instances as you need, configure security and networking, and manage storage.</p>
+
+<p>As you get started with Amazon EC2, you should understand some of the key concepts of the environment as they are a bit different from your own. The following video outlines some of the basic concepts and ideas behind EC2:</p>
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/t0Gg0Y1Gz6Q?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+    </div>
+                <div class="col">
+                       <h4><small class="caption">Video: EC2 Basics</small></h4>
+                </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<div class="bs-callout bs-callout-info">
+<h4>EC2 Terminology</h4>
+
+<p>Some terms and concepts that you should know follow:</p>
+
+<p><strong>EC2 Instance</strong>: EC2 instances are virtual servers that you 
+can configure and launch on Amazon EC2. It can be thought of as a 
+copy of a software image, Amazon Machine Image (AMI), that is actively running on 
+the Amazon EC2 cloud. Instances run on host computers at 
+Amazon’s data center, but this is typically transparent 
+to the user. Instances have many parameters including:</p>
+
+<ol>
+<li>
+<p><strong>Amazon Machine Image (AMI)</strong>: Is a template that contains
+a complete software image (operating system, applications,
+libraries and data). You launch instances using specific AMIs, which 
+are copies of the AMI running as virtual servers in the cloud. 
+You can launch multiple instances of an AMI.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/ami_figure.png" alt="AMIs" />
+<h4><small class="caption"><b>Figure</b>: Amazon Machine Image (AMI)</small></h4>
+</div>
+
+</li>
+<li>               
+<p><strong>Instance Type</strong>: Amazon offers different instance 
+types which have varying amounts of compute and storage available 
+to them. They range from t1.micro to cc2.8xlarge and have 
+different on-demand/reserved and spot prices. </p>
+</li>
+
+<li>
+<p><strong>Regions and Availability Zones</strong>: Instances can be launched 
+across various AWS regions, which are distributed geographically 
+(Virginia/Singapore etc.). Each region has a number of availability 
+zones, which are distinct locations within a data center and are 
+engineered to be isolated from other availability zones in the 
+same region. This allows users to spawn instances in the same 
+region but across availability zones and protect applications from 
+the potential failure of a single availability zone.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/region_figure.png" alt="AWS Regions" />
+<h4><small class="caption"><b>Figure</b>: AWS Regions</small></h4>
+</div>
+</li>
+
+<li>
+<p><strong>Pricing</strong>: Instances can be launched using three different 
+pricing models: 
+<ol>
+<li>
+The on-demand pricing is a fixed hourly rate that you 
+pay for the instance. It can range from a few cents to a few dollars 
+per hour depending on the instance type. 
+</li>
+<li>
+If you want to use an instance 
+for a fixed amount of time, you can purchase reserved instances 
+(which are typically calculated yearly). 
+</li>
+<li>
+In addition there are 
+spot instances which are described below.</p>
+</li>
+</ol>
+</li>
+
+<li>
+<p><strong>Spot Instances</strong>: Spot instances are special instances which 
+allow users to bid for unused computing capacity. You can specify an 
+hourly rate that you are willing to pay to use an instance. In addition, 
+for each instance type under each availability zone, Amazon maintains 
+a spot price which reflects the current demand for the instance type. If your 
+bidding price is more than the spot price, an instance will be launched 
+at the current spot price and will continue to run until the spot price 
+exceeds your bid price. Spot instances are volatile but very useful for 
+getting instances for a few hours at prices that are typically much lower 
+than the on-demand prices. </p>
+</li>
+
+<li>
+<p><strong>Instance Limits</strong>: AWS has preset limits on the number of simultaneous instances, per instance type, that an account can provision.  You can check what the instance limits are for your account by checking the limits under the EC2 dashboard.</p>
+</li>
+</ol>
+</div>
+
+<h2>Amazon EC2 Storage</h2>
+
+<p>Amazon offers multiple options for storage on EC2 instances:</p>
+                 
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/storage_figure.png" alt="Storage" />
+<h4><small class="caption"><b>Figure</b>: Storage options for EC2 instances</small></h4>
+</div>
+
+<p><strong>Amazon EC2 Instance Store</strong>: Instance stores are storage volumes
+that are present on the host computer that the instances are running on.
+Instance stores are temporary (ephemeral), block level storage. Instance store data 
+is cleared when an instance is stopped or terminated. </p>
+
+<p><strong>Amazon Elastic Block Store (EBS)</strong>: EBS is a SAN-style storage 
+system that can be used with EC2 instances. EBS presents volumes to the 
+user that can be created independently of an instance and attached to 
+instances as needed. EBS volumes are persistent and flexible. Multiple 
+EBS volumes can be attached to an instance, and an EBS volume can be 
+detached from an instance and attached to another. EBS incurs additional 
+charges (GB/month) over and above EC2 instance charges. EBS volumes can 
+also be backed up by creating a snapshot, which is stored in Amazon S3.</p>
+                     
+<p><strong>Amazon Simple Storage Service (S3)</strong>: Amazon S3 is an object 
+storage service which has a web services interface to store and 
+retrieve data. Instances can access data directly on S3 using the web services interface. Amazon S3 is also used to store snapshots of EBS volumes.</p>
+                  
+        
+<h2>Launching and connecting to your instance</h2>
+                 
+<p>The following video will cover the procedures required to launch an EC2 instance:</p>
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/z-NoOLk2U-g?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+    </div>
+                <div class="col">
+                       <h4><small class="caption">Video: Launching an EC2 Instance</small></h4>
+                </div>
+  </div>
+  </div>
+</div>
+</div>
+                
+<p>To launch an instance, log on to your AWS account and simply use the AWS Management Console to go 
+to the EC2 Dashboard. From there, click on Instances and Launch Instance.
+You can choose the classic wizard and specify an AMI, Instance Type, 
+region and availability zone, as well as storage options and select 
+a key pair so to connect to your instance.</p>
+
+<p>Once you have completed configuring your instance, you can see your instance listed in the EC2 Dashboard, and you should be able to see its state momentarily being shown as “pending”.</p>
+                  
+<p>Once the instance has been launched, the state should change to "running", with a Public DNS address being assigned to it:</p>
+
+<div class="img-thumbnail">                  
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/launched_instance.png" alt="Launched Instance" />
+<h4><small class="caption"><b>Figure</b>: Instance launched on EC2</small></h4>
+</div>
+
+<p>You can now connect to this running instance over SSH. The following video
+should show you how to connect to an EC2 instance:</p>
+
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/rFdlVkt7M6w?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+    </div>
+                <div class="col">
+                       <h4><small class="caption">Video: Connecting to an EC2 Instance</small></h4>
+                </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<p>To recap, the command in Linux to connect to an instance is:</p>
+                   
+<pre>
+ssh -i key_file.pem username@ec2-50-19-54-72-compute-1.amazonaws.com
+</pre>
+    
+<div class="bs-callout bs-callout-info">              
+<h4>Tip</h4>
+                  <p>If you are planning to use PuTTY in Windows, you will need to <link href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html">convert the PEM key into PPK format</link> using the PuTTYgen program and specify it as the key when connecting to your instance.</p>
+                  <p>We would also like to highly recommend <link href="http://www.netsarang.com/products/xsh_overview.html">XShell</link>, an advanced Terminal software which is free for home and school use. You can directly import PEM keys into XShell for use with your SSH sessions.</p>
+</div>
+
+<h2>Managing Security Groups</h2>
+
+<p>Instances launched on EC2 are publically accessible using their Public DNS address. 
+In order to better secure instances, EC2 opens only port 22 by default. 
+This is controlled using Security Group definitions in the EC2 Dashboard. 
+You can configure inbound and outbound ports and destinations. </p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/security_group.png" alt="Security Group" />
+<h4><small class="caption"><b>Figure</b>: EC2 Security Groups</small></h4>
+</div>
+
+<div class="bs-callout bs-callout-success">
+<h4>Tasks to try:</h4>
+<p>You should get comfortable doing the following tasks:
+<ol>
+  <li>Configure and launch a <code>t2.micro</code> EC2 Instance using either the Ubuntu or Amazon Linux AMIs.</li>
+  <li>Connect to the EC2 Instance using SSH from your computer.</li>
+  <li>SFTP/SCP a small file from your computer to the EC2 instance and vice-versa.</li>
+  <li>Use any text editor on the instance to create a small script or program (such as a bash or python script) and run it on the instance. This program
+  could simply echo a string to <code>stdout</code> or filter words from an input text file.</li>
+  <li>Attach, format and mount an EBS device to this running EC2 instance.</li>
+  <li>Terminate the EC2 instance when done.</li>
+</p>
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 id="aws" class="page-header">Simple Storage Service (S3)</h1>
+
+<p>Amazon S3 provides a simple web services interface that can be used to store and retrieve any amount of data, at any time, from anywhere on the web. Amazon S3 provides interfaces to write, read, and delete files (also known as objects in Amazon’s parlance) of sizes 1 byte to 5 terabytes of data each. The number of objects that you can store is unlimited. Each object is stored in a bucket and retrieved via a unique, developer-assigned key.</p>
+
+<p>When working with S3, one logical difference compared to a traditional file system is that S3 does not have the notion of folders or subfolders. The only logical container is a bucket, but files (objects) can have names with <code>/</code> which can be used to preserve the hierarchy of existing files when uploading and downloading. The following video provides an overview of S3:</p>
+
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/1qrjFb0ZTm8?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption">Video: Amazon S3</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+
+<h3>Working with S3</h3>
+<p>The following video will introduce and demonstrate S3 functionality through the AWS Console:</p>
+
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/cGHojkTuTx0?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption">Video: Amazon S3 Usage</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+
+<p>
+Using the AWS Management Console, you can visit the S3 Management Console, which gives you an interface to create and manage buckets and files.</p>
+
+    
+<p>When you create a bucket on S3, you must specify a bucket name 
+that is unique among all the buckets currently in S3 (similar to 
+choosing a username for a web portal).  The S3 bucket namespace is 
+shared by all users of the S3 system. There are also some 
+<a href="http://docs.amazonwebservices.com/AmazonS3/latest/dev/BucketRestrictions.html">restrictions</a> 
+on bucket names.</p>
+                  
+ <p>Any object stored on S3 is also accessible via HTTP. 
+You should be able to access your bucket from a browser 
+using the URL: <code>http://s3.amazonaws.com/<bucket-name>/object</code>
+Please note that you will need the appropriate permissions 
+enabled for your bucket and object to allow for anonymous HTTP access.</p>
+
+
+<div class="bs-callout bs-callout-success">
+<h4>Tasks to try:</h4>
+<p>You should get comfortable doing the following tasks:
+<ol>
+	<li>Create a bucket on S3.</li>
+	<li>Store and retrieve a small file on S3 using both the web interface and the command-line tool (covered in the next section).</li>
+	<li>Set permissions to be able to access an object on S3 using an HTTP link.</li>
+</ol>
+</p>
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <h1>AWS Command Line Tool (aws-cli)</h1>
+
+<p>So far, you have seen how to use two services in AWS, namely EC2 and S3. You have also learnt to access these services manually via the AWS Management Console.</p>
+
+<p>In order to fully leverage the power of cloud services, you should be able to <b>dynamically</b> manage AWS resources in an automated fashion. AWS makes all of its cloud service accessible via Tools and Application Programming Interfaces (APIs), which allow you to provision, configure, manage and deploy AWS resources. One of the tools that is extremely useful to access AWS resources is the <a href="https://aws.amazon.com/cli/">AWS Command Line Interface</a> Tool, also known as <code>awscli</code>.
+
+
+<p>The following video covers the installation and usage of the <code>awscli</code> tool</p>
+
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+  src="https://www.youtube.com/embed/OSGjoMeHc2A?autoplay=0&rel=0&showinfo=0&fs=1  frameborder="0" allowfullscreen></iframe>
+		</div>
+                <div class="col">
+                       <h4><small class="caption">Video: AWS CLI Tool</small></h4>
+                </div>
+	</div>
+  </div>
+</div>
+</div>
+
+<p>To install the <code>awscli</code> tool, you can use apt-get or yum in all modern linux distributions with up-to-date repositories:</p>
+<pre>sudo apt-get install awscli</pre>
+
+<p>To configure the <code>awscli</code> tool to use your AWS credentials, you can use the following command:</p>
+<pre>aws configure</pre>
+
+<p>You can now use <code>aws</code> to access AWS resources from the command line. Refer to the <code>aws</code> man page for additional information.</p>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <div class="bs-docs-section">
+<h1 class="page-header">CloudWatch</h1>
+
+<p>When working with cloud resources, you will want to keep tabs on their performance, costs as well as any sort of warning signs that point to possible errors or issues. Amazon cloudwatch is a service that allows users to monitor various resource <b>metrics</b> and set alarms that activate when a certain condition is met.</p>
+
+<p>The video below descirbes the various features and usage of CloudWatch.</p>
+<div class="row">
+ <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cu2_AbfXn2k?version=3&autoplay=0"></iframe>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="3">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Partitioning (Sharding) and Replication </h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/18">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/18">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 29.2516095196%;"/>
+    </div>
+    
+    <span>4 days 22 hours left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Partitioning (Sharding) and Replication </td>
+            <td>10/19/2015 00:01 -0400</td>
+            <td>10/25/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>The Scenario</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Implementing Replication with Strong Consistency</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Implementing Sharding with Even Distribution</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Introduction</h1>
+	
+<div class="bs-callout bs-callout-learning">
+    <h4>Learning Objectives</h4>
+
+    <p>This project will encompass the following learning objectives:</p>
+    <ol>
+		<li>Describe the motivation and design space for distributed key-value stores.</li>
+		<li>Compare and contrast the advantages and disadvantages of using replication and sharding in distributed key-value stores.</li>
+        <li>Extend a distributed key-value store with sharding or replication schemes.</li>
+		<li>Understand consistent hashing and implement a consistent hashing algorithm to illustrate its applicability to sharding in distributed key-value stores.</li>
+        <li>Apply replication and sharding techniques to real-world scenarios.</li>
+    </ol>
+</div>
+
+<div class="bs-callout bs-callout-info">
+    <h4>General Details</h4>
+
+    <p>The following table contains the general information about this project phase:</p>
+    <table class="table table-bordered">
+        <tr class="info">
+            <th colspan="3">Applicable Languages</th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <ul>
+                    <li>Java only</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="info">
+            <th>Checkpoints</th>
+            <th>Total Budget</th>
+            <th>Bonuses?</th>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>$10</td>
+            <td>Yes, for a good hash function (read below).</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="bs-callout bs-callout-danger">
+    <h4 id="grading-penalties">Grading Penalties</h4>
+    <p>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the following:</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Violation</th>
+            <th>Penalty of the project grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Spending more than $10 for this project checkpoint</td>
+            <td>-10%</td>
+        </tr>
+        <tr>
+            <td>Spending more than $20 for this project checkpoint</td>
+            <td>-100%</td>
+        </tr>
+        <tr>
+            <td>Failing to tag all your resources for this project</td>
+            <td>-10%</td>
+        </tr>
+        <tr>
+            <td>Using any instance other than t1.micro or m1.small</td>
+            <td>-10%</td>
+        </tr>
+        <tr>
+            <td>Attempting to hack/tamper the auto-grader</td>
+            <td>-100%</td>
+        </tr>
+        <tr>
+            <td>Not submitting Coordinator.java for final submission</td>
+            <td>-100%</td>
+        </tr>
+        <tr>
+            <td>Using <code>String.hashCode()</code></td>
+            <td>-5%</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p> With the advent of the internet, e-commerce and social media, organizations are facing a massive explosion in the amount of data that needs to be handled daily. It is not uncommon these days for large internet-scale companies to have to process petabytes of data on a daily basis. Storing, processing and analyzing this data is an enormous challenge, and has long surpassed the storage, memory and compute capabilities of a single machine. We require distributed, scalable data storage systems to handle this big-data challenge.While there are many types of distributed databases and storage systems, in this project we will focus on <em>distributed key-value stores</em>, a commonly adopted solution for scaling up data storage. These key-value stores are considered to be a type of <em>NoSQL</em> storage system, as they do not have full relational capabilities of systems such as MySQL, which you explored in the previous project. Unlike SQL, a key-value store supports two basic operations:</p>
+
+<ol>
+    <li><code>PUT</code> requests, which puts a value for a given key in the database</li>
+    <li><code>GET</code> requests, which gets the value associated with a key in the database</li>
+</ol>
+
+<p>Distributed key-value stores consist of several nodes, sometimes located in geographically different locations, that store the data required for
+    applications, often in-memory. Distributed key-value stores, especially when distributed to multiple servers globally, could reduce the latency between the servers and clients who are geographically closer to one of the servers.</p>
+	
+<p>The following video (Video 1) introduces you to some basic ideas and principles behind scaling a database to multiple servers.</p>
+
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/opYWHWG-vVg?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1:</b> Database Scaling.<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<p>There are different techniques for distributing the data across the available storage servers, each with their own
+    advantages and disadvantages. Some techniques, such as <strong>sharding</strong>, favors high <code>PUT</code> performance throughput, since only one
+    node needs to be updated. However, this is at the expense of <code>GET</code> performance throughput, as well as
+    higher vulnerability to failures, since the data is distributed across servers, and a failure in any one of the servers can affect
+	availability and may lead to the loss of data. Conversely, techniques like <strong>replication</strong>
+    favor high <code>GET</code> performance, since clients can fetch data from the node closest to their geographical location.
+    However, this comes at the cost of <code>PUT</code> performance, as each <code>PUT</code> request needs to update all replicas associated with that particular key. </p>
+
+
+<p>In this project, you will be implementing a Coordinator for a distributed key-value storage system, which supports
+both replication and sharding schemes. After completing this project, you should understand how each scheme works
+and the scenarios where they apply.</p>
+
+<h3>Introduction to Replication</h3>
+
+<p>One way to improve performance among distributed key-value stores is replication, which simply replicates the
+    storage on many hosts so that a read query to the storage can be satisfied by any one of the replicas of the
+    datastore. In case of update queries, the request needs to propagate to all replicas in order to preserve
+    consistency across replicas. Replication is particularly important when fault tolerance is of primary importance and
+    also for performance when there exists a record in the database which is accessed very frequently by multiple
+    clients. The image below shows a dataset that has been replicated across three hosts.</p>
+	
+	<div class="img-thumbnail">
+	<img src="http://15619public.s3.amazonaws.com/webcontent/p32/replica_dataset.png" width=600
+                       align="center" alt="A dataset with 3 replicas"/>
+	<h4><small class="caption"><b>Figure 1</b>: A dataset with 3 replicas.</small></h4>
+	</div>
+
+
+<p>As you will later learn, there are further optimizations that can be made with the different levels of consistency
+    that exists between each replicated storage. However, for now, we will explore the most basic consistency level-
+    <strong>strong consistency</strong>.</p>
+
+<p>Strong consistency is one of the stricter consistency levels for replicated distributed key-value stores. It
+    guarantees that at any point in time, all three datastores must have the same value for any given key. Additionally,
+    the order in which the requests arrive is preserved. Thus, while an update is happening for a certain key-value
+    pair, no other updates or reads can occur until the update is complete for all three datastores. Below is an
+    illustration of strong consistency in a system with 3 replicas.</p>
+	
+	
+	<div class="img-thumbnail">
+	<img src="http://15619public.s3.amazonaws.com/webcontent/p32/strong_consistency.png" width=600
+                       align="center" alt="Strong consistency behavior for 3 replicas during operations"/>
+	<h4><small class="caption"><b>Figure 2</b>: Strong consistency behavior for 3 replicas during an update operation.</small></h4>
+	</div>
+
+	
+<p>Additionally, the order in which the operations arrive will be used as the timestamp for ordering them. To achieve
+    strong consistency, you must make sure that at any point in time, all the clients should read the exact same data
+    from any of the datastore replicas. To summarize, strongly consistent coordinators must abide by these rules:</p>
+
+<ol>
+    <li>At any point in time to the client’s perspective, the same key must have the same value across all datastore
+        replicas</li>
+    <li>The order in which requests arrive at the coordinator must be the order in which they are fulfilled</li>
+    <li>All requests must be atomic. If one datastore fails to update while the others do, then rule 1 is violated</li>
+    <li>While a request is being fulfilled, (whether read or write), no other requests can be done for any datastore
+        until the pending request is completed
+    </li>
+</ol>
+
+
+<h3>Introduction to Sharding</h3>
+
+<p>Recall the concept of sharding, as seen in Video 1, deals with the division and distribution of data among multiple servers. One of the sharding techniques is <strong>horizontal partitioning</strong>, where rows of a storage database (also known as <strong>partitions</strong> or <strong>shards</strong>) are divided among multiple servers. There are numerous advantages to this partitioning approach. In distributed key-value stores that employ sharding,the entire key space is divided among multiple servers, and each machine is responsible for a specific range of keys. This enables a distribution of the data  over a large number of machines, potentially GET requests to be processed in parallel. Of course, this assumes that the data is distributed uniformly and the requests for individual keys are also distributed uniformly over the entire key-space.</p>
+
+<p>To summarize before continuing, below is an illustration of a single non-distributed key-value store, a distributed
+    key-value store with sharding, and a distributed key-value store with replication.</p>
+
+		<div class="img-thumbnail">
+	<img src="http://15619public.s3.amazonaws.com/webcontent/p32/single_sharded_replicated.png" width=600
+                       align="center" alt="Layout of a Non-distributed K-V store, a Sharded K-V store, and a Replicated K-V store"/>
+	<h4><small class="caption"><b>Figure 3</b>: Layout of a Non-distributed K-V store, a Sharded K-V store, and a Replicated K-V store.</small></h4>
+	</div>
+
+
+<p>A key design decision for a distributed key-value store is the distribution of keys over the set of data stores. In this project, you will be
+    implementing a <strong>consistent hashing</strong> algorithm, which will determine the assignment of keys to datastores. A consistent
+    hashing algorithm must always abide by one simple rule:</p>
+
+<pre>The hashing algorithm must return the same value for the same key at all times.</pre>
+
+<p>However, while this is the only requirement, a consistent hashing algorithm is not practical unless it also tries to
+    distribute the keys fairly across the different shards. As such, a good consistent hashing algorithm will also
+    attempt to distribute the keys evenly. Additionally, a good consistent hashing algorithm must also be able and handle failures, but that is beyond the scope of this project.</p>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+    <h1 class="page-header">The Scenario</h1>
+
+
+<p>Carnegie Records (CR) has been extremely successful in the music content delivery business. CR is currently expanding
+    to build its own online store where it plans to sell music and accessories. In order to support this online store,
+    it has been decided that a fast in-memory distributed key-value store is required. Now that you have proven yourself
+    to be an apt cloud programmer at CR, you have been assigned the task to build the distributed in-memory key-value
+    store required for the current scenario. As you can imagine, the distributed key-value store must support the basic operations of <code>PUT</code> and <code>GET</code> requests to specific keys in the distributed data store</p>
+
+<p>CR plans to use the key-value store for  two types of data:</p>
+
+<dl>
+    <dt>Sales Records</dt>
+    <dd>The sales records keep payment credentials, financial details and other important information about each transaction,
+    so they must kept as safe as possible. If CR were to lose these records, they would suffer a large loss!
+    Additionally, the users frequently access their purchase history, so there are plenty of GET operations to this
+    data. Because this dataset is commonly accessed, and also requires failure resistance, CR has decided that
+    replication with strong consistency is appropriate. </dd>
+    
+    <dt>Anonymous Logs</dt>
+    <dd>Contains anonymized logs of page visits and songs listened by the site's users. The are simply a mass dump of user's site  history and information. They will only ever be
+    used by CR's data analysts approximately once a week or once a month to crunch and analyze site trends, so random GET requests are rare. Additionally, this data are not critical as it can always be re-built from previous logs. As such, the main concern is being able to handle these massive amounts of PUT requests. CR has realized that a sharding scheme is sufficient for this purpose.</dd>
+
+</dl>
+
+<p>To build the proof-of-concept system, it has been decided that three machines will be allocated for this purpose. Figure 4 illustrates the planned system.</p> 
+
+<div class="img-thumbnail">
+<img src="http://15619public.s3.amazonaws.com/webcontent/p32/kv_storage.png" alt="Layout of the Key-Value Storage System" width=600/>
+<h4><small class="caption"><b>Figure 4</b>: Layout of the Key-Value Storage System.</small></h4>
+</div>
+
+<p>The individual datastores are simple key-value store systems that support <code>GET</code> and <code>PUT</code> operations. The datastore instances have been already configured in the form an AMI for you, so you do not need to modify them.</p> 
+
+<p>The only instance you need to modify is the
+    Coordinator, where you will be handling and routing the incoming requests to the appropriate datastores. You will also have to manage the underlying datastores using the provided API.</p>
+
+<h2>Implementing the Coordinator</h2>
+
+<p>The coordinator implementation consists of two parts. In the first part, you will implement replication with strong consistency for the key-value store. Later on, in the second part, you will extend the implementation to also support sharding of the data across the data stores.</p>
+
+
+<h3>Coordinator Requirements</h3>
+
+<p>Because CR wants the distributed key-value storage system to be as optimized and robust as possible, they have placed
+    a number of requirements on your coordinator implementation. They are as follows:</p>
+
+<ol>
+    <li>Requests must be handled concurrently (multi-threaded) using threads. The skeleton code for this has already been
+        provided to you in the Coordinator instance.
+    </li>
+
+    <li>Your Coordinator must be free of race conditions, and always have consistent behavior. You will be expected to
+        make use of various concurrency safety techniques at your discretion.
+    </li>
+
+    <li>Your Coordinator must not block PUT requests from the clients. Rather, it should acknowledge the request and internally prepare
+        to handle the PUT requests whenever ready. See Figure 5 and 6 for an illustration of this.
+    </li>
+
+    <li>Your Coordinator must always handle the requests in the order they come. The starter code for making use of the
+        time stamp at which they arrive has been provided. You may make use of this to check the order in which the
+        requests arrive.
+    </li>
+
+    <li>Your Coordinator may NOT permanently store any Key-Value on the Coordinator instance at any point in time.
+        (Temporary storage of Key-value pairs while requests are being processed is fine).
+    </li>
+
+    <li>Your Coordinator should be programmed in a way such that the backend stores can be dynamically changed using the
+        endpoint provided. (Defined later on).
+    </li>
+</ol>
+
+
+<p>Figure 5 below is an illustration of an incorrect Coordinator which blocks PUT requests:</p>
+
+<div class="img-thumbnail">
+<img src="http://15619public.s3.amazonaws.com/webcontent/p32/incorrect_put.png" alt="An Incorrect Coordinator blocking incoming PUT requests" width=600/>
+<h4><small class="caption"><b>Figure 5</b>: An Incorrect Coordinator blocking incoming PUT requests.</small></h4>
+</div>
+
+
+<p>Figure 6 below is an illustration of a correct Coordinator with non-blocking PUT requests:</p>
+
+<div class="img-thumbnail">
+<img src="http://15619public.s3.amazonaws.com/webcontent/p32/correct_put.png" alt="A correct Coordinator with non-blocking PUT requests" width=600/>
+<h4><small class="caption"><b>Figure 6</b>: A correct Coordinator with non-blocking PUT requests.</small></h4>
+</div>
+
+
+<h3>Tasks to Complete</h3>
+
+<strong>Please read the requirements in this section carefully before starting any instances.</strong>
+
+
+<p>The AMI and tag details are as follows:</p>
+
+<div class="bs-callout bs-callout-task">
+    <h4>AWS Details</h4>
+
+    <p>The following table contains information regarding various AWS services for this project phase:</p>
+    <table class="table table-bordered">
+        <tr class="success">
+            <th>Tag Key</th>
+            <th colspan="2">Tag Value</th>
+        </tr>
+        <tr>
+            <td>Project</td>
+            <td colspan="2">3.2</td>
+        </tr>
+        <tr class="success">
+            <th>AMI Name</th>
+            <th>AMI ID</th>
+            <th>Instance Type</th>
+        </tr>
+        <tr>
+            <td>P3.2 Datastore</td>
+            <td><code>ami-c73767a2</code></td>
+            <td><code>t1.micro</code></td>
+        </tr>
+        <td>P3.2 Coordinator</td>
+        <td><code>ami-1b38687e</code></td>
+        <td><code>t1.micro</code></td>
+        <tr>
+            <td>P3.2 Client</td>
+            <td><code>ami-bb3767de</code></td>
+            <td><code>m1.small</code></td>
+        </tr>
+    </table>
+</div>
+
+<p>To complete the section, you need to complete the following tasks:</p>
+
+<ol>
+    <li>Launch <strong>3</strong> datastore instances (<code>ami-c73767a2</code>) of type <code>t1.micro</code> in the
+        <strong>US-East</strong> region. The datastore instances contain the code required for the key-value store, and
+        you do not have to program the datastore instance. Make sure your security group allows traffic on port <code>8080</code>.
+    </li>
+
+    <li>Please wait for about 5 minutes for the datastores to start running. You can test if a datastore is running
+        using the test URL <code>http://[DATASTORE-DNS]:8080/test</code> from your browser.
+    </li>
+
+    <li>Launch a coordinator instance (<code>ami-1b38687e</code>) of type <code>t1.micro</code>.</li>
+
+    <li>Log on to the coordinator instance. In the folder <code>/home/ubuntu/Project3_2/vertx/bin/</code>, you will find
+        a java file, <code>Coordinator.java</code> which needs to be filled in to complete the coordinator implementation.
+    </li>
+
+    <li>To start the coordinator, use the command <code>./vertx run Coordinator.java</code>.</li>
+
+    <li>For the first part, you will be extending the skeleton implementation in <code>Coordinator.java</code> to support
+        replication with strong consistency for the key-value store. Please use the described requirements to guide your implementation. The endpoints of the coordinator as well as helper API functions to assist with your implementation are described below.
+    </li>
+
+    <li>Keep in mind that for the second part, you will extend this implementation to add support for sharding as well.</li>
+    
+</ol>
+
+
+<h3>Endpoints and APIs</h3>
+
+<p>The coordinator is a web server (running on Vert.x) having the following external endpoints (Table 1):</p>
+
+<!-- Captions for Table -->
+    <div class="col">
+        <p><b>Table 1:</b> Coordinator Endpoints.<p>
+    </div>
+    
+    <table class="table table-bordered">
+        <tr class="active">
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td  style="width:500px"><code>http://[Coordinator-DNS]:8080/storage?storage=TYPE_OF_STORAGE</code></td>
+            <td>This endpoint is used by the
+        auto-grader to specify the type of storage the coordinator has to support. The expected values are replication
+        and sharding. You need to use this value to program your coordinator to handle the expected storage mode.</td>
+        </tr>
+        <tr>
+            <td><code>http://[Coordinator-DNS]:8080/put?key=KEY&value=VALUE</code></td>
+            <td>This endpoint will receive the key, value
+        pair that needs to be stored in the datastore instances.</td>
+        </tr>
+        <tr>
+            <td><code>http://[Coordinator-DNS]:8080/get?key=KEY&loc=LOCATION</code></td>
+            <td>This endpoint will receive the key for which
+        the value has to be returned by the coordinator. The coordinator has to return the value as the response to this
+        request. For the sharding task, if the given "loc" is not the datastore you are actually storing the value for
+        that key, you should return <strong>0</strong>. Also, you might get a request without the "loc" parameter in
+        sharding, you should return the actual value for that key as normal.
+        This request also contains a location parameter which specifies the datastore from which the value has to be fetched
+    by the coordinator. LOCATION is 1 for datastore-1, 2 for datastore-2 and 3 for datastore-3.</td>
+        </tr>
+    </table>
+
+
+<p>In order to help you implement the coordinator, we have provided a helper class (<code>KeyValueLib</code>) with 2 methods that you
+    can access within <code>Coordinator.java</code> (Table 2):</p>
+
+    
+    <div class="col">
+        <p><b>Table 2:</b> <code>KeyValueLib</code> API.<p>
+    </div>
+    
+    <table class="table table-bordered">
+        <tr class="active">
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>KeyValueLib.PUT(String datastoreDNS, String key, String value)</code></td>
+            <td>This API method will put the value for the specified key in the specified datastore instance.</td>
+        </tr>
+        <tr>
+            <td><code>KeyValueLib.GET(String datastoreDNS, String key)</code></td>
+            <td>This API method
+        returns the value for the specified key from the specified datastore.</td>
+        </tr>
+    </table>
+    
+
+
+<p><strong>NOTE</strong>: None of the API methods described above are synchronized (In other words, any number of
+        threads can call these API methods simultaneously).</p>
+
+<div class="bs-callout bs-callout-info">
+<h4>Assumptions</h4>
+
+<p>As you design your Coordinator, you may make the following assumptions:</p>
+    
+<ol>
+    
+    <li>The latency involved in a GET operation is always negligible (~5 ms) since GET operations read from a local
+        datastore instance.
+    </li>
+
+    <li>The datastore instances are assumed to be fully fault-tolerant, i.e., the datastore instances can be assumed to
+        never fail in any scenario for this project. When implementing locking on the datastore instances, you can
+        assume that the lock and PUT requests will always succeed. This assumption is meant to reduce the complexity of
+        the locking mechanism that you have to implement. As a hint, you do not need to implement the <a
+                href="http://en.wikipedia.org/wiki/Two-phase_commit_protocol" target="_blank">Two-Phase Commit</a> (2PC)
+        mechanism.
+    </li>
+</ol>
+
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Implementing Replication with Strong Consistency</h1>
+
+<h2>Understanding Strong Consistency</h2>
+
+<p>Consistency is very important in distributed applications. We will have a detailed discussion on consistency in the next project (Project 3.3). However, for this project, you will need to understand the concept of <strong>strong consistency</strong>:</p>
+
+
+<div class="img-thumbnail">
+<img src="http://15619public.s3.amazonaws.com/webcontent/p32/banking.png" alt="A banking system's datastore" width="600px"/>
+<h4><small class="caption"><b>Figure 7</b>: A banking system's datastore.</small></h4>
+</div>
+
+<p>Let's say that a banking application has its datastores distributed across various locations in order to serve its customers effectively. In this scenario, let's say Joe and his wife Jane hold a shared account in the bank (which currently has $1000 balance). If both of them try to withdraw money from the shared account simultaneously from two different locations as shown in the figure above, there is a possibility for an inconsistent state as the two updates can deduct the amount ($50) twice respectively in the replicas where the requests came, but not $100 overall (balance can $950 instead of $900). This is not an acceptable situation for a banking application. In order to prevent this, the banking application must ensure strong consistency across its datastores as it ensures that only one operation can update all the replicas at a time. If a user is currently trying to update the datastore (by withdrawal or deposit), the banking system should block all other users from updating this specific user's data in all its datastores. The next transcation is allowed to modify the datastore only after all the datastores are made consistent from the previous transaction.</p>
+
+<h2>Implementation Requirements</h2>
+
+<p>You must implement strong consistency with replication in your coordinator. Keep the following requirements in mind for your implementation:</p>
+
+<ol>
+  <li>Every <code>PUT</code> to the key-value store should be atomic (per key). This means that at any point in time, there can be only one <code>PUT</code> operation per key being performed in the coordinator. To give an example, let’s say your coordinator receives two <code>PUT</code> requests with key “A” at timestamps 1 and 2 respectively. The request that arrived at timestamp 1 should be processed first (the second request should be blocked in the Coordinator meanwhile). Once the key value pair has been successfully <code>PUT</code> in all three datastores, the second request (which arrived at timestamp 2) needs to be processed. Also, the <code>PUT</code> requests for multiple keys can be performed in parallel (This means that the locking of the datacenters has to be done at key level).</li>
+
+  <li>Every <code>GET</code> to the key-value store should read the last written value. If a <code>GET</code> request arrives when a <code>PUT</code> request is currently being performed in the store, the <code>GET</code> operation should be <strong>blocked</strong> until the <code>PUT</code> is completed. Once the current <code>PUT</code> is completed, the <code>GET</code> operation should be performed. Note that this is different from how you should NOT block <code>PUT</code> requests.</li>
+</ol>
+
+</div>
+
+
+<div class="bs-callout bs-callout-info">
+    <h4>Hints and Suggestions</h4>
+    <ol>
+        <li>You need to perform explicit synchronization for ordering the PUT requests. You need to implement a mechanism to lock the datastores before performing a PUT operation on them. Be aware of the situation that two or more requests trying to perform a PUT or GET operation can lead to a <a href="http://stackoverflow.com/questions/34510/what-is-a-race-condition" target="_blank">race condition</a>. You need to implement a mechanism to acquire locks for requests before performing the operations (PUT/GET) on the datastores. Your code has to be free of race conditions.</li>
+
+        <li>There are several ways to handle locks (and race conditions). Java provides <a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/guardmeth.html" target="_blank">a nice way</a> to handle synchronization between multiple threads. You may also want to read about <a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html" target="_blank">synchronization</a> in Java in detail before starting.</li>
+
+        <li>You may also find the <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html" target="_blank">BlockingQueue</a> provided by Java useful.</li>
+        
+        <li>You could use a FIFO queue to maintain the order of requests. Remember, the timestamp is the key for ordering.</li>
+
+        <li>At any point in time, if you want to reset your datastores for testing, you can request the following URL: <code>http://[Datastore-DNS]:8080/flush</code>.</li>
+
+        <li>You will observe a huge delay between SSHing to the Coordinator / Client instances and getting access to the shell. Please <strong>DO NOT</strong> use <code>CTRL + C</code> to end the process since we are running some necessary scripts.</li>
+
+        <li>Start early, particularly if you are not familiar with concurrent programming. Although implementing the coordinator may not take more than 100 lines of code, you may take more time debugging and getting the concepts right.</li>
+    </ol>
+</div>
+
+
+<h2>How to test your Coordinator</h2>
+
+<ol>
+	<li>Launch a <code>m1.small</code> (<code>ami-bb3767de</code>) client instance.</li>
+
+  <li>In the client instance, go to the auto-grader folder which is located at <code>/home/ubuntu/Project3_2/</code></li>
+
+  <li>The auto-grader folder has the following files - <code>storage_checker</code>, <code>config.prop</code>, <code>submitter</code> and <code>references</code>.</li>
+
+  <li>We provide a storage checker executable called <code>storage_checker</code>. In order to use the storage checker, you need to fill the details of the coordinator, and the datacenter instances in the file <code>config.prop</code>. (Ensure that the order of the datastore instances is same in <code>config.prop</code> and the <code>Coordinator.java</code>, and that the ordering for datastore instances kept the same as how you implemented sharding). The <code>storage_checker</code> script has several test cases to check your implementation. Once you have updated the details in <code>config.prop</code>, you can run the storage_checker using the command <code>sudo ./storage_checker storage_type</code> (please do execute this command in root privilege, that is add <code>sudo</code>). The value of <code>storage_type</code> can be either <code>replication</code> or <code>sharding</code>. So far you only need to test <code>replication</code>. The script runs a series of tests and also reports if a test case has succeeded or not. <strong>Before running the storage checker, ensure that the Coordinator and all the datastores are running.</strong>
+  </li>
+
+</ol>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Implementing Sharding with Even Distribution</h1>
+
+<p>Now that you have implemented replication with strong consistency, let's move on to Sharding. First, we must understand the role played by hashing in sharding.</p>
+
+<h2>Hash Functions in Sharding</h2>
+
+<p>A hash function is any algorithm or function that can be used to map data of variable size, called keys, to data of fixed size. The values returned by a hash function are called hash values, hash codes, hash sums, or simply hashes. For example, a client's name, which can be of variable length, can be hashed to a single integer. Since usually the
+    codomain of the hashing function is smaller than its domain, <a
+            href="https://en.wikipedia.org/wiki/Collision_(computer_science)" target="_blank">collisions</a> are
+    inevitable (different client names hashing to the same integer). So one of the commonly acceptable indicators of the performance of a hashing function is the uniqueness
+    of the hash value for every input. To improve the uniqueness, we are supposed to make the hash values evenly
+    distributed (why?).</p>
+
+<p>For example, let us define function A as follows: output 0 if input is 1, 2 or 3; output 1 if input is 4, 5 or 6.
+    Similarly, define function B as: output 0 if input is 1, 2, 3, 4 or 5; output 1 if input is 6. The two functions
+    share the same domain and codomain, but the distribution of the hash value of function A is more even than function B.
+    So, from the performance perspective, function A is better than function B.</p>
+
+<p>In this project, the hashing function is used to decide which data center a data should be stored in. So, the
+    evenness of the data distributed in different data centers depends on the evenness of the hash value distribution.
+    You are supposed to design a hash function that evenly distributes the data across the three data centers.</p>
+
+<h2>Task Requirement</h2>
+
+<p>When implementing sharding for your Coordinator, you must adhere to the following requirements:</p>
+
+<ol>
+    <li>For any given key, the key-value pair can only be stored in one of the three available datastores. All
+        subsequent updates to that key must be updated in the same datastore. As a result, for any given point in time,
+        any key should only ever exist in one of the three datastores.
+    </li>
+
+    <li>You should write a consistent hashing algorithm to determine which of the three datastores each key belongs to.
+        Additionally, the following conditions must be met:
+    </li>
+
+    <ol type="a">
+        <li>For any given key, the hashing algorithm must always be consistent, meaning that it returns the same value
+            for that key.
+        </li>
+        <li>The key “a” must be put into datastore 1 (keep in mind of the ordering of your datastores when updating
+            <code>config.prop</code> in the Client instance, you must put datastore 1’s DNS on the line that indicates
+            datastore 1)
+        </li>
+        <li>The key “b” must be put into datastore 2</li>
+        <li>The key “c” must be put into datastore 3</li>
+        <li>All other keys should be distributed as evenly as possible between the three datastores. You will not
+            receive credit for trivial hashing algorithms (such as directing every key to one datastore), however it's not too complex to receive the credit.
+        </li>
+        <li>Algorithms that do a good job of evenly splitting the keys will receive bonus credit. 
+        </li>
+        <li>You are NOT allowed to use <code>.hashCode()</code> method of String in JAVA. <strong>Five</strong> points will be deducted from your total score if we find you use it.
+        </li>
+        <li><strong>Please DO NOT search for others' hash function code from the Internet. Our powerful cheat checking team will identify you and your life will be tougher. </strong>
+        </li>
+    </ol>
+
+    <li>Requests for individual datastores should not lock other datastores, only requests for that datastore alone. For
+        example, if a PUT request arrives for a key that exists in datastore 1, that should not block a request for a
+        key that exists in datastore 2.
+    </li>
+
+    <li>PUT requests for different datastores should be handled concurrently (multithreaded). For example, if a PUT
+        request arrives for a key that exists in datastore 1, and another request for a key that exists in datastore 2,
+        the two updates should occur concurrently because the keys are in different datastores.
+    </li>
+
+    <li>Just like with replication, the ordering of requests should be maintained. A GET request for a key should always
+        read the latest PUT value that came before the GET request.
+    </li>
+</ol>
+
+<div class="bs-callout bs-callout-info">
+    <h4>Hints and Suggestions</h4>
+    <ol>
+        <li>All the hints in the previous section also apply to this section. Please go through them again.</li>
+
+        <li>For the sharding bonus, you can design a hash function based on a pure mathematical method. Or you can log the keys and examine the keys for patterns. Both ways can lead you to the bonus.</li>
+
+        <li>Do not forget to clear your data structures when the consistency mode is changed.</li>
+
+        <li>You can test your implementation for Part 1 (replication) and Part 2 (sharding) separately using the consistency checker. Before the final submission, both parts should be working fully.</li>
+
+        <li>Once again, <strong>start EARLY</strong> please.</li>
+    </ol>
+</div>
+
+
+<div class="bs-callout bs-callout-warning">
+    <h4>How to submit</h4>
+    <p>To complete the project, after completing the tasks above, you can verify your implementation using the auto-grader. Follow the steps given below to complete your submission for this project.</p>
+
+    <ol>
+        <li>SSH to the Client Instance you started in the previous section (or start a new one if you terminated it). Change directory to <code>Project3_2</code> and change the <code>config.prop</code> accordingly. Use command <code>sudo ./storage_checker sharding</code> to test the sharding part of your Coordinator program.</li>        
+
+        <li>Once you have verified your implementation using the <code>storage_checker</code>, you need to submit the results using the executable <code>submitter</code>. You need to copy your implementation of the coordinator <code>Coordinator.java</code> to the <code>/home/ubuntu/Project3_2</code> folder of the Client Instance. Also make sure you add all the references (links and Andrew IDs) in the <code>references</code> file in the same folder.</li>
+
+        <li>Once you are ready to submit your code, execute the submitter by running <code>./submitter</code>. The submitter executable runs the storage checker for both replication and sharding storages one after the other, and then it reports the results to the auto-grader server. After running this command, you should be able to see your scores in a few minutes. <strong>Note: Ensure that you place Coordinator.java in the Project3_2 folder in the client instance before running submitter. Not submitting Coordinator.java can lead to 100% penalty in this project.</strong></li>
+
+        <li>NOTE: The <code>storage_checker</code> script does not check for all possible scenarios. The TAs will be manually grading your code, specifically looking for code that can lead to race conditions. Ensure that you have thoroughly tested your code for correctness and the requirements mentioned earlier. Also, please give us a well written (and well commented) code.</li>
+    </ol>
+
+</div>
+
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <iframe src="https://docs.google.com/forms/d/11YAXIRt7noKyJxQtF8m35M8HAC59Eo0Db2kBQ93jdDU/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="18">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

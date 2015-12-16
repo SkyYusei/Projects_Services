@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Advanced Resource Scaling</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/15">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/15">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Advanced Resource Scaling</td>
+            <td>09/28/2015 00:01 -0400</td>
+            <td>10/04/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>The Cost vs Performance Tradeoff</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Failure and detection</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>A Day at the MSB with Autoscaling</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Success!</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+      <h1 id="lb-as" class="page-header">Introduction to Cost Effectiveness and Reliabilty</h1>
+      <div class="bs-callout bs-callout-learning">
+        <h4>Learning Objectives</h4>
+        <p>This project will encompass the following learning objectives:</p>
+        <ol>
+          <li>Account for cost as a constraint when provisioning cloud resources.</li>
+          <li>Analyze the trade off between maximizing performance & reliability and the effect on cost.</li>
+          <li>Be able to identify and explain the need for handling resource failures.</li>
+          <li>Be able to explain the need for distributing load evenly among all resources</li>
+          <li>Configure and deploy an Elastic Load Balancer along with an Auto Scaling Group on AWS.</li>
+          <li>Be able to deploy web services that account for failure, cost and performance constraints.</li>
+          <li>Develop solutions that manage cloud resources with the ability to deal with resource failure.</li>
+        </ol>
+      </div>
+
+      <div class="bs-callout bs-callout-danger">
+        <h4>Project Grading Penalties</h4>
+        <p>Besides the penalties mentioned in recitation and/or on Piazza, penalties accrue for the following:</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Violation</th>
+              <th>Penalty of the project grade</th>
+            </tr>
+          </thead>
+          <tbody><tr>
+            <td>Spending more than $13 for this project phase</td>
+            <td>-10%</td>
+          </tr>
+          <tr>
+            <td>Spending more than $26 for this project phase</td>
+            <td>-100%</td>
+          </tr>
+          <tr>
+            <td>Failing to tag all your resources in either parts (EC2 instances, ELB, ASG) for this project</td>
+            <td>-10%</td>
+          </tr>
+          <tr>
+            <td>Submitting your AWS credentials in your code for grading</td>
+            <td>-10%</td>
+          </tr>
+          <tr>
+            <td>Using instances other than m3.medium/large for part 3</td>
+            <td>-10%</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+
+      <div class="bs-callout bs-callout-warning">
+        <h4 id="resource-tagging">Resource Tagging And Project AMIs</h4>
+        <p>For this project, assign the tag with <code>Key: Project</code> and <code>Value: 2.2</code> for all resources</p>
+        <p>For part 1, the AMI IDs are <code>Load Generator (LG): ami-312b5154</code> and <code>Data Center Instance (DCI): ami-3b2b515e</code></p>
+        <p>For part 2 questions 1, the instances will be <code>P2.2-reliability-part1 (ami-f12c5594)</code>, <code>P2.2-reliability-part1(2) (ami-01215864)</code>, <code>P2.2-reliability-part1(3) (ami-cf2e57aa)</code>, <code>P2.2-reliability-part1(4) (ami-e72f5682)</code>, <code>P2.2-reliability-part1(5) (ami-b92158dc)</code>. For all those AMIs you should use t2.micro to save budget.</p>
+        <p>For part 2 question 2, the instances will be <code>P2.2-reliability-part2 (ami-dd176eb8)</code>, <code>P2.2-reliability-part2(2) (ami-17087172)</code>, <code>P2.2-reliability-part2(3) (ami-83166fe6)</code>, <code>P2.2-reliability-part2(4) (ami-b70871d2)</code>, <code>P2.2-reliability-part2(5) (ami-930970f6)</code>. For all those AMIs you should use t2.micro to save budget.</p>
+        <p>For part 3, the AMI IDs are <code>Load Generator (LG): ami-312b5154</code> and <code>Data Center Instance (DCI): ami-3b2b515e</code> (same as part 1).</p>
+        <p>For part 3, use only <strong>m3.medium</strong> instance for Load Generator (LG) and <strong>m3.medium/large</strong> for Data Center (DC) or your test result will be invalid.</p>
+      </div>
+      
+      <p>Quality of service (QoS) and cost are two very important factors when deploying a web service. One of the sure ways to lose users to the competition is to provide a web service that does not meet acceptable QoS guarantees. Performance, availability, reliability and security are some dimensions of QoS. One can always provide high QoS by over provisioning resources in order to account for most variability in the load or failure scenarios, however cost, and the ability to compete on the cost of the service, becomes an issue. The focus of this project module, Project 2.2, is to provide you with hand-on experience with these issues through three parts.</p>
+      <p>The first part of Project 2.2 is designed to introduce you to the idea of improving a web service's performance while attempting to reduce its cost. The second part of this project module will show you different methods to identify failing instances and how to address them. The final part of the project will combine the concepts of trading off performance and cost while mitigating failure.</p>
+      <p>After Project 2.1, you were accepted into the Massive Surveillance Bureau (MSB). As a system architect of the MSB servers, you are responsible for the servers to be able to serve most requests coming in. This is because ignored requests lead to information loss. However you are also trying to save money whenever possible (especially after the recently announced budget cuts due to an information leak, which revealed to the entire world how the MSB is collecting information from everywhere). So, your current task is to scale out the resources (increase the number of machines) whenever the number of requests increases, and scale in (reduce the number of machines) to save money whenever the number of requests decreases.</p>
+
+<p>The MSB wants its infrastructure to have good quality of service. Since the infrastructure is only for internal use and they claim to already have top grade firewalls to protect from outside attacks, they only require you to maximize performance/cost ratio and make all the systems reliable. They really do not care about security at this stage, but you're starting to wonder if they made the right call on ignoring security...</p>
+
+      <h3 id="elb">Elastic Load Balancer</h3>
+      <p>You have already been introduced to the Elastic Load Balancer, which acts as a network router that sends incoming requests to multiple EC2 instances sitting behind it in a round-robin fashion. Round-robin scheduling is not perfect, but it does an adequate job given a large number of users, each with relatively simple requests. The instances it points to can be added manually through the web console, programmatically through an API, or dynamically with an Auto Scaling Group. The ELB also does a Health Check to see if the host is alive (if not, it will stop sending requests to it). Using an ELB costs $0.025 per hour + $0.008 per GB transferred through it.</p>
+
+      <p>Last week, you were introduced to the ELB, but not the APIs. Apart from the web console, you can programmatically interact with an Elastic Load Balancer in many ways, including:</p>
+
+      <ol>
+        <li><a href="http://aws.amazon.com/cli/">The AWS Command Line Interface (AWS CLI)</a></li>
+        <li><a href="http://aws.amazon.com/sdk-for-java/">The AWS SDK for Java</a></li>
+        <li><a href="https://boto.readthedocs.org/en/latest/">boto for Python</a></li>
+      </ol>
+
+      <p>We will give you more information about working with these APIs after introducing the next section on Auto Scaling.</p>
+
+      <h3 id="asg">Amazon Auto Scaling</h3>
+      <p>Amazon's Auto Scaling service automatically adds or removes computing resources allocated to an application, by responding to changes in demand. AWS Auto Scaling refers to horizontal scaling, which is the act of increasing or decreasing the compute capacity of an application by changing the number of servers assigned to it. This is in contrast to vertical scaling, which is achieved by changing the size of individual servers in response to demand (such as changing <strong>m1.small</strong> to <strong>m1.large</strong>), and is currently not supported by AWS Auto Scaling. Amazon Auto Scaling can be accessed through command-line tools or through APIs in the SDK. The following video explains AutoScaling:</p>
+
+<!--       <iframe width="560" height="315" src="https://www.youtube.com/embed/WsGpj5eZaS4" frameborder="0" allowfullscreen></iframe>
+      <h4><small class="caption">Video: Auto Scaling</small></h4> -->
+
+      <div class="row" style="align:center">
+      <div class="col-md-8">
+      <div class="panel panel-default">
+      <div class="panel-body">
+      <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/WsGpj5eZaS4?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="col">
+      <h4><small class="caption">Video: Auto Scaling</small></h4>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <p>Amazon's Auto Scaling provides the following deployment modes on a group of EC2 instances:</p>
+
+      <ul>
+        <li>Maintain a fixed number of running EC2 instances at all times, by performing periodic health checks on instances and automatically launching new instances when one or more are unhealthy;</li>
+        <li>Scale instances by invoking Auto Scaling manually, which will increase or decrease the number of running instances on your behalf;</li>
+        <li>Predictable scaling based on a developer-specified schedule (for example, a condition you could specify to decrease the servers every Friday at 5 p.m. and to increase them every Monday at 8 a.m);</li>
+        <li>Dynamically scale based on conditions specified by the developer (for example, CPU utilization of your EC2 instances).</li>
+      </ul>
+
+      <h3 id="use">Using Elastic Load Balancing and Auto Scaling</h3>
+      <p>A use case for Auto Scaling is dynamic infrastructure management. In the case of MSB, it should be clear how Auto Scaling can help deal with variable traffic patterns. As the traffic increases and the load on the servers increases, the number of servers can be increased dynamically. Similarly, as the traffic decreases and the load on the servers decreases, the number of servers can be decreased dynamically. In that sense, we can program Auto Scaling to respond to changes in CPU load (or other metrics) of provisioned servers.</p>
+
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior_asarch.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Auto Scaling Architecture in Amazon EC2</small></h4> -->
+
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_asarch.png" alt="Auto Scaling Architecture in Amazon EC2" /><h4><small class="caption">Auto Scaling Architecture in Amazon EC2</small></h4>
+      </div>
+
+      <h3 id="internal">AWS Auto Scaling Internals</h3>
+
+      <p>Using Amazon's Auto Scaling in a dynamic fashion requires, at minimum, the following:</p>
+
+      <ul>
+        <li>An <strong>Auto Scaling group</strong> should be defined with minimum, maximum and desired number of instances defined during the group creation. More information can be found here on creating auto scaling groups.</li>
+        <li>A <strong>Launch Configuration</strong> template should be defined, which includes the AMI ID, instance types, key pairs and security group information, among others. As Auto Scaling is meant to scale automatically based on application demands; i.e. the instance should be configured to automatically start the required application services and work seamlessly on launch.</li>
+        <li>An <strong>Auto Scaling policy</strong> should be created, which defines the set of actions to perform when an event, such as a CloudWatch alarm, is triggered.</li>
+      </ul>
+
+      <p>The following video will demonstrate how you can use Auto Scaling:</p>
+
+<!--       <iframe width="560" height="315" src="https://www.youtube.com/embed/MchfwYakgWU" frameborder="0" allowfullscreen></iframe>
+      <h4><small class="caption">Video: Auto Scaling Demo</small></h4> -->
+
+      <div class="row" style="align:center">
+      <div class="col-md-8">
+      <div class="panel panel-default">
+      <div class="panel-body">
+      <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/MchfwYakgWU?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="col">
+      <h4><small class="caption">Video: Auto Scaling Demo</small></h4>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+<h3> CloudWatch </h3>
+<p> Even though you have used CloudWatch in Project 2.1 and should be familiar with it, here is a recap. You will be using CloudWatch extensively in this project to come up with optimal auto scaling policies. </p>
+<!--   <iframe width="560" height="315" src="https://www.youtube.com/embed/cu2_AbfXn2k" frameborder="0" allowfullscreen></iframe>
+  <h4><small class="caption">Video: CloudWatch </small></h4> -->
+
+  <div class="row" style="align:center">
+  <div class="col-md-8">
+  <div class="panel panel-default">
+  <div class="panel-body">
+  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/cu2_AbfXn2k?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="col">
+  <h4><small class="caption">Video: CloudWatch</small></h4>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  
+
+
+
+
+
+</div>
+
+
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <h1 id="cost-consideration" class="page-header">The Cost vs Performance Tradeoff</h1>
+<h3 id="candp">Cost and Performance</h3>
+<p>After an ex-MSB agent became a whistleblower, people have become very concerned about their privacy online. In order to keep its voters happy, the government has announced that it is going to limit the funding provided to the MSB. </p>
+
+<p> Currently, MSB has a policy that whenever the number of requests coming in exceeds the maximum capacity of the cluster, a new instance is launched. This way, a high QoS is provided. However, is this always a good strategy? Let's consider a couple of simple scenarios just to get warmed up.</p>
+
+<h3 id="burst">Case 1: A short burst in the traffic</h3>
+<p>As you know, it takes a couple of minutes for a new instance to be provisioned on AWS. After that, it takes a while for the web service to come up and start serving requests. With this in mind, can you think of a case where provisioning an instance as soon as the load increases might be a bad idea? Remember, we are trying to scale out while keeping cost in mind. In this case, it might not be a good idea to scale out as soon as there is an increase in the traffic. Scaling out to accommodate a 2-minute spike in traffic is inefficient because by the time the new server is up and running, the spike has already passed, and there is no need for the newly provisioned resource which is increasing the cost of the web service.</p>
+     
+<h3 id="plateau">Case 2: A sustained increase in traffic (plateau)</h3>
+<p>Can you think of a case where it would be profitable to scale out? Hint: if the increase in traffic persists for a good amount of time, it might be a indication that the traffic has indeed increased and this is not a spike. Since this is straight forward, can you now think of a case where it would be profitable to scale in?</p>
+
+<p>Let's get some hands-on practice by attempting the following using the web console.</p>
+
+<div class="bs-callout bs-callout-task">
+<h4>Tasks to Complete:</h4>
+<p> Load Generator (LG) AMI: ami-312b5154 </p>
+<p> Data Center Instance (DC) AMI:  ami-3b2b515e </p>
+<p> Instance sizes (both LG and DC): m3.medium</p>
+<ol>
+<li><p>Launch an LG. Go to its web interface and submit your submission password.<br></p></li>
+<li><p>Launch an ELB. The ELB healthcheck should be on <b>/heartbeat</b></p></li>
+<li><p>Launch an autoscaling group (with the ELB you created in step 2) for DC AMIs. Create policies for scaling out and scaling in. The policy should be scale out if the average CPU Utilization has been > 70% for the past 1 minute and scale in if it has been < 60% for the past 1 minute. After each scaling activity, wait for 60 seconds before another scaling activity.<br></p></li>
+<li><p>As you have learnt in the previous project, ELB needs to be warmed up. Set the minimum and maximum number of instances in the autoscaling group to 1, so that you don't waste money during warmup phase. Once that is done, go to the LG's web interface and run the 'warm up' twice by giving the DNS of the Load Balancer.<br></p></li>
+<li><p>Now that our ELB is warmed up, set the maximum number of instances in the autoscaling group to 2. The minimum and desired should still remain 1.<br></p></li>
+<li><p>Run the Burst Test from the Load Generator's interface.<br></p></li>
+<li><p>Run the Plateau Test from the Load Generator's interface.<br></p></li>
+</ol>
+</div>
+
+<p>The purpose here is to have you observe the different loads and think about improvements to your policies so that you can improve the performance of your web service while attempting to reduce cost. A few questions to consider:</p>
+
+<ul>
+<li><p>Did your auto scaling group launch a new instance for the burst test? When did that instance actually come up and start serving requests? Do you think it was a good idea to have scaled out then? How would you change your auto scaling policy to mitigate this issue? </p></li>
+<li><p>Was it a good idea to scale out during the plateau test? Do you think that the policy you came up with to handle the burst traffic would make your system scale out in the plateau test? What about scaling in when the incoming traffic decreases?</p></li>
+<li><p>In the real world, for certain traffic patterns you cannot accurately predict the future. With that in mind, how would you design your scaling policies?</p></li>
+</ul>
+<p>Also, in the real world, besides traffic variations, you might also encounter instance failures, which leads us on to the next part...</p>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <h1 id="when-to-scale" class="page-header">Failure and Detection</h1>
+<h3 id="fandd">Detecting Failed Instances</h3>
+<p>Reliability is most frequently measured in uptime, or availability. It is one of the factors that contribute to how good a web service can be. Engineers try to maintain the reliability of services by coming up with mechanisms to reliably detect failure and mitigate it. Failure is a fact of life and there are numerous contributors to why an instance or a service might fail. Here, we will introduce you to the initial step, detect a failing instance.</p>
+<p>On AWS, there are three easy ways to determine whether an instance has failed or not.</p>
+<ul>
+<li><p>The first method of detection is through the AWS console. You will be able to tell whether an instance has passed the two <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html">checks</a> (system status checks and instance status checks) or what the state of each machine is.(running, stopped, impaired...etc)</p></li>
+<li><p>The second method of detection is through the <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ts-elb-healthcheck.html">ELB health check</a>. If the instances stop replying to heartbeat checks coming from the ELB, the ELB will declare that instance as unhealthy.</p></li>
+<li><p>The third method of detection is by having a detection function written yourself for the instance. You may have a self monitoring tool and once the monitoring tool is showing the instance as failing, you can <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html#as-configure-healthcheck">manually set</a> them as unhealthy in your Auto Scaling Group.</p></li>
+</ul>
+<p>It's time to practice a couple of these detection techniques.  Back to the MSB. Carry out the following two tasks also using the web console to develop some experience with failure detection. </p>
+<h3 id="under_attack">Under attack!!</h3>
+<p>The MSB has asked you to increase the number of servers for a particular service. They gave you a list of AMIs and you need to launch one of each as a t2.micro instance.</p>
+
+<h4>Monitor through web console</h4>
+<ul>
+<p>For the first list, the instances will be <code>P2.2-reliability-part1 (ami-f12c5594)</code>, <code>P2.2-reliability-part1(2) (ami-01215864)</code>, <code>P2.2-reliability-part1(3) (ami-cf2e57aa)</code>, <code>P2.2-reliability-part1(4) (ami-e72f5682)</code>, <code>P2.2-reliability-part1(5) (ami-b92158dc)</code>. For all those AMIs you should use t2.micro to save budget.</p>
+     <p>Launch each of the AMIs mentioned above with t2.micro and observe on the web console. When an AMI is working properly, it'll show a running state; When an AMI fails, it will automatically shutdown.</p>
+</ul>
+
+<h4>Monitor through ELB health check</h4>
+<ul>
+        <p>For the second list, the instances will be <code>P2.2-reliability-part2 (ami-dd176eb8)</code>, <code>P2.2-reliability-part2(2) (ami-17087172)</code>, <code>P2.2-reliability-part2(3) (ami-83166fe6)</code>, <code>P2.2-reliability-part2(4) (ami-b70871d2)</code>, <code>P2.2-reliability-part2(5) (ami-930970f6)</code>. For all those AMIs you should use t2.micro to save budget.</p>
+     <p>Launch each of the AMIs mentioned above as a t2.micro and launch an ELB. Plug those instances into the ELB. Make sure you specify the health check endpoint as <code>/heartbeat</code>. Normally the instances will show a healthy state, however, the instances that fail will show up as unhealthy.</p>
+</ul>
+
+<p>Since the MSB overlooked security and placed too much trust on its firewall, there were no security measurements for those instances that you started up. Hackers were able to penetrate the firewall and cause some of the instances to fail. Your job is to determine which ones failed and which ones stayed working after the instance has been launched for 15 minutes. Make sure you write down and remember which AMI failed and which stayed running.</p>
+
+<p>Now ahead to the third part of this project module where we put everything together.</p>
+
+
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                      <h1 id="a-day-at-msb" class="page-header">A Day at the MSB with Auto Scaling</h1>
+
+  <h3 id="msb">MSB Junior System Architect Test</h3>
+
+  <p>For this project, the AMI IDs are <code>Load Generator (LG): ami-312b5154</code> and <code>Data Center Instance (DCI): ami-3b2b515e</code></p>
+  <p>For this project, use only an <strong>m3.medium</strong> instance for Load Generator (LG) or your test result will be invalid.</p>
+  <p>In this part of Project 2.2 you get to experience one day in the life of an MSB junior system architect. As a junior system architect, you must ensure that the Data Center is responding reliably and efficiently to requests from the field agents for 24 hours a day.</p>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>A Note on Time Warping</h4>
+    <p>Unfortunately we do not have the budget (and most of you do not have the time) to conduct 24-hour long tests. So, for the rest of this module, you can assume that 1 hour of MSB time in the write-up corresponds to 2 minutes of real time. Thus the <b>24-hour</b> test takes only <b>48 minutes</b> of your time.</p>
+  </div>
+
+  <p>System architects earn a salary relative to a day's performance. The minimum requirement is that the mean requests per second for the entire 24 hours of traffic is over <b>1800 rps</b> (this corresponds to the mean rps of the 48-minute test). During a typical day, there is one morning peak and one evening peak. During both rush hours, MSB receives a huge number of requests to lookup username and password combos (requests to the <b>/lookup/random</b> page of Data Center). Unfortunately, system architects have a daily limit of <b>200 instance-hours</b>.</p>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>A Note on Instance-Hours</h4>
+    <p>One <b>m3.medium</b> instance running for one hour corresponds to 2 instance-hours, while one <b>m3.large</b> instance running for one hour corresponds to 4 instance-hours. For the purpose of our tests, time-warping makes 1 hour of MSB time correspond to 2 minutes of real time. <br><br> For example, if you have two <b>m3.medium</b> instances running for the entire 48 minute test, that corresponds to 2 instances * 24 hours * 2 instance-hour per medium instance per hour = 96 instance-hours. <br><br> If you have three <b>m3.large</b> instances that are launched together for 6 minutes in real time, you will be charged for 3 instances * 3 hours * 4 instance-hour per large instance per hour = 36 instance-hours.</p>
+  </div>
+
+  <h3 id="cost">Cost Control</h3>
+  <p>For each instance-hour used beyond the limit, a small amount is deducted from your salary. Thus, to maximize your earnings, the system should use the bare minimum number of instances required for most of the day, quickly scale up to handle the spikes as they occur, and then scale down as soon as the spikes have ended. You can visualize your instance-hours using the "Healthy Hosts" graph in the ELB page.</p>
+  <p>You should use an ELB to divide traffic evenly between your instances. Using Auto Scaling and CloudWatch, you can scale your system to handle the traffic. In the section <a href="#together">Putting it all together</a>, we give you an example of Auto Scaling rules, but you should feel free to devise your own rules to meet the target.</p>
+
+  <h3 id="fault">Fault Tolerance</h3>
+  <p>Since you are no longer able to afford the best and the fastest equipment, your Data Center instances have become unstable - they tend to crash regularly. The Load Balancer will continue to send traffic to these buggy servers until they are no longer marked as healthy. You need to ensure that most of these requests are not lost by setting up the ELB to detect and respond to failure. You should also be able to pinpoint exactly when each of your Data Center's instances failed.</p>
+
+  <h3 id="together">Putting it all together</h3>
+  <p>To become a qualified MSB junior system architect, you are required to write a program, using either the Java, Python(boto) or CLI API, to do the following set of steps. You may also choose to use the AWS Web Console to do this for dry runs. But in order to report the test result to MSB, you need to upload code for at least one test. </p> 
+  <p>Initially for testing, you may ignore setting up CloudWatch alarms and an AutoScaling Group (Steps 2-6 could be replaced by attaching a fixed number of instances in the Auto Scaling Group to the Elastic Load Balancer) to have a sense of the traffic pattern. Once you have analyzed the traffic pattern using a fixed set of instances, you could continue with the full set of steps below:</p>
+  <ol>
+    <li>
+      Create two Security Groups to allow <b>all incoming and all outgoing traffic on all ports</b>. One of them should later be associated with your associated with Elastic Load Balancer and Auto Scaling Group. (Since you'll have to delete the latter security group with code).
+    </li>
+    <li>Create a Load Generator instance of size <b>m3.medium</b> using AMI described in <a href="#resource-tagging">Resource Tagging And Project AMIs</a> with a security group other than the one you created in step 1. This second security group should also allow all incoming and all outgoing traffic on all ports. You can create this second security group before the test, and can be delete it manually after the test.</li>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/f15p22_lg_interface.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Main Page on Load Generator</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/f15p22_lg_interface.png" alt="Main Page on Load Generator" /><h4><small class="caption">Main Page on Load Generator</small></h4>
+      </div>
+    <li>
+      Create an ELB that:
+      <ul>
+        <li>Redirects HTTP:80 requests from the load balancer to HTTP:80 on the instance</li>
+        <li>Set up the page <b>/heartbeat?lg=[your-load-generator-instance-dns-name]</b> as the health check page.</li>
+        <li><b>Failing to provide the correct ELB health check page will cause your test to be invalid</b>.</li>
+      </ul>
+    </li>
+    <li>
+      Create a Launch Configuration for the instances that will become part of the Auto Scaling Group, with the following parameters:
+      <ul>
+        <li>AMI ID: As described in <a href="#resource-tagging">Resource Tagging And Project AMIs</a>.</li>
+        <li>Instance Type: <strong>m3.medium or m3.large</strong></li>
+        <li>Detailed Monitoring: enabled</li>
+      </ul>
+    </li>
+    <li>
+      After analyzing the traffic pattern, figure out a good rule for Scale Out and Scale In operations. Below we define the following default rules to give you an idea of the various parameters that need to be set. Please note that you may find it difficult to achieve a passing grade using an Auto Scaling Group with the following parameters.
+      <ul>
+        <li>Group Size Start With: 1 instance</li>
+        <li>Subnet: Recommeded to choose the same availability zone(s) corresponding to your ELB</li>
+        <li>Load Balancing: Receive traffic from Elastic Load Balancer and choose your ELB</li>
+        <li>ELB Name: Choose your ELB name, make sure it’s alphanumeric</li>
+        <li>Health Check Type: ELB</li>
+        <li>Detailed Monitoring: enabled</li>
+<!--         <img src="https://s3.amazonaws.com/15619public/webcontent/junior_asg_1.png" style="border: 1px solid;"/>
+        <h4><small class="caption">An example of Auto Scaling Group configuration</small></h4> -->
+        <div class="img-thumbnail">
+        <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_asg_1.png" alt="An example of Auto Scaling Group configuration" /><h4><small class="caption">An example of Auto Scaling Group configuration</small></h4>
+        </div>
+      </ul>
+    </li>
+    <li>
+      Create the following Auto Scale Policies: Please note that you may find it difficult to achieve a passing grade using an Auto Scaling Group with the following parameters.
+      <ul>
+        <li>Minimum Instance Size: 1</li>
+        <li>Maximum Instance Size: 2</li>
+        <li>Create a ScaleOut policy that automatically adds 1 instance to the auto scaling group.</li>
+        <li>Create a ScaleIn policy that automatically removes 1 instance from the auto scaling group.</li>
+<!--         <img src="https://s3.amazonaws.com/15619public/webcontent/junior_asg_2.png" style="border: 1px solid;"/>
+        <h4><small class="caption">An example of Auto Scaling Group configuration</small></h4> -->
+        <div class="img-thumbnail">
+        <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_asg_2.png" alt="An example of Auto Scaling Group configuration" /><h4><small class="caption">An example of Auto Scaling Group configuration</small></h4>
+        </div>
+      </ul>
+    </li>
+    <li>
+      Create CloudWatch Alarms that invoke the appropriate policy for the following scenarios: Please note that you may find it difficult to achieve a passing grade using an Auto Scaling Group with the following parameters.
+      <ul>
+        <li>Scale out when the group's CPU load exceeds 80% on average over a 5 minute interval.</li>
+        <li>Scale in when the group's CPU load is below 20% on average over a 5 minute interval.</li>
+      </ul>
+    </li>
+    <li>Link the CloudWatch Alarms to the ScaleOut and ScaleIn rules of your Auto Scaling Group.
+    </li>
+    <li>Configure correct tags for your Auto Scaling Group.
+    </li>
+    <li>
+      Before launching the test, you need to enter your submission password by visiting <b>http://[your-load-generator-instance-dns-name]/password?passwd=[your-submission-password]</b>, which is the Step 0 on your load generator instance home page.
+    </li>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/f15p22_lg_password.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Enter Submission Password Page on Load Generator</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/f15p22_lg_password.png" alt="Enter Submission Password Page on Load Generator" /><h4><small class="caption">Enter Submission Password Page on Load Generator</small></h4>
+      </div>
+    <li>
+      You may also wish to warm up your Load Balancer by visiting <b>http://[your-load-generator-instance-dns-name]/warmup?dns=[your-elb-dns]</b>. The Load Generator will send a huge number of requests to <strong>/lookup/random</strong> for 5 minutes during each warm up. You may choose to do this step multiple times until you are satisfied that your ELB has warmed up. The instance-hours used in the warm up phase do not count towards your final grade.</li>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior_warmup.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Warmup Page on Load Generator</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_warmup.png" alt="Warmup Page on Load Generator" /><h4><small class="caption">Warmup Page on Load Generator</small></h4>
+      </div>
+    <li>
+      Once your ELB is warmed up, start the test by visiting the URL: <b>http://[your-load-generator-instance-dns-name]/junior</b> and entering your ELB DNS. <br>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Junior System Architect Test Page on Load Generator</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior.png" alt="Junior System Architect Test Page on Load Generator" /><h4><small class="caption">Junior System Architect Test Page on Load Generator</small></h4>
+      </div><br>
+      Your code should request the following HTTP URL: <b>http://[your-load-generator-instance-dns-name]/junior?dns=[your-elb-dns]</b>. <br>
+      You can view the progress of this test using the page: <b>http://[your-load-generator-instance-dns-name]/log?name=test.[testId].log</b>.</li>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior_test_log.png" style="border: 1px solid;"/>
+      <h4><small class="caption">A sample Junior System Architect test log</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_test_log.png" alt="A sample Junior System Architect test log" /><h4><small class="caption">A sample Junior System Architect test log</small></h4>
+      </div>
+    <li>
+      You can monitor your ELB using the web console:<br> 
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior_cloudwatch_elb.png" style="border: 1px solid;"/>
+      <h4><small class="caption">Sum of 2XX Https of ELB in CloudWatch</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_cloudwatch_elb.png" alt="Sum of 2XX Https of ELB in CloudWatch" /><h4><small class="caption">Sum of 2XX Https of ELB in CloudWatch</small></h4>
+      </div>
+      The graph above is for HTTP 2xx requests (successful requests). There are other graphs for failed HTTP requests (non-2xx). If you are seeing a large number of non-2xx pages, it indicates that you have misconfigured your ELB or that you are not scaling fast enough to handle the spikes.
+    </li>
+    <li>
+      At the end of the 48 minutes, you will be told your average rps for the entire test and your instance-hour summary.<br>
+<!--       <img src="https://s3.amazonaws.com/15619public/webcontent/junior_ih.png" style="border: 1px solid;"/>
+      <h4><small class="caption">A sample test result</small></h4> -->
+      <div class="img-thumbnail">
+      <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/junior_ih.png" alt="A sample test result" /><h4><small class="caption">A sample test result</small></h4>
+      </div>
+    </li>
+    <li>
+      Your code should terminate all resources except for the Load Generator.
+    </li>
+  </ol>
+
+  <h3 id="target">Performance targets and scoring</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Value</th>
+        <th>Target</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Instance Hour Limit</td>
+      <td>200</td>
+      <td>if (x < 200) { return 40; } else { return 40 - 0.25 * (x - 200); } </td>
+    </tr>
+    <tr>
+      <td>Requests Per Second</td>
+      <td>1800</td>
+      <td>x / 45</td>
+    </tr>
+  </table>
+  <p>If you have achieved rps = 1350 with 150 instance-hours, your performance score will be 30 + 40 = 70.</p>
+  <p>If you have achieved rps = 1800 with 250 instance-hours, your performance score will be 40 + 27.5 = 67.5.</p>
+  <p>In addition, your code will be manually graded and its score is 20 at maximum.</p>
+  <p>The total score is 100, including 40 for rps, 40 for instance hour and 20 for code.</p>
+
+  <div class="bs-callout bs-callout-task">
+    <h4 id="task">Tasks to Complete</h4>
+    <ol>
+      <li>
+        Write a program in Python, Java or shell script using the AWS APIs.
+      </li>
+      <li>
+        Your program should launch one Load Generator instance and many Data Center instances with the correct AMIs and types.
+      </li>
+      <li>
+        Your program should create correct Security Groups, launch an Elastic Load Balancer and initiate an Auto Scaling Group along with Launch Configuration, Auto Scale Polices and CloudWatch Alarms. <b>Your program should wait for all resources to be ready.</b>
+      </li>
+      <li>
+        Your program should warm up the ELB (1 or more times) and start the junior system architect test. Your program should also record the <strong>testId</strong> in the response.
+        <br>
+      </li>
+      <li>
+        Your program should wait for the test to complete, terminate all resources (Security Group for ELB and ASG, Elastic Load Balancer, Auto Scaling Group, Launch Configuration, Auto Scale Polices, CloudWatch Alarms) except the Load Generator.
+      </li>
+      <li>
+        Submit your program as <code><testId>.zip</code> including your source code(*.java, *.py or *.sh) AND <code>references</code> in <b>http://[your-load-generator-instance-dns-name]/upload</b>. Please note that <code>references</code> is compulsory. Please do not include any library (*.jar) or credential (*.pem,access_key.csv) files in your <code><testId>.zip</code>. Your test will be graded <strong>only</strong> if you have uploaded code for that test.
+      </li>
+      <li>
+        Repeat steps 2-5 if you have budget left and hope to try with different parameters/policies.
+      </li>
+      <li>
+        Do not forget to terminate your Load Generator.
+      </li>
+    </ol>
+  </div>
+
+  <div class="bs-callout bs-callout-info">
+   <h4>Hints</h4>
+   <ul>
+     <li>You may wish to perform several runs manually - one without Auto Scaling, the next with a set of Auto Scaling rules based on your observations of the static test, followed by a run with modified rules to perform well. Realize that CloudWatch provides very interesting metrics that you can use to correctly identify the load on the system. Try to match the CloudWatch metrics to the number of HTTP requests received by the ELB.</li>
+     <li>Warming up ELB is tricky. Think about why Project 2.1 ELB Test lasts for 15 minutes long and how many times you run ELB Test to meet the required rps in Project 2.1.</li>
+     <li>Scaling out is also tricky. Think about why we do not calculate the first minute in Project 2.1 Vertical Scaling Test. Find a way to mitigate the impact of adding new instances.</li>
+     <li>The rules to scale out and scale in are important. Think about the spike and plateau test in earlier parts.</li>
+     <li>The availability zone you choose may or may not have an impact on your test result.</li>
+     <li>Do not launch multiple Load Generators at the same time. This will interfere with the calculation of instance hours.</li>
+     <li>If your rps is nearly zero(0 < rps < 1), please check if there is at least one healthy instance connected to ELB. Please notice that your solution should be <a href="#fault">fault-tolerant</a>.</li>
+     <li>If your instance hour is zero (ih=0 in your test log), please check if your ELB's health check page is set up correctly.</li>
+     <li>You may wish to disable Cross-Zone Load Balancing on your ELB and place all your Data Center instances in a single availability zone.</li>
+     <li>Your final score will be graded based on your most recent submission, not the highest!</li>
+   </ul>
+
+   </div>
+   <h3 id="additional">Additional Resources and References</h3>
+   <p><a href="http://awsdocs.s3.amazonaws.com/AutoScaling/latest/as-dg.pdf" id="_i_6" target="_blank">Autoscaling Developer Guide</a></p>
+   <p><a href="http://awsdocs.s3.amazonaws.com/AutoScaling/latest/as-api.pdf" id="_i_7" target="_blank">Autoscaling API Guide</a></p>
+   <p><a href="http://aws.amazon.com/documentation/cloudwatch/">CloudWatch Documentation</a></p>
+   <p><a href="http://aws.amazon.com/documentation/elastic-load-balancing/">Elastic Load Balancing Documentation</a></p>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    Congratulations for finishing this module!
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="15">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,5 @@
+For the FileIO benchmark in m3.large, why does the RPS value vary in each run for both Magnetic and SSD-backed EBS volumes? Did the RPS value in t1.micro vary as significantly as in m3.large? Why do you think this is the case?
+
+Answer:
+1. The RPS values vary each time because the database cached the data for later use, when query goes up, more cached data we would get, the RPS value would increase.
+2. No. The RPS values vary slightly in t1.micro and significantly in m3.large. Because the instance ability for t1.micro is weaker than that for m3.large. The cached data is also smaller in t1.micro, so that it helps slightly for t1.micro to provide a data pool for later query.

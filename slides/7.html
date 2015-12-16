@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Project Logistics</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/7">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/7">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Project Logistics</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Project Logistics</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Resource Tagging</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Assessment and Grading</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+<h1 id="project" class="page-header">Project Logistics</h1>
+
+<p>Projects are assigned by the course instructor on TheProject.Zone and are typically announced in recitations. Students are expected to follow the project schedule carefully with regards to opening/closing dates. Due to the format and scale of this course, there are no late days and late submissions are not accepted.</p>
+
+<p>With all project modules, we <strong>highly recommend</strong> starting early.
+With each project, there is a new skill that you will have to learn
+and master before you begin. Many of the project modules involve working with
+significant amounts of data, processing may require multiple 
+hours. Some projects require finding an optimal resource configuration,
+and may require multiple test runs before you can arrive at a solution.
+You will need to account for this overhead as you plan for your
+project.</p>
+
+<h2 id="cloud">Using Cloud Resources</h2>
+<p>AWS and Azure are large-scale, shared cloud resources that are used by millions of users around the world. This differs significantly from the computing resources that you have been using at the university.</p>
+
+<p>Although Cloud Service Providers (CSPs) such as AWS and Azure provide fairly robust uptime guarantees for most of their services but they are not immune to failures. Students should keep this in mind as they work on their projects. We never grant extensions for projects even if the CSP encountered a service downtime. Only in case of major service issues lasting days will the instructor consider extensions. Students should be prepared to work around service failures to meet their deadlines. Starting early is the safest method.</p>
+
+<div class="bs-callout bs-callout-info">
+<h4>Spot Instances</h4>
+<p> Spot instances, as discussed
+in the previous pages, offer significant cost savings to regular on-demand
+instances, especially for more powerful instance types. Students should
+use spot instances whenever possible, except for services 
+that need to be kept alive for instructor assessment. For example,
+in the later projects, you will be expected to keep a web interface
+alive for the instructors to visit and assess your work. Using spot
+instances for such tasks is not recommended as your instances
+could be terminated due to price fluctuations. </p>
+</div>
+
+<h2 id="cost">Managing Costs</h2>
+<p>Students must use the cloud resources judiciously. Project modules have cost restrictions (budgets) which students must follow to the letter and spirit. Students will be held accountable for excessive usage of cloud resources. Students who exceed the project module predefined budget are subject to penalties.
+
+Students will be expected to monitor their AWS usage and will be responsible
+for terminating their resources upon the completion of a project module, unless
+specifically instructed to do otherwise. The AWS Account Activity
+page offers students a break-down of their costs and offers daily billing
+information as shown in the image below:</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/costs.png"/>
+<h4><small class="caption"><b>Figure</b>: The AWS Account Activity Page</small></h4>
+</div>
+
+</div>
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Tagging AWS Resources</h1>
+<p>AWS Resources such as EC2 Instances, S3 Buckets, etc. can be tagged
+using key-value pairs. For every project module, you will have
+to tag your resources to indicate that they were provisioned to 
+complete a particular project. For EC2 Instances, you will be provided with
+an option to tag the instance while it's being configured. You may also
+tag instances and resources after they have been launched from the EC2
+Dashboard as shown in the figure below:</p>
+        
+<div class="img-thumbnail">        
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/instance_tagging.png"/>
+<h4><small class="caption"><b>Figure</b>: Tagging an Instance on EC2</small></h4>
+</div>
+
+<p>Resource Tagging is <strong>mandatory</strong>. All billable resources should be tagged 
+with the number of the project you are 
+currently working on. These will be defined in each project module write-up.
+For example, if you are working on Project 1.1, use the following
+tag for all your resources associated with Project 1.1:</p>
+
+<table class="table table-striped table-bordered">
+  <title>Resource Tagging Example</title>
+  <tr>
+    <th>Tag</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Project</td>
+    <td>1.1</td>
+  </tr>
+</table>
+
+<p>Failure to tag provisioned resources will lead to grade penalties.</p>
+
+<div class="bs-callout bs-callout-warning">
+<h4>Tagging Spot Instances</h4>
+<p>Please be aware that spot instance requests and spot instance creation
+are two separate events. You can apply a tag to the spot instance request in
+AWS, but it will <strong>not</strong> propagate to the instance when the spot
+request is satisfied. Therefore, you <strong>must</strong> tag the instance separately once it has
+been launched. Students are encouraged to find novel ways to use AWS APIs to automate
+this process, if they like.</p>
+</div>
+</div>
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+<h1 class="page-header">Assessment and Grading</h1>
+
+<p>On several of your projects this semester, you will be using an AMI developed by the Cloud Computing course teaching staff. This AMI will contain all the data you require to complete the project as well as to submit your answers to our autograding system. The AMI will in most cases consist of 2 files:</p>
+
+<ol>
+<li><code>runner.sh</code></li>
+<li><code>submitter</code></li> 
+</ol>
+
+<p><code>runner.sh</code> is a bash script which contains one function for each question in that project. You will fill in these functions and run <code>runner.sh</code> to verify your answers. You may then use <code>submitter</code> to submit your answers to the autograding system. When you run submitter, you will be asked for both <code>andrew ID</code> and <code>submission password</code> to make a submission. Your submission password could be found at the top of each project, please keep them secure.</p>
+
+<p>The project  auto-graders will be used to score your submissions, so please
+follow the project instructions carefully.
+Students will be required to complete all activities before they are due. Always double-check the answers in your project submission before choosing to submit.
+The answers you submit in your project modules will be deemed as final.</p>
+
+<p>In addition, students will be required to submit their code in a designated
+location when instructed. For such projects, a significant portion
+of the grade for that project module will be allotted for your code 
+submission. Code will be assessed on the following:</p>
+
+<ol>
+    <li>Completion of the tasks mentioned.</li>
+    <li>Efficiency/Performance.</li>
+    <li>Code style/readability/comments. We recommend following the <a href="https://github.com/google/styleguide">Google Style Guide</a>.</li>
+</ol>
+
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="7">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

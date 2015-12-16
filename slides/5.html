@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Secure Shell (SSH)</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/5">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/5">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-success"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"/>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Secure Shell (SSH)</td>
+            <td>08/31/2015 00:01 -0400</td>
+            <td>09/06/2015 23:59 -0400</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Secure Shell (SSH)</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>Remote Screen Management</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+  <h1 id="intro" class="page-header">Secure Shell (SSH)</h1>
+
+  <p>Secure Shell (SSH) is a network protocol used for secure data communication, remote login and remote command execution. You should be quite familiar with SSH already, but there are some quirks to using SSH with EC2 instances, which are covered below.</p>
+  <p>In order to get SSH working with an instance on EC2, you must ensure that the SSH clients and servers are installed correctly, that the instance's security group allows incoming connections on port 22, and that your authentication mechanism is working
+    correctly.</p>
+
+  <div class="img-thumbnail">
+    <img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/ssh_diagram.png" alt="SSH Diagram" />
+    <h4>
+      <small class="caption"><b>Figure</b>:Connecting to AWS EC2 Instances through SSH</small>
+    </h4>
+  </div>
+
+  <h2>Setting up SSHD (If not installed already)</h2>
+  <p>All EC2 images come with an ssh daemon (
+    <code>openssh</code>) pre-installed. In case you have a fresh linux install on your own machine, please follow the steps below to install and configure
+    <code>openssh</code>:</p>
+  <pre>sudo apt-get install openssh-server</pre>
+  <p>Configuration settings for ssh are on
+    <code>/etc/ssh/sshd.config</code>
+  </p>
+  <p>Depending on your version of Ubuntu, sshd can be managed either using
+    <code>init.d</code>:</p>
+  <pre syntax="bash" number="false">sudo /etc/init.d/ssh</pre>
+  <p>or by using service:</p>
+  <pre syntax="bash" number="false">sudo service sshd [start|stop|restart]</pre>
+
+  <h3>Authentication Mechanisms</h3>
+  <p>SSH supports a number of authentication mechanisms. You might be most familiar with password authentication (where you enter a username/password when connecting to a remote machine). Password authentication security is based on the length and complexity
+    of the password, and is prone to brute-force or dictionary-based attacks. This is especially dangerous on a publicly-accessible EC2 instance.</p>
+
+  <p>To plug the vulnerability and to increase security, all EC2 instances are configured to use “key-based” authentication instead. This is based on public-key cryptography. A key pair consists of two keys: one private and one public. The public and private
+    keys are mathematically linked; they are generated using algorithms such as RSA or DSA. However, from the knowledge of only one of the keys (only private or only public), it is either impossible or very expensive to calculate the other key.</p>
+
+
+  <p>You can also generate your own key pair. In Linux, ssh key pairs are typically stored in the
+    <code>~/.ssh</code> directory. We recommend using this directory as it has the correct permissions (read-write for user and no permissions for anyone else -
+    <code>700</code>). The following command can be used to generate a key-pair in Linux using the ssh-keygen tool in standard OpenSHH installation (You are free to create an RSA key using any other tool):</p>
+
+
+  <pre syntax="bash" number="false"># Generate a new key with your email id as a label
+ssh-keygen -t rsa -b 4096 -C "email_id@domain.com"
+
+# Enter the file where you want to save the key: (recommended - choose default)
+
+# You will be asked enter a pass-phrase for your key twice.
+# (Use a strong pass-phrase. Longer pass-phrases are more secure than shorter ones.)
+
+# After you provide the pass-phrase. The console will print the location of the key and the key fingerprint.</pre>
+
+  <p>
+    You can now import your key on Amazon EC2 and use this to create an SSH connection to a remote instance. You can see how to do this <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws"
+  target="_blank">here</a>.
+  </p>
+
+  <p>As an example, the following <code>ssh</code> command will execute the command
+    <code>uname -a</code> on the remote instance
+    <code>some-instance.ec2.amazonaws.com</code>. This is especially useful to run commands on many remote instances in a script.</p>
+  <del></del>
+
+  <pre syntax="bash" number="false">ssh -i private_key_file.pem some-instance.ec2.amazonaws.com 'uname –a'</pre>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>Troubleshooting SSH Problems</h4>
+    <p>If you receive a permission-denied error when trying to connect to an EC2 instance, verify that you are using the private key to connect. In addition, verify that your private key files have unix permissions
+      <code>600</code> and the directory containing the key is
+      <code>700</code>.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-info">
+    <h4>SSH Timeout</h4>
+    <p>Sometimes you need to execute long-running scripts on your EC2 instance, however SSH terminal sessions will typically timeout after being inactive for a certain amount of time. If the sessions timeout, all your running scripts will be terminated .
+      There are several ways you could avoid SSH timeout:</p>
+
+    <ol>
+      <li><a href="https://docs.oseems.com/general/application/ssh/disable-timeout">Disable SSH timeout on your SSH Client</a>.</li>
+      <li>Use
+        <code>nohup</code> to run your scripts.</li>
+      <li>Preserve your terminal sessions by using remote screen management (as explained in the next section).</li>
+    </ol>
+  </div>
+</div>
+
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+<h1 id="intro" class="page-header">Remote Screen Management</h1>
+
+<p>When working with remote machines over SSH, the bash (or similar linux shells) are used. These shells work in interactive mode, allowing the user to run commands and launch processes. However, due to network connectivity issues, remote SSH shells can be volatile and bash by default will terminate all launched processes if the session is disconnected. This can be especially frustrating when running long jobs or scripts that get terminated due to a network issue. The <code>nohup</code> command is useful to run a program in the background and continue to run the command even if the session is disconnected.</p>
+
+
+<p>Another useful tool to manage a remote SSH session is <code>byobu</code>. <code>byobu</code> is a multi-terminal manager application for Linux, similar to <code>screen</code> or <code>tmux</code>. We highly recommend using <code>byobu</code> to keep the state of your remote sessions alive, even if you disconnect from the SSH session. You can install <code>byobu</code> on your instance if it's not already present.</p>
+
+
+<p>Launch <code>byobu</code> by running the command <code>byobu</code>. This will launch a new shell session in your instance. You should see a screen similar to the image below. You can create multiple shell sessions by pressing F2. To toggle between shell sessions, press F3/F4. To disconnect from <code>byobu</code> (and keep the shells alive), press F6. To terminate a shell session, simply exit the shell.</p>
+
+<div class="img-thumbnail">
+<img class="img-responsive" src="https://s3.amazonaws.com/15619public/webcontent/byobu_window.png" alt="Byobu" />
+<h4><small class="caption"><b>Figure</b>: Byobu Screenshot</small></h4>
+</div>
+
+</div>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="5">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>

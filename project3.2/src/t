@@ -1,0 +1,138 @@
+get before enqueue. keya. time: 2015-10-22 23:53:34.959
+get after enqueue. keya. time: 2015-10-22 23:53:34.959
+2
+Get Before
+0
+0
+0
+1
+1
+Get After
+Get Before
+0
+^C-----------------------------
+ubuntu@ip-172-31-30-205:~/Project3_2/vertx/bin$ ./vertx run Coordinator.java
+Succeeded in deploying verticle
+put before enqueue. keya. time: 2015-10-22 23:55:47.362
+put before enqueue. keya. time: 2015-10-22 23:55:47.362
+put before enqueue. keyb. time: 2015-10-22 23:55:47.407
+put before enqueue. keyb. time: 2015-10-22 23:55:47.407
+put before enqueue. keyc. time: 2015-10-22 23:55:47.427
+put before enqueue. keyc. time: 2015-10-22 23:55:47.427
+put before enqueue. keyd. time: 2015-10-22 23:55:47.47
+put before enqueue. keyd. time: 2015-10-22 23:55:47.47
+put before enqueue. keye. time: 2015-10-22 23:55:47.49
+put before enqueue. keye. time: 2015-10-22 23:55:47.49
+put before enqueue. keye. time: 2015-10-22 23:55:47.534
+put before enqueue. keye. time: 2015-10-22 23:55:47.534
+get before enqueue. keya. time: 2015-10-22 23:55:47.601
+get after enqueue. keya. time: 2015-10-22 23:55:47.601
+after notify [2015-10-22 23:55:47.601]
+**********
+after notify []
+after notify []
+after notify []
+get before enqueue. keyb. time: 2015-10-22 23:55:47.755
+get after enqueue. keyb. time: 2015-10-22 23:55:47.755
+**********
+after notify []
+after notify []
+after notify [2015-10-22 23:55:47.534]
+get before enqueue. keyc. time: 2015-10-22 23:55:47.807
+get after enqueue. keyc. time: 2015-10-22 23:55:47.807
+**********
+after notify []
+get before enqueue. keyd. time: 2015-10-22 23:55:47.853
+get after enqueue. keyd. time: 2015-10-22 23:55:47.853
+**********
+after notify []
+get before enqueue. keye. time: 2015-10-22 23:55:47.9
+get after enqueue. keye. time: 2015-10-22 23:55:47.9
+after notify [2015-10-22 23:55:47.9]
+**********
+after notify []
+put before enqueue. keya. time: 2015-10-22 23:55:48.393
+put before enqueue. keya. time: 2015-10-22 23:55:48.393
+get before enqueue. keya. time: 2015-10-22 23:55:48.44
+get after enqueue. keya. time: 2015-10-22 23:55:48.44
+after notify [2015-10-22 23:55:48.44]
+**********
+after notify []
+put before enqueue. keyb. time: 2015-10-22 23:55:48.743
+put before enqueue. keyb. time: 2015-10-22 23:55:48.743
+get before enqueue. keyb. time: 2015-10-22 23:55:48.801
+get after enqueue. keyb. time: 2015-10-22 23:55:48.801
+after notify [2015-10-22 23:55:48.801]
+**********
+after notify []
+put before enqueue. keyc. time: 2015-10-22 23:55:49.106
+put before enqueue. keyc. time: 2015-10-22 23:55:49.106
+get before enqueue. keyc. time: 2015-10-22 23:55:49.153
+get after enqueue. keyc. time: 2015-10-22 23:55:49.153
+after notify [2015-10-22 23:55:49.153]
+**********
+after notify []
+put before enqueue. keyd. time: 2015-10-22 23:55:49.484
+put before enqueue. keyd. time: 2015-10-22 23:55:49.484
+get before enqueue. keyd. time: 2015-10-22 23:55:49.531
+get after enqueue. keyd. time: 2015-10-22 23:55:49.531
+after notify [2015-10-22 23:55:49.531]
+**********
+after notify []
+put before enqueue. keye. time: 2015-10-22 23:55:49.861
+put before enqueue. keye. time: 2015-10-22 23:55:49.861
+get before enqueue. keye. time: 2015-10-22 23:55:49.884
+get after enqueue. keye. time: 2015-10-22 23:55:49.884
+after notify [2015-10-22 23:55:49.884]
+**********
+after notify []
+put before enqueue. keya. time: 2015-10-22 23:55:50.466
+put before enqueue. keya. time: 2015-10-22 23:55:50.466
+get before enqueue. keyb. time: 2015-10-22 23:55:50.542
+get after enqueue. keyb. time: 2015-10-22 23:55:50.542
+**********
+after notify []
+put before enqueue. keyb. time: 2015-10-22 23:55:50.591
+put before enqueue. keyb. time: 2015-10-22 23:55:50.591
+get before enqueue. keyc. time: 2015-10-22 23:55:50.639
+get after enqueue. keyc. time: 2015-10-22 23:55:50.639
+**********
+after notify []
+put before enqueue. keyc. time: 2015-10-22 23:55:50.67
+put before enqueue. keyc. time: 2015-10-22 23:55:50.67
+get before enqueue. keyd. time: 2015-10-22 23:55:50.72
+get after enqueue. keyd. time: 2015-10-22 23:55:50.72
+**********
+after notify []
+put before enqueue. keyd. time: 2015-10-22 23:55:50.759
+put before enqueue. keyd. time: 2015-10-22 23:55:50.759
+get before enqueue. keye. time: 2015-10-22 23:55:50.781
+get after enqueue. keye. time: 2015-10-22 23:55:50.781
+**********
+after notify []
+after notify []
+put before enqueue. keye. time: 2015-10-22 23:55:50.84
+put before enqueue. keye. time: 2015-10-22 23:55:50.84
+get before enqueue. keya. time: 2015-10-22 23:55:50.866
+get after enqueue. keya. time: 2015-10-22 23:55:50.866
+**********
+after notify []
+after notify []
+after notify []
+after notify []
+get before enqueue. keya. time: 2015-10-22 23:55:51.128
+get after enqueue. keya. time: 2015-10-22 23:55:51.128
+**********
+after notify []
+after notify []
+put before enqueue. keya. time: 2015-10-22 23:55:51.158
+put before enqueue. keya. time: 2015-10-22 23:55:51.158
+put before enqueue. keya. time: 2015-10-22 23:55:51.216
+put before enqueue. keya. time: 2015-10-22 23:55:51.216
+get before enqueue. keya. time: 2015-10-22 23:55:51.263
+get after enqueue. keya. time: 2015-10-22 23:55:51.263
+after notify [2015-10-22 23:55:51.216, 2015-10-22 23:55:51.263]
+Get Before
+after notify [2015-10-22 23:55:51.263]
+Get After
+Get Before

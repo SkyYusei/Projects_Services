@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TheProject.Zone</title>
+        <link rel="shortcut icon" type="image/png" href="/static/website/images/favicon.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Latest compiled and minified jQuery -->
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+    
+<link rel="stylesheet" href="/static/student/css/inside.base.css">
+
+    <!-- Warning: this docs.min.css file is not the official file. Due to conflicts, I commented out the first statement (aka body). Use at your own risk. -->
+    <link rel="stylesheet" href="/static/student/css/docs.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/student/css/writeup.css">
+
+        
+    <script src="/static/student/js/writeup.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+
+    </head>
+    <body>
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/website/home/"><img height="50" src="/static/website/images/TPZlogo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/student/overview/3/">F15-15619 : Cloud Computing </a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/student/gradebook/3/" class="hidden-xs">Gradebook</a>
+                    <a href="/student/gradebook/3/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Gradebook</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ruz@andrew.cmu.edu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/website/profile/" class="hidden-xs">Profile</a>
+                            <a href="/website/profile/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Profile</a>
+                        </li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main">
+            
+                <h1 class="page-header">Stream Processing with Kafka and Samza</h1>
+                <ul class="nav nav-tabs">
+                    
+                        
+                        <li role="presentation" class="active"><a href="#">Writeup</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/submissions/3/24">Submissions</a></li>
+                        
+                    
+                        
+                        <li role="presentation"><a href="/student/scoreboard/3/24">Scoreboard</a></li>
+                        
+                    
+                </ul>
+            
+            <div class="messages">
+                
+            </div>
+        
+<div class="progress">
+    <div class="progress-bar progress-bar-warning"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 27.9047306332%;"/>
+    </div>
+    
+    <span>5 days 1 hour left</span>
+    
+</div>
+
+
+<button class="btn btn-primary" id="btn_show_password">Show Submission Password</button>
+<div id="show-password" style="display:none">
+    <ul class="list-group">
+      <li class="list-group-item text-right min_height">
+        <span class="pull-left">
+          <strong>Submission Password</strong>
+        </span>AUAJwrkEH6kEkRpsxLJWDzIerdyagjUw</li>
+    </ul>
+</div>
+
+
+<div class="writeup">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Module</th>
+            <th>Open</th>
+            <th>Deadline</th>
+        </tr>
+        <tr>
+            <td>Stream Processing with Kafka and Samza</td>
+            <td>12/05/2015 00:01 -0500</td>
+            <td>12/11/2015 23:59 -0500</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-3" id="leftCol">
+    <ul class="nav nav-stacked nav-pills" id="writeup_sidebar">
+        
+            
+                <li><a href="#section_1"><i class="fa fa-li fa-check fa-lg"></i><span>Introduction to Stream Processing</span></a></li>
+            
+        
+            
+                <li><a href="#section_2"><i class="fa fa-li fa-check fa-lg"></i><span>The Samza API</span></a></li>
+            
+        
+            
+                <li><a href="#section_3"><i class="fa fa-li fa-check fa-lg"></i><span>Task: Cab matching service</span></a></li>
+            
+        
+            
+                <li><a href="#section_4"><i class="fa fa-li fa-check fa-lg"></i><span>Bonus task: Dynamic pricing</span></a></li>
+            
+        
+            
+                <li><a href="#section_5"><i class="fa fa-li fa-check fa-lg"></i><span>Survey</span></a></li>
+            
+        
+    </ul>
+</div>
+
+<div class="col-md-9" id="mainCol">
+    <div id="writeup_sections_container">
+        
+            
+                <div id="section_1" class="writeup_section" data-sequence="1">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Introduction to Stream Processing</h1>
+
+	<!-- Every sentence in a <p> tag -->
+	<div class="bs-callout bs-callout-learning">
+		<h4 id="learning-objectives">Learning Objectives</h4>
+		<p>This project will encompass the following learning objectives:</p>
+		<ol>
+			<li>Discuss the use of the streaming model for big data processing.</li>
+                        <li>Explain how Kafka and Samza achieve highly distributed, fault-tolerant stream processing.</li>
+			<li>Design and implement a solution to join multiple streams of GPS data using the Samza API to enable a driver matching service like Uber.</li>
+                         <li>Explain stateful stream processing in Samza and use it to generate a list of rider-driver matchings.</li>
+		</ol>
+	</div>
+	
+	<p>Over the past few years, data has moved from being generated and processed at infrequent intervals to being processed in real-time. This places extreme latency and throughput requirements which simply cannot be managed efficiently by batch-based frameworks such as MapReduce or iterative frameworks such as GraphLab or Apache Spark, unless specific techniques or libraries are used.  In this project we will explore one way of managing and processing a large amount of real-time data with low latency, using <b>stream processing</b> techniques.</p>
+
+	<p>Traditional data processing progresses through several stages, in what is typically called the <b>data processing pipeline</b>. You have seen this pattern already in previous projects. First the data from the business (from sources such as an OLTP database or log files) is collected and stored for off-line processing. At some point in the future, the data is cleaned (though an ETL job) and fed to multiple systems (each of which may have their own data format) and the output is then visualized or fed to other systems forming a data pipeline. This method of data processing works well for historical data and for data that does not lose much of its "value" over the time it takes to process it. For example, a traditional retailer can use weekly or monthly sales trends to plan and improve its future warehouse stocking orders. However, another retailer might need to make quick decisions about the effectiveness of certain discounts and coupons at driving sales during Cyber Monday which will require real-time or near real-time processing.</p>
+
+	<p>However there has been an explosion in sensor data (primarily due to the explosion of Internet of Things (IoT) devices), social network interactions and business critical data generated in real time. These events need to be processed with extremely low latency, in the order of seconds, failing which the company loses its competitive edge in the market. For example LinkedIn uses real-time feeds of ad click data and ad impressions data to feed their ad infrastructure. Using MapReduce or other batch processing systems is a bad fit for such use cases. This is where stream processing systems come in, having specifically been designed to process billions of events everyday with low latency. Apache Kafka and Apache Samza are two such systems which enable processing a stream of data in real-time (with low latency).</p>
+	
+	<h2>Apache Kafka</h2>
+	<p>Kafka is a distributed <b>publish-subscribe</b> messaging system. Publish-subscribe refers to a pattern of communication in distributed systems where the producers/publishers of data produce data categorized to different classes without any knowledge of how the data will be used by the subscribers. The consumers/subscribers can express interest in specific classes of data and receive only those messages. Kafka uses a commit log to persist data. The commit log is an ordered, immutable, append-only data structure that is the main abstract data structure that Kafka manages. You as the user of the Kafka framework, however, will not need to worry about these implementation details. The main advantage of Kafka is the fact that it provides a unifying data backbone from which all systems in the organization can consume data independently and reliably. You can think of Kafka as being a streaming data source. Given below is most of the Kafka terminology that you will need for this project. </p>
+ 
+	<p><b>Topics:</b>Topics represent a user-defined category to which messages are published. An example topic one might find at an advertising company could be AdClickEvents. All consumers of data read from one or more topics. Topics are generally maintained as a partitioned log (see below). </p>
+	<p><b>Partitions:</b>Topics are divided into partitions. A partition represents the unit of parallelism in Kafka. In general, a higher number of partitions means higher throughput. Within each partition each message has a specific offset that consumers use to keep track of how much they have progressed through the stream. Consumers may use Kafka partitions as semantic partitions as well. What do we mean by this? If you go back to Project 1.2 and MapReduce one of the main processing assumptions was that same keys go to the same machine thereby allowing you to perform processing on each key. If you provide a key to messages in Kafka, they will be partitioned by that key allowing you to do per key processing. In some sense, you can think of Kafka as categorizing your data and providing it to you ordered by key, much like the Map and Shuffle stages in MapReduce.</p>
+	<p><b>Producers:</b>Producers are processes that publish messages to one or more topics in the Kafka cluster.</p>
+	<p><b>Consumers:</b>Consumers are processes that subscribe to topics and read messages from the Kafka cluster.</p>
+	<p><b>Brokers:</b>Brokers in Kafka are responsible for message persistence and replication. Producers talk to brokers to publish messages to the Kafka cluster and consumers talk to brokers to consume messages from the Kafka cluster.</p>
+<!-- Images to use this syntax -->
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/kafka_architecture.png" />
+	<h4><small class="caption"><b>Figure 1</b>: Kafka architecture. Source: http://www.infoq.com/articles/apache-kafka</small></h4>
+	</div>
+	
+	<p>In this project Kafka is used as a streaming data source. The data produced by Kafka will be processed by the Samza stream processing framework. It is important to note that Kafka does not perform any processing by itself, it just provides a way to store and categorize a stream of data. Our load generator for this project will generate a stream of data and dump it into Kafka streams for you to process using Samza.</p>
+
+
+	
+	<h2>Apache Samza</h2>
+	<p>Samza is a distributed stream processing framework developed by LinkedIn. Samza is designed to continuously compute data as it becomes available and provide sub-second response times. Samza is a key component in a three-tiered stream processing architecture: 
+	<dl>
+		<dt>Streaming Layer</dt>
+		<dd>The streaming layer provides the input in the form of partitioned streams. As you can imagine, this streaming layer that we will use in this project is Apache Kafka.</dd>
+		<dt>Execution Layer</dt>
+		<dd>The execution layer schedules and coordinates tasks across machines. In this project, we will use YARN as the execution layer.</dd>
+		<dt>Processing Layer</dt>
+		<dd>Finally, the processing layer processes the input stream and applies transformations on the input stream to produce some type of output. This is where Samza comes in.</dd>
+	</dl>
+	
+	<p>Like Kafka, there is some new terminology involved with Samza:</p>
+ 
+	
+	<p><b>Streams:</b>A stream is composed of partitioned sequences of messages belonging to a user defined category. As mentioned previously, Kafka will be our stream provider for this project and a Samza stream and a Kafka topic are equivalent. </p>
+	<p><b>Jobs:</b>A job is written using the Samza API to read and process data from one or more streams. A job may be broken into smaller units of execution called tasks. Each task may consume data from one or more partitions in the input stream.</p>
+	<p><b>Stateful stream processing:</b>Stream processing can be broadly classified into two types: stateful and stateless, based on the existence of some type of state which gets mutated as the stream is processed. Stateless stream processing is fairly simple as there is no synchronization of state required as stream partitions are processed in parallel. However, Samza allows for stateful stream processing. The typical approach to support stateful stream processing is to have a remote data store (such as MySQL, HBase) and retrieve state from the database in the Samza job. However this creates an unacceptable bottlenecks in the system. Remember that stream processing frameworks have to scale to millions of messages per second while a remote data store may only support a few tens of thousands of requests (as you may have learnt from the Twitter Analytics Project). Another potential way to solve this is to have an in-memory store to maintain the local state. This approach however is vulnerable to crashes of the machine. Samza solves this problem by storing state in an in-memory key-value store local to the machine where the task is running. The difference is that all writes to this local data store are replicated to a changelog stream (such as Kafka) to provide fault tolerance. So if your machine crashes, your state is not lost and on recovery you can continue processing. Without this you may have to read the stream from the beginning again to recompute the state. Samza comes with support for RocksDB (a key-value store) out of the box, and we will be using this for the project.</p>
+ <!-- Follow this video embedding style EXACTLY -->
+	<div class="row" style="align:center">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390"
+			  src="https://www.youtube.com/embed/1jO9Gysz2Ko?autoplay=0&rel=0&showinfo=0&fs=1"  frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col">
+						   <p><b>Video 1: </b>Introduction to Kafka and Samza<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Images to use this syntax -->
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/samza_architecture.PNG" />
+	<h4><small class="caption"><b>Figure 2</b>: Samza architecture.</small></h4>
+	</div>
+
+<p>Putting the two together, at a high level the flow of data in Kafka and Samza are as shown in the figure below.</p>
+<!-- Images to use this syntax -->
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/kafka.png" />
+	<h4><small class="caption"><b>Figure 3</b>: Kafka and Samza.</small></h4>
+	</div>
+
+	
+	<p>In the next section we will look at a sample Samza program and introduce you to your new company.</p>
+	
+	<div class="bs-callout bs-callout-info">
+		<h4>General Details</h4>
+		<p>The following table contains the general information about this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="info">
+				<th colspan="3">Applicable Languages</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Java</li>
+					</ul>
+				</td>
+			</tr>
+			<tr class="info">
+				<th>Sections</th>
+				<th>Total Budget</th>
+				<th>Bonuses?</th>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>$30</td>
+				<td>Yes.</td>
+				
+			</tr>
+		</table>
+	</div>
+	<div class="bs-callout bs-callout-task">
+		<h4>AWS Details</h4>
+		<p>The following table contains information regarding various AWS services and technologies for this project phase:</p>
+		<table class="table table-bordered">
+			<tr class="success">
+				<th>Tag Key</th>
+				<th colspan="2">Tag Value</th>
+			</tr>
+			<tr>
+				<td>Project</td>
+				<td colspan="2">4.3</td>
+			</tr>
+			<tr class="success">
+				<th>AMI Name</th>
+				<th>AMI ID</th>
+				<th>Instance Type</th>
+			</tr>
+			<tr>
+				<td>Load generator</td>
+				<td><code>ami-eaaae680</code></td>
+				<td><code>t2.large</code></td>
+			</tr>
+			<tr class="success">
+				<th colspan="3">AWS Technologies Explored</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul>
+						<li>Kafka and Samza on AWS Elastic MapReduce</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="bs-callout bs-callout-danger">
+			<h4 id="grading-penalties">Grading Penalties</h4>
+			<p>The following table outlines the violations of the project rules and their corresponding grade penalties for this project phase.</p>
+			<p>These rules apply for the week starting when the project is open and ending on Dec 11.</p>
+			<table class="table table-bordered">
+				<tr class="danger">
+				  <th>Violation</th>
+				  <th>Penalty of the project grade</th>
+				</tr>
+
+				<tr>
+				  <td>Using more than $30 of AWS resources</td>
+				  <td>10%</td>
+				</tr>
+				<tr>
+				  <td>Using more than $50</td>
+				  <td>100%</td>
+				</tr>
+				<tr>
+			<td>Not tagging any of your resources</td>
+			<td>10%</td>
+				</tr>
+				<tr>
+				<td>Using any "Project" tags apart from "Project":"4.3"</td>
+				<td>10%</td>
+			</tr>
+                        <tr>
+				<td>Not using fault tolerant Samza key-value store</td>
+				<td>100%</td>
+			</tr>
+			</table>
+	</div>
+</div>
+<!-- END SECTION 1 -->
+                </div>
+            
+        
+            
+                <div id="section_2" class="writeup_section" data-sequence="2">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">The Samza API</h1>
+	<p>The Samza API has a very simple design and abstracts away most of the complexity of the stream handling. The programmer provides a function that operates on a message at a time. Let's look at some code. This code is from the example Samza code <a href="https://github.com/ept/newsfeed">here</a>.</p>
+
+<pre>
+public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
+
+  private KeyValueStore&lt;String, String&gt; socialGraph;
+  private KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt; userTimeline;
+  private long numMessages = 0;
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public void init(Config config, TaskContext context) throws Exception {
+    socialGraph = (KeyValueStore&lt;String, String&gt;) context.getStore("social-graph");
+    userTimeline = (KeyValueStore&lt;String, Map&lt;String, Object&gt;&gt;) context.getStore("user-timeline");
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
+    String incomingStream = envelope.getSystemStreamPartition().getStream();
+    if (incomingStream.equals(NewsfeedConfig.FOLLOWS_STREAM.getStream())) {
+      processFollowsEvent((Map&lt;String, Object&gt;) envelope.getMessage());
+    } else if (incomingStream.equals(NewsfeedConfig.MESSAGES_STREAM.getStream())) {
+      processMessageEvent((Map&lt;String, Object&gt;) envelope.getMessage(), collector);
+    } else {
+      throw new IllegalStateException("Unexpected input stream: " + envelope.getSystemStreamPartition());
+    }
+  }
+  ...
+}
+</pre>
+
+All Samza jobs have to implement the <code>StreamTask</code> interface and optionally the <code>InitableTask</code> and the <code>WindowableTask</code> interfaces. The <code>InitableTask</code> interface is used to perform any initialization required on task startup (more on tasks and the execution model in a bit). The <code>init</code> function is called at the beginning of every task that implements <code>InitableTask</code>. The <code>init</code> function in this example initializes the RocksDB key-value store to store local state.</p>
+<p>The <code>WindowableTask</code> interface is used when you need to run some function (the <code>window</code> function) at regular intervals of time. For this project you will likely not need this. The main part of the Samza code you will write is the <code>process</code> function. The <code>process</code> function is called for each message of each stream that the job is handling. The <code>IncomingMessageEnvelope</code> argument encapsulates the message and the <code>MessageCollector</code> argument can be used to send any outgoing messages. This example joins 2 real time streams (the FOLLOWS_STREAM and the MESSAGES_STREAM) and messages from both streams will arrive at the <code>process</code> function. Stream-specific processing is done by calling <code>getStream()</code> and making a conditional branch. We will ask you to join 2 Kafka streams in this project so make sure you understand this logic. </p>
+
+<p>Next let's have a look at the <code>newsfeed-fan-out.properties</code> file in the example project (present in src/main/config).
+<pre>
+# Job
+job.factory.class=org.apache.samza.job.yarn.YarnJobFactory
+job.name=newsfeed-fan-out
+yarn.package.path=file://${basedir}/target/${project.artifactId}-${pom.version}-dist.tar.gz
+
+# Task
+task.class=com.martinkl.samza.newsfeed.FanOutTask
+task.inputs=kafka.newsfeed-follows,kafka.newsfeed-messages
+task.checkpoint.factory=org.apache.samza.checkpoint.kafka.KafkaCheckpointManagerFactory
+task.checkpoint.system=kafka
+# Normally this would be 3, but in development we have only one broker.
+task.checkpoint.replication.factor=1
+
+# Interval at which user timelines are truncated
+task.window.ms=300000
+
+# Serializers
+serializers.registry.json.class=org.apache.samza.serializers.JsonSerdeFactory
+serializers.registry.string.class=org.apache.samza.serializers.StringSerdeFactory
+
+# Kafka
+systems.kafka.samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory
+systems.kafka.samza.msg.serde=json
+systems.kafka.consumer.zookeeper.connect=localhost:2181/
+systems.kafka.producer.metadata.broker.list=localhost:9092
+
+# Social graph store tracks who is following who
+stores.social-graph.factory=org.apache.samza.storage.kv.LevelDbKeyValueStorageEngineFactory
+stores.social-graph.changelog=kafka.newsfeed-social-graph-changelog
+stores.social-graph.key.serde=string
+stores.social-graph.msg.serde=string
+
+# User timeline is a list of recent messages sent by a particular user
+stores.user-timeline.factory=org.apache.samza.storage.kv.LevelDbKeyValueStorageEngineFactory
+stores.user-timeline.changelog=kafka.newsfeed-user-timeline-changelog
+stores.user-timeline.key.serde=string
+stores.user-timeline.msg.serde=json
+</pre>
+<p>Let's look at some of the important fields in this properties file.</p>
+<ol>
+	<li><b>task.class:</b> This is the class where you have implemented your <code>process</code> function and that implements the <code>StreamTask</code> interface.</li>
+	<li><b>task.inputs:</b> The input streams for this job. Here they are 2 Kafka streams.</li>
+	<li><b>stores.social-graph.*:</b> All the configuration for the <code>social-graph</code> KV store that we refer to from the code. The <code>changelog</code> field controls the name of the stream to which changes to the KV store are persisted (for fault tolerance).</li>
+	<li><b>stores.user-timeline.*:</b> Same as above but for the <code>user-timeline</code> KV store.</li>
+</ol>
+	
+  <h2>Launching a Samza cluster</h2>
+  <p>We will be launching a Samza cluster on an EMR cluster since it comes preinstalled with many of the cluster software we require (HDFS, Zookeeper). Spin up an EMR (emr-4.1.0) cluster with <b>3 m1.large</b> instances (1 master + 2 slaves) and select "Core Hadoop" for the applications to be installed on the cluster. Upload your .pem file to the master. Log in to the master node <b> as hadoop user</b> and set .pem file permissions to 400 using <b>chmod</b>. Download the Samza setup script:
+<pre>wget https://s3.amazonaws.com/cmucc-public/p43/deploy.sh && chmod +x deploy.sh</pre> 
+and run it (without sudo). Log out of the master and log back in after this step.
+<pre>./deploy.sh</pre>.
+ The script will download all dependencies and install them. The script also downloads the <code>hello-samza</code> project. When the script completes successfully, it will print out the details of the machines in the cluster for your convenience. You may copy this somewhere for use in the tasks. To test your installation perform the following steps:</p>
+<ol>
+	<li>Change to the <code>hello-samza</code> directory.<pre>cd hello-samza</pre></li>
+	<li>Run <pre>deploy/samza/bin/run-job.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path=file://$PWD/deploy/samza/config/wikipedia-feed.properties</pre></li>
+	<li>After a while run <pre>deploy/kafka/bin/kafka-console-consumer.sh  --zookeeper localhost:2181 --topic wikipedia-raw</pre></li>
+	<li>The above command should print a list of realtime edits being made to Wikipedia. Congratulations, you have a working Samza cluster!</li>
+</ol>
+  
+</div>
+<!-- END SECTION 2 -->
+                </div>
+            
+        
+            
+                <div id="section_3" class="writeup_section" data-sequence="3">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Scenario</h1>
+        <div><p>After dabbling in 10 companies this semester you decide you want to work for another company before deciding where you will stay. PittCabs is an upcoming private cab/rideshare app. You are hired to implement the core part of the service, that of matching rider requests to available drivers. Cab hailing apps like Uber have the driver send position updates roughly every 5 seconds which forms a large stream of data. One way to handle the position updates is to keep updating a traditional data store (MySQL/Hbase) with the positions and when a rider request comes in, look up the location of the rider and match the closest driver to the rider. This approach is not very scalable even with sharding and/or replication and is wasteful since once the driver has move to a new position 5 seconds later, the old data is useless. Being well informed on the latest cloud technologies, you decide to use the stream processing model of computation since it fits the use case very well.</p>
+</div>
+<div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	<p>In this task you will write Samza code to consume 2 streams and output a rider to driver matching stream. The driver has to be the closest to the rider (for obvious reasons). The distance we use in this project is the Euclidean distance. Download the code skeleton and fill in the code in DriverMatchTask.java:</p> 
+<ol>
+<li>Download the skeleton code tar.
+<pre>wget https://s3.amazonaws.com/cmucc-public/p43/driver-match.tgz</pre>
+</li>
+<li>Untar the skeleton code tar.
+<pre>tar xvf driver-match.tgz</pre>
+</li>
+</ol>
+The details of the 2 streams are given below.</p>
+	<!-- Captions for Table -->
+    <div class="col">
+        <p><b>Table 1:</b> Input streams.<p>
+    </div>
+    
+    <table class="table table-bordered">
+        <tr class="active">
+            <th>Stream name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td  style="width:500px"><code>driver-locations</code></td>
+            <td>This stream is a stream of free driver locations as they move through the city. This stream is published in Kafka under the topic <code>driver-locations</code>. When you run the submitter, the submitter deletes any existing topic by the name of <code>driver-locations</code> and pings the load generator to generate a stream of data to the topic <code>driver-locations</code>. When you call getMessage() in your <code>process</code> function for this stream you will get a JSON string with the following fields:<br>
+			<b>blockId:</b> the block where the driver is currently moving. This is similar to a city block/neigborhood. A block can have multiple drivers. The stream is partitioned on this field.<br>
+			<b>driverId:</b> unique identifier of the driver.<br>
+			<b>type:</b> is set to "DRIVER_LOCATION" for this particular stream.<br>
+			<b>latitude, longitude:</b> within a block a driver will be at a particular latitude and longitude. This latitude and longitude is what you will consider to find the closest driver for a given rider request.<br>
+                       <b>example: </b>{"blockId":76,"driverId":6177,"latitude":3075,"type":"DRIVER_LOCATION","longitude":3828} <br>
+			</td>
+        </tr>
+        <tr>
+            <td><code>events</code></td>
+            <td>This stream is a stream of events that are separate from the driver location updates. This includes events from both riders and drivers. This stream is published in Kafka under the topic <code>events</code>. When you run the submitter, the submitter deletes any existing topic by the name of <code>events</code> and pings the load generator to generate a stream of data to the topic <code>events</code>. When you call getMessage() in your <code>process</code> function for this stream you will get a JSON string with the following fields:<br>
+		        <b>blockId:</b> the block where the user (driver or rider) is currently present.The stream is partitioned on this field.<br>
+			<b>riderId/driverId:</b> unique identifier of the driver or rider. This will be riderId if the type of the event is RIDE_REQUEST. It will be driverId in all other cases.<br>
+			<b>type:</b> <br>
+			<i>LEAVING_BLOCK</i> - a driver is moving to a different block or is going offline. This event will come with the blockId of the old block. Use this to update your local state for the old block. For example, if a driver is moving from block 1 to block 2, this event will come with the blockId 1.<br
+			<i>ENTERING_BLOCK</i> - a driver is logging on or is entering a different block. This event will come with the blockId of the new block. Use this to update your local state for the new block. For example, if a driver is moving from block 1 to block 2, this event will come with the blockId 2.<br>
+			<i>RIDE_REQUEST</i> - a rider has requested a ride in a particular block. Find the closest driver and output that driver id to the output stream.<br>
+			<i>RIDE_COMPLETE</i> - a ride has completed. It comes with the current location of the driver.<br>
+			<b>status:</b> This field is valid ONLY if type is LEAVING_BLOCK or ENTERING_BLOCK. It persists state of driver (free or busy) across blocks. The valid values for this field are AVAILABLE and UNAVAILABLE.<br>
+			<b>latitude, longitude:</b> within a block a driver will be at a particular latitude and longitude. This latitude and longitude is what you will consider to find the closest driver for a given rider request.<br>
+                        <b> Some examples:</b><br>
+                        <ul> 
+                         <li>{"blockId":76,"driverId":6977,"latitude":3476,"type":"ENTERING_BLOCK","status":"AVAILABLE","longitude":3827}</li>
+                         <li>{"blockId":34,"riderId":127,"latitude":2323,"type":"RIDE_REQUEST","longitude":1823}</li>
+                         <li>{"blockId":77,"driverId":8560,"latitude":3606,"type":"ENTERING_BLOCK","status":"UNAVAILABLE","longitude":3640}</li>
+                         <li>{"blockId":58,"driverId":8560,"latitude":3606,"type":"LEAVING_BLOCK","status":"UNAVAILABLE","longitude":3640}</li>
+<li>{"blockId":95,"driverId":12833,"latitude":2874,"type":"RIDE_COMPLETE","longitude":4975}</li>
+                          </ul>
+			</td>
+        </tr>
+    </table>
+<p>You can assume that for each RIDE_REQUEST there will be atleast one driver. 
+	<p> Your Samza job will consume the 2 streams above and output to a stream for autograding. The details of this output stream are given below.
+	
+	<!-- Captions for Table -->
+		<div class="col">
+		   <p><b>Table 2: </b>Output streams<p>
+		</div>	
+
+		<table class="table table-bordered">
+			<tr class="active">
+            <th>Stream name</th>
+            <th>Description</th>
+        </tr>
+		<tr>
+            <td  style="width:500px"><code>match-stream</code></td>
+            <td>This stream will be output by your Samza job. It MUST be a JSON string and MUST have the following fields:<br>
+				<b>riderId:</b> the id of the rider for whom a ride has been generated.<br>
+				<b>driverId:</b> the id of the closest free driver who is assigned to this rider.
+			</td>
+        </tr>
+		</table>
+<!-- Images to use this syntax -->
+	<div class="img-thumbnail">
+	<img src="https://15619public.s3.amazonaws.com/webcontent/4_3 Task1.png" />
+	<h4><small class="caption"><b>Figure 1</b>: Cab matching service. There are 2 candidate drivers in block 1 but driver 1234 is closest to rider 4444. Some fields in the JSON have been elided.</small></h4>
+	</div>
+         <p>You may wish to inspect the input streams before you start working on the project. This can be done by asking the friendly submitter (present in driver-match/src/) to generate sample input streams for you. Run the following step to generate sample stream. The submitter requires the load generator (AMI ID in the first section) to be running. <b>Note:</b> DO NOT delete the EBS volumes associated with the AMI when you launch it.  You can inspect the sample streams using kafka-console-consumer.sh for the <code>driver-locations</code> and the <code>events</code>streams. <b>Note:</b> If the load generator security group does not have outbound traffic permissions, or if the cluster node security groups are not fully open you will not be able to see the input streams. Make sure to have all the ports on all machines completely open.</p>
+<pre>./submitter_task1 -t</pre>
+	<p>To build and run your code perform the following steps.</p>
+	<ol>
+	
+      <li>Navigate to the root of the code skeleton folder (containing pom.xml).</li>
+	  <li>Ensure driver-match/src/main/config/driver-match.properties has the right values for <code>yarn.package.path</code>, <code>systems.kafka.consumer.zookeeper.connect</code> and <code>systems.kafka.producer.bootstrap.servers</code>.</li>
+	  <li>Create deploy folder.
+	<pre>mkdir -p deploy/samza</pre>
+	</li>
+      <li>Run command to build and create the jar.
+	  <pre>mvn clean package</pre>
+	  </li>
+      <li>Remove built files from the previous run if existing.
+	  <pre>rm -rf deploy/samza/*</pre>
+	  </li>
+			<li>Extract the built jar to deploy folder.
+			<pre>tar -xvf ./target/pitt_cabs-0.0.1-dist.tar.gz -C deploy/samza</pre>
+			</li>
+                           <li>Put the jar onto HDFS for all the nodes to read.
+                         <pre>hadoop fs -copyFromLocal -f target/pitt_cabs-0.0.1-dist.tar.gz /</pre>
+			</li>
+			<li>Run the Samza job.
+			<pre>deploy/samza/bin/run-job.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path=file://$PWD/deploy/samza/config/driver-match.properties</pre>
+			</li>
+			<li>If all goes well, the job will start and wait for messages on both the streams. Monitor the YARN UI at http://[master-ip]:8088 and check for failures. Ensure everything has been setup correctly by checking the logs in/var/log/hadoop-yarn/containers/[application-id]/[container-id]/ (remember the log folder will be on the machine where the container is running. Use the YARN UI to find out where the container is running.)
+ 			</li>
+			<li>You may now run the submitter to start up the streams and submit for autograding. You may wish to manually verify the output stream using <code>kafka-console-consumer.sh</code> (present in ~/hello-samza/deploy/kafka/bin) as shown in the previous section before running the submitter.
+			</li>
+		</ol>
+
+<div class="bs-callout bs-callout-info">
+		<h4>Useful Kafka commands</h4>
+		During the project inspecting the various streams in Kafka will be extremely useful to debug. A few useful commands are given below. Use these! All of the commands are relative to the Kafka bin folder (usually /home/hadoop/hello-samza/deploy/kafka/bin) and are run from the <b>master</b>.
+<ol>
+<li>Create a topic in the Kafka cluster.
+<pre>kafka-topics.sh --zookeeper localhost:2181 --create --topic my-topic --partitions [number-of-partitions] --replication-factor 1</pre>
+</li>
+<li>Describe a topic in the Kafka cluster.
+<pre>kafka-topics.sh --zookeeper localhost:2181 --describe --topic my-topic</pre>
+</li>
+<li>List all topics in the Kafka cluster.
+<pre>kafka-topics.sh --zookeeper localhost:2181 --list</pre>
+</li>
+<li>Consume messages from a topic in the Kafka cluster.
+<pre>kafka-console-consumer.sh  --zookeeper localhost:2181 --topic my-topic</pre>
+</li>
+<li>Delete a topic in the Kafka cluster.
+<pre>kafka-topics.sh --zookeeper localhost:2181 --delete --topic my-topic</pre>
+</li>
+</ol>
+	</div>
+
+<div class="bs-callout bs-callout-info">
+		<h4>Debugging Samza</h4>
+		Unlike Kafka, Samza does not have many command line utilities to help in debugging. Here are a few tips to debug Samza. 
+<ol>
+<li>Once you successfully start a job, you can monitor if the job was successful by visiting the YARN UI. This can be accessed at http://[master-ip]:8088 on your browser. </li>
+<li>You may wish to print debug statements from the Samza job code. To do this, print debug statements as usual in Java from your Samza code. These can be viewed in the YARN container logs. These logs are available at: <pre>/var/log/hadoop-yarn/containers/[application-id]/[container-id]/stdout</pre>These logs will not be on every machine in the cluster; they will be on the machine where the YARN container is running. To find the machine where the YARN container is running, navigate to the YARN UI and click on the application. This will display the machines where the job is running.</li>
+<li>Go through the logs at <pre>/var/log/hadoop-yarn/containers/[application-id]/[container-id]/stderr</pre> and <pre>/var/log/hadoop-yarn/containers/[application-id]/[container-id]/samza-application.log</pre> to check for errors.</li>
+<li>Once you start writing to a Kafka stream from your code, use kafka-console-consumer.sh to read and debug the output stream.</li>
+</ol>
+	</div>
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Log into the master instance (will not work from other instances) and go to the skeleton code folder.</li>
+      <li>Run <code>submitter_task1</code> (present in driver-match/src/) to make the submission. <b>Do not</b> run the submitter from any other folder as the submission size may become too big and the submission may fail. This will generate the stream and validate the output stream. This may take a while since we will be sending a large number of events to your Samza job. The best advice to avoid long code-compile-test times is to constantly monitor the logs. That way you can quickly find problems and end the submission instead of waiting for YARN to slowly kill the job.</li>
+<li>If the submitter seems to hang for a long time after you start your job, it is because there is nothing on the output stream (because of an error in your Samza job). Chase down the YARN logs and find out what went wrong.
+      <li>If your code was correct and generated the output stream the grader expects, you should see credit for this task on the scoreboard.</li>
+		</ol>
+	</div>
+	
+</div>
+                </div>
+            
+        
+            
+                <div id="section_4" class="writeup_section" data-sequence="4">
+                    <div class="bs-docs-section">
+	<h1 class="page-header">Scenario</h1>
+        <div><p>The driver matching algorithm works really well and the VCs have poured more money into your startup. You are now tasked with developing a dynamic pricing system for PittCabs. This will be based on the supply and demand in a particular block and is similar to the <em>surge</em> pricing concept introduced by Uber.</p>
+</div>
+<div class="bs-docs-section">
+	<h1 class="page-header">Tasks and Instructions</h1>
+	<p>In this task you will write Samza code to consume 2 streams and generate a surge pricing factor with each ride request. Note that there are many simplifying assumptions in the algorithm used to calculate the surge pricing factor here. This is done because nobody really knows how Uber's surge pricing algorithm works and adding more complexity to the algorithm does not really contribute to the learning of stream processing. That being said here is how we will calculate the surge pricing factor, SPF:</p>
+	<p> 
+	<ol>
+	<li>For each RIDE_REQUEST event that comes in, let the number of drivers currently <em>available</em> in the block be called Driver Ratio, R. Drivers who are currently not transporting a passenger are said to be available. R is a measure of the supply in some sense.</li>
+	<li>Calculate the average of R as A = AVG(R) for the past 5 RIDE_REQUESTs for that block. For the first 5 just output an SPF of 1.0.</li>
+	<li>If A >= 1.8 (enough supply for demand), the SPF is 1.0.</li>
+	<li>If A < 1.8, calculate surge factor, SF as SF = (8 *(1.8 - A)/(1.8 - 1)). Using SF, calculate the SPF as 1 + SF. </li>
+        <li>For example, if for the previous 5 RIDE_REQUESTS, the number of drivers available are: 2, 1, 1, 1, 3. Then the AVG(R) for these past 5 RIDE_REQUESTS would be 1.6. Now, this value, AVG(R) = 1.6 which is < 1.8. Therefore, we have a surge! Now, calculate SF = (8 * (1.8 - A)/(1.8 - 1)) = (8 * (1.8 - 1.6) /(1.8 - 1) = (8 * 0.2/0.8) = 2.0. With SF = 2.0, we can calculate SPF as 1 + SF = 1 + 2.0 = 3.0.
+	</ol>
+	</p>
+<p> The streams for this bonus task are <b>exactly</b> the same as the streams for the project task. We explain them below for completeness.
+	<!-- Captions for Table -->
+    <div class="col">
+        <p><b>Table 1:</b> Input streams.<p>
+    </div>
+    
+        <table class="table table-bordered">
+        <tr class="active">
+            <th>Stream name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td  style="width:500px"><code>driver-locations</code></td>
+            <td>This stream is a stream of free driver locations as they move through the city. This stream is published in Kafka under the topic <code>driver-locations</code>. When you run the submitter, the submitter deletes any existing topic by the name of <code>driver-locations</code> and pings the load generator to generate a stream of data to the topic <code>driver-locations</code>. When you call getMessage() in your <code>process</code> function for this stream you will get a JSON string with the following fields:<br>
+			<b>blockId:</b> the block where the driver is currently moving. This is similar to a city block/neighborhood. A block can have multiple drivers. The stream is partitioned on this field.<br>
+			<b>driverId:</b> unique identifier of the driver.<br>
+			<b>type:</b> is set to "DRIVER_LOCATION" for this particular stream.<br>
+			<b>latitude, longitude:</b> within a block a driver will be at a particular latitude and longitude. This latitude and longitude is what you will consider to find the closest driver for a given rider request.<br>
+                       <b>example: </b>{"blockId":76,"driverId":6177,"latitude":3075,"type":"DRIVER_LOCATION","longitude":3828} <br>
+			</td>
+        </tr>
+        <tr>
+            <td><code>events</code></td>
+            <td>This stream is a stream of events that are separate from the driver location updates. This includes events from both riders and drivers. This stream is published in Kafka under the topic <code>events</code>. When you run the submitter, the submitter deletes any existing topic by the name of <code>events</code> and pings the load generator to generate a stream of data to the topic <code>events</code>. When you call getMessage() in your <code>process</code> function for this stream you will get a JSON string with the following fields:<br>
+		        <b>blockId:</b> the block where the user (driver or rider) is currently present.The stream is partitioned on this field.<br>
+			<b>riderId/driverId:</b> unique identifier of the driver or rider.<br>
+			<b>type:</b> <br>
+			<i>LEAVING_BLOCK</i> - a driver is moving to a different block or is going offline. This event will come with the blockId of the old block. Use this to update your local state for the old block. For example, if a driver is moving from block 1 to block 2, this event will come with the blockId 1.<br>
+			<i>ENTERING_BLOCK</i> - a driver is logging on or is entering a different block. This event will come with the blockId of the new block. Use this to update your local state for the new block. For example, if a driver is moving from block 1 to block 2, this event will come with the blockId 2.<br>
+			<i>RIDE_REQUEST</i> - a rider has requested a ride in a particular block. Find the closest driver and output that driver id to the output stream.<br>
+			<i>RIDE_COMPLETE</i> - a ride has completed. It comes with the current location of the driver.<br>
+			<b>status:</b> This field is valid ONLY if type is LEAVING_BLOCK or ENTERING_BLOCK. It persists the state of driver (free or busy) across blocks. The valid values for this field are AVAILABLE and UNAVAILABLE.<br>
+			<b>latitude, longitude:</b> within a block, a driver will be at a particular latitude and longitude. This latitude and longitude is what you will consider to find the closest driver for a given rider request.<br>
+                        <b> Some examples:</b><br>
+                        <ul> 
+                         <li>{"blockId":76,"driverId":6977,"latitude":3476,"type":"ENTERING_BLOCK","status":"AVAILABLE","longitude":3827}</li>
+                         <li>{"blockId":34,"riderId":127,"latitude":2323,"type":"RIDE_REQUEST","longitude":1823}</li>
+                         <li>{"blockId":77,"driverId":8560,"latitude":3606,"type":"ENTERING_BLOCK","status":"UNAVAILABLE","longitude":3640}</li>
+                         <li>{"blockId":58,"driverId":8560,"latitude":3606,"type":"LEAVING_BLOCK","status":"UNAVAILABLE","longitude":3640}</li>
+                         <li>{"blockId":95,"driverId":12833,"latitude":2874,"type":"RIDE_COMPLETE","longitude":4975}</li>
+                          </ul>
+			</td>
+        </tr>
+    </table>
+	<p> Your Samza job will consume the 2 streams above and output to a stream called <code>match-stream</code> for autograding. The details of this output stream are given below.
+<!-- Captions for Table -->
+		<div class="col">
+		   <p><b>Table 2: </b>Output stream<p>
+		</div>	
+
+		<table class="table table-bordered">
+			<tr class="active">
+            <th>Stream name</th>
+            <th>Description</th>
+        </tr>
+		<tr>
+            <td  style="width:500px"><code>match-stream</code></td>
+            <td>This stream will be output by your Samza job. It MUST be a JSON string and MUST have the following fields:<br>
+				<b>riderId:</b> the id of the rider for whom a ride has been generated.<br>
+				<b>driverId:</b> the id of the closest free driver who is assigned to this rider.<br>
+<b>priceFactor:</b> the surge price factor for this RIDE_REQUEST calculated based on the formula given above.
+			</td>
+        </tr>
+		</table>
+<p>As in the project task, you can use the submitter to generate sample streams. Use <code>bonus_submitter -t</code> to invoke the load generator and the test streams. The build and run instructions remain the same as the project task. 
+	
+	<div class="bs-callout bs-callout-warning">
+		<h4 id="warnings">How to Submit</h4>
+		<ol>
+      <li>Log into the master instance and navigate to the skeleton code folder.</li>
+      <li>The bonus submitter, <code>bonus_submitter</code> is present in the <code>src/</code> folder. Once you have debugged your code, run the submitter.</li>
+      <li>You are done with the cloud computing course. Good luck in your career!</li>
+		</ol>
+	</div>
+	
+</div>
+                </div>
+            
+        
+            
+                <div id="section_5" class="writeup_section" data-sequence="5">
+                    <iframe src="https://docs.google.com/forms/d/1yTbox32eMZlNBQXnPA8xZPcVnz6wDM6ENZTsjLU-pGs/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
+            
+        
+        <input type="hidden" id="token" name="token" value="">
+        <input type="hidden" id="phase_id" name="phase_id" value="24">
+        <input type="hidden" id="username-input" name="username" value="ruz@andrew.cmu.edu">
+        
+            <input type="hidden" id="quiz_status_url" name="quiz_status_url" value="https://15619project.org/api/v1/quiz_status/">
+        
+            <input type="hidden" id="answer_url" name="answer_url" value="https://15619project.org/api/v1/send_answer/">
+        
+            <input type="hidden" id="service_name" name="service_name" value="TPZ">
+        
+            <input type="hidden" id="question_url" name="question_url" value="https://15619project.org/api/v1/request_question/">
+        
+            <input type="hidden" id="hint_url" name="hint_url" value="https://15619project.org/api/v1/request_hint/">
+        
+    </div>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted">©2015 Carnegie Mellon University</p>
+    </div>
+</footer>
+
+    </body>
+</html>
